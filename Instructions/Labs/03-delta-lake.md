@@ -33,7 +33,7 @@ Agora que você tem um workspace, é hora de alternar para a experiência de *En
 
     Após alguns minutos, um lakehouse vazio. Você precisa ingerir alguns dados no data lakehouse para análise. Há várias maneiras de fazer isso, mas neste exercício, você apenas baixará um arquivo de texto no computador local (ou na VM de laboratório, se aplicável) e o carregará no lakehouse.
 
-3. Baixe o arquivo de dados para este exercício de [https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv](https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv), salvando-o como **products.csv** no computador local (ou na VM de laboratório, se aplicável).
+3. Baixe o arquivo de dados para este exercício em `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` e salve-o como **products.csv** no computador local (ou na VM de laboratório, se aplicável).
 
 4. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Explorer**, selecione **Nova subpasta** e crie uma pasta chamada **products**.
 
@@ -183,7 +183,7 @@ O histórico de transações das tabelas delta é armazenado em arquivos JSON na
 
 1. Adicione uma nova célula de código ao notebook e execute o seguinte código:
 
-    ```Python
+    ```sql
    %%sql
 
    UPDATE products
