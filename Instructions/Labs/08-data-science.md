@@ -209,8 +209,8 @@ Ao treinar e acompanhar modelos com o MLflow, você pode usar a biblioteca do ML
 
 O Microsoft Fabric acompanhará todos os seus experimentos e permitirá que você os explore visualmente.
 
-1. Acesse a home page **Ciência de Dados**.
-1. Selecione o experimento `experiment-churn` para abri-lo.
+1. No painel esquerdo, navegue até o workspace.
+1. Selecione o experimento `experiment-churn` na lista.
 
     > **Dica:** caso não veja nenhuma execução de experimento registrada em log, atualize a página.
 
