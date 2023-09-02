@@ -29,7 +29,7 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Agora que você tem um workspace, é hora de alternar para a experiência de *Engenharia de dados* no portal e criar um data lakehouse para os arquivos de dados.
 
-1. No canto inferior esquerdo do portal do Power BI, alterne para a experiência de **Engenharia de Dados**.
+1. No canto inferior esquerdo do portal do Power BI, alterne para a experiência de **Engenharia de Dados**. Se não vir a experiência de engenharia de dados, entre em contato com o administrador do Fabric com uma solicitação para [habilitar o Fabric](https://learn.microsoft.com/fabric/admin/fabric-switch).
 
     A home page de engenharia de dados inclui blocos para criação de ativos de engenharia de dados comumente usados.
 
