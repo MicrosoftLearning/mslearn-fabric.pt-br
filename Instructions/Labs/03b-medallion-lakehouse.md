@@ -365,7 +365,7 @@ Observe que você poderia ter feito tudo isso em um único notebook, mas para os
     
     # Display the first 10 rows of the dataframe to preview your data
 
-    display(dfdimDate_gold.head(10))
+    display(dfdimCustomer_silver .head(10))
     ```
 
      Aqui, você criou um novo DataFrame dfdimCustomer_silver executando várias transformações, como descartar duplicatas, selecionar colunas específicas e dividir a coluna "CustomerName" para criar colunas de nome "Primeiro" e "Último". O resultado é um DataFrame com dados de cliente limpos e estruturados, incluindo colunas de nome "First" e "Last" separadas extraídas da coluna "CustomerName".
@@ -385,7 +385,7 @@ Observe que você poderia ter feito tudo isso em um único notebook, mas para os
 
     # Display the first 10 rows of the dataframe to preview your data
 
-    display(dfdimDate_gold.head(10))
+    display(dfdimCustomer_gold.head(10))
     ```
 
     Aqui você está limpando e transformando dados do cliente (dfdimCustomer_silver) executando uma antijunção esquerda para excluir duplicatas que já existem na tabela dimCustomer_gold e, em seguida, gerando valores customerID exclusivos usando a função monotonically_increasing_id().
@@ -473,13 +473,13 @@ Observe que você poderia ter feito tudo isso em um único notebook, mas para os
 14. Semelhante ao que você fez com suas outras dimensões, você precisa garantir que sua tabela de produtos permaneça atualizada à medida que novos dados forem fornecidos. **Em um novo bloco de código**, cole e execute o seguinte:
 
     ```python
-       from delta.tables import *
+    from delta.tables import *
     
-       deltaTable = DeltaTable.forPath(spark, 'Tables/dimproduct_gold')
+    deltaTable = DeltaTable.forPath(spark, 'Tables/dimproduct_gold')
             
-      dfUpdates = dfdimProduct_gold
+    dfUpdates = dfdimProduct_gold
             
-      deltaTable.alias('silver') \
+    deltaTable.alias('silver') \
       .merge(
             dfUpdates.alias('updates'),
             'silver.ItemName = updates.ItemName AND silver.ItemInfo = updates.ItemInfo'
