@@ -23,9 +23,9 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
     ![Captura de tela de um workspace vazio no Power BI.](./Images/new-workspace.png)
 
-Neste laboratório, você usa o Data Activator no Fabric para criar um *Reflex*. O Data Activator fornece convenientemente um conjunto de dados de exemplo que você pode usar para explorar os recursos do Data Activator. Você usa esses dados de exemplo para criar um *Reflex* que analisa alguns dados em tempo real e cria um gatilho para enviar um email quando uma condição é atendida.
+Neste laboratório, você usará o Data Activator no Fabric para criar um *Reflex*. O Data Activator fornece convenientemente um conjunto de dados de amostra que você pode utilizar para explorar as capacidades do Data Activator. Você utilizará esses dados de amostra para criar um *Reflex* que analisa alguns dados em tempo real e cria um gatilho para enviar um email quando uma condição for atendida.
 
-> **Observação**: o processo de exemplo do Data Activator está gerando alguns dados aleatórios em segundo plano.  Quanto mais complexas forem suas condições e filtros criados, maior a probabilidade de que nenhum evento ainda atenda às condições e filtros do gatilho. Se você não vir nenhum dado no grafo, aguarde alguns minutos e atualize a página. Dito isso, você não precisa esperar que os dados sejam exibidos nos grafos para continuar com o laboratório.
+> **OBSERVAÇÃO**: o processo de amostra do Ativador de Dados gera alguns dados aleatórios em segundo plano. Quanto mais complexas forem suas condições e filtros, mais tempo será necessário para dispará-los. Se você não vir nenhum dado no grafo, aguarde alguns minutos e atualize a página. Dito isso, você não precisa esperar que os dados sejam exibidos nos grafos para continuar com o laboratório.
 
 ## Cenário
 
@@ -45,7 +45,7 @@ Nesse cenário, você é analista de dados de uma empresa que vende e envia uma 
 
     ![Captura de tela da tela de obtenção de dados do Data Activator.](./Images/data-activator-get-started.png)
 
-1. Por padrão, o Data Activator cria seu Reflex com o nome *Reflex AAAA-MM-DD hh:mm:ss*. Como você pode ter vários Reflex em seu workspace, altere o nome do Reflex padrão para um nome mais descritivo. Selecione o botão de menu suspenso ao lado do nome do reflexo atual no canto superior esquerdo e altere o nome para ***Contoso Shipping Reflex*** para o nosso exemplo.
+1. Por padrão, o Data Activator cria seu Reflex com o nome *Reflex AAAA-MM-DD hh:mm:ss*. Como você pode ter vários Reflexs em seu espaço de trabalho, deve alterar o nome padrão do Reflex para um mais descritivo. Selecione o botão de menu suspenso ao lado do nome do reflexo atual no canto superior esquerdo e altere o nome para ***Contoso Shipping Reflex*** para o nosso exemplo.
 
     ![Captura de tela da tela inicial do Reflex do Data Activator.](./Images/data-activator-reflex-home-screen.png)
 
@@ -65,11 +65,11 @@ Para se familiarizar com o modo *Design*, selecione as diferentes seções da te
 
 ### Modo de dados
 
-1. Se você não estiver no modo *Dados* no momento, selecione a guia **Dados** na parte inferior esquerda da tela. Em um exemplo do mundo real, você adicionaria suas próprias fontes de dados de seus visuais do EventStreams e Power BI aqui. Para este laboratório, você usa os dados de exemplo fornecidos pelo Data Activator. Os dados de exemplo fornecidos pelo Data Activator já estão configurados com três EventStreams que estão monitorando o status de entrega do pacote.
+Se você não estiver no modo *Dados* no momento, selecione a guia **Dados** na parte inferior esquerda da tela. Em um exemplo do mundo real, você adicionaria suas próprias fontes de dados de seus visuais do EventStreams e Power BI aqui. Para este laboratório, você deve usar os dados de amostra fornecidos pelo Data Activator. Essa amostra já está configurada com três EventStreams que estão monitorando o status de entrega do pacote.
 
 ![Captura de tela do modo Dados do Reflex do Data Activator.](./Images/data-activator-data-tab.png)
 
-1. Selecione cada um dos diferentes eventos para ver os dados que o evento processa.
+Selecione cada um dos diferentes eventos e observe os dados que estão sendo utilizados no fluxo.
 
 ![Captura de tela dos eventos do modo Dados do Reflex do Data Activator.](./Images/data-activator-get-data-tab-event-2.png)
 
@@ -81,7 +81,7 @@ Em um cenário do mundo real, talvez não seja necessário criar um novo objeto 
 
 1. Se você não estiver no modo *Dados* no momento, selecione a guia **Dados** na parte inferior esquerda da tela.
 
-1. Selecione o evento ***Pacote em trânsito***. Preste muita atenção aos valores nas colunas *PackageId*, *Temperatura*, *ColdChainType*, *Cidade* e *SpecialCare*. Use estas colunas para criar o gatilho.
+1. Selecione o evento ***Pacote em trânsito***. Preste muita atenção aos valores nas colunas *PackageId*, *Temperatura*, *ColdChainType*, *Cidade* e *SpecialCare*. Você utilizará essas colunas para criar seu gatilho.
 
 1. Se a caixa de diálogo *Atribuir seus dados* ainda não estiver aberta no lado direito, selecione o botão **Atribuir seus dados** à direita da tela.
 
@@ -105,15 +105,17 @@ Hora de criar o gatilho.
 
 ## Escolha um gatilho
 
-Vamos examinar o que você deseja que o gatilho faça: *você deseja criar um Reflex que envie um email para o departamento de remessa se a temperatura de um pacote que contém uma prescrição for maior ou menor do que um determinado limite. A temperatura ideal deve estar entre 33 graus e 41 graus. Como os eventos Reflex já contêm um gatilho semelhante, você cria um especificamente para os pacotes enviados para a cidade de Redmond*.
+Vamos analisar o que você deseja que seu gatilho faça: *Você deseja criar um Reflex que envie um email para o departamento de remessa se a temperatura de um pacote que contém uma prescrição for maior ou menor do que um determinado limite. A temperatura ideal deve estar entre 33 graus e 41 graus. Como os eventos do Reflex já contêm um gatilho semelhante, você deve criar um especificamente para os pacotes enviados para a cidade de Redmond*.
 
-1. Selecione o botão **Novo gatilho** no menu superior. Um novo gatilho é criado com o nome padrão *Sem título*, altere o nome para ***Temperatura dos medicamentos fora do intervalo*** para definir melhor o gatilho.
+1. No evento *Pacote Em Transito* do objeto **Pacotes Redmond**, selecione o botão **Novo Gatilho** no menu superior. Um novo gatilho é criado com o nome padrão *Sem título*, altere o nome para ***Temperatura dos medicamentos fora do intervalo*** para definir melhor o gatilho.
 
     ![Captura de tela da criação de novo gatilho do Design do Reflex do Data Activator.](./Images/data-activator-trigger-new.png)
 
-1. Hora de selecionar a propriedade ou coluna de evento que dispara o Reflex. Como você criou várias propriedades quando criou o objeto, selecione o botão **Propriedade existente** e selecione a propriedade ***Temperatura***. A seleção dessa propriedade deve retornar um grafo com um exemplo de valores de histórico de temperatura.
+1. Hora de selecionar a propriedade ou coluna de evento que dispara o Reflex. Como você criou várias propriedades quando criou o objeto, selecione o botão **Propriedade existente** e selecione a propriedade ***Temperatura***. 
 
     ![Captura de tela da seleção de uma propriedade do Design do Reflex do Data Activator.](./Images/data-activator-trigger-select-property.png)
+
+    A seleção dessa propriedade deve retornar um grafo com um exemplo de valores de histórico de temperatura.
 
     ![Captura de tela do grafo de propriedades de valores históricos do Data Activator.](./Images/data-activator-trigger-property-sample-graph.png)
 
@@ -125,11 +127,11 @@ Vamos examinar o que você deseja que o gatilho faça: *você deseja criar um Re
 
     ![Captura de tela da inserção de valores de condição do Design do Reflex do Data Activator.](./Images/data-activator-trigger-select-condition-define.png)
 
-1. Até agora, você define a propriedade e a condição em que deseja que o gatilho seja acionado, mas isso ainda não inclui todos os parâmetros necessários. Você ainda precisa ter certeza de que o gatilho só dispara para a *cidade* de **Redmond** e para o tipo *cuidados especiais* de **Medicamentos**. Vamos em frente e vamos adicionar alguns filtros para essas condições.  Selecione o botão **Adicionar filtro** e selecione a propriedade ***Cidade***. Insira ***Redmond*** como o valor. Em seguida, selecione o botão **Adicionar filtro** novamente e selecione a propriedade ***SpecialCare***. Insira ***Medicamentos*** como o valor.
+1. Até agora, você definiu a propriedade e a condição em que deseja que o gatilho seja disparado, mas isso ainda não inclui todos os parâmetros de que você precisa. Você ainda precisa ter certeza de que o gatilho só dispara para a *cidade* de **Redmond** e para o tipo *cuidados especiais* de **Medicamentos**. Vamos em frente e vamos adicionar alguns filtros para essas condições.  Selecione o botão **Adicionar filtro**, defina a propriedade como ***Cidade*** , defina o relacionamento como ***Igual*** e insira ***Redmond*** como valor. Em seguida, adicione um novo filtro com a propriedade ***SpecialCare***, defina-a como ***Igual*** e insira ***Medicina*** como valor.
 
     ![Captura de tela da adição de filtro do Design do Reflex do Data Activator.](./Images/data-activator-trigger-select-condition-add-filter.png)
 
-1. Vamos adicionar mais um filtro só para garantir que o medicamento seja refrigerado. Selecione o botão **Adicionar filtro** e selecione a propriedade ***ColdChainType***. Insira ***Refrigerado*** como o valor.
+1. Vamos adicionar mais um filtro só para garantir que o medicamento seja refrigerado. Selecione o botão **Adicionar filtro**, defina a propriedade ***ColdChainType***, defina-a como ***Igual*** e insira ***Refrigerado*** como valor.
 
     ![Captura de tela da adição de filtro do Design do Reflex do Data Activator.](./Images/data-activator-trigger-select-condition-add-filter-additional.png)
 
@@ -141,16 +143,16 @@ Vamos examinar o que você deseja que o gatilho faça: *você deseja criar um Re
 
     - **Enviar para**: sua conta de usuário atual deve ser selecionada por padrão, o que deve ser bom para este laboratório.
     - **Assunto**: *Pacote de medicamentos para Redmond fora do intervalo de temperatura aceitável*
-    - **Título**: *Temperatura muito quente ou muito fria*
+    - **Título**: *Temperatura muito alta ou muito baixa*
     - **Informações adicionais**: selecione a propriedade *Temperatura* na lista de caixas de seleção.
 
-    ![Captura de tela de início de gatilho do Design do Reflex do Data Activator.](./Images/data-activator-trigger-start.png)
+    ![Captura de tela da ação de definição do Data Activator.](./Images/data-activator-trigger-define-action.png)
 
 1. Selecione **Salvar** e **Iniciar** no menu superior.
 
 Agora você criou e iniciou um gatilho no Data Activator.
 
-## Atualizar um gatilho
+## Atualizações e interrupção de um gatilho
 
 O único problema com esse gatilho é que, embora o gatilho tenha enviado um email com a temperatura, o gatilho não enviou o *PackageId* do pacote. Vamos atualizar o gatilho para incluir o *PackageId*.
 
@@ -172,11 +174,7 @@ O único problema com esse gatilho é que, embora o gatilho tenha enviado um ema
 
     ![Captura de tela da atualização de gatilho do Data Activator.](./Images/data-activator-trigger-updated.png)
 
-O gatilho agora está atualizado.
-
-## Interromper um gatilho
-
-Para interromper o gatilho, selecione o botão **Parar** no menu superior.
+1. Interrompa o disparo selecionando o botão **Parar** no menu superior.
 
 ## Limpar os recursos
 
