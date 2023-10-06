@@ -6,9 +6,9 @@ lab:
 
 # Usar os notebooks do Microsoft Fabric para explorar dados
 
-Neste laboratório, utilizaremos notebooks para explorar os dados. Os notebooks são uma ferramenta poderosa para explorar e analisar dados de forma interativa. Durante este exercício, aprenderemos a criar e utilizar notebooks para explorar um conjunto de dados, gerar estatísticas resumidas e criar visualizações para entender melhor os dados. Ao final deste laboratório, você terá uma sólida compreensão de como utilizar notebooks para explorar e analisar dados.
+Neste laboratório, usaremos notebooks para exploração de dados. Os notebooks são uma ferramenta poderosa para explorar e analisar dados de forma interativa. Durante este exercício, aprenderemos a criar e utilizar notebooks para explorar um conjunto de dados, gerar estatísticas resumidas e criar visualizações para entender melhor os dados. Ao final deste laboratório, você terá uma sólida compreensão de como utilizar notebooks para explorar e analisar dados.
 
-Este laboratório levará aproximadamente **45** minutos para ser concluído.
+Este laboratório leva cerca de **30** minutos para ser concluído.
 
 > **Observação**: você precisará ter uma licença do Microsoft Fabric para concluir este exercício. Confira [Introdução ao Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obter detalhes de como habilitar uma licença de avaliação gratuita do Fabric. Você precisará ter uma conta *corporativa* ou de *estudante* da Microsoft para fazer isso. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
@@ -27,7 +27,7 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Para treinar um modelo, você pode criar um *notebook*. Os notebooks fornecem um ambiente interativo no qual você pode escrever e executar um código (em várias linguagens) como *experimentos*.
 
-1. No canto inferior esquerdo do portal do Power BI, selecione o ícone **Engenharia de dados** e alterne para a experiência de **Ciência de dados**.
+1. No canto inferior esquerdo do portal do Power BI, selecione o ícone **PowerBI** e alterne para a experiência de **Ciência de dados**.
 
 1. Na home page de **Ciência de dados**, crie um **Notebook**.
 
@@ -49,7 +49,7 @@ Para treinar um modelo, você pode criar um *notebook*. Os notebooks fornecem um
 
 Agora você está pronto para executar o código para obter dados. Você trabalhará com o [**conjunto de dados de diabetes**](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) do Azure Open Datasets. Após carregar os dados, você os converterá em um dataframe do Pandas, que é uma estrutura comum para trabalhar com dados em linhas e colunas.
 
-1. No seu notebook, utilize o ícone **+ Código** abaixo da última célula para adicionar uma nova célula de código ao notebook. Insira o seguinte código nele:
+1. No seu notebook, utilize o ícone **+ Código** abaixo da última célula para adicionar uma nova célula de código ao notebook. Insira o código a seguir para carregar o conjunto de dados em um dataframe.
 
     ```python
     # Azure storage access info for open dataset diabetes
@@ -138,7 +138,7 @@ Agora, vamos gerar estatísticas descritivas para entender a distribuição das 
     print(desc_stats)
     ```
 
-    A média `age` é de aproximadamente 48,5 anos, com um desvio padrão de 13,1 anos. A pessoa mais jovem tem 19 anos e a mais velha tem 79 anos. A média `BMI` é aproximadamente 26,4, o que se enquadra na categoria **sobrepeso** de acordo com os [padrões da OMS](https://www.who.int/health-topics/obesity#tab=tab_1). O mínimo `BMI` é 18 e o máximo é 42,2.
+    A idade média é de aproximadamente 48,5 anos, com desvio padrão de 13,1 anos. A pessoa mais jovem tem 19 anos e a mais velha tem 79 anos. A média `BMI` é aproximadamente 26,4, o que se enquadra na categoria **sobrepeso** de acordo com os [padrões da OMS](https://www.who.int/health-topics/obesity#tab=tab_1). O mínimo `BMI` é 18 e o máximo é 42,2.
 
 ## Plotar a distribuição dos dados
 
@@ -152,12 +152,12 @@ Vamos verificar o recurso `BMI` e plotar sua distribuição para entender melhor
     import numpy as np
     
     # Calculate the mean, median of the BMI variable
-    mean = df_pnd['BMI'].mean()
-    median = df_pnd['BMI'].median()
+    mean = df['BMI'].mean()
+    median = df['BMI'].median()
     
     # Histogram of the BMI variable
     plt.figure(figsize=(8, 6))
-    plt.hist(df_pnd['BMI'], bins=20, color='skyblue', edgecolor='black')
+    plt.hist(df['BMI'], bins=20, color='skyblue', edgecolor='black')
     plt.title('BMI Distribution')
     plt.xlabel('BMI')
     plt.ylabel('Frequency')
@@ -203,7 +203,7 @@ Vamos gerar visualizações, como gráficos de dispersão e gráficos de caixa, 
     fig, ax = plt.subplots(figsize=(7, 5))
     
     # Replace numeric values with labels
-    df_pnd['SEX'] = df_pnd['SEX'].replace({1: 'Male', 2: 'Female'})
+    df['SEX'] = df['SEX'].replace({1: 'Male', 2: 'Female'})
     
     sns.boxplot(x='SEX', y='BP', data=df, ax=ax)
     ax.set_title('Blood pressure across Gender')
@@ -269,7 +269,7 @@ Vamos calcular as correlações entre diferentes recursos para entender seus rel
     df.corr(numeric_only=True)
     ```
 
-1. Um mapa de calor é uma ferramenta útil para visualizar rapidamente a força e a direção das relações entre pares de variáveis. Ele pode destacar correlações fortes, positivas ou negativas, bem como identificar pares que não tenham nenhuma correlação. Para criar um mapa de calor, adicione outra célula de código ao notebook e insira o seguinte código.
+1. Um mapa de calor é uma ferramenta útil para visualizar rapidamente a força e a direção das relações entre pares de variáveis. Ele pode destacar correlações fortes, positivas ou negativas, e identificar pares que não tenham nenhuma correlação. Para criar um mapa de calor, adicione outra célula de código ao notebook e insira o seguinte código.
 
     ```python
     plt.figure(figsize=(15, 7))
