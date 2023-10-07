@@ -117,7 +117,7 @@ Agora, vamos aplicar algumas transformações ao recurso **Marca**.
 
     ![Captura de tela da página Data Wrangler que mostra o painel localizar e substituir.](./Images/data-wrangler-find.png)
 
-    É possível ver os resultados da operação visualizadas automaticamente na grade de exibição.
+    É possível ver os resultados da operação mostrados automaticamente na grade de exibição.
 
 1. Escolha **Aplicar**.
 
@@ -127,9 +127,9 @@ Agora, vamos aplicar algumas transformações ao recurso **Marca**.
 
 1. No painel **Converter texto em maiúsculas**, selecione **Aplicar**.
 
-1. Selecione **Adicionar código ao notebook**. Além disso, também poderá salvar o conjunto de dados transformado como um arquivo .csv.
+1. Selecione **Adicionar código ao notebook**. Além disso, também é possível salvar o conjunto de dados transformado como um arquivo .csv.
 
-    Observe que o código é copiado automaticamente para a célula do notebook e está pronto para uso.
+    O código é copiado automaticamente para a célula do notebook e está pronto para uso.
 
 1. Execute o código.
 
@@ -171,7 +171,7 @@ Agora, vamos gerar o código para aplicar a transformação de codificador one-h
 
 1. Escolha **Aplicar**.
 
-    Observe que as alterações na grade de exibição do Data Wrangler.
+    Observe as alterações na grade de exibição do Data Wrangler.
 
 1. Volte ao painel **Operações**, expanda **Classificar e filtrar**.
 
@@ -184,7 +184,7 @@ Agora, vamos gerar o código para aplicar a transformação de codificador one-h
 
 1. Escolha **Aplicar**.
 
-    Observe que as alterações na grade de exibição do Data Wrangler.
+    Observe as alterações na grade de exibição do Data Wrangler.
 
 ## Agregação de dados
 
@@ -200,11 +200,11 @@ Agora, vamos gerar o código para aplicar a transformação de codificador one-h
 
 1. Escolha **Aplicar**. 
 
-    Observe que as alterações na grade de exibição do Data Wrangler.
+    Observe as alterações na grade de exibição do Data Wrangler.
 
 ## Procurar e remover etapas
 
-Suponha que você tenha cometido um erro e precise remover a agregação criada na etapa anterior. Siga estas etapas para removê-lo:
+Suponha que você tenha cometido um erro e precise remover a agregação criada na etapa anterior. Siga estas etapas para removê-la:
 
 1. Expanda o painel **Etapas de limpeza**.
 
@@ -212,7 +212,7 @@ Suponha que você tenha cometido um erro e precise remover a agregação criada 
 
 1. Selecione o ícone excluir para que ele seja removido.
 
-    ![Captura de tela da página Data Wrangler que mostra o painel localizar e substituir.](./Images/data-wrangler-delete.png)
+    ![Captura de tela da página do Data Wrangler que mostra o painel localizar e substituir.](./Images/data-wrangler-delete.png)
 
     > **Importante:** a exibição e o resumo da grade são limitados à etapa atual.
 
@@ -236,7 +236,7 @@ Agora que terminou de pré-processar os dados para modelar, salve o notebook com
 
 Neste exercício, você criou um notebook e usou o Data Wrangler para explorar e pré-processar dados para um modelo de machine learning.
 
-Caso terminou de explorar as etapas de pré-processamento, exclua o workspace criado para este exercício.
+Caso tenha terminado de explorar as etapas de pré-processamento, exclua o workspace criado para este exercício.
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
 2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
