@@ -1,7 +1,7 @@
 ---
 lab:
-  title: Comece a usar o Eventstream no Real-Time Analytics e no Microsoft Fabric
-  module: Get started with Eventstream in Real-Time Analytics and Microsoft Fabric
+  title: Introdução à análise em tempo real no Microsoft Fabric
+  module: Get started with Real-Time Analytics in Microsoft Fabric
 ---
 # Comece a usar o Eventstream no Real-Time Analytics (RTA)
 
@@ -63,38 +63,38 @@ For "enable data copy to OneLake" - are you adding a lakehouse as a destination?
 
 1. Na **Análise em Tempo Real**, selecione a caixa **Banco de Dados KQL**.
 
-   ![escolher banco de dados KQL](./Images/select-kqldatabase.png)
+   ![Imagem de escolher kqldatabase](./Images/select-kqldatabase.png)
 
 2. Você precisará **Nomear** o banco de dados KQL
 
-   ![nomear o banco de dados KQL](./Images/name-kqldatabase.png)
+   ![Imagem do nome kqldatabase](./Images/name-kqldatabase.png)
 
 3. Dê ao banco de dados KQL um nome do qual você se lembrará, como **MyStockData**, e pressione **Criar**.
 
 1. No painel **Detalhes do banco de dados**, selecione o ícone de lápis para ativar a disponibilidade no OneLake.
 
-   ![habilitar o OneLake](./Images/enable-onelake-availability.png)
+   ![Imagem de habilitar onlake](./Images/enable-onelake-availability.png)
 
 2. Alterne o botão para **Ativo** e selecione **Concluído**.
 
-   ![habilitar a alternância do OneLake](./Images/enable-onelake-toggle.png)
+   ![Imagem da alternância habilitar onelake](./Images/enable-onelake-toggle.png)
 
 ## Criar um fluxo de eventos
 
 1. Na barra de menus, selecione **Análise em Tempo Real** (o ícone é semelhante ao ![logotipo da RTA](./Images/rta_logo.png))
 2. Em **Novo**, selecione **Fluxo de Eventos (Versão Prévia)**
 
-   ![escolher fluxo de eventos](./Images/select-eventstream.png)
+   ![Imagem de escolher fluxo de eventos](./Images/select-eventstream.png)
 
 3. Será solicitado a você **Nomear** o fluxo de eventos. Dê ao Fluxo de Eventos um nome do qual você se lembrará, como ***MyStockES**, e pressione o botão **Criar**.
 
-   ![nomear o fluxo de eventos](./Images/name-eventstream.png)
+   ![Imagem do nome eventstream](./Images/name-eventstream.png)
 
 ## Estabelecer uma origem e um destino para um fluxo de eventos
 
 1. Na tela do Fluxo de eventos, selecione **Nova fonte** na lista suspensa e selecione **Dados de Exemplo**.
 
-   ![Tela do Fluxo de eventos](./Images/real-time-analytics-canvas.png)
+   ![Imagem da tela EventStream](./Images/real-time-analytics-canvas.png)
 
 2. Insira os valores dos Dados de Exemplo, conforme mostrado na tabela a seguir, e selecione **Adicionar e Configurar**.
 
@@ -105,7 +105,7 @@ For "enable data copy to OneLake" - are you adding a lakehouse as a destination?
 
 3. Agora, adicione um destino selecionando **Novo destino** e clique em **Banco de dados KQL**.
 
-   ![Destino do Fluxo de eventos](./Images/new-kql-destination.png)
+   ![Imagem do destino EventStream](./Images/new-kql-destination.png)
 
 4. Na configuração do Banco de Dados KQL, use a tabela a seguir para concluir a configuração.
 
@@ -121,22 +121,22 @@ For "enable data copy to OneLake" - are you adding a lakehouse as a destination?
 
 1. Na página da caixa de diálogo **Ingerir dados**, selecione a **Nova Tabela** e insira MyStockData.
 
-   ![inserir os dados de ações](./Images/ingest-stream-data-to-kql.png)
+   ![Imagem da inserção de dados de estoque](./Images/ingest-stream-data-to-kql.png)
 
 2. Selecione **Avançar: origem**.
 3. Na página **Origem**, confirme o **Nome da conexão de dados** e selecione **Avançar: Esquema**.
 
-   ![nome da fonte de dados](./Images/ingest-data.png)
+   ![Imagem do nome da fonte de dados](./Images/ingest-data.png)
 
 4. Os dados de entrada são descompactados para os dados de exemplo, ou seja, mantenha o tipo de compactação como descompactado.
 5. Na lista suspensa **Formato de Dados**, selecione **JSON**.
 
-   ![Alterar para JSON](./Images/injest-as-json.png)
+   ![Imagem de Alteração para JSON](./Images/injest-as-json.png)
 
 6. Depois disso, pode ser necessário alterar alguns ou todos os tipos de dados do fluxo de entrada para as tabelas de destino.
 7. Realize essa tarefa selecionando a **seta para baixo > Alterar tipo de dados**. Em seguida, verifique se as colunas refletem o tipo de dados correto:
 
-   ![alterar tipos de dados](./Images/change-data-type-in-es.png)
+   ![Imagem de tipos de dados de alteração](./Images/change-data-type-in-es.png)
 
 8. Quando terminar, selecione **Avançar: Resumo**
 
@@ -153,15 +153,15 @@ O KQL (Linguagem de Consulta Kusto) é uma solicitação somente leitura para pr
 1. Navegue até o banco de dados KQL recém-criado e hidratado chamado ***MyStockData***.
 2. Na árvore Dados, selecione o menu Mais […] na tabela MyStockData. Em seguida, selecione Tabela de consulta > Mostrar quaisquer 100 registros.
 
-   ![Conjunto de consultas KQL](./Images/kql-query-sample.png)
+   ![Imagem do conjunto de consultas KQL](./Images/kql-query-sample.png)
 
 3. A consulta de exemplo será aberta no painel **Explorar seus dados** com o contexto de tabela já preenchido. Essa primeira consulta usa o operador take para retornar um exemplo de número de registros e é útil para dar uma primeira olhada na estrutura de dados e nos valores possíveis. Os exemplos de consultas preenchidas automaticamente são executados automaticamente. Você poderá ver os resultados da consulta no painel de resultados.
 
-   ![Resultados da consulta KQL](./Images/kql-query-results.png)
+   ![Imagem dos resultados da consulta KQL](./Images/kql-query-results.png)
 
 4. Volte à árvore de dados para selecionar a próxima consulta, que usa os operadores where e between para retornar os registros ingeridos nas últimas 24 horas.
 
-   ![Resultados da consulta KQL nas últimas 24 horas](./Images/kql-query-results-last24.png)
+   ![Imagem dos resultados da consulta KQL nas últimas 24 horas](./Images/kql-query-results-last24.png)
 
 > **Observação**: observe que os volumes dos dados de streaming excedem os limites da consulta. Esse comportamento poderá variar conforme o volume de dados transmitidos para o banco de dados.
 
@@ -173,11 +173,11 @@ O editor de consultas dá suporte ao uso do T-SQL, além do KQL (Linguagem de Co
 
 1. De volta à árvore Dados, selecione o **menu Mais** […] na tabela MyStockData. Selecione **Consultar tabela > SQL > Mostrar quaisquer 100 registros**.
 
-   ![exemplo de consulta SQL](./Images/sql-query-sample.png)
+   ![Imagem do exemplo de consulta SQL](./Images/sql-query-sample.png)
 
 2. Coloque o cursor em algum lugar dentro da consulta e selecione **Executar** ou pressione **SHIFT + ENTER**.
 
-   ![resultados da consulta sql](./Images/sql-query-results.png)
+   ![Imagem dos resultados da consulta SQL](./Images/sql-query-results.png)
 
 Você pode continuar navegando usando as funções de build e se familiarizar com os dados usando o SQL ou o KQL. Isso encerra a lição.
 
