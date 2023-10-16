@@ -8,6 +8,8 @@ Um Conjunto de Consultas KQL é uma ferramenta que permite executar consultas, a
 
 Para criar consultas, o Conjunto de Consultas KQL usa a Linguagem de Consulta Kusto, que é compatível com diversas funções SQL. Para saber mais sobre a [Linguagem de Consulta Kusto (KQL)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext), 
 
+Este laboratório levará aproximadamente **25** minutos para ser concluído.
+
 ## Criar um workspace
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
@@ -21,6 +23,35 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Nesse laboratório, você usará a Análise de Dados em Tempo Real (RTA) do Fabric para criar um banco de dados KQL a partir de uma amostra de fluxo de eventos. A Análise de Dados em Tempo Real convenientemente fornece uma amostra de conjunto de dados que você pode usar para explorar os recursos da RTA. Você usará essa amostra de dados para criar consultas KQL|SQL e conjuntos de consultas que analisem alguns dados em tempo real e permitam seu uso adicional nos processos downstream.
 
+## Criar um banco de dados KQL
+
+1. Na **Análise em Tempo Real**, selecione a caixa **Banco de Dados KQL**.
+
+   ![Imagem de escolher kqldatabase](./Images/select-kqldatabase.png)
+
+2. Você precisará **Nomear** o banco de dados KQL
+
+   ![Imagem do nome kqldatabase](./Images/name-kqldatabase.png)
+
+3. Dê ao banco de dados KQL um nome do qual você se lembrará, como **MyStockData**, e pressione **Criar**.
+
+4. No painel **Detalhes do banco de dados**, selecione o ícone de lápis para ativar a disponibilidade no OneLake.
+
+   ![Imagem de habilitar onelake](./Images/enable-onelake-availability.png)
+
+5. Selecione a caixa de **dados de exemplo** nas opções de ***Iniciar obtendo dados***.
+ 
+   ![Imagem de opções de seleção com dados de exemplo realçados](./Images/load-sample-data.png)
+
+6. escolha a caixa **Análise de métricas** nas opções de dados de exemplo.
+
+   ![Imagem da escolha de dados de análise para laboratório](./Images/create-sample-data.png)
+
+7. Depois que os dados são carregados, verifique se eles são carregados no banco de dados KQL. Você pode fazer isso selecionando as reticências à direita da tabela, navegando até a **tabela de Consulta** e selecionando **Mostrar quaisquer 100 registros**.
+
+    <div><video controls src="./Images/check-kql-sample-dataset.mp4" muted="false" autoplay loop></video></div>
+
+> **OBSERVAÇÃO**: na primeira vez que você executar isso, pode levar vários segundos para alocar recursos de computação.
 
 ## Cenário
 Nesse cenário, você é um analista encarregado de consultar uma amostra de conjunto de dados do ambiente do Fabric que será implementada.
