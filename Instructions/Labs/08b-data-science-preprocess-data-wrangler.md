@@ -171,7 +171,7 @@ Agora, vamos gerar o código para aplicar a transformação de codificação one
 
 1. Inicie o Data Wrangler no menu superior do dataframe `df`.
 
-1. Selecione o recurso `Brand` na grade. 
+1. Selecione o recurso `Brand` na grade.
 
 1. No painel **Operações**, expanda **Fórmulas** e selecione **Codificação one-hot**.
 
@@ -183,7 +183,7 @@ Agora, vamos gerar o código para aplicar a transformação de codificação one
 
 ## Operações de classificação e filtro
 
-Imagine que precisamos examinar os dados de receita de um repositório específico e classificar os preços dos produtos. Nas etapas a seguir, usamos o Data Wrangler para filtrar e analisar o dataframe `df`. 
+Imagine que precisamos examinar os dados de receita de um repositório específico e classificar os preços dos produtos. Nas etapas a seguir, usamos o Data Wrangler para filtrar e analisar o dataframe `df`.
 
 1. Inicie o Data Wrangler para o dataframe `df`.
 
@@ -250,9 +250,9 @@ Suponha que precisamos entender a receita média gerada por cada marca. Nas etap
 
 1. Selecione **Média** para a propriedade **Tipo de agregação**.
 
-1. Escolha **Aplicar**. 
+1. Escolha **Aplicar**.
 
-1. Selecione **Adicionar código ao notebook**. 
+1. Selecione **Adicionar código ao notebook**.
 
 1. Combine o código da transformação de variável `Brand` com o código gerado pela etapa de agregação na função `clean_data(df)`. O bloco de código final deve ser assim:
  
@@ -277,7 +277,7 @@ Suponha que precisamos entender a receita média gerada por cada marca. Nas etap
 
     ```python
     print(df)
-    ``` 
+    ```
 
     Resultados:
     ```
