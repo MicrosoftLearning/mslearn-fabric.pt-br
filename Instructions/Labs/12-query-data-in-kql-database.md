@@ -1,6 +1,6 @@
 ---
 lab:
-  title: Consultar dados no banco de dados KQL
+  title: Consultar dados no Banco de Dados KQL
   module: Query data from a Kusto Query database in Microsoft Fabric
 ---
 # Introdução à consulta de um banco de dados Kusto no Microsoft Fabric
@@ -8,7 +8,7 @@ Um Conjunto de Consultas KQL é uma ferramenta que permite executar consultas, a
 
 Para criar consultas, o Conjunto de Consultas KQL usa a Linguagem de Consulta Kusto, que é compatível com diversas funções SQL. Para saber mais sobre a [Linguagem de Consulta Kusto (KQL)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext), 
 
-Este laboratório levará aproximadamente **25** minutos para ser concluído.
+Este laboratório leva cerca de **25** minutos para ser concluído.
 
 ## Criar um workspace
 
@@ -21,17 +21,17 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
     ![Captura de tela de um workspace vazio no Power BI.](./Images/new-workspace.png)
 
-Nesse laboratório, você usará a Análise de Dados em Tempo Real (RTA) do Fabric para criar um banco de dados KQL a partir de uma amostra de fluxo de eventos. A Análise de Dados em Tempo Real convenientemente fornece uma amostra de conjunto de dados que você pode usar para explorar os recursos da RTA. Você usará essa amostra de dados para criar consultas KQL|SQL e conjuntos de consultas que analisem alguns dados em tempo real e permitam seu uso adicional nos processos downstream.
+Nesse laboratório, você usa a Análise de Dados em Tempo Real (RTA) do Fabric para criar um banco de dados KQL a partir de uma amostra de fluxo de eventos. A Análise de Dados em Tempo Real convenientemente fornece uma amostra de conjunto de dados que você pode usar para explorar os recursos da RTA. Você usa esses dados de amostra para criar consultas KQL | SQL e conjuntos de consultas que analisam dados em tempo real e permitem outros usos em processos downstream.
 
 ## Criar um banco de dados KQL
 
 1. Na **Análise em Tempo Real**, selecione a caixa **Banco de Dados KQL**.
 
-   ![Imagem de escolher kqldatabase](./Images/select-kqldatabase.png)
+   ![Imagem de escolher Banco de Dados KQL](./Images/select-kqldatabase.png)
 
-2. Você precisará **Nomear** o banco de dados KQL
+2. Você é solicitado a **Nomear** o banco de dados KQL
 
-   ![Imagem do nome kqldatabase](./Images/name-kqldatabase.png)
+   ![Imagem do nome do Banco de Dados KQL](./Images/name-kqldatabase.png)
 
 3. Dê ao banco de dados KQL um nome do qual você se lembrará, como **MyStockData**, e pressione **Criar**.
 
@@ -47,11 +47,11 @@ Nesse laboratório, você usará a Análise de Dados em Tempo Real (RTA) do Fabr
 
    ![Imagem da escolha de dados de análise para laboratório](./Images/create-sample-data.png)
 
-7. Depois que os dados terminarem de ser carregados, podemos verificar se o banco de dados KQL está preenchido.
+7. Depois que os dados terminarem de ser carregados, podemos verificar se o Banco de Dados KQL está preenchido.
 
    ![Dados sendo carregados no Banco de Dados KQL](./Images/choose-automotive-operations-analytics.png)
 
-7. Depois que os dados são carregados, verifique se eles são carregados no banco de dados KQL. Você pode fazer isso selecionando as reticências à direita da tabela, navegando até a **tabela de Consulta** e selecionando **Mostrar quaisquer 100 registros**.
+7. Depois que os dados forem carregados, verifique se eles foram carregados no banco de dados KQL. Você pode realizar essa operação selecionando as reticências à direita da tabela, navegando até a **Tabela de consulta** e selecionando **Mostrar quaisquer 100 registros**.
 
     ![Imagem da seleção dos 100 principais arquivos da tabela RawServerMetrics](./Images/rawservermetrics-top-100.png)
 
@@ -61,7 +61,7 @@ Nesse laboratório, você usará a Análise de Dados em Tempo Real (RTA) do Fabr
 
 
 ## Cenário
-Nesse cenário, você é um analista encarregado de consultar um conjunto de dados de exemplo de corridas de táxi de NYC de métricas brutas das quais você obterá estatísticas resumidas (criação de perfil) dos dados do ambiente do Fabric. Você usa a KQL para consultar esses dados e coletar informações para obter informações informativas sobre os dados.
+Neste cenário, você é um analista encarregado de consultar um conjunto de dados de exemplo de corridas de táxi de NYC de métricas brutas no qual você efetua pull de estatísticas resumidas (criação de perfil) dos dados do ambiente do Fabric. Você usa a KQL para consultar esses dados e coletar informações para obter informações informativas sobre os dados.
 
 ## Introdução à Linguagem de Consulta Kusto (KQL) e sua sintaxe
 
@@ -69,13 +69,13 @@ A Linguagem de Consulta Kusto (KQL) é uma linguagem de consulta usada para anal
 
 A KQL é baseada em uma sintaxe semelhante ao SQL, mas com algumas diferenças importantes. Por exemplo, a KQL usa um operador de pipe (|) em vez de um ponto e vírgula (;) para separar comandos e usa um conjunto diferente de funções e operadores para filtrar e manipular dados.
 
-Um dos principais recursos da KQL é sua capacidade de lidar com grandes volumes de dados de forma rápida e eficiente. Isso a torna ideal para analisar logs, dados de telemetria e outros tipos de Big Data. A KQL também dá suporte a uma ampla variedade de fontes de dados, incluindo dados estruturados e não estruturados, tornando-os uma ferramenta versátil para análise de dados.
+Um dos principais recursos da KQL é sua capacidade de lidar com grandes volumes de dados de forma rápida e eficiente. Essa funcionalidade o torna ideal para analisar logs, dados de telemetria e outros tipos de Big Data. A KQL também dá suporte a uma ampla variedade de fontes de dados, incluindo dados estruturados e não estruturados, tornando-os uma ferramenta versátil para análise de dados.
 
 No contexto do Microsoft Fabric, a KQL pode ser usada para consultar e analisar dados de várias fontes, como logs de aplicativo, métricas de desempenho e eventos do sistema. Isso pode ajudá-lo a obter insights sobre a integridade e o desempenho de seus aplicativos e infraestrutura e identificar problemas e oportunidades de otimização.
 
 De modo geral, a KQL é uma linguagem de consulta poderosa e flexível que pode ajudar você a obter insights sobre seus dados de forma rápida e fácil, esteja você trabalhando com o Microsoft Fabric ou outras fontes de dados. Com sua sintaxe intuitiva e funcionalidades poderosas, a KQL definitivamente vale a pena explorar ainda mais.
 
-Neste módulo, nos concentraremos nos conceitos básicos das consultas no Banco de Dados KQL. Você verá rapidamente que, na KQL, não há um ```SELECT```, é possível simplesmente usar o nome da tabela e pressionar executar. Abordaremos as etapas de uma análise simples usando KQL primeiro e, em seguida, SQL em relação ao mesmo Banco de Dados KQL que se baseia no Azure Data Explorer.
+Neste módulo, nos concentramos nos conceitos básicos das consultas no Banco de Dados KQL. Você verá rapidamente que, na KQL, não há um ```SELECT```, é possível simplesmente usar o nome da tabela e pressionar executar. Abordamos as etapas de uma análise simples usando KQL primeiro e, em seguida, SQL em relação ao mesmo Banco de Dados KQL, que se baseia no Azure Data Explorer.
 
 Consultas **SELECT**, que são usadas para recuperar dados de uma ou mais tabelas. Por exemplo, você pode usar uma consulta SELECT para obter os nomes e salários de todos os funcionários em uma empresa.
 
@@ -87,9 +87,13 @@ Consultas **ORDER BY**, que são usadas para classificar os dados por uma ou mai
 
    > **AVISO:** não é possível criar relatórios do Power BI a partir de conjuntos de consultas com **T-SQL** porque o Power BI não dá suporte ao T-SQL como uma fonte de dados. O **Power BI só dá suporte a KQL como a linguagem de consulta nativa para conjuntos de consultas**. Se você quiser usar o T-SQL para consultar seus dados no Microsoft Fabric, precisará usar o ponto de extremidade T-SQL que emula o Microsoft SQL Server e permite executar consultas T-SQL em seus dados. No entanto, o ponto de extremidade T-SQL tem algumas limitações e diferenças em relação ao SQL Server nativo e não dá suporte à criação ou publicação de relatórios no Power BI.
 
+> **OBSERVAÇÃO**: além da abordagem para efetuar pull de uma janela de consulta conforme mostrado anteriormente, você sempre pode pressionar o botão **Explorar seus dados** no painel principal do Banco de Dados KQL..
+
+   ![Imagem do botão Explorar seus dados](./Images/explore-your-data.png)
+
 ## Dados ```SELECT``` de nosso conjunto de dados de exemplo usando KQL
 
-1. Nesta consulta, extrairemos 100 registros da tabela Viagens. Usamos a palavra-chave ```take``` para pedir ao mecanismo que retorne 100 registros.
+1. Nesta consulta, extraímos 100 registros da tabela Viagens. Usamos a palavra-chave ```take``` para pedir ao mecanismo que retorne 100 registros.
 
 ```kql
 Trips
@@ -97,11 +101,11 @@ Trips
 ```
   > **OBSERVAÇÃO:** o caractere pipe ```|``` é usado para duas finalidades na KQL, incluindo a utilização de operadores de consulta separados em uma instrução de expressão tabular. Ele também é usado como um operador OR lógico dentro de colchetes ou colchetes redondos para indicar que você pode especificar um dos itens separados pelo caractere de pipe. 
     
-2. Podemos ser mais precisos simplesmente adicionando atributos específicos que gostaríamos de consultar usando a palavra-chave ```project``` e, em seguida, usando a palavra-chave ```take``` para informar ao mecanismo quantos registros retornar.
+2. Podemos ser mais precisos adicionando atributos específicos que gostaríamos de consultar usando a palavra-chave ```project``` e, em seguida, usando a palavra-chave ```take``` para informar ao mecanismo quantos registros retornar.
 
 > **OBSERVAÇÃO:** o uso de ```//``` denota comentários usados na ferramenta de consulta ***Explorar seus dados*** do Microsoft Fabric.
 
-```
+```kql
 // Use 'project' and 'take' to view a sample number of records in the table and check the data.
 Trips 
 | project vendor_id, trip_distance
@@ -110,7 +114,7 @@ Trips
 
 3. Outra prática comum na análise é renomear colunas em nosso conjunto de consultas para torná-las mais amigáveis. Isso pode ser feito usando o novo nome de coluna seguido pelo sinal de igual e a coluna que desejamos renomear.
 
-```
+```kql
 Trips 
 | project vendor_id, ["Trip Distance"] = trip_distance
 | take 10
@@ -118,22 +122,23 @@ Trips
 
 4. Talvez também queiramos resumir as viagens para ver quantas milhas foram percorridas:
 
-```
+```kql
 Trips
 | summarize ["Total Trip Distance"] = sum(trip_distance)
 ```
 ## Dados ```GROUP BY``` de nosso conjunto de dados de exemplo usando KQL
 
-1. Em seguida, talvez queiramos ***agrupar pelo*** local de retirada, o que fazemos com o operador ```summarize```. Também podemos usar o operador ```project```, que nos permite selecionar e renomear as colunas que você deseja incluir na saída. Nesse caso, realizamos um agrupamento por bairro dentro do sistema de táxis de NY para fornecer aos nossos usuários a distância total percorrida a partir de cada bairro.
+1. Em seguida, talvez queiramos ***agrupar por*** local de retirada, o que fazemos com o operador ```summarize```. Também podemos usar o operador ```project```, que nos permite selecionar e renomear as colunas que você deseja incluir na saída. Nesse caso, nos agrupamos por bairro dentro do sistema de táxis de NY para fornecer aos nossos usuários a distância total percorrida de cada bairro.
 
-```
+```kql
 Trips
 | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
 | project Borough = pickup_boroname, ["Total Trip Distance"]
 ```
 
-2. Você observará que temos um valor em branco, o que nunca é bom para análise, e podemos usar a função ```case``` junto com as funções ```isempty``` e ```isnull``` para categorizá-los em nosso 
-```
+2. Nesse caso, temos um valor em branco, o que nunca é bom para análise, e podemos usar a função ```case``` junto com as funções ```isempty``` e ```isnull``` para categorizar em uma categoria ***Não identificada*** para acompanhamento.
+
+```kql
 Trips
 | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
 | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
@@ -141,9 +146,9 @@ Trips
 
 ## Dados ```ORDER BY``` de nosso conjunto de dados de exemplo usando KQL
 
-1. Para dar mais sentido aos nossos dados, normalmente os ordenamos por uma coluna, e isso é feito na KQL com um operador ```sort by``` ou ```order by``` e eles agem da mesma maneira.
+1. Para dar mais sentido aos nossos dados, normalmente os ordenamos por uma coluna, e esse processo é feito na KQL com um operador ```sort by``` ou ```order by``` e eles agem da mesma maneira.
  
-```
+```kql
 // using the sort by operators
 Trips
 | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
@@ -159,9 +164,9 @@ Trips
 
 ## Cláusula ```WHERE``` para filtrar dados em nossa consulta KQL de exemplo
 
-1. Ao contrário do SQL, nossa cláusula WHERE é imediatamente chamada em nossa consulta KQL. Ainda podemos usar o ```and```, bem como os operadores lógicos ```or``` dentro de sua cláusula where, e ele será avaliado como verdadeiro ou falso em relação à tabela, e pode ser simples ou uma expressão complexa que pode envolver várias colunas, operadores e funções.
+1. Ao contrário do SQL, nossa cláusula WHERE é imediatamente chamada em nossa consulta KQL. Ainda podemos usar os operadores lógicos ```and``` e ```or``` dentro da cláusula where, e é avaliado como verdadeiro ou falso em relação à tabela, e pode ser simples ou uma expressão complexa que pode envolver várias colunas, operadores e funções.
 
-```
+```kql
 // let's filter our dataset immediately from the source by applying a filter directly after the table.
 Trips
 | where pickup_boroname == "Manhattan"
@@ -173,22 +178,21 @@ Trips
 
 ## Usar o T-SQL para consultar informações de resumo
 
-O Banco de Dados KQL não dá suporte ao T-SQL nativamente, mas fornece um ponto de extremidade T-SQL que emula o Microsoft SQL Server e permite que você execute consultas T-SQL em seus dados. No entanto, o ponto de extremidade T-SQL tem algumas limitações e diferenças em relação ao SQL Server nativo. Por exemplo, ele não dá suporte à criação, alteração ou remoção de tabelas ou à inserção, atualização ou exclusão de dados. Ele também não dá suporte a algumas funções T-SQL e sintaxe que não são compatíveis com KQL. Ele foi criado para permitir que sistemas que não dão suporte à KQL usem o T-SQL para consultar os dados em um Banco de Dados KQL. Portanto, é recomendável usar a KQL como a linguagem de consulta primária para o Banco de Dados KQL, pois ela oferece mais recursos e desempenho do que o T-SQL. Você também pode usar algumas funções SQL compatíveis com KQL, como count, sum, avg, min, max, etc. 
+O Banco de Dados KQL não dá suporte ao T-SQL nativamente, mas fornece um ponto de extremidade T-SQL que emula o Microsoft SQL Server e permite que você execute consultas T-SQL em seus dados. No entanto, o ponto de extremidade T-SQL tem algumas limitações e diferenças em relação ao SQL Server nativo. Por exemplo, ele não dá suporte à criação, alteração ou remoção de tabelas ou à inserção, atualização ou exclusão de dados. Ele também não dá suporte a algumas funções T-SQL e sintaxe que não são compatíveis com KQL. Ele foi criado para permitir que sistemas que não dão suporte à KQL usem o T-SQL para consultar os dados em um Banco de Dados KQL. Portanto, é recomendável usar o KQL como a linguagem de consulta primária para o Banco de Dados KQL, pois ele oferece mais recursos e desempenho do que o T-SQL. Você também pode usar algumas funções SQL compatíveis com KQL, como count, sum, avg, min, max, etc. 
 
 ## Dados ```SELECT``` de nosso conjunto de dados de exemplo usando T-SQL
-1.
 
+1. Nesta consulta, efetuamos pull dos primeiros 100 registros da tabela **Viagens** usando a cláusula ```TOP```. 
+
+```sql
+// We can use the TOP clause to limit the number of records returned
+
+SELECT TOP 100 * from Trips
 ```
-SELECT * FROM Trips
 
-// We can also use the TOP keyword to limit the number of records returned
+2. Se você usar o ```//```, que é um comentário na ferramenta ***Explorar seus dados** dentro do banco de dados KQL, não poderá realçá-lo ao executar consultas T-SQL; em vez disso, você deve usar a notação de comentários SQL padrão ```--```. esse hífen duplo também dirá ao mecanismo KQL para esperar T-SQL no Azure Data Explorer.
 
-SELECT TOP 10 * from Trips
-```
-
-2. Se você usar o ```//``` que é um comentário na ferramenta ***Explorar seus dados** dentro do banco de dados KQL, não poderá realçá-lo ao executar consultas T-SQL; em vez disso, você deve usar a notação de comentários SQL padrão ```--```. isso também instruirá o Mecanismo KQL a esperar o T-SQL no Azure Data Explorer.
-
-```
+```sql
 -- instead of using the 'project' and 'take' keywords we simply use a standard SQL Query
 SELECT TOP 10 vendor_id, trip_distance
 FROM Trips
@@ -196,7 +200,87 @@ FROM Trips
 
 3. Novamente, você pode ver que os recursos padrão do T-SQL funcionam bem com a consulta em que renomeamos trip_distance para um nome mais amigável.
 
--- Não é necessário usar os operadores "project" ou "take" como T-SQL Works SELECT TOP 10 vendor_id padrão, trip_distance como [Distância da Viagem] de Viagens
+```sql
+
+-- No need to use the 'project' or 'take' operators as standard T-SQL Works
+SELECT TOP 10 vendor_id, trip_distance as [Trip Distance]
+from Trips
+```
+
+4. Talvez também queiramos resumir as viagens para ver quantas milhas foram percorridas:
+
+```sql
+Select sum(trip_distance) as [Total Trip Distance]
+from Trips
+```
+ >**OBSERVAÇÃO:** o uso das aspas não é necessário no T-SQL em comparação com a consulta KQL; além disso, o lakc do comando summarize não é necessário no T-SQL.
+
+## Dados ```GROUP BY``` de nosso conjunto de dados de exemplo usando T-SQL
+
+1. Em seguida, talvez queiramos ***agrupar por*** local de retirada, o que fazemos com o operador ```GROUP BY```. Também podemos usar o operador ```AS```, que nos permite selecionar e renomear as colunas que você deseja incluir na saída. Nesse caso, nos agrupamos por bairro dentro do sistema de táxis de NY para fornecer aos nossos usuários a distância total percorrida de cada bairro.
+
+```sql
+SELECT pickup_boroname AS Borough, Sum(trip_distance) AS [Total Trip Distance]
+FROM Trips
+GROUP BY pickup_boroname
+```
+
+2. Nesse caso, temos um valor em branco, o que nunca é bom para análise, e podemos usar a função ```CASE``` junto com a função ```IS NULL``` e o valor vazio ```''``` para categorizar em uma categoria ***não identificada*** para acompanhamento. 
+
+```sql
+SELECT CASE
+         WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
+         ELSE pickup_boroname
+       END AS Borough,
+       SUM(trip_distance) AS [Total Trip Distance]
+FROM Trips
+GROUP BY CASE
+           WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
+           ELSE pickup_boroname
+         END;
+```
+
+## Dados ```ORDER BY``` de nosso conjunto de dados de exemplo usando T-SQL
+
+1. Para dar mais sentido aos nossos dados, normalmente os ordenamos por uma coluna, e esse processo é feito no T-SQL com um operador ```ORDER BY```. Não há nenhum operador ***ORDER BY*** no T-SQL
+ 
+```sql
+-- Group by pickup_boroname and calculate the summary statistics of trip_distance
+SELECT CASE
+         WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
+         ELSE pickup_boroname
+       END AS Borough,
+       SUM(trip_distance) AS [Total Trip Distance]
+FROM Trips
+GROUP BY CASE
+           WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
+           ELSE pickup_boroname
+         END
+-- Add an ORDER BY clause to sort by Borough in ascending order
+ORDER BY Borough ASC;
+```
+## Cláusula ```WHERE``` para filtrar dados em nossa consulta T-SQL de exemplo
+
+1. Ao contrário do KQL, nossa cláusula ```WHERE``` iria para o final da Instrução T-SQL; no entanto, neste caso, temos uma cláusula ```GROUP BY```, que exige que usemos a instrução ```HAVING```, e usamos o novo nome da coluna, neste caso **Burgo**, como o nome da coluna para filtrar.
+
+```sql
+-- Group by pickup_boroname and calculate the summary statistics of trip_distance
+SELECT CASE
+         WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
+         ELSE pickup_boroname
+       END AS Borough,
+       SUM(trip_distance) AS [Total Trip Distance]
+FROM Trips
+GROUP BY CASE
+           WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
+           ELSE pickup_boroname
+         END
+-- Add a having clause due to the GROUP BY statement
+HAVING Borough = 'Manhattan'
+-- Add an ORDER BY clause to sort by Borough in ascending order
+ORDER BY Borough ASC;
+
+```
 
 ## Limpar os recursos
 
