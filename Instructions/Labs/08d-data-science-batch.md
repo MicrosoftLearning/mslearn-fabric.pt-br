@@ -10,7 +10,7 @@ Neste laboratório, você usará um modelo de machine learning para prever uma m
 
 Ao concluir esse laboratório, você ganhará experiência prática na geração de previsões e na visualização dos resultados.
 
-Este laboratório levará aproximadamente **45** minutos para ser concluído.
+Este laboratório levará aproximadamente **20** minutos para ser concluído.
 
 > **Observação**: você precisará ter uma licença do Microsoft Fabric para concluir este exercício. Confira [Introdução ao Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obter detalhes de como habilitar uma licença de avaliação gratuita do Fabric. Você precisará ter uma conta *corporativa* ou de *estudante* da Microsoft para fazer isso. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
@@ -29,16 +29,16 @@ Antes de trabalhar com os modelos no Fabric, crie um workspace com a versão de 
 
 Para ingerir dados, treinar e registrar um modelo, você executará as células em um notebook. Você pode carregar o notebook no workspace.
 
-1. No canto inferior esquerdo do portal do Fabric, selecione o ícone **Engenharia de dados** e alterne para a experiência de **Ciência de dados**.
+1. Em uma nova guia do navegador, navegue até o notebook [Generate-Predictions](https://github.com/MicrosoftLearning/mslearn-fabric/blob/main/Allfiles/Labs/08/Generate-Predictions.ipynb) e faça download dele para uma pasta de sua escolha.
+1. Volte para a guia Navegador do Fabric e, na parte inferior esquerda do portal do Fabric, selecione o ícone do **Power BI** e alterne para a experiência de **Ciência de dados**.
 1. Na home page **Ciência de dados**, selecione **Importar notebook**.
 
     Você receberá uma notificação quando o notebook for importado com sucesso.
 
 1. Navegue até o notebook importado chamado `Generate-Predictions`.
-
 1. Leia as instruções no notebook com cuidado e execute cada célula individualmente.
 
-## Limpar recursos
+## Limpar os recursos
 
 Neste exercício, você usou um modelo para gerar previsões em lote.
 
