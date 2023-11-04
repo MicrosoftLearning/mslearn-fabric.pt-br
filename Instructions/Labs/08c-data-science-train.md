@@ -107,7 +107,6 @@ Agora que carregou os dados, você poderá usá-los para treinar um modelo de ma
     ```python
     from sklearn.model_selection import train_test_split
     
-    print("Splitting data...")
     X, y = df[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df['Y'].values
     
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
@@ -207,13 +206,13 @@ Ao treinar e acompanhar modelos com o MLflow, você pode usar a biblioteca do ML
 
     A saída será parecida com a seguinte imagem:
 
-    ![Captura de tela das métricas de avaliação plotadas.](./Images/plotted-metrics.png)
+    ![Captura de tela das métricas de avaliação plotadas.](./Images/data-science-metrics.png)
 
 ## Explorar seus experimentos
 
 O Microsoft Fabric acompanhará todos os seus experimentos e permitirá que você os explore visualmente.
 
-1. Navegue até seu espaço de trabalho na barra de menu do hub à esquerda.
+1. Navegue até o seu espaço de trabalho na barra de menu do hub à esquerda.
 1. Selecione o experimento `experiment-diabetes` para abri-lo.
 
     > **Dica:** caso não veja nenhuma execução de experimento registrada em log, atualize a página.
@@ -221,7 +220,9 @@ O Microsoft Fabric acompanhará todos os seus experimentos e permitirá que voc�
 1. Selecione a guia **Exibir**.
 1. Selecione **Executar lista**.
 1. Selecione as duas execuções mais recentes marcando cada caixa.
+
     Como resultado, as duas últimas execuções serão comparadas entre si no painel **Comparação de métricas**. Por padrão, as métricas são plotadas por nome de execução.
+
 1. Selecione o botão **&#128393;** (Editar) do grafo visualizando o erro médio absoluto de cada execução.
 1. Altere o **tipo de visualização** para `bar`.
 1. Altere o **eixo X** para `estimator`.
