@@ -14,25 +14,29 @@ Para essa experiência, você criará o código em várias células de código d
 
 Como você também está trabalhando com um conjunto de dados de exemplo, a otimização não reflete o que você pode ver na produção em escala; no entanto, você ainda pode ver melhorias e, quando cada milissegundo conta, a otimização é fundamental.
 
-> **Observação**: você precisará de uma **licença do Microsoft Fabric** para concluir esse exercício. Confira [Introdução ao Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obter detalhes de como habilitar uma licença de avaliação gratuita do Fabric.
->
-> Você também precisará de uma conta Microsoft de *estudante* ou *trabalho* para fazer isso. Se você não tiver uma, poderá [inscrever-se para uma avaliação do Microsoft Office 365](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+
+## Ativar uma avaliação do Microsoft Fabric
+
+1. Depois de se registrar em uma conta do Microsoft Fabric, navegue até o portal do Microsoft Fabric em [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
+1. Selecione o ícone do **Gerenciador de Contas** (a imagem do *usuário* no canto superior direito)
+1. No menu do gerente de conta, selecione **Iniciar avaliação** para iniciar uma avaliação gratuita do Microsoft Fabric.
+1. Após a atualização bem-sucedida para o Microsoft Fabric, navegue até a página inicial selecionando **Home Page do Fabric**.
+
+## Criar um workspace
+
+Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
+
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Engenheiros de Dados do Synapse**.
+1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
+1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
+1. Quando o novo workspace for aberto, ele estará vazio.
+
+    ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
 
 ## Criar espaços de trabalho e destino do lakehouse
 
-Comece criando um espaço de trabalho com a avaliação do Fabric habilitada, um novo lakehouse e uma pasta de destino no lakehouse.
-
-1. Entre no [Microsoft Fabric](https://app.fabric.microsoft.com) em `https://app.fabric.microsoft.com` e selecione a experiência de **Engenharia de Dados**.
-
-    ![Captura de tela da experiência de Engenharia de Dados do Synapse](Images/data-engineering-home.png)
-
-1. Na barra de menus à esquerda, selecione **Espaços de Trabalho**.
-
-1. Crie um novo espaço de trabalho com um nome de sua escolha e selecione um modo de licenciamento que inclua a capacidade Fabric (*Avaliação*, *Premium* ou *Fabric*).
-
-1. Quando seu novo espaço de trabalho for aberto, ele deverá estar vazio com um losango ao lado do nome do espaço de trabalho, como mostrado aqui:
-
-    ![Captura de tela de um espaço de trabalho novo e vazio](Images/new-workspace.png)
+Comece criando um novo lakehouse e uma pasta de destino no lakehouse.
 
 1. No seu espaço de trabalho, selecione **+ Novo > Lakehouse**, forneça um nome e **Criar**.
 
