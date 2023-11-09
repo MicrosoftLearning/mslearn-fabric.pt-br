@@ -10,26 +10,31 @@ No Microsoft Fabric, os Fluxos de Dados (Gen2) se conectam a várias fontes de d
 
 Este laboratório foi projetado para introduzir os diferentes elementos dos Fluxos de Dados (Gen2) e não criar uma solução complexa que possa existir em uma empresa. Ele leva **cerca de 30 minutos** para ser concluído.
 
-> **Observação**: você precisará ter uma licença do Microsoft Fabric para concluir este exercício. Confira [Introdução ao Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obter detalhes de como habilitar uma licença de avaliação gratuita do Fabric. Você precisará ter uma conta *corporativa* ou de *estudante* da Microsoft para fazer isso. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+
+## Ativar uma avaliação do Microsoft Fabric
+
+1. Depois de se registrar em uma conta do Microsoft Fabric, navegue até o portal do Microsoft Fabric em [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
+1. Selecione o ícone do **Gerenciador de Contas** (a imagem do *usuário* no canto superior direito)
+1. No menu do gerente de conta, selecione **Iniciar avaliação** para iniciar uma avaliação gratuita do Microsoft Fabric.
+1. Após a atualização bem-sucedida para o Microsoft Fabric, navegue até a página inicial selecionando **Home Page do Fabric**.
 
 ## Criar um workspace
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Entre no [Microsoft Fabric](https://app.fabric.microsoft.com) em `https://app.fabric.microsoft.com` e selecione **Power BI**.
-2. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
-3. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
-4. Quando o novo workspace for aberto, ele deverá estar vazio, conforme mostrado aqui:
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Engenheiros de Dados do Synapse**.
+1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
+1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
+1. Quando o novo workspace for aberto, ele estará vazio.
 
-    ![Captura de tela de um workspace vazio no Power BI.](./Images/new-workspace.png)
+    ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
 
 ## Criar um lakehouse
 
-Agora que você tem um workspace, é hora de alternar para a experiência de **Engenharia de Dados** no portal e criar um data lakehouse no qual você vai ingerir dados.
+Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse no qual você ingerirá os dados.
 
-1. No canto inferior esquerdo do portal do Power BI, selecione o ícone do **Power BI** e alterne para a experiência de **Engenharia de Dados**.
-
-2. Na home page de **Engenharia de dados**, crie um **Lakehouse** com um nome de sua escolha.
+1. Na home page da **Engenharia de Dados do Synapse**, crie um **Lakehouse** com um nome de sua escolha.
 
     Após alguns minutos, um lakehouse vazio será criado.
 
@@ -54,17 +59,21 @@ Agora que você tem um lakehouse, você precisa ingerir alguns dados nele. Uma f
 
  ![Consulta no editor do Power Query.](./Images/power-query.png)
 
-4. Na faixa de opções da barra de ferramentas, selecione a guia **Adicionar coluna**. Em seguida, selecione **Coluna personalizada** e crie uma coluna chamada **MonthNo** que contém um número baseado na fórmula `Date.Month([OrderDate])`, conforme mostrado aqui:
+4. Na faixa de opções da barra de ferramentas, selecione a guia **Adicionar coluna**. Em seguida, selecione **Coluna personalizada** e crie uma nova coluna.
+
+5. Defina o *Nome da nova coluna* como `MonthNo`, defina o *Tipo de dados* como **Número inteiro** e adicione a seguinte fórmula: `Date.Month([OrderDate])` – conforme mostrado aqui:
 
  ![Coluna personalizada no editor do Power Query.](./Images/custom-column.png)
 
- A etapa usada para adicionar a coluna personalizada é adicionada à consulta e a coluna resultante é exibida no painel de dados:
+6. Selecione **OK** para criar a coluna e observe como a etapa para adicionar a coluna personalizada é adicionada à consulta. A coluna resultante é exibida no painel de dados:
 
  ![Consulta com uma etapa de coluna personalizada.](./Images/custom-column-added.png)
 
 > **Dica:** no painel Configurações de Consulta no lado direito, observe que as **Etapas Aplicadas** incluem cada etapa de transformação. Na parte inferior, você também pode ativar o botão **Fluxo de diagrama** para ativar o Diagrama Visual das etapas.
 >
 > As etapas podem ser movidas para cima ou para baixo e editadas com a seleção do ícone de engrenagem, e você pode selecionar cada etapa para ver as transformações aplicadas no painel de visualização.
+
+7. Verifique e confirme se o tipo de dados da coluna **OrderDate** está definido como **Data** e se o tipo de dados da coluna recém-criada **MonthNo** está definido como **Número inteiro**.
 
 ## Adicionar destino de dados ao fluxo de dados
 
@@ -80,24 +89,18 @@ Agora que você tem um lakehouse, você precisa ingerir alguns dados nele. Uma f
 
    ![Página de configuração de destino de dados.](./Images/data-destination-target.png)
 
-   > **Observação:** na página **Configurações de destino**, observe como OrderDate e MonthNo não são selecionados no Mapeamento de coluna e há uma mensagem informativa: *Alterar para data/hora*.
+4. Na página **Escolher configurações de destino**, selecione **Acrescentar** e **Salve configurações**.
+    > **Observação:** sugerimos usar o editor do *Power Query* para atualizar tipos de dados, mas você também pode fazer isso nesta página, se preferir.
 
-   ![Página de configurações de destino de dados.](./Images/destination-settings.png)
+    ![Página de configurações de destino de dados.](./Images/destination-settings.png)
 
-1. Cancele essa ação e volte às colunas OrderDate e MonthNo no Power Query Online. Clique com o botão direito do mouse no cabeçalho da coluna e em **Alterar Tipo**.
-
-    - OrderDate = Data/Hora
-    - MonthNo = Número inteiro
-
-1. Agora, repita o processo descrito anteriormente para adicionar um destino de lakehouse.
-
-8. Na página **Configurações de destino**, selecione **Acrescentar** e salve as configurações.  O destino de **Lakehouse** é indicado como um ícone na consulta no editor do Power Query.
+5. Na barra de menus, abra **Exibir** e selecione **Exibição de diagrama**. Observe que o destino **Lakehouse** é indicado como um ícone na consulta no editor do Power Query.
 
    ![Consulta com um destino de lakehouse.](./Images/lakehouse-destination.png)
 
-9. Selecione **Publicar** para publicar o fluxo de dados. Em seguida, aguarde até que o fluxo de dados **Fluxo de dados 1** seja criado no seu workspace.
+6. Selecione **Publicar** para publicar o fluxo de dados. Em seguida, aguarde até que o fluxo de dados **Fluxo de dados 1** seja criado no seu workspace.
 
-1. Após a publicação, clique com o botão direito do mouse no fluxo de dados do workspace, selecione **Propriedades** e renomeie o fluxo de dados.
+7. Após a publicação, clique com o botão direito do mouse no fluxo de dados do workspace, selecione **Propriedades** e renomeie o fluxo de dados.
 
 ## Adicionar um fluxo de dados a um pipeline
 

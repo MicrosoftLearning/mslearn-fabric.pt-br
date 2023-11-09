@@ -16,8 +16,8 @@ Este laboratório leva cerca de **30** minutos para ser concluído.
 
 1. Depois de se registrar em uma conta do Microsoft Fabric, navegue até o portal do Microsoft Fabric em [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
 1. Selecione o ícone do **Gerenciador de Contas** (a imagem do *usuário* no canto superior direito)
-1. No menu do gerente de conta, selecione **Iniciar avaliação** para iniciar uma avaliação gratuita do Microsoft Fabric.
-1. Após a atualização bem-sucedida para o Microsoft Fabric, navegue até a página inicial selecionando **Home Page do Fabric**.
+1. No menu do Gerenciador de Contas, selecione **Iniciar avaliação** para iniciar uma avaliação gratuita do Microsoft Fabric.
+1. Após a atualização bem-sucedida para o Microsoft Fabric, navegue até a página inicial selecionando **Página inicial do Fabric**.
 
 ## Criar um workspace
 

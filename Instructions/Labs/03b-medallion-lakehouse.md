@@ -10,41 +10,47 @@ Neste exercício, você criará uma arquitetura de medalhão em um Fabric Lakeho
 
 Este exercício deve levar aproximadamente **45** minutos para ser concluído
 
-> **Observação**: você precisará ter uma licença do Microsoft Fabric para concluir este exercício. Confira [Introdução ao Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obter detalhes de como habilitar uma licença de avaliação gratuita do Fabric. Você precisará ter uma conta *corporativa* ou de *estudante* da Microsoft para fazer isso. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
-## Criar um workspace e habilitar a edição do modelo de dados
+## Ativar uma avaliação do Microsoft Fabric
+
+1. Depois de se registrar em uma conta do Microsoft Fabric, navegue até o portal do Microsoft Fabric em [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
+1. Selecione o ícone do **Gerenciador de Contas** (a imagem do *usuário* no canto superior direito)
+1. No menu do gerente de conta, selecione **Iniciar avaliação** para iniciar uma avaliação gratuita do Microsoft Fabric.
+1. Após a atualização bem-sucedida para o Microsoft Fabric, navegue até a página inicial selecionando **Home Page do Fabric**.
+
+## Criar um workspace
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Entre no [Microsoft Fabric](https://app.fabric.microsoft.com) em `https://app.fabric.microsoft.com` e selecione **Power BI**.
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Engenheiros de Dados do Synapse**.
 2. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 3. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
-4. Quando o novo workspace for aberto, ele deverá estar vazio, conforme mostrado aqui:
+4. Quando o novo workspace for aberto, ele estará vazio.
 
-   ![Captura de tela de um workspace vazio no Power BI.](./Images/new-workspace-medallion.png)
+   ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace-medallion.png)
+
 5. Navegue até as configurações do workspace e habilite o recurso de versão prévia do recurso de **edição do modelo de dados**. Isso permitirá que você crie relações entre tabelas em seu lakehouse usando um conjunto de dados do Power BI.
 
-    ![Captura de tela da página de configurações do workspace no Power BI.](./Images/workspace-settings.png)
+    ![Captura de tela da página de configurações do workspace no Fabric.](./Images/workspace-settings.png)
 
     > **Observação**: talvez seja necessário atualizar a guia do navegador depois de habilitar a versão prévia do recurso.
 
 ## Criar um lakehouse e carregar dados na camada bronze
 
-Agora que você tem um workspace, é hora de alternar para a experiência de *Engenharia de dados* no portal do Fabric e criar um data lakehouse para os dados que você vai analisar.
+Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse para os dados que serão analisados.
 
-1. No canto inferior esquerdo do portal do Power BI, selecione o ícone do **Power BI** e alterne para a experiência de **Engenharia de Dados**. Se não vir a experiência de engenharia de dados, entre em contato com o administrador do Fabric com uma solicitação para [habilitar o Fabric](https://learn.microsoft.com/fabric/admin/fabric-switch).
-
-2. Na página inicial **Engenharia de Dados do Synapse**, crie um novo **Lakehouse** chamado **Vendas**.
+1. Na página inicial **Engenharia de Dados do Synapse**, crie um novo **Lakehouse** chamado **Vendas**.
 
     Após alguns minutos, um lakehouse vazio será criado. Você precisa ingerir alguns dados no data lakehouse para análise. Há várias maneiras de fazer isso, mas neste exercício, você apenas baixará um arquivo de texto no computador local (ou na VM de laboratório, se aplicável) e o carregará no lakehouse.
 
-3. Baixe o arquivo de dados para este exercício em `https://github.com/MicrosoftLearning/dp-data/blob/main/orders.zip`. Extraia os arquivos e salve-os com seus nomes originais em seu computador local (ou VM de laboratório, se aplicável). Deve haver três arquivos contendo dados de vendas por três anos: 2019.csv, 2020.csv e 2021.csv.
+1. Baixe o arquivo de dados para este exercício em `https://github.com/MicrosoftLearning/dp-data/blob/main/orders.zip`. Extraia os arquivos e salve-os com seus nomes originais em seu computador local (ou VM de laboratório, se aplicável). Deve haver três arquivos contendo dados de vendas por três anos: 2019.csv, 2020.csv e 2021.csv.
 
-4. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Explorer**, selecione **Nova subpasta** e crie uma pasta chamada **bronze**.
+1. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Explorer**, selecione **Nova subpasta** e crie uma pasta chamada **bronze**.
 
-5. No menu **…** da pasta **bronze**, selecione **Carregar** e **Carregar arquivos** e carregue os três arquivos (2019.csv, 2020.csv e 2021.csv) do computador local (ou da VM de laboratório, se aplicável) para o lakehouse. Use a tecla shift para carregar todos os três arquivos ao mesmo tempo.
+1. No menu **…** da pasta **bronze**, selecione **Carregar** e **Carregar arquivos** e carregue os três arquivos (2019.csv, 2020.csv e 2021.csv) do computador local (ou da VM de laboratório, se aplicável) para o lakehouse. Use a tecla shift para carregar todos os três arquivos ao mesmo tempo.
 
-6. Depois que os arquivos forem carregados, expanda a pasta **bronze** e verifique se os arquivos foram carregados, conforme mostrado aqui:
+1. Depois que os arquivos forem carregados, expanda a pasta **bronze** e verifique se os arquivos foram carregados, conforme mostrado aqui:
 
     ![Captura de tela do arquivo products.csv carregado em um lakehouse.](./Images/bronze-files.png)
 
@@ -120,8 +126,6 @@ Agora que você tem alguns dados na camada bronze do lakehouse, pode usar um not
     ```
 
     A primeira linha do código que você executou importa as funções necessárias do PySpark. Em seguida, você está adicionando novas colunas ao dataframe para que possa acompanhar o nome do arquivo de origem, se o pedido foi sinalizado como sendo de antes do ano fiscal de interesse e quando a linha foi criada e modificada.
-
-    Você também está adicionando colunas para CustomerID e ItemID, que serão populadas posteriormente.
 
     Por fim, você está atualizando a coluna CustomerName para "Desconhecido" se ela for nula ou vazia.
 
@@ -357,7 +361,7 @@ Observe que você poderia ter feito tudo isso em um único notebook, mas para os
     ```python
     from pyspark.sql.functions import col, split
     
-    # Create customer_gold dataframe
+    # Create customer_silver dataframe
     
     dfdimCustomer_silver = df.dropDuplicates(["CustomerName","Email"]).select(col("CustomerName"),col("Email")) \
         .withColumn("First",split(col("CustomerName"), " ").getItem(0)) \
@@ -365,7 +369,7 @@ Observe que você poderia ter feito tudo isso em um único notebook, mas para os
     
     # Display the first 10 rows of the dataframe to preview your data
 
-    display(dfdimCustomer_silver .head(10))
+    display(dfdimCustomer_silver.head(10))
     ```
 
      Aqui, você criou um novo DataFrame dfdimCustomer_silver executando várias transformações, como descartar duplicatas, selecionar colunas específicas e dividir a coluna "CustomerName" para criar colunas de nome "Primeiro" e "Último". O resultado é um DataFrame com dados de cliente limpos e estruturados, incluindo colunas de nome "First" e "Last" separadas extraídas da coluna "CustomerName".
@@ -435,12 +439,12 @@ Observe que você poderia ter feito tudo isso em um único notebook, mas para os
         .execute()
     ```
 
-12. **Adicione outro bloco de código** para criar o dataframe **customer_gold**. Você usará isso posteriormente na junção de Vendas.
+12. **Adicionar outro bloco de código** para criar o dataframe **product_silver**.
   
     ```python
     from pyspark.sql.functions import col, split, lit
     
-    # Create Customer_gold dataframe, this dataframe will be used later on on the Sales join
+    # Create product_silver dataframe
     
     dfdimProduct_silver = df.dropDuplicates(["Item"]).select(col("Item")) \
         .withColumn("ItemName",split(col("Item"), ", ").getItem(0)) \
@@ -470,6 +474,8 @@ Observe que você poderia ter feito tudo isso em um único notebook, mas para os
     display(dfdimProduct_gold.head(10))
     ```
 
+      Isso calcula a próxima ID de produto disponível com base nos dados atuais da tabela, atribui essas novas IDs aos produtos e, em seguida, exibe as informações atualizadas do produto.
+
 14. Semelhante ao que você fez com suas outras dimensões, você precisa garantir que sua tabela de produtos permaneça atualizada à medida que novos dados forem fornecidos. **Em um novo bloco de código**, cole e execute o seguinte:
 
     ```python
@@ -498,8 +504,6 @@ Observe que você poderia ter feito tudo isso em um único notebook, mas para os
               ) \
               .execute()
       ```
-
-      Isso calcula a próxima ID do produto disponível com base nos dados atuais na tabela, atribui essas novas IDs aos produtos e exibe as informações atualizadas do produto (se o comando de exibição não for descompactado).
 
       **Agora que você criou suas dimensões, a etapa final é criar a tabela de fatos.**
 
