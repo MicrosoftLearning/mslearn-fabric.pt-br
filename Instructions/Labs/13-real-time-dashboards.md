@@ -5,21 +5,31 @@ lab:
   title: Painéis em tempo real
   module: Query data from a Kusto Query database in Microsoft Fabric
 ---
+
 # Introdução à consulta de um banco de dados Kusto no Microsoft Fabric
 Os painéis em tempo real permitem obter insights de dentro do Microsoft Fabric usando a Linguagem de Consulta Kusto (KQL) para recuperar dados estruturados e não estruturados e renderizá-los em gráficos, dispersões, tabelas e muito mais dentro de painéis que permitem vincular dados semelhantes a segmentações de dados no Power BI. 
 
 Este laboratório leva cerca de **25** minutos para ser concluído.
 
+> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+
+## Ativar uma avaliação do Microsoft Fabric
+
+1. Depois de se registrar em uma conta do Microsoft Fabric, navegue até o portal do Microsoft Fabric em [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
+1. Selecione o ícone do **Gerenciador de Contas** (a imagem do *usuário* no canto superior direito)
+1. No menu do gerente de conta, selecione **Iniciar avaliação** para iniciar uma avaliação gratuita do Microsoft Fabric.
+1. Após a atualização bem-sucedida para o Microsoft Fabric, navegue até a página inicial selecionando **Home Page do Fabric**.
+
 ## Criar um workspace
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Entre no [Microsoft Fabric](https://app.fabric.microsoft.com) em `https://app.fabric.microsoft.com` e selecione **Power BI**.
-2. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
-3. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
-4. Quando o novo workspace for aberto, ele deverá estar vazio, conforme mostrado aqui:
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Análise em Tempo Real**.
+1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
+1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
+1. Quando o novo workspace for aberto, ele estará vazio.
 
-    ![Captura de tela de um workspace vazio no Power BI.](./Images/new-workspace.png)
+    ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
 
 Nesse laboratório, você usa a Análise de Dados em Tempo Real (RTA) do Fabric para criar um banco de dados KQL a partir de uma amostra de fluxo de eventos. A Análise de Dados em Tempo Real convenientemente fornece uma amostra de conjunto de dados que você pode usar para explorar os recursos da RTA. Você usa esses dados de amostra para criar consultas KQL | SQL e conjuntos de consultas que analisam dados em tempo real e permitem outros usos em processos downstream.
 

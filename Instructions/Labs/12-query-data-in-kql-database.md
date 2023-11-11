@@ -6,22 +6,35 @@ lab:
 # Introdução à consulta de um banco de dados Kusto no Microsoft Fabric
 Um Conjunto de Consultas KQL é uma ferramenta que permite executar consultas, além de modificar e exibir resultados de consultas de um banco de dados KQL. Você pode vincular cada guia no Conjunto de Consultas KQL a um banco de dados KQL diferente, além de salvar suas consultas para uso futuro ou compartilhá-las com outras pessoas para fins de análise de dados. Você também pode alternar o banco de dados KQL para qualquer guia, de modo a poder comparar os resultados de consultas de diferentes fontes de dados.
 
-Para criar consultas, o Conjunto de Consultas KQL usa a Linguagem de Consulta Kusto, que é compatível com diversas funções SQL. Para saber mais sobre a [Linguagem de Consulta Kusto (KQL)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext), 
+Para criar consultas, o Conjunto de Consultas KQL usa a Linguagem de Consulta Kusto, que é compatível com diversas funções SQL. Para obter mais informações sobre a [Linguagem de Consulta Kusto (KQL) ](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext).
 
 Este laboratório leva cerca de **25** minutos para ser concluído.
+
+## Cenário
+
+Neste cenário, você é um analista encarregado de consultar um conjunto de dados de exemplo de corridas de táxi de NYC de métricas brutas no qual você efetua pull de estatísticas resumidas (criação de perfil) dos dados do ambiente do Fabric. Você usa a KQL para consultar esses dados e coletar informações para obter informações informativas sobre os dados.
+
+> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+
+## Ativar uma avaliação do Microsoft Fabric
+
+1. Depois de se registrar em uma conta do Microsoft Fabric, navegue até o portal do Microsoft Fabric em [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
+1. Selecione o ícone do **Gerenciador de Contas** (a imagem do *usuário* no canto superior direito)
+1. No menu do gerente de conta, selecione **Iniciar avaliação** para iniciar uma avaliação gratuita do Microsoft Fabric.
+1. Após a atualização bem-sucedida para o Microsoft Fabric, navegue até a página inicial selecionando **Home Page do Fabric**.
 
 ## Criar um workspace
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Entre no [Microsoft Fabric](https://app.fabric.microsoft.com) em `https://app.fabric.microsoft.com` e selecione **Power BI**.
-2. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
-3. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
-4. Quando o novo workspace for aberto, ele deverá estar vazio, conforme mostrado aqui:
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Análise em Tempo Real**.
+1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
+1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
+1. Quando o novo workspace for aberto, ele estará vazio.
 
-    ![Captura de tela de um workspace vazio no Power BI.](./Images/new-workspace.png)
+    ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
 
-Nesse laboratório, você usa a Análise de Dados em Tempo Real (RTA) do Fabric para criar um banco de dados KQL a partir de uma amostra de fluxo de eventos. A Análise de Dados em Tempo Real convenientemente fornece uma amostra de conjunto de dados que você pode usar para explorar os recursos da RTA. Você usa esses dados de amostra para criar consultas KQL | SQL e conjuntos de consultas que analisam dados em tempo real e permitem outros usos em processos downstream.
+Nesse laboratório, você usa a Análise de Dados em Tempo Real (RTA) do Fabric para criar um banco de dados KQL a partir de uma amostra de fluxo de eventos. A Análise em Tempo Real fornece convenientemente um conjunto de dados de amostra que você pode utilizar para explorar as funcionalidades do RTA. Você usa esses dados de amostra para criar consultas KQL | SQL e conjuntos de consultas que analisam dados em tempo real e permitem outros usos em processos downstream.
 
 ## Criar um banco de dados KQL
 
@@ -39,15 +52,19 @@ Nesse laboratório, você usa a Análise de Dados em Tempo Real (RTA) do Fabric 
 
    ![Imagem de habilitar onelake](./Images/enable-onelake-availability.png)
 
+    em seguida, use o controle deslizante para habilitar a disponibilidade.
+
+   ![Imagem de como selecionar o controle deslizante no Data Lake.](./images/data-availability-data-lake.png)
+
 5. Selecione a caixa de **dados de exemplo** nas opções de ***Iniciar obtendo dados***.
  
    ![Imagem de opções de seleção com dados de exemplo realçados](./Images/load-sample-data.png)
 
-6. escolha a caixa **Análise de métricas automotivas** nas opções de dados de exemplo.
+   em seguida, escolha a caixa **Análise de operações automotivas** nas opções de amostra de dados.
 
    ![Imagem da escolha de dados de análise para laboratório](./Images/create-sample-data.png)
 
-7. Depois que os dados terminarem de ser carregados, podemos verificar se o Banco de Dados KQL está preenchido.
+6. Depois que os dados terminarem de ser carregados, podemos verificar se o Banco de Dados KQL está preenchido.
 
    ![Dados sendo carregados no Banco de Dados KQL](./Images/choose-automotive-operations-analytics.png)
 
@@ -59,9 +76,6 @@ Nesse laboratório, você usa a Análise de Dados em Tempo Real (RTA) do Fabric 
 
     ![Imagem dos 100 registros dos dados](./Images/explore-with-kql-take-100.png)
 
-
-## Cenário
-Neste cenário, você é um analista encarregado de consultar um conjunto de dados de exemplo de corridas de táxi de NYC de métricas brutas no qual você efetua pull de estatísticas resumidas (criação de perfil) dos dados do ambiente do Fabric. Você usa a KQL para consultar esses dados e coletar informações para obter informações informativas sobre os dados.
 
 ## Introdução à Linguagem de Consulta Kusto (KQL) e sua sintaxe
 
@@ -75,7 +89,7 @@ No contexto do Microsoft Fabric, a KQL pode ser usada para consultar e analisar 
 
 De modo geral, a KQL é uma linguagem de consulta poderosa e flexível que pode ajudar você a obter insights sobre seus dados de forma rápida e fácil, esteja você trabalhando com o Microsoft Fabric ou outras fontes de dados. Com sua sintaxe intuitiva e funcionalidades poderosas, a KQL definitivamente vale a pena explorar ainda mais.
 
-Neste módulo, nos concentramos nos conceitos básicos das consultas no Banco de Dados KQL. Você verá rapidamente que, na KQL, não há um ```SELECT```, é possível simplesmente usar o nome da tabela e pressionar executar. Abordamos as etapas de uma análise simples usando KQL primeiro e, em seguida, SQL em relação ao mesmo Banco de Dados KQL, que se baseia no Azure Data Explorer.
+Nesse módulo, nos concentramos nos conceitos básicos de consultas a um Banco de Dados KQL usando primeiro KQL e, em seguida, T-SQL. Vamos nos concentrar nos elementos básicos da sintaxe T-SQL que são usados para consultas, incluindo:
 
 Consultas **SELECT**, que são usadas para recuperar dados de uma ou mais tabelas. Por exemplo, você pode usar uma consulta SELECT para obter os nomes e salários de todos os funcionários em uma empresa.
 
@@ -95,7 +109,8 @@ Consultas **ORDER BY**, que são usadas para classificar os dados por uma ou mai
 
 1. Nesta consulta, extraímos 100 registros da tabela Viagens. Usamos a palavra-chave ```take``` para pedir ao mecanismo que retorne 100 registros.
 
-```kql
+```kusto
+
 Trips
 | take 100
 ```
@@ -105,7 +120,8 @@ Trips
 
 > **OBSERVAÇÃO:** o uso de ```//``` denota comentários usados na ferramenta de consulta ***Explorar seus dados*** do Microsoft Fabric.
 
-```kql
+```kusto
+
 // Use 'project' and 'take' to view a sample number of records in the table and check the data.
 Trips 
 | project vendor_id, trip_distance
@@ -114,7 +130,8 @@ Trips
 
 3. Outra prática comum na análise é renomear colunas em nosso conjunto de consultas para torná-las mais amigáveis. Isso pode ser feito usando o novo nome de coluna seguido pelo sinal de igual e a coluna que desejamos renomear.
 
-```kql
+```kusto
+
 Trips 
 | project vendor_id, ["Trip Distance"] = trip_distance
 | take 10
@@ -122,7 +139,8 @@ Trips
 
 4. Talvez também queiramos resumir as viagens para ver quantas milhas foram percorridas:
 
-```kql
+```kusto
+
 Trips
 | summarize ["Total Trip Distance"] = sum(trip_distance)
 ```
@@ -130,7 +148,8 @@ Trips
 
 1. Em seguida, talvez queiramos ***agrupar por*** local de retirada, o que fazemos com o operador ```summarize```. Também podemos usar o operador ```project```, que nos permite selecionar e renomear as colunas que você deseja incluir na saída. Nesse caso, nos agrupamos por bairro dentro do sistema de táxis de NY para fornecer aos nossos usuários a distância total percorrida de cada bairro.
 
-```kql
+```kusto
+
 Trips
 | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
 | project Borough = pickup_boroname, ["Total Trip Distance"]
@@ -138,7 +157,8 @@ Trips
 
 2. Nesse caso, temos um valor em branco, o que nunca é bom para análise, e podemos usar a função ```case``` junto com as funções ```isempty``` e ```isnull``` para categorizar em uma categoria ***Não identificada*** para acompanhamento.
 
-```kql
+```kusto
+
 Trips
 | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
 | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
@@ -146,9 +166,10 @@ Trips
 
 ## Dados ```ORDER BY``` de nosso conjunto de dados de exemplo usando KQL
 
-1. Para dar mais sentido aos nossos dados, normalmente os ordenamos por uma coluna, e esse processo é feito na KQL com um operador ```sort by``` ou ```order by``` e eles agem da mesma maneira.
+Para dar mais sentido aos nossos dados, normalmente os ordenamos por uma coluna, e esse processo é feito na KQL com um operador ```sort by``` ou ```order by``` e eles agem da mesma maneira.
  
-```kql
+```kusto
+
 // using the sort by operators
 Trips
 | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
@@ -164,9 +185,10 @@ Trips
 
 ## Cláusula ```WHERE``` para filtrar dados em nossa consulta KQL de exemplo
 
-1. Ao contrário do SQL, nossa cláusula WHERE é imediatamente chamada em nossa consulta KQL. Ainda podemos usar os operadores lógicos ```and``` e ```or``` dentro da cláusula where, e é avaliado como verdadeiro ou falso em relação à tabela, e pode ser simples ou uma expressão complexa que pode envolver várias colunas, operadores e funções.
+Ao contrário do SQL, nossa cláusula WHERE é imediatamente chamada em nossa consulta KQL. Ainda podemos usar os operadores lógicos ```and``` e ```or``` dentro da cláusula where, e é avaliado como verdadeiro ou falso em relação à tabela, e pode ser simples ou uma expressão complexa que pode envolver várias colunas, operadores e funções.
 
-```kql
+```kusto
+
 // let's filter our dataset immediately from the source by applying a filter directly after the table.
 Trips
 | where pickup_boroname == "Manhattan"
@@ -213,7 +235,7 @@ from Trips
 Select sum(trip_distance) as [Total Trip Distance]
 from Trips
 ```
- >**OBSERVAÇÃO:** o uso das aspas não é necessário no T-SQL em comparação com a consulta KQL; além disso, o lakc do comando summarize não é necessário no T-SQL.
+ >**OBSERVAÇÃO:** o uso de aspas não é necessário no T-SQL em comparação com a consulta KQL. Observe também que os comandos `summarize` e `sort by` não estão disponíveis no T-SQL.
 
 ## Dados ```GROUP BY``` de nosso conjunto de dados de exemplo usando T-SQL
 
@@ -228,6 +250,7 @@ GROUP BY pickup_boroname
 2. Nesse caso, temos um valor em branco, o que nunca é bom para análise, e podemos usar a função ```CASE``` junto com a função ```IS NULL``` e o valor vazio ```''``` para categorizar em uma categoria ***não identificada*** para acompanhamento. 
 
 ```sql
+
 SELECT CASE
          WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
          ELSE pickup_boroname
@@ -242,7 +265,7 @@ GROUP BY CASE
 
 ## Dados ```ORDER BY``` de nosso conjunto de dados de exemplo usando T-SQL
 
-1. Para dar mais sentido aos nossos dados, normalmente os ordenamos por uma coluna, e esse processo é feito no T-SQL com um operador ```ORDER BY```. Não há nenhum operador ***ORDER BY*** no T-SQL
+1. Para dar mais sentido aos nossos dados, normalmente os ordenamos por uma coluna, e esse processo é feito no T-SQL com um operador ```ORDER BY```. Não existe um operador ***CLASSIFICAR POR*** em T-SQL
  
 ```sql
 -- Group by pickup_boroname and calculate the summary statistics of trip_distance
@@ -285,6 +308,6 @@ ORDER BY Borough ASC;
 ## Limpar os recursos
 
 Neste exercício, você criou um banco de dados KQL e configurou um conjunto de dados de exemplo para consulta. Depois disso, você consultou os dados usando o KQL e o SQL. Depois de explorar o banco de dados KQL, exclua o workspace criado para este exercício.
-1. Na barra à esquerda, selecione o ícone do workspace.
-2. No menu … da barra de ferramentas, selecione Configurações do workspace.
-3. Na seção Outros, selecione Remover este workspace.
+1. Na barra à esquerda, selecione o **ícone** do seu workspace.
+2. No menu … da barra de ferramentas, selecione **Configurações do workspace**.
+3. Na seção **Outros**, selecione **Remover este workspace**.
