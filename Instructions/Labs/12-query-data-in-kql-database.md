@@ -3,7 +3,9 @@ lab:
   title: Consultar dados no Banco de Dados KQL
   module: Query data from a Kusto Query database in Microsoft Fabric
 ---
+
 # Introdução à consulta de um banco de dados Kusto no Microsoft Fabric
+
 Um Conjunto de Consultas KQL é uma ferramenta que permite executar consultas, além de modificar e exibir resultados de consultas de um banco de dados KQL. Você pode vincular cada guia no Conjunto de Consultas KQL a um banco de dados KQL diferente, além de salvar suas consultas para uso futuro ou compartilhá-las com outras pessoas para fins de análise de dados. Você também pode alternar o banco de dados KQL para qualquer guia, de modo a poder comparar os resultados de consultas de diferentes fontes de dados.
 
 Para criar consultas, o Conjunto de Consultas KQL usa a Linguagem de Consulta Kusto, que é compatível com diversas funções SQL. Para obter mais informações sobre a [Linguagem de Consulta Kusto (KQL) ](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext).
@@ -20,8 +22,8 @@ Neste cenário, você é um analista encarregado de consultar um conjunto de dad
 
 1. Depois de se registrar em uma conta do Microsoft Fabric, navegue até o portal do Microsoft Fabric em [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
 1. Selecione o ícone do **Gerenciador de Contas** (a imagem do *usuário* no canto superior direito)
-1. No menu do gerente de conta, selecione **Iniciar avaliação** para iniciar uma avaliação gratuita do Microsoft Fabric.
-1. Após a atualização bem-sucedida para o Microsoft Fabric, navegue até a página inicial selecionando **Home Page do Fabric**.
+1. No menu do Gerenciador de Contas, selecione **Iniciar avaliação** para iniciar uma avaliação gratuita do Microsoft Fabric.
+1. Após a atualização bem-sucedida para o Microsoft Fabric, navegue até a página inicial selecionando **Página inicial do Fabric**.
 
 ## Criar um workspace
 
@@ -34,7 +36,7 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
     ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
 
-Nesse laboratório, você usa a Análise de Dados em Tempo Real (RTA) do Fabric para criar um banco de dados KQL a partir de uma amostra de fluxo de eventos. A Análise em Tempo Real fornece convenientemente um conjunto de dados de amostra que você pode utilizar para explorar as funcionalidades do RTA. Você usa esses dados de amostra para criar consultas KQL | SQL e conjuntos de consultas que analisam dados em tempo real e permitem outros usos em processos downstream.
+Nesse laboratório, você usa a Análise de Dados em Tempo Real (RTA) do Fabric para criar um banco de dados KQL a partir de uma amostra de fluxo de eventos. A Análise em Tempo Real fornece convenientemente um conjunto de dados de amostra que você pode utilizar para explorar as funcionalidades do RTA. Use esses dados de exemplo para criar consultas KQL/SQL e conjuntos de consultas que analisam dados em tempo real e permitem outros usos em processos downstream.
 
 ## Criar um banco de dados KQL
 
@@ -42,40 +44,39 @@ Nesse laboratório, você usa a Análise de Dados em Tempo Real (RTA) do Fabric 
 
    ![Imagem de escolher Banco de Dados KQL](./Images/select-kqldatabase.png)
 
-2. Você é solicitado a **Nomear** o banco de dados KQL
+1. Você é solicitado a **Nomear** o banco de dados KQL
 
    ![Imagem do nome do Banco de Dados KQL](./Images/name-kqldatabase.png)
 
-3. Dê ao banco de dados KQL um nome do qual você se lembrará, como **MyStockData**, e pressione **Criar**.
+1. Dê ao banco de dados KQL um nome do qual você se lembrará, como **MyStockData**, e pressione **Criar**.
 
-4. No painel **Detalhes do banco de dados**, selecione o ícone de lápis para ativar a disponibilidade no OneLake.
+1. No painel **Detalhes do banco de dados**, selecione o ícone de lápis para ativar a disponibilidade no OneLake.
 
    ![Imagem de habilitar onelake](./Images/enable-onelake-availability.png)
 
-    em seguida, use o controle deslizante para habilitar a disponibilidade.
+   Em seguida, use o controle deslizante para habilitar a disponibilidade.
 
    ![Imagem de como selecionar o controle deslizante no Data Lake.](./images/data-availability-data-lake.png)
 
-5. Selecione a caixa de **dados de exemplo** nas opções de ***Iniciar obtendo dados***.
- 
+1. Selecione a caixa de **dados de exemplo** nas opções de ***Iniciar obtendo dados***.
+
    ![Imagem de opções de seleção com dados de exemplo realçados](./Images/load-sample-data.png)
 
-   em seguida, escolha a caixa **Análise de operações automotivas** nas opções de amostra de dados.
+   Em seguida, escolha a caixa **Análise de operações automotivas** nas opções de dados de exemplo.
 
    ![Imagem da escolha de dados de análise para laboratório](./Images/create-sample-data.png)
 
-6. Depois que os dados terminarem de ser carregados, podemos verificar se o Banco de Dados KQL está preenchido.
+1. Depois que os dados terminarem de ser carregados, podemos verificar se o Banco de Dados KQL está preenchido.
 
    ![Dados sendo carregados no Banco de Dados KQL](./Images/choose-automotive-operations-analytics.png)
 
-7. Depois que os dados forem carregados, verifique se eles foram carregados no banco de dados KQL. Você pode realizar essa operação selecionando as reticências à direita da tabela, navegando até a **Tabela de consulta** e selecionando **Mostrar quaisquer 100 registros**.
+1. Depois que os dados forem carregados, verifique se eles foram carregados no banco de dados KQL. Você pode realizar essa operação selecionando as reticências à direita da tabela, navegando até a **Tabela de consulta** e selecionando **Mostrar quaisquer 100 registros**.
 
     ![Imagem da seleção dos 100 principais arquivos da tabela RawServerMetrics](./Images/rawservermetrics-top-100.png)
 
    > **OBSERVAÇÃO**: na primeira vez que você executar isso, pode levar vários segundos para alocar recursos de computação.
 
     ![Imagem dos 100 registros dos dados](./Images/explore-with-kql-take-100.png)
-
 
 ## Introdução à Linguagem de Consulta Kusto (KQL) e sua sintaxe
 
@@ -109,41 +110,43 @@ Consultas **ORDER BY**, que são usadas para classificar os dados por uma ou mai
 
 1. Nesta consulta, extraímos 100 registros da tabela Viagens. Usamos a palavra-chave ```take``` para pedir ao mecanismo que retorne 100 registros.
 
-```kusto
-
-Trips
-| take 100
-```
-  > **OBSERVAÇÃO:** o caractere pipe ```|``` é usado para duas finalidades na KQL, incluindo a utilização de operadores de consulta separados em uma instrução de expressão tabular. Ele também é usado como um operador OR lógico dentro de colchetes ou colchetes redondos para indicar que você pode especificar um dos itens separados pelo caractere de pipe. 
+    ```kusto
     
-2. Podemos ser mais precisos adicionando atributos específicos que gostaríamos de consultar usando a palavra-chave ```project``` e, em seguida, usando a palavra-chave ```take``` para informar ao mecanismo quantos registros retornar.
+    Trips
+    | take 100
+    ```
 
-> **OBSERVAÇÃO:** o uso de ```//``` denota comentários usados na ferramenta de consulta ***Explorar seus dados*** do Microsoft Fabric.
+    > **OBSERVAÇÃO:** o caractere pipe ```|``` é usado para duas finalidades na KQL, incluindo a utilização de operadores de consulta separados em uma instrução de expressão tabular. Ele também é usado como um operador OR lógico dentro de colchetes ou colchetes redondos para indicar que você pode especificar um dos itens separados pelo caractere de pipe.
 
-```kusto
+1. Podemos ser mais precisos adicionando atributos específicos que gostaríamos de consultar usando a palavra-chave ```project``` e, em seguida, usando a palavra-chave ```take``` para informar ao mecanismo quantos registros retornar.
 
-// Use 'project' and 'take' to view a sample number of records in the table and check the data.
-Trips 
-| project vendor_id, trip_distance
-| take 10
-```
+    > **OBSERVAÇÃO:** o uso de ```//``` denota comentários usados na ferramenta de consulta ***Explorar seus dados*** do Microsoft Fabric.
 
-3. Outra prática comum na análise é renomear colunas em nosso conjunto de consultas para torná-las mais amigáveis. Isso pode ser feito usando o novo nome de coluna seguido pelo sinal de igual e a coluna que desejamos renomear.
+    ```kusto
+    
+    // Use 'project' and 'take' to view a sample number of records in the table and check the data.
+    Trips 
+    | project vendor_id, trip_distance
+    | take 10
+    ```
 
-```kusto
+1. Outra prática comum na análise é renomear colunas em nosso conjunto de consultas para torná-las mais amigáveis. Isso pode ser feito usando o novo nome de coluna seguido pelo sinal de igual e a coluna que desejamos renomear.
 
-Trips 
-| project vendor_id, ["Trip Distance"] = trip_distance
-| take 10
-```
+    ```kusto
+    
+    Trips 
+    | project vendor_id, ["Trip Distance"] = trip_distance
+    | take 10
+    ```
 
-4. Talvez também queiramos resumir as viagens para ver quantas milhas foram percorridas:
+1. Talvez também queiramos resumir as viagens para ver quantas milhas foram percorridas:
 
-```kusto
+    ```kusto
+    
+    Trips
+    | summarize ["Total Trip Distance"] = sum(trip_distance)
+    ```
 
-Trips
-| summarize ["Total Trip Distance"] = sum(trip_distance)
-```
 ## Dados ```GROUP BY``` de nosso conjunto de dados de exemplo usando KQL
 
 1. Em seguida, talvez queiramos ***agrupar por*** local de retirada, o que fazemos com o operador ```summarize```. Também podemos usar o operador ```project```, que nos permite selecionar e renomear as colunas que você deseja incluir na saída. Nesse caso, nos agrupamos por bairro dentro do sistema de táxis de NY para fornecer aos nossos usuários a distância total percorrida de cada bairro.
@@ -155,7 +158,7 @@ Trips
 | project Borough = pickup_boroname, ["Total Trip Distance"]
 ```
 
-2. Nesse caso, temos um valor em branco, o que nunca é bom para análise, e podemos usar a função ```case``` junto com as funções ```isempty``` e ```isnull``` para categorizar em uma categoria ***Não identificada*** para acompanhamento.
+1. Nesse caso, temos um valor em branco, o que nunca é bom para análise, e podemos usar a função ```case``` junto com as funções ```isempty``` e ```isnull``` para categorizar em uma categoria ***Não identificada*** para acompanhamento.
 
 ```kusto
 
@@ -206,104 +209,104 @@ O Banco de Dados KQL não dá suporte ao T-SQL nativamente, mas fornece um ponto
 
 1. Nesta consulta, efetuamos pull dos primeiros 100 registros da tabela **Viagens** usando a cláusula ```TOP```. 
 
-```sql
-// We can use the TOP clause to limit the number of records returned
+    ```sql
+    // We can use the TOP clause to limit the number of records returned
+    
+    SELECT TOP 100 * from Trips
+    ```
 
-SELECT TOP 100 * from Trips
-```
+1. Se você usar o ```//```, que é um comentário na ferramenta ***Explorar seus dados** dentro do banco de dados KQL, não poderá realçá-lo ao executar consultas T-SQL; em vez disso, você deve usar a notação de comentários SQL padrão ```--```. esse hífen duplo também dirá ao mecanismo KQL para esperar T-SQL no Azure Data Explorer.
 
-2. Se você usar o ```//```, que é um comentário na ferramenta ***Explorar seus dados** dentro do banco de dados KQL, não poderá realçá-lo ao executar consultas T-SQL; em vez disso, você deve usar a notação de comentários SQL padrão ```--```. esse hífen duplo também dirá ao mecanismo KQL para esperar T-SQL no Azure Data Explorer.
+    ```sql
+    -- instead of using the 'project' and 'take' keywords we simply use a standard SQL Query
+    SELECT TOP 10 vendor_id, trip_distance
+    FROM Trips
+    ```
 
-```sql
--- instead of using the 'project' and 'take' keywords we simply use a standard SQL Query
-SELECT TOP 10 vendor_id, trip_distance
-FROM Trips
-```
+1. Novamente, você pode ver que os recursos padrão do T-SQL funcionam bem com a consulta em que renomeamos trip_distance para um nome mais amigável.
 
-3. Novamente, você pode ver que os recursos padrão do T-SQL funcionam bem com a consulta em que renomeamos trip_distance para um nome mais amigável.
+    ```sql
+    
+    -- No need to use the 'project' or 'take' operators as standard T-SQL Works
+    SELECT TOP 10 vendor_id, trip_distance as [Trip Distance]
+    from Trips
+    ```
 
-```sql
+1. Talvez também queiramos resumir as viagens para ver quantas milhas foram percorridas:
 
--- No need to use the 'project' or 'take' operators as standard T-SQL Works
-SELECT TOP 10 vendor_id, trip_distance as [Trip Distance]
-from Trips
-```
-
-4. Talvez também queiramos resumir as viagens para ver quantas milhas foram percorridas:
-
-```sql
-Select sum(trip_distance) as [Total Trip Distance]
-from Trips
-```
- >**OBSERVAÇÃO:** o uso de aspas não é necessário no T-SQL em comparação com a consulta KQL. Observe também que os comandos `summarize` e `sort by` não estão disponíveis no T-SQL.
+    ```sql
+    Select sum(trip_distance) as [Total Trip Distance]
+    from Trips
+    ```
+     >**OBSERVAÇÃO:** o uso de aspas não é necessário no T-SQL em comparação com a consulta KQL. Observe também que os comandos `summarize` e `sort by` não estão disponíveis no T-SQL.
 
 ## Dados ```GROUP BY``` de nosso conjunto de dados de exemplo usando T-SQL
 
 1. Em seguida, talvez queiramos ***agrupar por*** local de retirada, o que fazemos com o operador ```GROUP BY```. Também podemos usar o operador ```AS```, que nos permite selecionar e renomear as colunas que você deseja incluir na saída. Nesse caso, nos agrupamos por bairro dentro do sistema de táxis de NY para fornecer aos nossos usuários a distância total percorrida de cada bairro.
 
-```sql
-SELECT pickup_boroname AS Borough, Sum(trip_distance) AS [Total Trip Distance]
-FROM Trips
-GROUP BY pickup_boroname
-```
+    ```sql
+    SELECT pickup_boroname AS Borough, Sum(trip_distance) AS [Total Trip Distance]
+    FROM Trips
+    GROUP BY pickup_boroname
+    ```
 
-2. Nesse caso, temos um valor em branco, o que nunca é bom para análise, e podemos usar a função ```CASE``` junto com a função ```IS NULL``` e o valor vazio ```''``` para categorizar em uma categoria ***não identificada*** para acompanhamento. 
+1. Nesse caso, temos um valor em branco, o que nunca é bom para análise, e podemos usar a função ```CASE``` junto com a função ```IS NULL``` e o valor vazio ```''``` para categorizar em uma categoria ***não identificada*** para acompanhamento. 
 
-```sql
-
-SELECT CASE
-         WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
-         ELSE pickup_boroname
-       END AS Borough,
-       SUM(trip_distance) AS [Total Trip Distance]
-FROM Trips
-GROUP BY CASE
-           WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
-           ELSE pickup_boroname
-         END;
-```
+    ```sql
+    
+    SELECT CASE
+             WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
+             ELSE pickup_boroname
+           END AS Borough,
+           SUM(trip_distance) AS [Total Trip Distance]
+    FROM Trips
+    GROUP BY CASE
+               WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
+               ELSE pickup_boroname
+             END;
+    ```
 
 ## Dados ```ORDER BY``` de nosso conjunto de dados de exemplo usando T-SQL
 
 1. Para dar mais sentido aos nossos dados, normalmente os ordenamos por uma coluna, e esse processo é feito no T-SQL com um operador ```ORDER BY```. Não existe um operador ***CLASSIFICAR POR*** em T-SQL
  
-```sql
--- Group by pickup_boroname and calculate the summary statistics of trip_distance
-SELECT CASE
-         WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
-         ELSE pickup_boroname
-       END AS Borough,
-       SUM(trip_distance) AS [Total Trip Distance]
-FROM Trips
-GROUP BY CASE
-           WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
-           ELSE pickup_boroname
-         END
--- Add an ORDER BY clause to sort by Borough in ascending order
-ORDER BY Borough ASC;
-```
-## Cláusula ```WHERE``` para filtrar dados em nossa consulta T-SQL de exemplo
-
+    ```sql
+    -- Group by pickup_boroname and calculate the summary statistics of trip_distance
+    SELECT CASE
+             WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
+             ELSE pickup_boroname
+           END AS Borough,
+           SUM(trip_distance) AS [Total Trip Distance]
+    FROM Trips
+    GROUP BY CASE
+               WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
+               ELSE pickup_boroname
+             END
+    -- Add an ORDER BY clause to sort by Borough in ascending order
+    ORDER BY Borough ASC;
+    ```
+    ## Cláusula ```WHERE``` para filtrar dados em nossa consulta T-SQL de exemplo
+    
 1. Ao contrário do KQL, nossa cláusula ```WHERE``` iria para o final da Instrução T-SQL; no entanto, neste caso, temos uma cláusula ```GROUP BY```, que exige que usemos a instrução ```HAVING```, e usamos o novo nome da coluna, neste caso **Burgo**, como o nome da coluna para filtrar.
 
-```sql
--- Group by pickup_boroname and calculate the summary statistics of trip_distance
-SELECT CASE
-         WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
-         ELSE pickup_boroname
-       END AS Borough,
-       SUM(trip_distance) AS [Total Trip Distance]
-FROM Trips
-GROUP BY CASE
-           WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
-           ELSE pickup_boroname
-         END
--- Add a having clause due to the GROUP BY statement
-HAVING Borough = 'Manhattan'
--- Add an ORDER BY clause to sort by Borough in ascending order
-ORDER BY Borough ASC;
-
-```
+    ```sql
+    -- Group by pickup_boroname and calculate the summary statistics of trip_distance
+    SELECT CASE
+             WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
+             ELSE pickup_boroname
+           END AS Borough,
+           SUM(trip_distance) AS [Total Trip Distance]
+    FROM Trips
+    GROUP BY CASE
+               WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
+               ELSE pickup_boroname
+             END
+    -- Add a having clause due to the GROUP BY statement
+    HAVING Borough = 'Manhattan'
+    -- Add an ORDER BY clause to sort by Borough in ascending order
+    ORDER BY Borough ASC;
+    
+    ```
 
 ## Limpar os recursos
 
