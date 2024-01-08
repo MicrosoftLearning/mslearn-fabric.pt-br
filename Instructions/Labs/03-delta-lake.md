@@ -10,35 +10,33 @@ As tabelas de um lakehouse do Microsoft Fabric são baseadas no formato *Delta L
 
 Este exercício levará aproximadamente **40** minutos para ser concluído
 
-> **Observação**: você precisará ter uma licença do Microsoft Fabric para concluir este exercício. Confira [Introdução ao Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obter detalhes de como habilitar uma licença de avaliação gratuita do Fabric. Você precisará ter uma conta *corporativa* ou de *estudante* da Microsoft para fazer isso. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Criar um workspace
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Entre no [Microsoft Fabric](https://app.fabric.microsoft.com) em `https://app.fabric.microsoft.com` e selecione **Power BI**.
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Engenheiros de Dados do Synapse**.
 2. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 3. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
-4. Quando o novo workspace for aberto, ele deverá estar vazio, conforme mostrado aqui:
+4. Quando o novo workspace for aberto, ele estará vazio.
 
-    ![Captura de tela de um workspace vazio no Power BI.](./Images/new-workspace.png)
+    ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
 
 ## Criar um lakehouse e carregar dados
 
-Agora que você tem um workspace, é hora de alternar para a experiência de *Engenharia de dados* no portal e criar um data lakehouse para os dados que você vai analisar.
+Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse para os dados que serão analisados.
 
-1. No canto inferior esquerdo do portal do Power BI, selecione o ícone do **Power BI** e alterne para a experiência de **Engenharia de Dados**.
-
-2. Na home page da **Engenharia de Dados do Synapse**, crie um **Lakehouse** com um nome de sua escolha.
+1. Na home page da **Engenharia de Dados do Synapse**, crie um **Lakehouse** com um nome de sua escolha.
 
     Após alguns minutos, um lakehouse vazio. Você precisa ingerir alguns dados no data lakehouse para análise. Há várias maneiras de fazer isso, mas neste exercício, você apenas baixará um arquivo de texto no computador local (ou na VM de laboratório, se aplicável) e o carregará no lakehouse.
 
-3. Baixe o arquivo de dados para este exercício em `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` e salve-o como **products.csv** no computador local (ou na VM de laboratório, se aplicável).
+1. Baixe o arquivo de dados para este exercício em `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` e salve-o como **products.csv** no computador local (ou na VM de laboratório, se aplicável).
 
-4. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Explorer**, selecione **Nova subpasta** e crie uma pasta chamada **products**.
+1. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Explorer**, selecione **Nova subpasta** e crie uma pasta chamada **products**.
 
-5. No menu **…** da pasta **products**, selecione **Carregar** e **Carregar arquivos** e carregue o arquivo **products.csv** do computador local (ou da VM de laboratório, se aplicável) para o lakehouse.
-6. Depois que o arquivo for carregado, selecione a pasta **products** e verifique se o arquivo **products.csv** foi carregado, conforme mostrado aqui:
+1. No menu **…** da pasta **products**, selecione **Carregar** e **Carregar arquivos** e carregue o arquivo **products.csv** do computador local (ou da VM de laboratório, se aplicável) para o lakehouse.
+1. Depois que o arquivo for carregado, selecione a pasta **products** e verifique se o arquivo **products.csv** foi carregado, conforme mostrado aqui:
 
     ![Captura de tela do arquivo products.csv carregado em um lakehouse.](./Images/products-file.png)
 
@@ -99,7 +97,7 @@ Crie também tabelas *externas* para as quais os metadados de esquema são defin
 1. Adicione outra nova célula de código e adicione o seguinte código a ela:
 
     ```python
-   df.write.format("delta").saveAsTable("external_products", path="<abfs_path>/external_products")
+   df.write.format("delta").saveAsTable("external_products", path="abfs_path/external_products")
     ```
 
 2. No painel do **Lakehouse Explorer**, no menu **…** da pasta **Arquivos**, selecione **Copiar caminho do ABFS**.
@@ -108,7 +106,7 @@ Crie também tabelas *externas* para as quais os metadados de esquema são defin
 
     *abfss://workspace@tenant-onelake.dfs.fabric.microsoft.com/lakehousename.Lakehouse/Files*
 
-3. No código inserido na célula de código, substitua **<caminho_do_abfs>** pelo caminho copiado para a área de transferência, de modo que o código salve o dataframe como uma tabela externa com arquivos de dados em uma pasta chamada **external_products** no local da pasta **Arquivos**. O caminho completo será parecido com este:
+3. No código que você inseriu na célula de código, substitua **abfs_path** pelo caminho que você copiou para a área de transferência para que o código salve o dataframe como uma tabela externa com arquivos de dados em uma pasta chamada **external_products** no local da pasta **Files**. O caminho completo será parecido com este:
 
     *abfss://workspace@tenant-onelake.dfs.fabric.microsoft.com/lakehousename.Lakehouse/Files/external_products*
 
