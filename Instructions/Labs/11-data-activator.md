@@ -12,13 +12,6 @@ Este laboratório leva cerca de **30** minutos para ser concluído.
 
 > **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
-## Ativar uma avaliação do Microsoft Fabric
-
-1. Depois de se registrar em uma conta do Microsoft Fabric, navegue até o portal do Microsoft Fabric em [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
-1. Selecione o ícone do **Gerenciador de Contas** (a imagem do *usuário* no canto superior direito)
-1. No menu do Gerenciador de Contas, selecione **Iniciar avaliação** para iniciar uma avaliação gratuita do Microsoft Fabric.
-1. Após a atualização bem-sucedida para o Microsoft Fabric, navegue até a página inicial selecionando **Página inicial do Fabric**.
-
 ## Criar um workspace
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
@@ -58,7 +51,7 @@ Nosso reflex já foi criado e podemos começar a adicionar gatilhos e ações a 
 
 A tela inicial do reflex é dividida em duas seções, o modo *Design* e o modo *Dados*. Você pode selecionar o modo selecionando a respectiva guia na parte inferior esquerda da tela.  A guia do modo *Design* é onde você define seus objetos com seus gatilhos, propriedades e eventos. A guia modo de *Dados* é o local em que você pode adicionar suas fontes de dados e exibir os dados que seu reflex processa. Vamos dar uma olhada na guia do modo *Design*, que será aberta por padrão quando você criar seu reflex.
 
-### modo Design
+### Modo Design
 
 Se você não estiver no modo *Design* no momento, selecione a guia **Design** na parte inferior esquerda da tela.
 
@@ -78,7 +71,7 @@ Selecione cada um dos diferentes eventos e observe os dados que estão sendo uti
 
 É hora de adicionar um gatilho ao nosso reflex, mas, primeiro, vamos criar um novo objeto.
 
-## Criar um objeto
+## Criar um objeto 
 
 Em um cenário do mundo real, talvez não seja necessário criar um novo objeto para esse reflex, pois a amostra do Data Activator já inclui um objeto chamado *Pacote*. Mas para este laboratório, criamos um novo objeto para demonstrar como criar um. Vamos criar um novo objeto chamado *Pacotes para Redmond*.
 
@@ -106,7 +99,7 @@ Em um cenário do mundo real, talvez não seja necessário criar um novo objeto 
 
 Hora de criar o gatilho.
 
-## Escolha um gatilho
+## Criar um gatilho
 
 Vamos analisar o que você deseja que seu gatilho faça: *você deseja criar um reflex que envie um email para o departamento de envio se a temperatura de um pacote contendo uma receita médica for maior ou menor que um determinado limite. A temperatura ideal deve estar entre 33 graus e 41 graus. Como os eventos do reflex já contêm um gatilho de modo semelhante, você criará um especificamente para os pacotes enviados para a cidade de Redmond*.
 

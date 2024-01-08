@@ -10,34 +10,32 @@ O Apache Spark é um mecanismo de código aberto para processamento de dados dis
 
 Este laboratório levará aproximadamente **45** minutos para ser concluído.
 
-> **Observação**: você precisará ter uma licença do Microsoft Fabric para concluir este exercício. Confira [Introdução ao Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obter detalhes de como habilitar uma licença de avaliação gratuita do Fabric. Você precisará ter uma conta *corporativa* ou de *estudante* da Microsoft para fazer isso. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Criar um workspace
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Entre no [Microsoft Fabric](https://app.fabric.microsoft.com) em `https://app.fabric.microsoft.com` e selecione **Power BI**.
-2. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
-3. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
-4. Quando o novo workspace for aberto, ele deverá estar vazio, conforme mostrado aqui:
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Engenheiros de Dados do Synapse**.
+1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
+1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
+1. Quando o novo workspace for aberto, ele estará vazio.
 
-    ![Captura de tela de um workspace vazio no Power BI.](./Images/new-workspace.png)
+    ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
 
 ## Criar um lakehouse e carregar arquivos
 
-Agora que você tem um workspace, é hora de alternar para a experiência de *Engenharia de dados* no portal e criar um data lakehouse para os arquivos de dados que você vai analisar.
+Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse para os arquivos de dados que serão analisados.
 
-1. No canto inferior esquerdo do portal do Power BI, selecione o ícone do **Power BI** e alterne para a experiência de **Engenharia de Dados**.
-
-2. Na home page da **Engenharia de Dados do Synapse**, crie um **Lakehouse** com um nome de sua escolha.
+1. Na home page da **Engenharia de Dados do Synapse**, crie um **Lakehouse** com um nome de sua escolha.
 
     Após alguns minutos, um lakehouse vazio será criado. Você precisa ingerir alguns dados no data lakehouse para análise. Há várias maneiras de fazer isso, mas neste exercício, você apenas baixará e extrairá uma pasta de arquivos de texto no computador local (ou na VM de laboratório, se aplicável) e os carregará no lakehouse.
 
-3. Baixe e extraia os arquivos de dados para este exercício em [https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip).
+1. Baixe e extraia os arquivos de dados para este exercício em [https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip).
 
-4. Depois de extrair o arquivo compactado, verifique se você tem uma pasta chamada **orders** que contém arquivos CSV chamados **2019.csv**, **2020.csv** e **2021.csv**.
-5. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Explorer**, selecione **Carregar** e **Carregar pasta** e carregue a pasta **orders** do computador local (ou da VM de laboratório, se aplicável) para o lakehouse.
-6. Depois que os arquivos forem carregados, expanda **Arquivos**, selecione a pasta **orders** e verifique se os arquivos CSV foram carregados, conforme mostrado aqui:
+1. Depois de extrair o arquivo compactado, verifique se você tem uma pasta chamada **orders** que contém arquivos CSV chamados **2019.csv**, **2020.csv** e **2021.csv**.
+1. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Explorer**, selecione **Carregar** e **Carregar pasta** e carregue a pasta **orders** do computador local (ou da VM de laboratório, se aplicável) para o lakehouse.
+1. Depois que os arquivos forem carregados, expanda **Arquivos**, selecione a pasta **orders** e verifique se os arquivos CSV foram carregados, conforme mostrado aqui:
 
     ![Captura de tela dos arquivos carregados em um lakehouse.](./Images/uploaded-files.png)
 
@@ -157,9 +155,9 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
 10. O dataframe só inclui os dados do arquivo **2019.csv**. Modifique o código para que o caminho do arquivo use um curinga \* para ler os dados do pedido de vendas de todos os arquivos da pasta **orders**:
 
     ```python
-   from pyspark.sql.types import *
+    from pyspark.sql.types import *
 
-   orderSchema = StructType([
+    orderSchema = StructType([
        StructField("SalesOrderNumber", StringType()),
        StructField("SalesOrderLineNumber", IntegerType()),
        StructField("OrderDate", DateType()),
@@ -171,8 +169,8 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
        StructField("Tax", FloatType())
        ])
 
-   df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
-   display(df)
+    df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
+    display(df)
     ```
 
 11. Execute a célula de código modificada e analise a saída, que agora incluirá as vendas de 2019, 2020 e 2021.
@@ -570,7 +568,7 @@ Embora a **matplotlib** permita que você crie gráficos complexos de vários ti
    # Clear the plot area
    plt.clf()
 
-   # Create a bar chart
+   # Create a line chart
    ax = sns.lineplot(x="OrderYear", y="GrossRevenue", data=df_sales)
    plt.show()
     ```
