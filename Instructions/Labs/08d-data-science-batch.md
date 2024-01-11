@@ -99,7 +99,7 @@ Primeiro, vamos treinar um modelo de machine learning que usa um algoritmo *regr
        mlflow.sklearn.log_model(model, "model", signature=signature)
     ```
 
-1. Use o botão **&#9655; Executar célula** à esquerda da célula para executá-la. Como alternativa, você pode pressionar **SHIFT** + **ENTER** no teclado para executar uma célula.
+1. Use o botão **&#9655; Executar célula** à esquerda da célula para executá-la. Como alternativa, você pode pressionar **SHIFT** + **ENTER** no teclado para executar uma célula.
 
     > **Observação**: como esta é a primeira vez que você executa qualquer código Spark nesta sessão, o Pool do Spark precisa ser iniciado. Isso significa que a primeira execução na sessão pode levar um minuto para ser concluída. As execuções seguintes serão mais rápidas.
 
@@ -133,7 +133,7 @@ Para usar o modelo, você precisará de um conjunto de dados de detalhes de paci
     ```python
    from pyspark.sql.types import IntegerType, DoubleType
 
-   # Create a new daraframe with patient data
+   # Create a new dataframe with patient data
    data = [
        (62, 2, 33.7, 101.0, 157, 93.2, 38.0, 4.0, 4.8598, 87),
        (50, 1, 22.7, 87.0, 183, 103.2, 70.0, 3.0, 3.8918, 69),
