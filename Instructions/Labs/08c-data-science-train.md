@@ -119,7 +119,7 @@ Agora que carregou os dados, você poderá usá-los para treinar um modelo de ma
    mlflow.set_experiment(experiment_name)
     ```
 
-    O código cria um experimento do MLflow chamado `experiment-diabetes`. Seus modelos serão rastreados neste experimento.
+    O código cria um experimento do MLflow chamado **experiment-diabetes**. Seus modelos serão rastreados neste experimento.
 
 1. Adicione outra nova célula de código ao notebook e insira o seguinte código nela, executando-a:
 
