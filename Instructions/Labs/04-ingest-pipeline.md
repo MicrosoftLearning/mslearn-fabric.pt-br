@@ -12,30 +12,28 @@ O Fabric também dá suporte ao Apache Spark, permitindo que você escreva e exe
 
 Este laboratório levará aproximadamente **60** minutos para ser concluído.
 
-> **Observação**: você precisará ter uma licença do Microsoft Fabric para concluir este exercício. Confira [Introdução ao Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obter detalhes de como habilitar uma licença de avaliação gratuita do Fabric. Você precisará ter uma conta *corporativa* ou de *estudante* da Microsoft para fazer isso. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Criar um workspace
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Entre no [Microsoft Fabric](https://app.fabric.microsoft.com) em `https://app.fabric.microsoft.com` e selecione **Power BI**.
-2. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
-3. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
-4. Quando o novo workspace for aberto, ele deverá estar vazio, conforme mostrado aqui:
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Engenheiros de Dados do Synapse**.
+1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
+1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
+1. Quando o novo workspace for aberto, ele estará vazio.
 
-    ![Captura de tela de um workspace vazio no Power BI.](./Images/new-workspace.png)
+    ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
 
 ## Criar um lakehouse
 
-Agora que você tem um workspace, é hora de alternar para a experiência de *Engenharia de dados* no portal e criar um data lakehouse no qual você vai ingerir dados.
+Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse no qual os dados serão ingeridos.
 
-1. No canto inferior esquerdo do portal do Power BI, selecione o ícone do **Power BI** e alterne para a experiência de **Engenharia de Dados**.
-
-2. Na home page de **Engenharia de dados**, crie um **Lakehouse** com um nome de sua escolha.
+1. Na home page da **Engenharia de Dados do Synapse**, crie um **Lakehouse** com um nome de sua escolha.
 
     Após alguns minutos, um lakehouse sem **Tabelas** nem **Arquivos** será criado.
 
-3. Na guia **Exibição do Lake** no painel à esquerda, no menu **…** do nó **Arquivos**, selecione **Nova subpasta** e crie uma subpasta chamada **new_data**.
+1. Na guia **Exibição do Lake** no painel à esquerda, no menu **…** do nó **Arquivos**, selecione **Nova subpasta** e crie uma subpasta chamada **new_data**.
 
 ## Criar um pipeline
 

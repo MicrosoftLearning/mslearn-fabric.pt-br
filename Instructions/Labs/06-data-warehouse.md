@@ -10,30 +10,24 @@ No Microsoft Fabric, um data warehouse fornece um banco de dados relacional para
 
 Este laboratório levará aproximadamente **30** minutos para ser concluído.
 
-> **Observação**: você precisará ter uma licença do Microsoft Fabric para concluir este exercício. Confira [Introdução ao Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obter detalhes de como habilitar uma licença de avaliação gratuita do Fabric. Você precisará ter uma conta *corporativa* ou de *estudante* da Microsoft para fazer isso. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Criar um workspace
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Entre no [Microsoft Fabric](https://app.fabric.microsoft.com) em `https://app.fabric.microsoft.com` e selecione **Power BI**.
-2. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
-3. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
-4. Quando o novo workspace for aberto, ele deverá estar vazio, conforme mostrado aqui:
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Data Warehouse do Synapse**.
+1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
+1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
+1. Quando o novo workspace for aberto, ele estará vazio.
 
-    ![Captura de tela de um workspace vazio no Power BI.](./Images/new-workspace.png)
+    ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
 
 ## Criar um data warehouse
 
-Agora que você tem um workspace, é hora de alternar para a experiência de *Data Warehouse* no portal e criar um data warehouse.
+Agora que você tem um espaço de trabalho, é hora de criar um data warehouse. A página inicial do Data Warehouse do Synapse inclui um atalho para criar um novo warehouse:
 
-1. No canto inferior esquerdo do portal do Power BI, alterne para a experiência de **Data Warehouse**.
-
-    A home page do Data Warehouse inclui um atalho para criação de um warehouse:
-
-    > **Observação**: caso não veja um ícone no canto inferior esquerdo, o Fabric não está habilitado para seu locatário. O Fabric está habilitado no portal de administração para os locatários que têm uma assinatura do Power BI Premium.
-
-2. Na home page do **Data Warehouse**, crie um **Warehouse** com um nome de sua escolha.
+1. Na página inicial do **Data Warehouse do Synapse**, crie um novo **Warehouse** com um nome de sua escolha.
 
     Após alguns minutos, um warehouse será criado:
 

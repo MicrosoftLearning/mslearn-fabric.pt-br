@@ -66,7 +66,7 @@ Neste tutorial, você aprenderá como:
 
    ![Imagem de escolher fluxo de eventos](./Images/select-eventstream.png)
 
-3. Será solicitado a você **Nomear** o fluxo de eventos. Dê ao Fluxo de Eventos um nome do qual você se lembrará, como ***MyStockES**, e pressione o botão **Criar**.
+3. Será solicitado a você **Nomear** o fluxo de eventos. Dê ao EventStream um nome de que você se lembrará, como **MyStockES**, e pressione o botão **Criar**.
 
    ![Imagem do nome eventstream](./Images/name-eventstream.png)
 
@@ -76,7 +76,7 @@ Neste tutorial, você aprenderá como:
 
    ![Imagem da tela EventStream](./Images/real-time-analytics-canvas.png)
 
-2. Insira os valores dos Dados de Exemplo, conforme mostrado na tabela a seguir, e selecione **Adicionar e Configurar**.
+2. Insira os valores dos Dados de Amostra conforme mostrado na tabela a seguir e, em seguida, selecione **Adicionar**.
 
    | Campo       | Valor recomendado |
    | ----------- | ----------------- |
@@ -95,7 +95,7 @@ Neste tutorial, você aprenderá como:
    | Workspace        | O workspace em que você criou um banco de dados KQL |
    | Banco de dados KQL     | MyStockData                                    |
 
-3. Selecione **Adicionar e configurar**.
+3. Selecione **Criar e configurar**.
 
 ## Configurar a ingestão de dados
 
@@ -130,7 +130,7 @@ O KQL (Linguagem de Consulta Kusto) é uma solicitação somente leitura para pr
 
 > **Observação**: o editor KQL é fornecido com realce de sintaxe e Inellisense, o que permite conhecer rapidamente a KQL (Linguagem de Consulta Kusto).
 
-1. Navegue até o banco de dados KQL recém-criado e hidratado chamado ***MyStockData***.
+1. Navegue até o banco de dados KQL recém-criado e hidratado chamado **MyStockData**.
 2. Na árvore Dados, selecione o menu Mais […] na tabela MyStockData. Em seguida, selecione Tabela de consulta > Mostrar quaisquer 100 registros.
 
    ![Imagem do conjunto de consultas KQL](./Images/kql-query-sample.png)
@@ -139,7 +139,7 @@ O KQL (Linguagem de Consulta Kusto) é uma solicitação somente leitura para pr
 
    ![Imagem dos resultados da consulta KQL](./Images/kql-query-results.png)
 
-4. Volte à árvore de dados para selecionar a próxima consulta, que usa os operadores where e between para retornar os registros ingeridos nas últimas 24 horas.
+4. Volte à árvore de dados para selecionar a próxima consulta, que usa o operador where e o operador between para retornar os registros ingeridos nas últimas 24 horas.
 
    ![Imagem dos resultados da consulta KQL nas últimas 24 horas](./Images/kql-query-results-last24.png)
 
