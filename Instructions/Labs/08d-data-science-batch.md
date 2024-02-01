@@ -48,7 +48,11 @@ Você usará um *notebook* para treinar e usar um modelo neste exercício.
 
 Primeiro, vamos treinar um modelo de machine learning que usa um algoritmo *regressão* para prever a resposta de interesse para pacientes com diabetes (uma medida quantitativa da progressão da doença um ano após a linha de base)
 
-1. No seu notebook, utilize o ícone **+ Código** abaixo da última célula para adicionar uma nova célula de código ao notebook. Insira o código a seguir para carregar e preparar dados e usá-los para treinar um modelo.
+1. No seu notebook, utilize o ícone **+ Código** abaixo da última célula para adicionar uma nova célula de código ao notebook.
+
+    > **Dica**: Para ver o ícone **+ Código**, posicione o mouse um pouco abaixo e à esquerda da saída da célula atual. Como alternativa, na barra de menus, na guia **Editar**, selecione **+ Adicionar célula de código**.
+
+1. Insira o código a seguir para carregar e preparar dados e usá-los para treinar um modelo.
 
     ```python
    import pandas as pd

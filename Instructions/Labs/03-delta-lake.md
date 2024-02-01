@@ -16,7 +16,7 @@ Este exercício levará aproximadamente **40** minutos para ser concluído
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Engenheiros de Dados do Synapse**.
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com) no `https://app.fabric.microsoft.com`, selecione **Engenharia de Dados do Synapse**.
 2. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 3. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 4. Quando o novo workspace for aberto, ele estará vazio.
@@ -31,7 +31,7 @@ Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse p
 
     Após alguns minutos, um lakehouse vazio. Você precisa ingerir alguns dados no data lakehouse para análise. Há várias maneiras de fazer isso, mas neste exercício, você apenas baixará um arquivo de texto no computador local (ou na VM de laboratório, se aplicável) e o carregará no lakehouse.
 
-1. Baixe o arquivo de dados para este exercício em `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` e salve-o como **products.csv** no computador local (ou na VM de laboratório, se aplicável).
+1. Baixe o [arquivo de dados](https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv) para este exercício em `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` e salve-o como **products.csv** no computador local (ou na VM de laboratório, se aplicável).
 
 1. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Explorer**, selecione **Nova subpasta** e crie uma pasta chamada **products**.
 
@@ -65,7 +65,7 @@ Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse p
 
     > **Observação**: como esta é a primeira vez que você executa qualquer código Spark neste notebook, uma sessão do Spark precisa ser iniciada. Isso significa que a primeira execução pode levar alguns minutos para ser concluída. As execuções seguintes serão mais rápidas.
 
-6. Quando o comando de célula for concluído, analise a saída abaixo da célula, que deve ser semelhante a esta:
+6. Quando o comando de célula for concluído, analise a saída abaixo da célula, que deve ser semelhante a essa:
 
     | Índice | ProductID | ProductName | Categoria | ListPrice |
     | -- | -- | -- | -- | -- |
@@ -82,13 +82,17 @@ Você pode salvar o dataframe como uma tabela delta usando o método `saveAsTabl
 
 Tabelas *gerenciadas* são tabelas para as quais os metadados de esquema e os arquivos de dados são gerenciados pelo Fabric. Os arquivos de dados da tabela são criados na pasta **Tabelas**.
 
-1. Nos resultados retornados pela primeira célula de código, use o botão **+ Código** para adicionar uma nova célula de código caso ainda não exista uma. Em seguida, insira o seguinte código na nova célula e execute-o:
+1. Nos resultados retornados pela primeira célula de código, use o ícone **+ Código** para adicionar uma nova célula de código caso ainda não exista uma.
+
+    > **Dica**: Para ver o ícone **+ Código**, posicione o mouse um pouco abaixo e à esquerda da saída da célula atual. Como alternativa, na barra de menus, na guia **Editar**, selecione **+ Adicionar célula de código**.
+
+2. Insira o seguinte código na nova célula e execute-o:
 
     ```python
    df.write.format("delta").saveAsTable("managed_products")
     ```
 
-2. No painel do **Lakehouse Explorer**, no menu **…** da pasta **Tabelas**, selecione **Atualizar**. Em seguida, expanda o nó **Tabelas** e verifique se a tabela **managed_products** foi criada.
+3. No painel do **Lakehouse Explorer**, no menu **…** da pasta **Tabelas**, selecione **Atualizar**. Em seguida, expanda o nó **Tabelas** e verifique se a tabela **managed_products** foi criada.
 
 ### Criar uma tabela *externa*
 
