@@ -48,7 +48,11 @@ Para treinar um modelo, você pode criar um *notebook*. Os notebooks fornecem um
 
 Agora você está pronto para executar o código para obter dados. Você trabalhará com o [**conjunto de dados Vendas de suco de laranja**](https://learn.microsoft.com/en-us/azure/open-datasets/dataset-oj-sales-simulated?tabs=azureml-opendatasets?azure-portal=true) do Azure Open Datasets. Depois de carregar os dados, você converterá os dados em um dataframe do Pandas, que é a estrutura com suporte do Data Wrangler.
 
-1. No seu notebook, utilize o ícone **+ Código** abaixo da última célula para adicionar uma nova célula de código ao notebook. Insira o código a seguir para carregar o conjunto de dados em um dataframe.
+1. No seu notebook, utilize o ícone **+ Código** abaixo da última célula para adicionar uma nova célula de código ao notebook.
+
+    > **Dica**: Para ver o ícone **+ Código**, posicione o mouse um pouco abaixo e à esquerda da saída da célula atual. Como alternativa, na barra de menus, na guia **Editar**, selecione **+ Adicionar célula de código**.
+
+1. Insira o código a seguir para carregar o conjunto de dados em um dataframe.
 
     ```python
    # Azure storage access info for open dataset diabetes
