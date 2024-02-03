@@ -18,9 +18,9 @@ Este laboratório leva cerca de **30** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Engenheiros de Dados do Synapse**.
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com) no `https://app.fabric.microsoft.com`, selecione **Engenharia de Dados do Synapse**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
-1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
+1. Crie um workspace com um nome de sua escolha, selecionando um modo de licenciamento na seção **Avançado** que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
 
     ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
@@ -45,7 +45,7 @@ Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse p
 
 O Fabric fornece várias maneiras de carregar dados no lakehouse, incluindo suporte interno para pipelines que copiam fontes externas de dados e fluxos de dados (Gen2) que você pode definir por meio de ferramentas visuais baseadas no Power Query. No entanto, uma das maneiras mais simples de ingerir pequenos volumes de dados é carregar arquivos ou pastas do computador local (ou da VM de laboratório, se aplicável).
 
-1. Baixe o arquivo **sales.csv** de [https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv), salvando-o como **sales.csv** no computador local (ou na VM do laboratório, se aplicável).
+1. Baixe o arquivo [sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv) de `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`, salvando-o como **sales.csv** no computador local (ou na VM do laboratório, se aplicável).
 
    > **Observação**: para baixar o arquivo, abra uma nova guia no navegador e cole a URL. Clique com o botão direito do mouse em qualquer lugar da página que contém os dados e selecione **Salvar como** para salvar a página como um arquivo CSV.
 
@@ -88,9 +88,7 @@ Os dados de vendas carregados estão em um arquivo, com o qual os analistas e os
 
 Quando você cria um lakehouse e define tabelas nele, um ponto de extremidade SQL é criado automaticamente por meio do qual as tabelas podem ser consultadas usando instruções SQL `SELECT`.
 
-1. No canto superior direito da página do Lakehouse, alterne do **Lakehouse** para o **Ponto de extremidade SQL**. Em seguida, aguarde um curto período até que o ponto de extremidade de consulta SQL do lakehouse seja aberto em uma interface visual na qual você poderá consultar as tabelas, conforme mostrado aqui:
-
-    ![Captura de tela da página Ponto de extremidade SQL.](./Images/lakehouse-sql-endpoint.png)
+1. No canto superior direito da página do Lakehouse, alterne do **Lakehouse** para o **Ponto de extremidade de análise do SQL**. Em seguida, aguarde um curto período até que o ponto de extremidade de análise SQL do lakehouse seja aberto em uma interface visual na qual você poderá consultar as tabelas.
 
 2. Use o botão **Nova consulta SQL** para abrir um novo editor de consultas e insira a seguinte consulta SQL:
 
@@ -131,13 +129,14 @@ Embora muitos profissionais de dados estejam familiarizados com o SQL, os analis
 
 ## Criar um relatório
 
-As tabelas do lakehouse são adicionadas automaticamente a um conjunto de dados padrão que define um modelo de dados para relatórios com o Power BI.
+As tabelas em seu lakehouse são adicionadas automaticamente a um modelo semântico padrão para relatórios com o Power BI.
 
-1. Na parte inferior da página Ponto de Extremidade SQL, selecione a guia **Modelo**. O esquema do modelo de dados para o conjunto de dados será mostrado.
 
-    ![Captura de tela de um modelo de dados.](./Images/data-model.png)
+1. Na parte inferior da página ponto de extremidade do SQL, selecione a guia **Modelo**. O esquema de modelo de dados para o modelo semântico é mostrado.
 
-    > **Observação**: neste exercício, o modelo de dados consiste em uma só tabela. Em um cenário do mundo real, provavelmente, você criará várias tabelas no lakehouse, cada uma das quais será incluída no modelo. Em seguida, você poderá definir relações entre essas tabelas no modelo.
+    ![Captura de tela de um modelo semântico.](./Images/data-model.png)
+
+    > **Observação**: Neste exercício, o modelo semântico consiste em uma só tabela. Em um cenário do mundo real, provavelmente, você criará várias tabelas no lakehouse, cada uma das quais será incluída no modelo. Em seguida, você poderá definir relações entre essas tabelas no modelo.
 
 2. Na faixa de opções do menu, selecione a guia **Relatório**. Em seguida, selecione **Novo relatório**. Uma nova guia do navegador será aberta, na qual você poderá criar seu relatório.
 
@@ -158,13 +157,13 @@ As tabelas do lakehouse são adicionadas automaticamente a um conjunto de dados 
 5. No menu **Arquivo**, selecione **Salvar**. Em seguida, salve o relatório como **Relatório de Vendas de Itens** no workspace já criado.
 6. Feche a guia do navegador que contém o relatório para voltar ao ponto de extremidade SQL do lakehouse. Em seguida, na barra de menus do hub à esquerda, selecione seu workspace para verificar se ele contém os seguintes itens:
     - Seu lakehouse.
-    - O ponto de extremidade SQL do lakehouse.
-    - Um conjunto de dados padrão para as tabelas no lakehouse.
+    - O ponto de extremidade de análise do SQL para o lakehouse.
+    - Um modelo semântico padrão para as tabelas em seu lakehouse.
     - O relatório **Relatório de Vendas de Itens**.
 
 ## Limpar os recursos
 
-Neste exercício, você criou um lakehouse e importou dados para ele. Você viu como um lakehouse consiste em arquivos e tabelas armazenados em um armazenamento de dados OneLake. As tabelas gerenciadas podem ser consultadas por meio do SQL e incluídas em um conjunto de dados padrão para dar suporte a visualizações de dados.
+Neste exercício, você criou um lakehouse e importou dados para ele. Você viu como um lakehouse consiste em arquivos e tabelas armazenados em um armazenamento de dados OneLake. As tabelas gerenciadas podem ser consultadas por meio do SQL e incluídas em um modelo semântico padrão para dar suporte a visualizações de dados.
 
 Se você tiver terminado de explorar seu lakehouse, exclua o workspace criado para este exercício.
 

@@ -119,7 +119,7 @@ Vamos analisar o que você deseja que seu gatilho faça: *você deseja criar um 
 
     ![Captura de tela da escolha do tipo de condição de Design do reflex do Data Activator.](./Images/data-activator-trigger-select-condition-type.png)
 
-1. Agora você precisa inserir os valores para sua condição. Insira ***33*** e ***44*** como os valores de intervalo. Como você escolheu a condição *fora do intervalo numérico*, o gatilho deve ser acionado quando a temperatura estiver abaixo de *33* ou acima de *44* graus.
+1. Agora você precisa inserir os valores para sua condição. Insira ***33*** e ***41*** como os valores de intervalo. Como você escolheu a condição *fora do intervalo numérico*, o gatilho deve ser acionado quando a temperatura estiver abaixo de *33* ou acima de *41* graus.
 
     ![Captura de tela da inserção de valores de condição do Design do reflex do Data Activator.](./Images/data-activator-trigger-select-condition-define.png)
 
@@ -164,7 +164,7 @@ O único problema com esse gatilho é que, embora o gatilho tenha enviado um ema
 
     ![Captura de tela de adicionar propriedade ao gatilho do Data Activator.](./Images/data-activator-trigger-add-property-existing-trigger.png)
 
-1. Como você atualizou o gatilho, a ação correta deve ser atualizar e não salvar o gatilho, mas para este laboratório fazemos o oposto e selecionamos o botão **Salvar** em vez do botão **Atualizar** para ver também o que acontece. O motivo pelo qual você deve ter selecionado o botão *Atualizar* é porque quando você seleciona a opção de *atualizar* o gatilho, ele salva o gatilho e atualiza o gatilho em execução com as novas condições. Se você selecionar apenas o botão *Salvar*, o gatilho em execução não usará as novas condições até que você selecione atualizar o gatilho. Vamos em frente e vamos selecionar o botão **Salvar**.
+1. Como você atualizou o gatilho, a ação correta deve ser atualizar e não salvar o gatilho, mas para este laboratório fazemos o oposto e selecionamos o botão **Salvar** em vez do botão **Atualizar** para ver também o que acontece. O motivo pelo qual você deve ter selecionado o botão *Atualizar* é porque quando você seleciona a opção de *atualizar* o gatilho, ele salva o gatilho e atualiza o gatilho em execução com as novas condições. Se você selecionar apenas o botão *Salvar*, o gatilho em execução não aplicará as novas condições até que você selecione atualizar o gatilho. Vamos em frente e vamos selecionar o botão **Salvar**.
 
 1. Como você selecionou *Salvar* em vez de *Atualizar*, você deve ter notado que a mensagem *Há uma atualização de propriedade disponível. Atualize agora para garantir que o gatilho tenha as alterações mais recentes exibidas* na parte superior da tela. Além disso, a mensagem tem o botão *Atualizar*. Vamos em frente e vamos selecionar o botão **Atualizar**.
 

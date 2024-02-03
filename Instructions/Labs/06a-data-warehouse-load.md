@@ -46,7 +46,7 @@ Em nosso cenário, como não temos dados disponíveis, devemos ingerir dados a s
 1. Forneça as informações a seguir na caixa de diálogo **Carregar arquivo para a nova tabela**.
     - **Novo nome da tabela:** staging_sales
     - **Usar cabeçalho para nomes de colunas:** Selecionado
-    - **Separador:** \n
+    - **Separador:** ,
 
 1. Selecione **Carregar**.
 
@@ -101,11 +101,6 @@ Vamos criar as tabelas de fatos e as dimensões para os dados de Vendas. Você t
         );
         
     ALTER TABLE Sales.Dim_Item add CONSTRAINT PK_Dim_Item PRIMARY KEY NONCLUSTERED (ItemID) NOT ENFORCED
-    GO
-    
-    CREATE VIEW [Sales].[Staging_Sales]
-    AS
-        SELECT * FROM [ExternalData].[dbo].[staging_sales];
     GO
     ```
 
@@ -183,7 +178,7 @@ Vamos executar algumas consultas analíticas para validar os dados no warehouse.
     SELECT c.CustomerName, SUM(s.UnitPrice * s.Quantity) AS TotalSales
     FROM Sales.Fact_Sales s
     JOIN Sales.Dim_Customer c
-    ON s.SalesOrderNumber = c.SalesOrderNumber
+    ON s.CustomerID = c.CustomerID
     WHERE YEAR(s.OrderDate) = 2021
     GROUP BY c.CustomerName
     ORDER BY TotalSales DESC;

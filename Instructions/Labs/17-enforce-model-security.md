@@ -26,70 +26,23 @@ Neste laboratório, você aprenderá a:
 
 Neste exercício, você preparará seu ambiente.
 
-### Clonar o repositório para este curso
+### Faça o download do arquivo inicial do Power BI
 
-1. No menu Iniciar, abra o Prompt de Comando
+1. Baixe o [arquivo inicial da Análise de Vendas](https://aka.ms/fabric-security-starter) de `https://aka.ms/fabric-security-starter` e salve-o no computador local (em qualquer pasta).
 
-    ![](../images/command-prompt.png)
+1. Navegue até o arquivo baixado e abra-o no Power BI Desktop.
 
-1. Na janela do prompt de comando, navegue até a unidade D digitando:
-
-    `d:` 
-
-   Pressione ENTER.
-
-    ![](../images/command-prompt-2.png)
-
-
-1. Na janela do prompt de comando, digite o seguinte comando para baixar os arquivos do curso e salve-os em uma pasta chamada DP500.
-    
-    `git clone https://github.com/MicrosoftLearning/DP-500-Azure-Data-Analyst DP500`
-   
-1. Quando o repositório tiver sido clonado, feche a janela do prompt de comando. 
-   
-1. Abra a unidade D no explorador de arquivos para garantir que os arquivos tenham sido baixados.
-
-### Configurar o Power BI Desktop
-
-Nesta tarefa, você configurará o Power BI Desktop.
-
-1. Para abrir o Explorador de Arquivos, na barra de tarefas, selecione o atalho do **Explorador de Arquivos**.
-
-2. Procure a pasta **D:\DP500\Allfiles\09\Starter**.
-
-3. Para abrir um arquivo pré-desenvolvido do Power BI Desktop, clique duas vezes no arquivo **Sales Analysis - Enforce model security.pbix**.
-
-4. Se ainda não tiver iniciado sessão, no canto superior direito do Power BI Desktop, selecione **Iniciar sessão**. Use as credenciais do laboratório para concluir o processo de entrada.
-
-    ![](../images/dp500-enforce-model-security-image2.png)
-
-5. Para salvar o arquivo, na faixa de opções **Arquivo**, selecione **Salvar**.
-
-6. Na janela **Salvar como**, procure a pasta **D:\DP500\Allfiles\09\MySolution**.
-
-7. Selecione **Salvar**.
-
-    *Você atualizará a solução do Power BI Desktop para impor a segurança em nível de linha.*
+1. Quando solicitado, entre com uma conta corporativa ou de estudante.
 
 ### Entrar no serviço do Power BI
 
 Nesta tarefa, você entrará no serviço do Power BI, iniciará uma licença de avaliação e criará um workspace.
 
-*Importante: se você já configurou o Power BI em seu ambiente de VM, continue para a próxima tarefa.*
+1. Em um navegador da Web, vá para `https://app.powerbi.com/`.
 
-1. Em um navegador da Web, vá para [https://powerbi.com](https://powerbi.com/).
-
-2. Use as credenciais do laboratório para concluir o processo de entrada.
+2. Conclua o processo de entrada com a mesma conta usada no Power BI Desktop.
 
     *Importante: você deve usar as mesmas credenciais usadas para entrar no Power BI Desktop.*
-
-3. No canto superior direito, selecione o ícone de perfil e, em seguida, selecione **Iniciar avaliação**.
-
-    ![](../images/dp500-enforce-model-security-image3.png)
-
-4. Quando solicitado, selecione **Iniciar avaliação**.
-
-5. Execute as tarefas restantes para concluir a configuração de avaliação.
 
     *Dica: a experiência do navegador da Web do Power BI é conhecida como o **Serviço do Power BI**.*
 
@@ -97,18 +50,13 @@ Nesta tarefa, você entrará no serviço do Power BI, iniciará uma licença de 
 
 Nesta tarefa, você criará um workspace.
 
-1. No serviço do Power BI, para criar um workspace, no painel **Navegação** (localizado à esquerda), selecione **Workspaces** e, em seguida, selecione **Criar workspaces**.
+1. No serviço do Power BI, para criar um workspace, no painel de **navegação** (localizado à esquerda), selecione **Workspaces** e selecione **+ Novo workspace**.
 
-    ![](../images/dp500-enforce-model-security-image5.png)
-
-
-2. No painel **Criar um workspace** (localizado à direita), na caixa **Nome do workspace**, digite um nome para o workspace.
+2. No painel **Criar um workspace** (localizado à direita), na caixa **Nome**, insira um nome para o workspace.
 
     *O nome do workspace precisa ser exclusivo dentro do locatário.*
 
-    ![](../images/dp500-enforce-model-security-image6.png)
-
-3. Selecione **Salvar**.
+3. Escolha **Aplicar**.
 
     *Depois de criado, o workspace é aberto. Em um exercício posterior, você publicará um modelo semântico neste workspace.*
 
@@ -118,18 +66,17 @@ Nesta tarefa, você revisará o modelo de dados.
 
 1. No Power BI Desktop, alterne para a exibição de **Modelo** à esquerda.
 
-    ![](../images/dp500-enforce-model-security-image8.png)
-
+    ![](Images/enforce-model-security-image8.png)
 
 2. Use o diagrama de modelo para examinar o design do modelo.
 
-    ![](../images/dp500-enforce-model-security-image9.png)
+    ![](Images/enforce-model-security-image9.png)
 
     *O modelo é composto por seis tabelas dimensionais e uma tabela de fatos. A tabela fatos de **Vendas** armazena os detalhes da ordem de venda do cliente. É um design clássico de esquema de estrelas.*
 
 3. Em seguida abra e expanda a tabela **Território de Vendas**.
 
-    ![](../images/dp500-enforce-model-security-image10.png)
+    ![](Images/enforce-model-security-image10.png)
 
 4. Observe que a tabela inclui uma coluna **Região**.
 
@@ -145,52 +92,49 @@ Nesta tarefa, você criará duas funções estáticas.
 
 1. Alterne para a exibição de **Relatório**.
 
-    ![](../images/dp500-enforce-model-security-image11.png)
+    ![](Images/enforce-model-security-image11.png)
 
 2. No visual do gráfico de colunas empilhadas, na legenda, observe (por enquanto) que é possível ver muitas regiões.
 
-    ![](../images/dp500-enforce-model-security-image12.png)
+    ![](Images/enforce-model-security-image12.png)
 
     *Por enquanto, o gráfico parece excessivamente cheio. Isso porque todas as regiões são visíveis. Quando a solução impõe a segurança em nível de linha, o consumidor do relatório verá apenas uma região.*
 
-
 3. Para adicionar uma função de segurança, na guia **Modelagem** da faixa de opções, no grupo **Segurança**, selecione **Gerenciar Funções**.
 
-    ![](../images/dp500-enforce-model-security-image13.png)
+    ![](Images/enforce-model-security-image13.png)
 
 4. Na janela **Gerenciar Funções**, selecione **Criar**.
 
-    ![](../images/dp500-enforce-model-security-image14.png)
+    ![](Images/enforce-model-security-image14.png)
 
 5. Para nomear a função, substitua o texto selecionado por **Austrália** e pressione **Enter**.
 
-    ![](../images/dp500-enforce-model-security-image15.png)
-
+    ![](Images/enforce-model-security-image15.png)
 
 6. Na lista **Tabelas**, para a tabela **Território de Vendas**, selecione as reticências e, em seguida, selecione **Adicionar filtro** > **[Região]**.
 
-    ![](../images/dp500-enforce-model-security-image16.png)
+    ![](Images/enforce-model-security-image16.png)
 
 7. Na caixa **Expressão DAX do filtro de tabela**, substitua **Valor** por **Austrália**.
 
-    ![](../images/dp500-enforce-model-security-image17.png)
+    ![](Images/enforce-model-security-image17.png)
 
     *Essa expressão filtra a coluna **Região** pelo valor **Austrália**.*
 
 8. Para criar outra função, pressione **Criar**.
 
-    ![](../images/dp500-enforce-model-security-image18.png)
-
+    ![](Images/enforce-model-security-image18.png)
 
 9. Repita as etapas nesta tarefa para criar uma função chamada **Canadá** que filtra a coluna **Região** por **Canadá**.
 
-    ![](../images/dp500-enforce-model-security-image19.png)
+    ![](Images/enforce-model-security-image19.png)
 
     *Neste laboratório, você criará apenas as duas funções. Considere, no entanto, que, em uma solução real, uma função deve ser criada para cada uma das 11 regiões da Adventure Works.*
 
 10. Selecione **Salvar**.
 
-    ![](../images/dp500-enforce-model-security-image20.png)
+    ![](Images/enforce-model-security-image20.png)
 
 ### Validar as funções estáticas
 
@@ -198,53 +142,51 @@ Nesta tarefa, você validará funções estáticas.
 
 1. Na guia **Modelagem** da faixa de opções, no grupo **Segurança**, selecione **Exibir como**.
 
-    ![](../images/dp500-enforce-model-security-image21.png)
-
+    ![](Images/enforce-model-security-image21.png)
 
 2. Na janela **Exibir como funções**, selecione a função **Austrália**.
 
-    ![](../images/dp500-enforce-model-security-image22.png)
+    ![](Images/enforce-model-security-image22.png)
 
 3. Selecione **OK**.
 
-    ![](../images/dp500-enforce-model-security-image23.png)
+    ![](Images/enforce-model-security-image23.png)
 
 4. Na página do relatório, observe que o visual do gráfico de colunas empilhadas mostra apenas dados para a Austrália.
 
-    ![](../images/dp500-enforce-model-security-image24.png)
+    ![](Images/enforce-model-security-image24.png)
 
 5. Na parte superior do relatório, observe a faixa amarela que confirma o papel imposto.
 
-    ![](../images/dp500-enforce-model-security-image25.png)
+    ![](Images/enforce-model-security-image25.png)
 
 6. Para interromper a exibição usando a função, à direita do banner amarelo, selecione **Parar visualização**.
 
-    ![](../images/dp500-enforce-model-security-image26.png)
+    ![](Images/enforce-model-security-image26.png)
 
 ### Publicar o relatório
 
 Nesta tarefa, você publicará o relatório.
 
-1. Salve o arquivo do Power BI Desktop.
+1. Salve o arquivo do Power BI Desktop. Ao ser solicitado para aplicar as alterações pendentes, selecione **Aplicar mais tarde**.
 
-    ![](../images/dp500-enforce-model-security-image27.png)
- 
+    ![](Images/enforce-model-security-image27.png)
 
 2. Para publicar o relatório, na guia **Página Inicial** da faixa de opções, selecione **Publicar**.
 
-    ![](../images/dp500-enforce-model-security-image28.png)
+    ![](Images/enforce-model-security-image28.png)
 
 3. Na janela **Publicar no Power BI**, selecione seu workspace e clique em **Selecionar**.
 
-    ![](../images/dp500-enforce-model-security-image29.png)
+    ![](Images/enforce-model-security-image29.png)
 
 4. Quando a publicação for bem-sucedida, selecione **Entendi**.
 
-    ![](../images/dp500-enforce-model-security-image30.png)
+    ![](Images/enforce-model-security-image30.png)
 
 ### Configurar segurança em nível de linha (*opcional*)
 
-Nesta tarefa, você verá como configurar a segurança em nível de linha no serviço do Power BI. 
+Nesta tarefa, você verá como configurar a segurança em nível de linha no serviço do Power BI.
 
 Essa tarefa depende da existência de um grupo de segurança **Salespeople_Australia** no locatário em que você está trabalhando. Esse grupo de segurança NÃO existe automaticamente no locatário. Se você tiver permissões em seu locatário, siga as etapas abaixo. Se você estiver usando um locatário fornecido a você no treinamento, não terá as permissões apropriadas para criar grupos de segurança. Leia as tarefas, mas observe que você não poderá concluí-las se não tiver o grupo de segurança. **Depois de ler, prossiga para a tarefa Limpar.**
 
@@ -252,32 +194,31 @@ Essa tarefa depende da existência de um grupo de segurança **Salespeople_Austr
 
 2. Na página de aterrissagem do workspace, observe o modelo semântico **Análise de Vendas – Impor a segurança do modelo**.
 
-    ![](../images/dp500-enforce-model-security-image31.png)
-
+    ![](Images/enforce-model-security-image31.png)
 
 3. Passe o cursor sobre o modelo semântico e, quando as reticências forem exibidas, selecione as reticências e, em seguida, **Segurança**.
 
-    ![](../images/dp500-enforce-model-security-image32.png)
+    ![](Images/enforce-model-security-image32.png)
 
     *A opção **Segurança** dá suporte ao mapeamento de entidades de segurança do Microsoft Azure Active Directory (Azure AD), que inclui grupos de segurança e usuários.*
 
 4. À esquerda, observe a lista de funções e que **Austrália** está selecionada.
 
-    ![](../images/dp500-enforce-model-security-image33.png)
+    ![](Images/enforce-model-security-image33.png)
 
-5. Na caixa **Membros**, comece inserindo **Salespeople_Australia**. 
+5. Na caixa **Membros**, comece inserindo **Salespeople_Australia**.
 
     *As etapas 5 a 8 são apenas para fins de demonstração, pois dependem da criação ou existência de um grupo de segurança Salespeople_Australia. Se você tiver permissões e conhecimento para criar grupos de segurança, sinta-se à vontade para prosseguir. Caso contrário, vá para a tarefa Limpar.*
 
-    ![](../images/dp500-enforce-model-security-image34.png)
+    ![](Images/enforce-model-security-image34.png)
 
 6. Selecione **Adicionar**.
 
-    ![](../images/dp500-enforce-model-security-image35.png)
+    ![](Images/enforce-model-security-image35.png)
 
 7. Para concluir o mapeamento de função, selecione **Salvar**.
 
-    ![](../images/dp500-enforce-model-security-image36.png)
+    ![](Images/enforce-model-security-image36.png)
 
     *Agora, todos os membros do grupo de segurança Salespeople_Australia** são mapeados para a função Austrália **, que restringe o **acesso a dados para exibir apenas as **vendas australianas.*
 
@@ -289,42 +230,39 @@ Essa tarefa depende da existência de um grupo de segurança **Salespeople_Austr
 
 8. Para retornar à página inicial do workspace, no painel **Navegação**, selecione o workspace.
 
-
 ### Limpar a solução
 
 Nesta tarefa, você limpará a solução removendo o modelo semântico e as funções de modelo.
 
 1. Para remover o modelo semântico, passe o cursor sobre o modelo semântico e, quando as reticências forem exibidas, selecione as reticências e, em seguida, **Excluir**.
 
-    ![](../images/dp500-enforce-model-security-image37.png)
+    ![](Images/enforce-model-security-image37.png)
 
     *Você publicará novamente um modelo semântico revisado no próximo exercício.*
 
 2. Quando precisar confirmar a exclusão, selecione **Excluir**.
 
-    ![](../images/dp500-enforce-model-security-image38.png)
+    ![](Images/enforce-model-security-image38.png)
 
 3. Alternar para o Power BI Desktop.
- 
 
 4. Para remover as funções de segurança, na guia **Modelagem** da faixa de opções, no grupo **Segurança**, selecione **Gerenciar Funções**.
 
-    ![](../images/dp500-enforce-model-security-image39.png)
+    ![](Images/enforce-model-security-image39.png)
 
 5. Na janela **Gerenciar funções**, para remover a primeira função, selecione **Excluir**.
 
-    ![](../images/dp500-enforce-model-security-image40.png)
+    ![](Images/enforce-model-security-image40.png)
 
 6. Quando precisar confirmar a exclusão, pressione **Sim, excluir**.
 
-    ![](../images/dp500-enforce-model-security-image41.png)
+    ![](Images/enforce-model-security-image41.png)
 
 7. Remova também a segunda função.
 
 8. Selecione **Salvar**.
 
-    ![](../images/dp500-enforce-model-security-image42.png)
-
+    ![](Images/enforce-model-security-image42.png)
 
 ## Criar função dinâmica
 
@@ -336,52 +274,59 @@ Nesta tarefa, você adicionará uma tabela **Vendedor** ao modelo.
 
 1. Alterne para a exibição de **Modelo**.
 
-    ![](../images/dp500-enforce-model-security-image43.png)
+    ![](Images/enforce-model-security-image43.png)
 
 2. Na guia **Página Inicial** da faixa de opções, dentro do grupo **Dados**, selecione o ícone **Transformar dados**.
 
-    ![](../images/dp500-enforce-model-security-image44.png)
+    ![](Images/enforce-model-security-image44.png)
 
+    *Se você for solicitado a especificar como se conectar, **Edite as credenciais** e especifique como entrar.*
+
+    ![](Images/work-with-model-relationships-image52.png)
+
+    *Selecione **Conectar***
+
+     ![](Images/work-with-model-relationships-image53.png)
+
+    *Na página **Suporte à Criptografia**, selecione **OK**.*
 
 3. Na janela do **Editor do Power Query**, no painel **Consultas** (localizado à esquerda), clique com o botão direito do mouse na consulta **Cliente** e selecione **Duplicar**.
 
-    ![](../images/dp500-enforce-model-security-image45.png)
+    ![](Images/enforce-model-security-image45.png)
 
     *Como a consulta **Cliente** já inclui etapas para conectar o data warehouse, duplicá-la é uma maneira eficiente de iniciar o desenvolvimento de uma nova consulta.*
 
 4. No painel **Configurações de Consulta** (localizado à direita), na caixa **Nome**, substitua o texto por **Vendedor**.
 
-    ![](../images/dp500-enforce-model-security-image46.png)
-
+    ![](Images/enforce-model-security-image46.png)
 
 5. Na lista **Etapas aplicadas**, clique com o botão direito do mouse na etapa **Outras colunas removidas** (terceira etapa) e selecione **Excluir Até o Fim**.
 
-    ![](../images/dp500-enforce-model-security-image47.png)
+    ![](Images/enforce-model-security-image47.png)
 
 6. Quando precisar confirmar exclusão da etapa, selecione **Excluir**.
 
-    ![](../images/dp500-enforce-model-security-image48.png)
+    ![](Images/enforce-model-security-image48.png)
 
 7. Para obter dados de uma tabela de data warehouse diferente, na lista **Etapas Aplicadas**, na **Navegação** (segunda etapa), selecione o ícone de engrenagem (localizado à direita).
 
-    ![](../images/dp500-enforce-model-security-image49.png)
+    ![](Images/enforce-model-security-image49.png)
 
 8. Na janela **Navegação**, selecione a tabela **DimEmployee**.
 
-    ![](../images/dp500-enforce-model-security-image50.png)
-
+    ![](Images/enforce-model-security-image50.png)
 
 9. Selecione **OK**.
 
-    ![](../images/dp500-enforce-model-security-image51.png)
+    ![](Images/enforce-model-security-image51.png)
 
 10. Para remover colunas desnecessárias, na guia de faixa de opções **Página Inicial**, no grupo **Gerenciar Colunas**, selecione o ícone **Escolher Colunas**.
 
-    ![](../images/dp500-enforce-model-security-image52.png)
+    ![](Images/enforce-model-security-image52.png)
 
 11. Na janela **Escolher Colunas**, desmarque o item **(Selecionar Todas as Colunas)**.
 
-    ![](../images/dp500-enforce-model-security-image53.png)
+    ![](Images/enforce-model-security-image53.png)
 
 12. Marque as três seguintes colunas:
 
@@ -393,7 +338,7 @@ Nesta tarefa, você adicionará uma tabela **Vendedor** ao modelo.
 
 13. Selecione **OK**.
 
-    ![](../images/dp500-enforce-model-security-image54.png)
+    ![](Images/enforce-model-security-image54.png)
 
 14. Para renomear a coluna **EmailAddress**, clique duas vezes no cabeçalho da coluna **EmailAddress**.
 
@@ -401,11 +346,11 @@ Nesta tarefa, você adicionará uma tabela **Vendedor** ao modelo.
 
     *UPN é um acrônimo para Nome Principal do Usuário. Os valores nesta coluna correspondem aos nomes de conta do Azure AD.*
 
-    ![](../images/dp500-enforce-model-security-image55.png)
+    ![](Images/enforce-model-security-image55.png)
 
 16. Para carregar a tabela no modelo, na guia **Página Inicial** da faixa de opções, selecione o ícone **Fechar &amp; Aplicar**.
 
-    ![](../images/dp500-enforce-model-security-image56.png)
+    ![](Images/enforce-model-security-image56.png)
 
 17. Quando a tabela tiver sido adicionada ao modelo, observe que uma relação com a tabela **Território de Vendas** foi criada automaticamente.
 
@@ -415,27 +360,25 @@ Nesta tarefa, você configurará as propriedades da nova relação.
 
 1. Clique com o botão direito do mouse na relação entre as região tabelas **Vendedor ** e **Território de Vendas** e selecione **Propriedades**.
 
-    ![](../images/dp500-enforce-model-security-image57.png)
-
+    ![](Images/enforce-model-security-image57.png)
 
 2. Na janela **Editar Relação**, na lista suspensa **Direção do filtro cruzado**, selecione **Ambas**.
 
 3. Marque a caixa de seleção **Aplicar filtro de segurança em ambos os sentidos**.
 
-    ![](../images/dp500-enforce-model-security-image58.png)
+    ![](Images/enforce-model-security-image58.png)
 
     *Como há uma relação um para muitos da tabela **Território de Vendas** para a tabela **Vendedor**, os filtros se propagam somente da tabela **Território de Vendas** para a tabela **Vendedor**. Para forçar a propagação na outra direção, a direção do filtro cruzado deve ser definida como ambas.*
 
 4. Selecione **OK**.
 
-    ![](../images/dp500-enforce-model-security-image59.png)
+    ![](Images/enforce-model-security-image59.png)
 
 5. Para ocultar a tabela, no canto superior direito da tabela **Vendedor**, selecione o ícone de olho.
 
-    ![](../images/dp500-enforce-model-security-image60.png)
+    ![](Images/enforce-model-security-image60.png)
 
     *O objetivo da tabela **Vendedor** é impor permissões de dados. Quando ocultos, os autores do relatório e a experiência de Perguntas e Respostas não verão a tabela ou seus campos.*
- 
 
 ### Criar função dinâmica
 
@@ -443,29 +386,29 @@ Nesta tarefa, você criará uma função dinâmica, que impõe permissões com b
 
 1. Alterne para a exibição de **Relatório**.
 
-    ![](../images/dp500-enforce-model-security-image61.png)
+    ![](Images/enforce-model-security-image61.png)
 
 2. Para adicionar uma função de segurança, na guia **Modelagem** da faixa de opções, no grupo **Segurança**, selecione **Gerenciar Funções**.
 
-    ![](../images/dp500-enforce-model-security-image62.png)
+    ![](Images/enforce-model-security-image62.png)
 
 3. Na janela **Gerenciar Funções**, selecione **Criar**.
 
-    ![](../images/dp500-enforce-model-security-image63.png)
+    ![](Images/enforce-model-security-image63.png)
 
 4. Para nomear a função, substitua o texto selecionado por **Vendedor**.
 
-    ![](../images/dp500-enforce-model-security-image64.png)
+    ![](Images/enforce-model-security-image64.png)
 
     *Desta vez, apenas uma função precisa ser criada.*
 
 5. Adicione um filtro à coluna **UPN** da tabela **Vendedor**.
 
-    ![](../images/dp500-enforce-model-security-image65.png)
+    ![](Images/enforce-model-security-image65.png)
 
-6. Na caixa **Expressão DAX do filtro de tabela**, substitua **“Value”** por **USERPRINCIPALNAME()**.
+6. Na caixa **Expressão DAX do filtro de tabela**, substitua **"Valor"** por `USERPRINCIPALNAME()`.
 
-    ![](../images/dp500-enforce-model-security-image66.png)
+    ![](Images/enforce-model-security-image66.png)
 
     *Essa expressão filtra a coluna **UPN** pela função USERPRINCIPALNAME, que retorna o nome principal do usuário (UPN ) do usuário autenticado.*
 
@@ -473,7 +416,7 @@ Nesta tarefa, você criará uma função dinâmica, que impõe permissões com b
 
 7. Selecione **Salvar**.
 
-    ![](../images/dp500-enforce-model-security-image67.png)
+    ![](Images/enforce-model-security-image67.png)
 
 ### Validar a função dinâmica
 
@@ -481,35 +424,33 @@ Nesta tarefa, você validará a função dinâmica.
 
 1. Na guia **Modelagem** da faixa de opções, no grupo **Segurança**, selecione **Exibir como**.
 
-    ![](../images/dp500-enforce-model-security-image68.png)
+    ![](Images/enforce-model-security-image68.png)
 
+2. Na janela **Exibir como funções**, marque **Outro usuário** e, em seguida, na caixa correspondente, insira: `michael9@adventure-works.com`.
 
-2. Na janela **Exibir como funções**, marque **Outro usuário** e, na caixa correspondente, insira: **michael9@adventure-works.com**
-
-    ![](../images/dp500-enforce-model-security-image69.png)
+    ![](Images/enforce-model-security-image69.png)
 
     *Para fins de teste, **Outro usuário** é o valor que será retornado pela função USERPRINCIPALNAME. Observe que esse vendedor está alocado na região **Nordeste** .*
 
 3. Marque a função **Vendedores**.
 
-    ![](../images/dp500-enforce-model-security-image70.png)
+    ![](Images/enforce-model-security-image70.png)
 
 4. Selecione **OK**.
 
-    ![](../images/dp500-enforce-model-security-image71.png)
+    ![](Images/enforce-model-security-image71.png)
 
 5. Na página do relatório, observe que o visual do gráfico de colunas empilhadas mostra apenas dados para a Nordeste.
 
-    ![](../images/dp500-enforce-model-security-image72.png)
+    ![](Images/enforce-model-security-image72.png)
 
 6. Na parte superior do relatório, observe a faixa amarela que confirma o papel imposto.
 
-    ![](../images/dp500-enforce-model-security-image73.png)
-
+    ![](Images/enforce-model-security-image73.png)
 
 7. Para interromper a exibição usando a função, à direita do banner amarelo, selecione **Parar visualização**.
 
-    ![](../images/dp500-enforce-model-security-image74.png)
+    ![](Images/enforce-model-security-image74.png)
 
 ### Finalizar o design
 
@@ -519,9 +460,7 @@ Nesta tarefa, você finalizará o design publicando o relatório e mapeando um g
 
 1. Salve o arquivo do Power BI Desktop.
 
-    ![](../images/dp500-enforce-model-security-image75.png)
-
-2. Publique o relatório no workspace criado no início do laboratório. 
+2. Publique o relatório no workspace criado no início do laboratório.
 
 3. Feche o Power BI Desktop.
 
@@ -531,7 +470,7 @@ Nesta tarefa, você finalizará o design publicando o relatório e mapeando um g
 
 6. Mapeie o grupo de segurança **Vendedores** e a função **Vendedores**.
 
-    ![](../images/dp500-enforce-model-security-image76.png)
+    ![](Images/enforce-model-security-image76.png)
 
     *Agora todos os membros do grupo de segurança **Vendedores** estão mapeados para a função **Vendedores**. Desde que o usuário autenticado seja representado por uma linha na tabela **Vendedor**, o território de vendas atribuído será usado para filtrar a tabela de vendas.*
 

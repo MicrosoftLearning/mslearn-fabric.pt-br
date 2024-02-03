@@ -48,7 +48,11 @@ Para treinar um modelo, você pode criar um *notebook*. Os notebooks fornecem um
 
 Agora você está pronto para executar o código para obter dados. Você trabalhará com o [**conjunto de dados de diabetes**](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) do Azure Open Datasets. Após carregar os dados, você os converterá em um dataframe do Pandas, que é uma estrutura comum para trabalhar com dados em linhas e colunas.
 
-1. No seu notebook, utilize o ícone **+ Código** abaixo da última célula para adicionar uma nova célula de código ao notebook. Insira o código a seguir para carregar o conjunto de dados em um dataframe.
+1. No seu notebook, utilize o ícone **+ Código** abaixo da última célula para adicionar uma nova célula de código ao notebook.
+
+    > **Dica**: Para ver o ícone **+ Código**, posicione o mouse um pouco abaixo e à esquerda da saída da célula atual. Como alternativa, na barra de menus, na guia **Editar**, selecione **+ Adicionar célula de código**.
+
+1. Insira o código a seguir para carregar o conjunto de dados em um dataframe.
 
     ```python
    # Azure storage access info for open dataset diabetes
@@ -112,7 +116,7 @@ Agora que carregou os dados, você pode verificar a estrutura do conjunto de dad
    print(df.dtypes)
     ```
 
-    O conjunto de dados contém **442 linhas** e **11 colunas**. Isso significa que você deve ter 442 amostras e 11 recursos ou variáveis no seu conjunto de dados. A variável `SEX` provavelmente contém dados categóricos ou cadeias de caracteres.
+    O conjunto de dados contém **442 linhas** e **11 colunas**. Isso significa que você deve ter 442 amostras e 11 recursos ou variáveis no seu conjunto de dados. A variável **SEX** provavelmente contém dados categóricos ou cadeias de caracteres.
 
 ## Verifique se há dados ausentes
 

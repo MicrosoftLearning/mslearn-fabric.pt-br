@@ -48,7 +48,11 @@ Para executar o código, você pode criar um *notebook*. Os notebooks fornecem u
 
 Agora você está pronto para executar o código para obter dados e treinar um modelo. Você trabalhará com o [conjunto de dados de diabetes](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) do Azure Open Datasets. Após carregar os dados, você os converterá em um dataframe do Pandas: uma estrutura comum para trabalhar com dados em linhas e colunas.
 
-1. Em seu notebook, use o ícone **+ Código** abaixo da última saída da célula para adicionar uma nova célula de código ao notebook e insira o seguinte código nela:
+1. No seu notebook, utilize o ícone **+ Código** abaixo da última célula para adicionar uma nova célula de código ao notebook.
+
+    > **Dica**: Para ver o ícone **+ Código**, mova o mouse para logo abaixo e à esquerda da saída da célula atual. Como alternativa, na barra de menus, na guia **Editar**, selecione **+ Adicionar célula de código**.
+
+1. Insira o seguinte código na nova célula de código:
 
     ```python
    # Azure storage access info for open dataset diabetes

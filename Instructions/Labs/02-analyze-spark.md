@@ -85,7 +85,7 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
 
     > **Observação**: como esta é a primeira vez que você executa qualquer código Spark, uma sessão do Spark precisa ser iniciada. Isso significa que a primeira execução na sessão pode levar um minuto para ser concluída. As execuções seguintes serão mais rápidas.
 
-4. Quando o comando de célula for concluído, analise a saída abaixo da célula, que deve ser semelhante a esta:
+4. Quando o comando de célula for concluído, analise a saída abaixo da célula, que deve ser semelhante a essa:
 
     | Índice | SO43701 | 11 | 2019-07-01 | Christy Zhu | christy12@adventure-works.com | Mountain-100 Silver, 44 | 16 | 3399.99 | 271.9992 |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
@@ -146,7 +146,7 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
 
     Agora, o dataframe inclui os nomes de colunas corretos (além do **Índice**, que é uma coluna interna em todos os dataframes com base na posição ordinal de cada linha). Os tipos de dados das colunas são especificados por meio de um conjunto padrão de tipos definidos na biblioteca do Spark SQL, que foram importados no início da célula.
 
-9. Confirme se as alterações foram aplicadas aos dados visualizando o dataframe. Execute a seguinte célula:
+9. Confirme se as alterações foram aplicadas aos dados visualizando o dataframe. Execute o código a seguir em uma nova célula de código:
 
     ```python
    display(df)
