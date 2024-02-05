@@ -6,7 +6,7 @@ lab:
 
 # Criar uma arquitetura de medalhão em um lakehouse do Microsoft Fabric
 
-Neste exercício, você criará uma arquitetura de medalhão em um Fabric Lakehouse usando notebooks. Você criará um workspace, criará um lakehouse, carregará dados na camada bronze, transformará os dados e os carregará na tabela Delta silver, transformará ainda mais os dados e os carregará nas tabelas Delta gold e explorará o conjunto de dados e criará relações.
+Neste exercício, você criará uma arquitetura de medalhão em um Fabric Lakehouse usando notebooks. Você criará um espaço de trabalho, criará um lakehouse, carregará dados na camada bronze, transformará os dados e os carregará na tabela Delta prata, transformará os dados ainda mais e os carregará nas tabelas Delta ouro e, em seguida, explorará o modelo semântico e criará relacionamentos.
 
 Este exercício deve levar aproximadamente **45** minutos para ser concluído
 
@@ -23,7 +23,7 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
    ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace-medallion.png)
 
-5. Navegue até as configurações do workspace e habilite o recurso de versão prévia do recurso de **edição do modelo de dados**. Isso permitirá que você crie relações entre tabelas em seu lakehouse usando um conjunto de dados do Power BI.
+5. Navegue até as configurações do workspace e habilite o recurso de versão prévia do recurso de **edição do modelo de dados**. Isso permitirá que você crie relacionamentos entre tabelas em seu lakehouse usando um modelo semântico do Power BI.
 
     ![Captura de tela da página de configurações do workspace no Fabric.](./Images/workspace-settings.png)
 
@@ -582,25 +582,24 @@ Observe que você poderia ter feito tudo isso em um único notebook, mas para os
 
 Agora você tem uma camada **ouro** modelada e com curadoria que pode ser utilizada para relatar e analisar.
 
-## Criar um conjunto de dados
+## Criar um modelo semântico
 
-No workspace, agora você pode usar a camada gold para criar um relatório e analisar os dados. Você pode acessar o conjunto de dados diretamente em seu workspace para criar relações e medidas para relatórios.
+No workspace, agora você pode usar a camada gold para criar um relatório e analisar os dados. Você pode acessar o modelo semântico diretamente no seu espaço de trabalho para criar relacionamentos e medidas para relatórios.
 
-Observe que você não pode usar o **conjunto de dados padrão** que é criado automaticamente quando você cria um lakehouse. Você deve criar um novo conjunto de dados que inclua as tabelas gold criadas neste exercício, por meio do Lakehouse Explorer.
+Observe que não é possível usar o **modelo semântico padrão** que é criado automaticamente quando você cria um lakehouse. Você deve criar um novo modelo semântico que inclua as tabelas douradas que você criou neste exercício, a partir do gerenciador do lakehouse.
 
 1. Em seu workspace, navegue até o lakehouse de **vendas**.
-2. Selecione **Novo conjunto de dados do Power BI** na faixa de opções da exibição do Lakehouse Explorer.
-3. Selecione suas tabelas gold transformadas para incluir no conjunto de dados e selecione **Confirmar**.
+2. Selecione **Novo modelo semântico** na faixa de opções do modo de exibição do gerenciador do lakehouse.
+3. Atribua o nome **Sales_Gold** ao seu novo modelo semântico.
+4. Selecione suas tabelas de ouro transformadas para incluir no seu modelo semântico e selecione **Confirmar**.
    - dimdate_gold
    - dimcustomer_gold
    - dimproduct_gold
    - factsales_gold
 
-    Isso abrirá o conjunto de dados no Fabric, em que você poderá criar relacionamentos e medidas, como mostrado aqui:
+    Isso abrirá o modelo semântico no Fabric, no qual você poderá criar relacionamentos e medidas, conforme mostrado aqui:
 
-    ![Captura de tela de um conjunto de dados no Fabric.](./Images/dataset-relationships.png)
-
-4. Renomeie o conjunto de dados para que seja mais fácil de identificar. Selecione o nome do conjunto de dados no canto superior esquerdo da janela. Renomeie o conjunto de dados como **Sales_Gold**.
+    ![Captura de tela de um modelo semântico no Fabric.](./Images/dataset-relationships.png)
 
 A partir daqui, você ou outros membros da sua equipe de dados podem criar relatórios e dashboards com base nos dados em seu lakehouse. Esses relatórios serão conectados diretamente à camada gold do seu lakehouse, para que eles sempre reflitam os dados mais recentes.
 

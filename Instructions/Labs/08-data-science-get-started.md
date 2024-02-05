@@ -50,7 +50,7 @@ Agora você está pronto para executar o código para obter dados e treinar um m
 
 1. No seu notebook, utilize o ícone **+ Código** abaixo da última célula para adicionar uma nova célula de código ao notebook.
 
-    > **Dica**: Para ver o ícone **+ Código**, mova o mouse para logo abaixo e à esquerda da saída da célula atual. Como alternativa, na barra de menus, na guia **Editar**, selecione **+ Adicionar célula de código**.
+    > **Dica**: Para ver o ícone **+ Código**, posicione o mouse um pouco abaixo e à esquerda da saída da célula atual. Como alternativa, na barra de menus, na guia **Editar**, selecione **+ Adicionar célula de código**.
 
 1. Insira o seguinte código na nova célula de código:
 
@@ -112,7 +112,7 @@ Agora que você já ingeriu e explorou os dados, pode transformá-los. Você pod
    df.head()
     ```
 
-1. Selecione **Dados** na faixa de opções do notebook e, em seguida, selecione a lista suspensa **Iniciar Data Wrangler**.
+1. Selecione **Dados** na faixa de opções do notebook e, em seguida, selecione o menu suspenso **Transformar DataFrame no Data Wrangler**.
 1. Selecione o conjunto de dados `df`. Quando o Data Wrangler é iniciado, ele gera uma visão geral descritiva do dataframe no painel **Resumo**.
 
     Atualmente, a coluna de rótulo é `Y`, que é uma variável contínua. Para treinar um modelo de machine learning que preveja Y, você precisa treinar um modelo de regressão. Os valores (previstos) de Y podem ser difíceis de interpretar. No entanto, podemos explorar o treinamento de um modelo de classificação que preveja se alguém tem um alto ou baixo risco de desenvolver diabetes. Para poder treinar um modelo de classificação, você precisa criar uma coluna de rótulo binário com base nos valores de `Y`.
@@ -224,11 +224,11 @@ O Microsoft Fabric acompanhará todos os seus experimentos e permitirá que voc�
 
 Depois de comparar os modelos de machine learning que você treinou nos experimentos, você poderá escolher o modelo de melhor desempenho. Para usar o modelo de melhor desempenho, salve o modelo e use-o para gerar previsões.
 
-1. Selecione **Salvar** na caixa **Salvar como modelo**.
-1. Selecione **Criar um modelo** na janela pop-up recém-aberta.
+1. Selecione **Salvar como modelo de ML** na faixa de opções do experimento.
+1. Selecione **Criar um modelo de ML** na janela pop-up recém-aberta.
 1. Selecione a pasta `model` .
 1. Dê ao modelo o nome `model-diabetes` e selecione **Salvar**.
-1. Selecione **Exibir modelo** na notificação exibida no canto superior direito da tela quando o modelo é criado. Você também pode atualizar a janela. O modelo salvo está vinculado em **Versões do modelo**.
+1. Selecione **Exibir modelo de ML** na notificação que aparece no canto superior direito da tela quando o modelo é criado. Você também pode atualizar a janela. O modelo salvo está vinculado nas **Versões do modelo de ML**.
 
 Observe que o modelo, o experimento e a execução do experimento estão vinculados, permitindo que você analise como o modelo é treinado.
 
