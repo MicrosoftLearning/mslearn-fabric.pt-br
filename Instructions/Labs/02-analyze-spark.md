@@ -16,9 +16,9 @@ Este laboratório levará aproximadamente **45** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Engenheiros de Dados do Synapse**.
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com) no `https://app.fabric.microsoft.com`, selecione **Engenharia de Dados do Synapse**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
-1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
+1. Crie um workspace com um nome de sua escolha, selecionando um modo de licenciamento na seção **Avançado** que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
 
     ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
@@ -31,7 +31,7 @@ Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse p
 
     Após alguns minutos, um lakehouse vazio será criado. Você precisa ingerir alguns dados no data lakehouse para análise. Há várias maneiras de fazer isso, mas neste exercício, você apenas baixará e extrairá uma pasta de arquivos de texto no computador local (ou na VM de laboratório, se aplicável) e os carregará no lakehouse.
 
-1. Baixe e extraia os arquivos de dados para este exercício em [https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip).
+1. Baixe e extraia os [arquivos de dados](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip) deste exercício em `https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip`.
 
 1. Depois de extrair o arquivo compactado, verifique se você tem uma pasta chamada **orders** que contém arquivos CSV chamados **2019.csv**, **2020.csv** e **2021.csv**.
 1. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Explorer**, selecione **Carregar** e **Carregar pasta** e carregue a pasta **orders** do computador local (ou da VM de laboratório, se aplicável) para o lakehouse.
@@ -71,7 +71,7 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
 
     ![Captura de tela de um notebook com um painel Arquivos.](./Images/notebook-files.png)
 
-2. No menu **…** de **2019.csv**, selecione **Carregar dados** > **Spark**. Uma nova célula de código que contém o seguinte código deve ser adicionada ao notebook:
+1. No menu **…** de **2019.csv**, selecione **Carregar dados** > **Spark**. Uma nova célula de código que contém o seguinte código deve ser adicionada ao notebook:
 
     ```python
    df = spark.read.format("csv").option("header","true").load("Files/orders/2019.csv")
@@ -81,11 +81,11 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
 
     > **Dica**: oculte os painéis do Lakehouse Explorer à esquerda usando os ícones **<<** . Isso ajudará você a se concentrar no notebook.
 
-3. Use o botão **&#9655; Executar célula** à esquerda da célula para executá-la.
+1. Use o botão **&#9655; Executar célula** à esquerda da célula para executá-la.
 
     > **Observação**: como esta é a primeira vez que você executa qualquer código Spark, uma sessão do Spark precisa ser iniciada. Isso significa que a primeira execução na sessão pode levar um minuto para ser concluída. As execuções seguintes serão mais rápidas.
 
-4. Quando o comando de célula for concluído, analise a saída abaixo da célula, que deve ser semelhante a essa:
+1. Quando o comando de célula for concluído, analise a saída abaixo da célula, que deve ser semelhante a essa:
 
     | Índice | SO43701 | 11 | 2019-07-01 | Christy Zhu | christy12@adventure-works.com | Mountain-100 Silver, 44 | 16 | 3399.99 | 271.9992 |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
@@ -95,7 +95,7 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
 
     A saída mostra as linhas e as colunas de dados do arquivo 2019.csv. No entanto, observe que os cabeçalhos de coluna não parecem corretos. O código padrão usado para carregar os dados em um dataframe pressupõe que o arquivo CSV inclua os nomes de coluna na primeira linha, mas nesse caso o arquivo CSV inclui apenas os dados sem informações de cabeçalho.
 
-5. Modifique o código para definir a opção **cabeçalho** como **false** da seguinte maneira:
+1. Modifique o código para definir a opção **cabeçalho** como **false** da seguinte maneira:
 
     ```python
    df = spark.read.format("csv").option("header","false").load("Files/orders/2019.csv")
@@ -103,7 +103,7 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
    display(df)
     ```
 
-6. Execute a célula novamente e analise a saída, que deve ser semelhante à esta:
+1. Execute a célula novamente e analise a saída, que deve ser semelhante à esta:
 
    | Índice | _c0 | _c1 | _c2 | _c3 | _c4 | _c5 | _c6 | _c7 | _c8 |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
@@ -114,7 +114,7 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
 
     Agora, o dataframe inclui corretamente a primeira linha como valores de dados, mas os nomes de colunas são gerados automaticamente e não são muito úteis. Para entender os dados, você precisa definir explicitamente o esquema e o tipo de dados corretos para os valores de dados no arquivo.
 
-7. Modifique o código da seguinte maneira para definir um esquema e aplicá-lo ao carregar os dados:
+1. Modifique o código da seguinte maneira para definir um esquema e aplicá-lo ao carregar os dados:
 
     ```python
    from pyspark.sql.types import *
@@ -135,7 +135,7 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
    display(df)
     ```
 
-8. Execute a célula modificada e analise a saída, que deve ser semelhante à esta:
+1. Execute a célula modificada e analise a saída, que deve ser semelhante à esta:
 
    | Índice | SalesOrderNumber | SalesOrderLineNumber | OrderDate | CustomerName | Email | Item | Quantidade | UnitPrice | Imposto |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
@@ -146,13 +146,15 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
 
     Agora, o dataframe inclui os nomes de colunas corretos (além do **Índice**, que é uma coluna interna em todos os dataframes com base na posição ordinal de cada linha). Os tipos de dados das colunas são especificados por meio de um conjunto padrão de tipos definidos na biblioteca do Spark SQL, que foram importados no início da célula.
 
-9. Confirme se as alterações foram aplicadas aos dados visualizando o dataframe. Execute o código a seguir em uma nova célula de código:
+1. Confirme se as alterações foram aplicadas aos dados visualizando o dataframe.
 
-    ```python
+1. Adicione uma nova célula de código usando o link **+ Código** que aparece ao mover o cursos sob o lado esquerdo da saída da célula atual (ou na barra de menu, na guia **Editar**, selecione **+ Adicionar célula de código**). Agora, insira o seguinte código na nova célula de código:
+
+    ```Python
    display(df)
     ```
 
-10. O dataframe só inclui os dados do arquivo **2019.csv**. Modifique o código para que o caminho do arquivo use um curinga \* para ler os dados do pedido de vendas de todos os arquivos da pasta **orders**:
+1. O dataframe só inclui os dados do arquivo **2019.csv**. Modifique o código para que o caminho do arquivo use um curinga \* para ler os dados do pedido de vendas de todos os arquivos da pasta **orders**:
 
     ```python
     from pyspark.sql.types import *
@@ -173,7 +175,7 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
     display(df)
     ```
 
-11. Execute a célula de código modificada e analise a saída, que agora incluirá as vendas de 2019, 2020 e 2021.
+1. Execute a célula de código modificada e analise a saída, que agora incluirá as vendas de 2019, 2020 e 2021.
 
     **Observação**: somente um subconjunto das linhas é exibido, ou seja, talvez você não consiga ver exemplos de todos os anos.
 
@@ -269,7 +271,7 @@ Uma tarefa comum para engenheiros de dados é ingerir os dados em uma estrutura 
 
 1. Adicione uma nova célula com o seguinte código para salvar o dataframe transformado no formato Parquet (substituindo os dados se eles já existirem):
 
-    ```python
+    ```Python
    transformed_df.write.mode("overwrite").parquet('Files/transformed_data/orders')
    print ("Transformed data saved!")
     ```
@@ -282,7 +284,7 @@ Uma tarefa comum para engenheiros de dados é ingerir os dados em uma estrutura 
 
 3. Adicione uma nova célula com o seguinte código para carregar um novo dataframe dos arquivos Parquet na pasta **transformed_orders/orders**:
 
-    ```python
+    ```Python
    orders_df = spark.read.format("parquet").load("Files/transformed_data/orders")
    display(orders_df)
     ```
@@ -293,7 +295,7 @@ Uma tarefa comum para engenheiros de dados é ingerir os dados em uma estrutura 
 
 1. Adicione uma nova célula com o código a seguir, que salva o dataframe, particionando os dados por **Year** e **Month**:
 
-    ```python
+    ```Python
    orders_df.write.partitionBy("Year","Month").mode("overwrite").parquet("Files/partitioned_data")
    print ("Transformed data saved!")
     ```
@@ -306,7 +308,7 @@ Uma tarefa comum para engenheiros de dados é ingerir os dados em uma estrutura 
 
 3. Adicione uma nova célula com o seguinte código para carregar um novo dataframe por meio do arquivo **orders.parquet**:
 
-    ```python
+    ```Python
    orders_2021_df = spark.read.format("parquet").load("Files/partitioned_data/Year=2021/Month=*")
    display(orders_2021_df)
     ```
