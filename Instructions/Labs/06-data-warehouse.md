@@ -66,7 +66,7 @@ Um warehouse é um banco de dados relacional no qual você pode definir tabelas 
 
 5. Execute a nova consulta para inserir três linhas na tabela **DimProduct**.
 6. Quando a consulta for concluída, selecione a guia **Dados** na parte inferior da página no data warehouse. No painel do **Explorer**, selecione a tabela **DimProduct** e verifique se as três linhas foram adicionadas a ela.
-7. Na guia do menu **Página Inicial**, use o botão **Nova Consulta SQL** para criar uma consulta. Em seguida, copie e cole o código Transact-SQL de [https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt) no novo painel de consulta.
+7. Na guia do menu **Página Inicial**, use o botão **Nova Consulta SQL** para criar uma consulta. Em seguida, copie e cole o código Transact-SQL de `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt` no novo painel de consulta.
 <!-- I had to remove the GO command in this query as well -->
 8. Execute a consulta, que criará um esquema de data warehouse simples e carregará alguns dados. O script levará cerca de 30 segundos para ser executado.
 9. Use o botão **Atualizar** da barra de ferramentas para atualizar a exibição. Em seguida, no painel do **Explorer**, verifique se o esquema **dbo** no data warehouse já contém as quatro seguintes tabelas:

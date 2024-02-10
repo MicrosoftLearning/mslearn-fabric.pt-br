@@ -31,7 +31,7 @@ Em nosso cenário, como não temos dados disponíveis, devemos ingerir dados a s
 
     Após alguns minutos, um lakehouse vazio será criado. Você precisa ingerir alguns dados no data lakehouse para análise. Há várias maneiras de fazer isso, mas neste exercício, você baixará um arquivo CVS no computador local (ou na VM de laboratório, se aplicável) e o carregará no lakehouse.
 
-1. Baixe o arquivo para este exercício em [https://github.com/MicrosoftLearning/dp-data/raw/main/sales.csv](https://github.com/MicrosoftLearning/dp-data/raw/main/sales.csv).
+1. Baixe o arquivo para este exercício em `https://github.com/MicrosoftLearning/dp-data/raw/main/sales.csv`.
 
 1. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Explorer**, selecione **Carregar** e **Carregar pasta** e carregue o arquivo **sales.csv** do computador local (ou da VM de laboratório, se aplicável) para o lakehouse.
 

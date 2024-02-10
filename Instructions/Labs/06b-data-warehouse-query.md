@@ -6,7 +6,7 @@ lab:
 
 # Consultar um data warehouse no Microsoft Fabric
 
-No Microsoft Fabric, um data warehouse fornece um banco de dados relacional para análise em larga escala. Os data warehouses no Microsoft Fabric incluem XXXXXX.
+No Microsoft Fabric, um data warehouse fornece um banco de dados relacional para análise em larga escala. O conjunto avançado de experiências incorporadas ao workspace do Microsoft Fabric permite que os clientes reduzam seu tempo para insights, tendo um modelo semântico facilmente consumível e sempre conectado integrado ao Power BI no modo DirectLake. 
 
 Este laboratório levará aproximadamente **30** minutos para ser concluído.
 
