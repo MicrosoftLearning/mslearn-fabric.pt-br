@@ -1,10 +1,10 @@
 ---
 lab:
-  title: Criar e utilizar notebooks para explorar dados
+  title: Explorar dados para ciência de dados com notebooks no Microsoft Fabric
   module: Explore data for data science with notebooks in Microsoft Fabric
 ---
 
-# Usar os notebooks do Microsoft Fabric para explorar dados
+# Explorar dados para ciência de dados com notebooks no Microsoft Fabric
 
 Neste laboratório, usaremos notebooks para exploração de dados. Os notebooks são uma ferramenta poderosa para explorar e analisar dados de forma interativa. Durante este exercício, aprenderemos a criar e utilizar notebooks para explorar um conjunto de dados, gerar estatísticas resumidas e criar visualizações para entender melhor os dados. Ao final deste laboratório, você terá uma sólida compreensão de como utilizar notebooks para explorar e analisar dados.
 

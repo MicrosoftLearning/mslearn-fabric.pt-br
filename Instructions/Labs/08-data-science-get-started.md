@@ -1,10 +1,10 @@
 ---
 lab:
-  title: Explorar a ciência de dados no Microsoft Fabric
+  title: Introdução à ciência de dados no Microsoft Fabric
   module: Get started with data science in Microsoft Fabric
 ---
 
-# Explorar a ciência de dados no Microsoft Fabric
+# Introdução à ciência de dados no Microsoft Fabric
 
 Neste laboratório, você fará a ingestão de dados, explorará os dados em um notebook, processará os dados com o Estruturador de Dados treinará dois tipos de modelos. Ao executar todas essas etapas, você poderá explorar os recursos de ciência de dados no Microsoft Fabric.
 
