@@ -49,8 +49,8 @@ Nesse laboratório, você usa a Análise de Dados em Tempo Real (RTA) do Fabric 
 
    Em seguida, use o controle deslizante para habilitar a disponibilidade.
 
-   ![Imagem de como selecionar o controle deslizante no Data Lake.](./images/data-availability-data-lake.png)
-
+   ![Imagem da seleção do controle deslizante no Data Lake](./Images/data-availability-data-lake.png)
+   
 1. Selecione a caixa de **dados de exemplo** nas opções de ***Iniciar obtendo dados***.
 
    ![Imagem de opções de seleção com dados de exemplo realçados](./Images/load-sample-data.png)
