@@ -1,10 +1,10 @@
 ---
 lab:
-  title: Gerar e salvar previsões em lote
+  title: Gere previsões em lote usando um modelo implantado no Microsoft Fabric
   module: Generate batch predictions using a deployed model in Microsoft Fabric
 ---
 
-# Gerar e salvar previsões em lote
+# Gere previsões em lote usando um modelo implantado no Microsoft Fabric
 
 Neste laboratório, você usará um modelo de machine learning para prever uma medida quantitativa do diabetes.
 
