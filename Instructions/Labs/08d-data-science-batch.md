@@ -129,7 +129,7 @@ Primeiro, vamos treinar um modelo de machine learning que usa um algoritmo *regr
 
 Para usar o modelo, você precisará de um conjunto de dados de detalhes de pacientes para os quais você precisa prever um diagnóstico de diabetes. Você criará esse conjunto de dados como uma tabela em um Microsoft Fabric Lakehouse.
 
-1. No editor do Notebook, no painel **Lakehouses** à esquerda, selecione **Adicionar** para adicionar um lakehouse.
+1. No editor do Notebook, no painel do **Explorer** do lado esquerdo, selecione **+ Fontes de dados** para adicionar um lakehouse.
 1. Selecione **Novo Lakehouse** e **Adicionar** e crie um nov **Lakehouse** com um nome válido de sua escolha.
 1. Quando solicitado a interromper a sessão atual, selecione **Parar agora** para reiniciar o notebook.
 1. Quando o lakehouse for criado e anexado ao notebook, adicione uma nova célula de código e execute o seguinte código para criar um conjunto de dados e salvá-lo em uma tabela no lakehouse:
