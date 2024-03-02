@@ -67,7 +67,7 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
 
 > **Observação**: o Spark dá suporte a várias linguagens de codificação, incluindo Scala, Java e outras. Neste exercício, usaremos o *PySpark*, que é uma variante otimizada para Spark do Python. O PySpark é uma das linguagens mais usadas no Spark e é a linguagem padrão nos notebooks do Fabric.
 
-1. Com o notebook visível, expanda a lista **Arquivos** e selecione a pasta **orders** para que os arquivos CSV sejam listados ao lado do editor do notebook, desta forma:
+1. Com o notebook visível, no painel do **Explorer** expanda **Lakehouses** e, a seguir, expanda a lista **Arquivos** para o seu lakehouse e selecione a pasta **Pedidos** para que os arquivos CSV sejam listados ao lado do editor do notebook, assim:
 
     ![Captura de tela de um notebook com um painel Arquivos.](./Images/notebook-files.png)
 
@@ -146,14 +146,6 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
 
     Agora, o dataframe inclui os nomes de colunas corretos (além do **Índice**, que é uma coluna interna em todos os dataframes com base na posição ordinal de cada linha). Os tipos de dados das colunas são especificados por meio de um conjunto padrão de tipos definidos na biblioteca do Spark SQL, que foram importados no início da célula.
 
-1. Confirme se as alterações foram aplicadas aos dados visualizando o dataframe.
-
-1. Adicione uma nova célula de código usando o link **+ Código** que aparece ao mover o cursos sob o lado esquerdo da saída da célula atual (ou na barra de menu, na guia **Editar**, selecione **+ Adicionar célula de código**). Agora, insira o seguinte código na nova célula de código:
-
-    ```Python
-   display(df)
-    ```
-
 1. O dataframe só inclui os dados do arquivo **2019.csv**. Modifique o código para que o caminho do arquivo use um curinga \* para ler os dados do pedido de vendas de todos os arquivos da pasta **orders**:
 
     ```python
@@ -185,7 +177,7 @@ O objeto de dataframe inclui uma ampla variedade de funções que você pode usa
 
 ### Filtrar um dataframe
 
-1. Use o ícone **+ Código** abaixo da saída da célula para adicionar uma nova célula de código ao notebook e insira o código a seguir nele.
+1. Adicione uma nova célula de código usando o link **+ Código** que aparece ao mover o cursos sob o lado esquerdo da saída da célula atual (ou na barra de menu, na guia **Editar**, selecione **+ Adicionar célula de código**). A seguir insira nele o seguinte código:
 
     ```Python
    customers = df['CustomerName', 'Email']
@@ -278,7 +270,7 @@ Uma tarefa comum para engenheiros de dados é ingerir os dados em uma estrutura 
 
     > **Observação**: normalmente, o formato *Parquet* é preferencial para os arquivos de dados que você usará para análise ou ingestão posterior em um repositório analítico. O Parquet é um formato muito eficiente que é compatível com a maioria dos sistemas de análise de dados em grande escala. Na verdade, às vezes, seu requisito de transformação de dados pode ser apenas converter dados de outro formato (como CSV) em Parquet.
 
-2. Execute a célula e aguarde a mensagem indicando que os dados foram salvos. Em seguida, no painel do **Explorer** à esquerda, no menu **…** do nó **Arquivos**, selecione **Atualizar**. Depois, selecione a pasta **transformed_orders** para verificar se ela contém uma nova pasta chamada **orders**, que, por sua vez, contém um ou mais arquivos Parquet.
+2. Execute a célula e aguarde a mensagem indicando que os dados foram salvos. Em seguida, no painel **Lakehouses** do lado esquerdo, no menu **…** do nó **Arquivos**, selecione **Atualizar** e selecione a pasta **Pedidos transformados** para verificar se contém uma nova pasta chamada **pedidos**, que, por sua vez, contém um ou mais arquivos Parquet.
 
     ![Captura de tela de uma pasta que contém os arquivos Parquet.](./Images/saved-parquet.png)
 
@@ -300,7 +292,7 @@ Uma tarefa comum para engenheiros de dados é ingerir os dados em uma estrutura 
    print ("Transformed data saved!")
     ```
 
-2. Execute a célula e aguarde a mensagem indicando que os dados foram salvos. Em seguida, no painel do **Explorer** à esquerda, no menu **…** do nó **Arquivos**, selecione **Atualizar**. Depois, expanda a pasta **partitioned_orders** para verificar se ela contém uma hierarquia de pastas chamada **Year=* xxxx***, cada uma contendo pastas chamadas **Month=* xxxx***. Cada pasta mensal contém um arquivo Parquet com os pedidos desse mês.
+2. Execute a célula e aguarde a mensagem indicando que os dados foram salvos. Em seguida, no painel **Lakehouses** do lado esquerdo, no menu **…** do nó **Arquivos**, selecione **Atualizar**e expanda a pasta **Pedidos particionados** para verificar se contém uma hierarquia de pastas chamada **Ano=* xxxx***, cada uma contendo pastas chamadas **Mês=* xxxx***. Cada pasta mensal contém um arquivo Parquet com os pedidos desse mês.
 
     ![Captura de tela de uma hierarquia de arquivos de dados particionados.](./Images/partitioned-files.png)
 
@@ -337,7 +329,7 @@ As tabelas em um metastore do Spark são abstrações relacionais em arquivos no
 
 2. Execute a célula de código e analise a saída, que descreve a definição da nova tabela.
 
-3. No painel do **Explorer**, no menu **…** da pasta **Tabelas**, selecione **Atualizar**. Em seguida, expanda o nó **Tabelas** e verifique se a tabela **salesorders** foi criada.
+3. No painel **Lakehouses**, no menu **…** da pasta **Tabelas**, selecione **Atualizar**. Em seguida, expanda o nó **Tabelas** e verifique se a tabela **salesorders** foi criada.
 
     ![Captura de tela da tabela salesorder no Explorer.](./Images/table-view.png)
 
@@ -389,7 +381,7 @@ Como o provérbio diz, uma imagem vale mil palavras, e um gráfico geralmente é
 
 2. Execute o código e observe que ele retorna os dados da exibição **salesorders** que você já criou.
 3. Na seção de resultados abaixo da célula, altere a opção **Exibir** de **Tabela** para **Gráfico**.
-4. Use o botão **Exibir opções** no canto superior direito do gráfico para exibir o painel de opções do gráfico. Em seguida, defina as opções da seguinte maneira e selecione **Aplicar**:
+4. Use o botão **Personalizar gráfico** no canto superior direito do gráfico para exibir o painel de opções do gráfico. Em seguida, defina as opções da seguinte maneira e selecione **Aplicar**:
     - **Tipo de gráfico**: Gráfico de barras
     - **Chave**: Item
     - **Valores**: Quantidade

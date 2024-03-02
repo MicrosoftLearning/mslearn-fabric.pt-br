@@ -57,6 +57,8 @@ Neste tutorial, você aprenderá como:
 
 2. Alterne o botão para **Ativo** e selecione **Concluído**.
 
+ > **Observação:** Você não precisa selecionar uma pasta, o Fabric a criará para você.
+
    ![Imagem da alternância habilitar onelake](./Images/enable-onelake-toggle.png)
 
 ## Criar um fluxo de eventos
@@ -94,35 +96,16 @@ Neste tutorial, você aprenderá como:
    | Nome do destino | MyStockData                                    |
    | Workspace        | O workspace em que você criou um banco de dados KQL |
    | Banco de dados KQL     | MyStockData                                    |
+   | Tabela de destino| MyStockData                                    |
+   | Formato de dados de entrada| Json                                           |
 
-3. Selecione **Criar e configurar**.
+3. Selecione **Adicionar**.
 
-## Configurar a ingestão de dados
-
-1. Na página da caixa de diálogo **Ingerir dados**, selecione a **Nova Tabela** e insira MyStockData.
-
-   ![Imagem da inserção de dados de estoque](./Images/ingest-stream-data-to-kql.png)
-
-2. Selecione **Avançar: origem**.
-3. Na página **Origem**, confirme o **Nome da conexão de dados** e selecione **Avançar: Esquema**.
-
-   ![Imagem do nome da fonte de dados](./Images/ingest-data.png)
-
-4. Os dados de entrada são descompactados para os dados de exemplo, ou seja, mantenha o tipo de compactação como descompactado.
-5. Na lista suspensa **Formato de Dados**, selecione **JSON**.
-
-   ![Imagem de Alteração para JSON](./Images/injest-as-json.png)
-
-6. Depois disso, pode ser necessário alterar alguns ou todos os tipos de dados do fluxo de entrada para as tabelas de destino.
-7. Realize essa tarefa selecionando a **seta para baixo > Alterar tipo de dados**. Em seguida, verifique se as colunas refletem o tipo de dados correto:
-
-   ![Imagem de tipos de dados de alteração](./Images/change-data-type-in-es.png)
-
-8. Quando terminar, selecione **Avançar: Resumo**
+> **Observação**: A ingestão de dados começará imediatamente.
 
 Aguarde até que todas as etapas sejam marcadas com marcas de seleção verde. Você verá o título da página **Ingestão contínua do fluxo de eventos estabelecida.** Depois disso, selecione **Fechar** para voltar à página Fluxo de eventos.
 
-> **Observação**: pode ser necessário atualizar a página para exibir a tabela depois que a conexão do fluxo de eventos for criada e estabelecida
+> **Observação**: Pode ser necessário atualizar a página para exibir a tabela depois que a conexão do fluxo de eventos for criada e estabelecida.
 
 ## Consultas KQL
 
@@ -143,7 +126,7 @@ O KQL (Linguagem de Consulta Kusto) é uma solicitação somente leitura para pr
 
    ![Imagem dos resultados da consulta KQL nas últimas 24 horas](./Images/kql-query-results-last24.png)
 
-> **Observação**: observe que os volumes dos dados de streaming excedem os limites da consulta. Esse comportamento poderá variar conforme o volume de dados transmitidos para o banco de dados.
+> **Observação**: Você poderá ver um aviso de que excedeu os limites de consulta. Esse comportamento vai variar conforme o volume de dados transmitidos para o banco de dados.
 
 Você pode continuar navegando com as funções de consulta internas para se familiarizar com seus dados.
 
@@ -164,6 +147,6 @@ Você pode continuar navegando usando as funções de build e se familiarizar co
 ## Limpar os recursos
 
 Neste exercício, você criou um banco de dados KQL e configurou o streaming contínuo com fluxo de eventos. Depois disso, você consultou os dados usando o KQL e o SQL. Depois de explorar o banco de dados KQL, exclua o workspace criado para este exercício.
-1. Na barra à esquerda, selecione o ícone do workspace.
-2. No menu … da barra de ferramentas, selecione Configurações do workspace.
+1. Na barra à esquerda, selecione o ícone do seu workspace.
+2. No ... menu da barra de ferramentas, selecione Configurações do Espaço de Trabalho.
 3. Na seção Outros, selecione Remover este workspace.

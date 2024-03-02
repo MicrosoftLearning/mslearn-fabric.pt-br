@@ -33,7 +33,7 @@ Em nosso cenário, como não temos dados disponíveis, devemos ingerir dados a s
 
 1. Baixe o arquivo para este exercício em `https://github.com/MicrosoftLearning/dp-data/raw/main/sales.csv`.
 
-1. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Explorer**, selecione **Carregar** e **Carregar pasta** e carregue o arquivo **sales.csv** do computador local (ou da VM de laboratório, se aplicável) para o lakehouse.
+1. Retorne à guia do navegador da Web que contém o seu Lakehouse e, no menu **...** da pasta **Arquivos** no painel **Explorer**, selecione **Carregar** e **Carregar arquivos** e, em seguida, carregue o arquivo **sales.csv** do seu computador local (ou VM do laboratório, se for o caso) para o Lakehouse.
 
 1. Depois que os arquivos forem carregados, selecione **Arquivos**. Verifique se o arquivo CSV foi carregado, conforme mostrado aqui:
 
