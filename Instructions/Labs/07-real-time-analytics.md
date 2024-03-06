@@ -42,17 +42,34 @@ O KQL (Linguagem de Consulta Kusto) é usada para consultar dados estáticos ou 
 3. Quando o banco de dados for criado, selecione a opção para obter dados de um **Arquivo Local**. Em seguida, use o assistente para importar os dados para uma nova tabela selecionando as seguintes opções:
     - **Destino**:
         - **Banco de dados**: *o banco de dados que você criou já está selecionado*
-        - **Tabela**: *crie uma tabela chamada* **sales**.
-    - **Origem**:
-        - **Tipo de origem**: arquivo
-        - **Carregar arquivos**: *arraste ou procure o arquivo já baixado*
-    - **Esquema**:
-        - **Tipo de compactação**: descompactado
-        - **Formato dos dados**: CSV
-        - **Ignorar o primeiro registro**: *Selecionado*
-        - **Nome do mapeamento**: sales_mapping
-    - **Resumo**:
-        - *Analise a visualização da tabela e feche o assistente.*
+        - **Table**: *Crie uma nova tabela chamada* **vendas** clicando no sinal + à esquerda de ***Nova tabela***
+
+        ![Etapa um do Assistente de nova tabela](./Images/import-wizard-local-file-1.png?raw=true)
+
+        - Agora você verá o hiperlink **Arrastar arquivos aqui ou Procurar arquivos** aparecer na mesma janela.
+
+        ![Etapa dois do Assistente de nova tabela](./Images/import-wizard-local-file-2.png?raw=true)
+
+        - navegue ou arraste sua tabela **sales.csv** para a tela e aguarde até que a caixa Statustatus mude para uma caixa de seleção verde e, em seguida, selecione **Avançar**
+
+        ![Etapa três do Assistente de nova tabela](./Images/import-wizard-local-file-3.png?raw=true)
+
+        - Nesta tela, você verá que os cabeçalhos de coluna estão na primeira linha; embora o sistema os tenha detectado, ainda precisamos mover o controle deslizante acima dessas linhas **A primeira linha é o cabeçalho da coluna** para evitar a obtenção de erros.
+        
+        ![Etapa quatro do Assistente de nova tabela](./Images/import-wizard-local-file-4.png?raw=true)
+
+        - Depois de selecionar este controle deslizante e constatar que tudo parece estar correto, selecione o botão **Concluir** na parte inferior direita do painel.
+
+        ![Etapa cinco do Assistente de nova tabela](./Images/import-wizard-local-file-5.png?raw=true)
+
+        - Aguarde a conclusão das etapas na tela de resumo, que incluem:
+            - Criar tabela (vendas)
+            - criar mapeamento (sales_mapping)
+            - Enfileiramento de dados
+            - Ingestão
+        - Selecione o botão **Fechar**
+
+        ![Etapa seis do Assistente de nova tabela](./Images/import-wizard-local-file-6.png?raw=true)
 
 > **Dica**: neste exemplo, você importou um volume muito pequeno de dados estáticos de um arquivo, o que é útil para os propósitos do exercício. Na realidade, você pode usar o Kusto para analisar volumes muito maiores de dados, incluindo dados em tempo real de uma fonte de streaming como os Hubs de Eventos do Azure.
 
