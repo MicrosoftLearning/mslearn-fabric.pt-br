@@ -10,7 +10,7 @@ No Microsoft Fabric, um data warehouse fornece um banco de dados relacional para
 
 Este laboratório levará aproximadamente **30** minutos para ser concluído.
 
-> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: Você precisa de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
 
 ## Criar um workspace
 
@@ -27,10 +27,10 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Agora que você tem um espaço de trabalho, é hora de criar um data warehouse.
 
-1. No canto inferior esquerdo, verifique se a experiência **Data Warehouse** está selecionada.
-1. Na página **Inicial**, selecione **Amostra de warehouse** e crie um novo data warehouse chamado **sample-dw**.
+1. No canto inferior esquerdo, certifique-se de que a experiência do **Data Warehouse** esteja selecionada.
+1. Na **Página inicial**, selecione **Warehouse de amostra** e crie um novo data warehouse chamado **sample-dw**.
 
-    Após cerca de um minuto, um novo warehouse será criado e preenchido com dados de amostra para um cenário de análise de corrida de táxi.
+    Após um minuto ou mais, um novo warehouse será criado e preenchido com dados de exemplo para um cenário de análise de corrida de táxi.
 
     ![Captura de tela de um novo warehouse.](./Images/sample-data-warehouse.png)
 

@@ -10,7 +10,7 @@ No Microsoft Fabric, um data warehouse fornece um banco de dados relacional para
 
 Este laboratório levará aproximadamente **30** minutos para ser concluído.
 
-> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: Você precisa de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
 
 ## Criar um workspace
 
