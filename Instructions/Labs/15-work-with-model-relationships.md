@@ -6,19 +6,17 @@ lab:
 
 # Trabalhar com relações de modelo
 
-## Visão geral
+Neste exercício, você trabalhará com relações de modelo especificamente para atender à necessidade de dimensões com função múltipla. Isso envolverá trabalhar com relacionamentos ativos e inativos, e também funções DAX (Data Analysis Expressions) que modificam o comportamento do relacionamento.
 
-**O tempo estimado para concluir o laboratório é de 45 minutos**
-
-Neste laboratório, você trabalhará com relações de modelo, especificamente para abordar a necessidade de dimensões de interpretação de papéis. Isso envolverá trabalhar com relacionamentos ativos e inativos, e também funções DAX (Data Analysis Expressions) que modificam o comportamento do relacionamento.
-
-Neste laboratório, você aprenderá a:
+Neste exercício, você aprenderá a:
 
 - Interpretar propriedades de relacionamento no diagrama de modelo.
-
 - Definir propriedades de relação.
+- Use funções DAX que modificam o comportamento do relacionamento.
 
-- Usar funções DAX que modificam o comportamento da relação
+Este laboratório leva cerca de **45** minutos para ser concluído.
+
+> **Observação**: Você precisará de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
 
 ## Explorar relações de modelo
 
