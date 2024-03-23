@@ -7,11 +7,12 @@ lab:
 ---
 
 # Introdução à consulta de um banco de dados Kusto no Microsoft Fabric
+
 Os painéis em tempo real permitem obter insights de dentro do Microsoft Fabric usando a Linguagem de Consulta Kusto (KQL) para recuperar dados estruturados e não estruturados e renderizá-los em gráficos, dispersões, tabelas e muito mais dentro de painéis que permitem vincular dados semelhantes a segmentações de dados no Power BI. 
 
 Este laboratório leva cerca de **25** minutos para ser concluído.
 
-> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: Você precisa de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
 
 ## Criar um workspace
 
@@ -46,7 +47,7 @@ Nesse laboratório, você usa a Análise de Dados em Tempo Real (RTA) do Fabric 
  
    ![Imagem de opções de seleção com dados de exemplo realçados](./Images/load-sample-data.png)
 
-6. escolha a caixa **Análise de métricas automotivas** nas opções de dados de exemplo.
+6. Escolha a caixa **Análise de Métricas Automotivas** nas opções de dados de exemplo.
 
    ![Imagem da escolha de dados de análise para laboratório](./Images/create-sample-data.png)
 
@@ -54,7 +55,7 @@ Nesse laboratório, você usa a Análise de Dados em Tempo Real (RTA) do Fabric 
 
    ![Dados sendo carregados no Banco de Dados KQL](./Images/choose-automotive-operations-analytics.png)
 
-7. Depois que os dados forem carregados, verifique se eles foram carregados no banco de dados KQL. Você pode realizar essa operação selecionando as reticências à direita da tabela, navegando até a **Tabela de consulta** e selecionando **Mostrar quaisquer 100 registros**.
+7. Depois que os dados forem carregados, verifique se eles foram carregados no banco de dados KQL. Realize essa operação selecionando as reticências (…) à direita da tabela, navegando até **Tabela de consulta** e selecionando **Mostrar quaisquer 100 registros**.
 
     ![Imagem da seleção dos 100 principais arquivos da tabela RawServerMetrics](./Images/rawservermetrics-top-100.png)
 
@@ -80,7 +81,7 @@ Trips
 | sort by Borough asc 
 
 ```
-3. Pressione o botão Executar e verifique se a consulta não tem erros.
+3. Pressione o botão **Executar** e verifique se a consulta não tem erros.
 4. No lado direito do painel, selecione a guia **Formatação visual** e conclua o ***Nome do bloco*** e o ***Tipo de objeto visual***.
 
    ![Imagem do bloco de formatação visual.](./Images/visual-formatting-tile.png)

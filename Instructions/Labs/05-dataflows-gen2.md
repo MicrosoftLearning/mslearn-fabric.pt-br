@@ -10,7 +10,7 @@ No Microsoft Fabric, os Fluxos de Dados (Gen2) se conectam a várias fontes de d
 
 Este laboratório foi projetado para introduzir os diferentes elementos dos Fluxos de Dados (Gen2) e não criar uma solução complexa que possa existir em uma empresa. Ele leva **cerca de 30 minutos** para ser concluído.
 
-> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: Você precisa de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
 
 ## Criar um workspace
 
