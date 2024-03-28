@@ -1,7 +1,7 @@
 ---
 lab:
-  title: Introdução à análise em tempo real no Microsoft Fabric
-  module: Get started with Real-Time Analytics in Microsoft Fabric
+  title: Introdução ao Eventstream no Microsoft Fabric
+  module: Get started with Eventstream in Microsoft Fabric
 ---
 # Comece a usar o Eventstream no Real-Time Analytics (RTA)
 
@@ -9,7 +9,7 @@ O Eventstream é um recurso do Microsoft Fabric que captura, transforma e roteia
 
 Este laboratório leva cerca de **30** minutos para ser concluído.
 
-> **Observação**: você precisará ter uma licença do Microsoft Fabric para concluir este exercício. Confira [Introdução ao Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obter detalhes de como habilitar uma licença de avaliação gratuita do Fabric. Você precisará ter uma conta *corporativa* ou de *estudante* da Microsoft para fazer isso. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: Você precisa de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
 
 ## Criar um workspace
 

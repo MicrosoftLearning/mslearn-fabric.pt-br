@@ -14,7 +14,7 @@ Para essa experiência, você criará o código em várias células de código d
 
 Como você também está trabalhando com um conjunto de dados de exemplo, a otimização não reflete o que você pode ver na produção em escala; no entanto, você ainda pode ver melhorias e, quando cada milissegundo conta, a otimização é fundamental.
 
-> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: Você precisará uma [avaliação gratuita do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir este exercício.
 
 ## Criar um workspace
 

@@ -12,7 +12,7 @@ Ao concluir esse laboratório, você ganhará experiência prática na geração
 
 Este laboratório levará aproximadamente **20** minutos para ser concluído.
 
-> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: Você precisará uma [avaliação gratuita do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir este exercício.
 
 ## Criar um workspace
 

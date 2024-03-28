@@ -6,17 +6,16 @@ lab:
 
 # Usar ferramentas para otimizar o desempenho do Power BI
 
-## Visão geral
-
-**O tempo estimado para concluir o laboratório é de 30 minutos**
-
 Neste laboratório, você aprenderá a usar duas ferramentas externas para ajudá-lo a desenvolver, gerenciar e otimizar modelos de dados e consultas DAX.
 
-Neste laboratório, você aprenderá a usar:
+Nesse exercício, você aprenderá a usar:
 
-- Analisador de Melhor Prática (BPA) no Editor Tabular.
-
+- O Analisador de Melhor Prática (BPA) no Editor Tabular.
 - DAX Studio.
+
+Este laboratório leva cerca de **30** minutos para ser concluído.
+
+> **Observação**: Você precisará de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
 
 ## Introdução
 
@@ -66,15 +65,15 @@ Baixe e instale o Editor de Tabela 2 para habilitar a criação de grupos de cá
 
 Nesta tarefa, você abrirá uma solução pré-desenvolvida do Power BI Desktop.
 
-1. Abra o [arquivo inicial de Análise de Vendas](https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/16/Starter/Sales%20Analysis%20-%20Use%20tools%20to%20optimize%20Power%20BI%20performance.pbix) e salve-o em um local que você se lembrará.
+1. Faça o download do [Arquivo inicial de Análise de Vendas](https://aka.ms/fabric-optimize-starter) de `https://aka.ms/fabric-optimize-starter` e salve-o em um local que você se lembrará.
 
 1. Navegue até o arquivo baixado e abra-o no Power BI Desktop.
 
-7. Selecione a guia **Ferramentas Externas** da faixa de opções.
+1. Selecione a guia **Ferramentas Externas** da faixa de opções.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image8.png)
 
-8. Observe que você pode iniciar o Editor de Tabela nesta guia da faixa de opções.
+1. Observe que você pode iniciar o Editor de Tabela nesta guia da faixa de opções.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image9.png)
 
@@ -115,8 +114,6 @@ Nesta tarefa, você carregará regras do BPA.
     ![](Images/use-tools-to-optimize-power-bi-performance-image13.png)
 
 3. Copie e cole o script a seguir.
-
-    *Dica: O script está disponível para ser copiado e colado de **D:\fabric\Allfiles\Labs\16\Assets\Snippets.txt**.*
 
     ```csharp
     System.Net.WebClient w = new System.Net.WebClient(); 
@@ -204,7 +201,7 @@ Nesta tarefa, você abrirá o BPA e revisará os resultados das verificações.
     *Dica: Todas as fórmulas estão disponíveis para serem copiadas e coladas de **D:\fabric\Allfiles\Labs\16\Snippets.txt**.*
 
     ```dax
-    DIVIDE ( [Profit], SUM ( 'Sales'[Sales Amount] ) )C#
+    DIVIDE ( [Profit], SUM ( 'Sales'[Sales Amount] ) )
     ```
 
 7. Para salvar as alterações do modelo, na barra de ferramentas, selecione o comando **Salvar alterações no banco de dados conectado** (ou pressione **Ctrl+S**).
@@ -255,6 +252,8 @@ Nesta tarefa, você abrirá o BPA e revisará os resultados das verificações.
 
     *Você também deve salvar o arquivo do Power BI Desktop para garantir que as alterações do Editor de Tabela sejam salvas.*
 
+    *Na mensagem sobre alterações pendentes, selecione **Aplicar mais tarde**.*
+
 ## Usar o DAX Studio
 
 Neste exercício, você usará o Estúdio DAX para otimizar consultas DAX no arquivo de relatório do Power BI.
@@ -297,7 +296,7 @@ Nesta tarefa, você baixará o DAX Studio.
 1. Após a conclusão, com a opção **Iniciar o DAX Studio** selecionada, clique em**Concluir**. Isso abrirá o DAX Studio.
     ![Interface gráfica do usuário; descrição do aplicativo gerada automaticamente](Images/use-tools-to-optimize-power-bi-performance-image31f.png)
 
-1. Na janela **Conectar**, selecione a opção **Modelo PBI / SSDT**.
+1. Na janela **Conectar**, selecione a opção **Modelo SSDT / Power BI**.
 
 1. Na lista suspensa correspondente, verifique se o modelo **Análise de Vendas - Usar ferramentas para otimizar o desempenho do Power BI** está selecionado.
 
@@ -317,45 +316,43 @@ Nesta tarefa, você otimizará uma consulta usando uma fórmula de medida aprimo
 
 *Observe que é difícil otimizar uma consulta quando os volumes do modelo de dados são pequenos. Este exercício se concentra no uso do DAX Studio e não na otimização de consultas do DAX.*
 
-1. No menu **Arquivo**, selecione **Procurar**.
+1. Em uma janela do navegador, baixe os arquivos [Crescimento de Lucro Mensal.dax](https://aka.ms/fabric-optimize-dax) de `https://aka.ms/fabric-optimize-dax` e salve-os em seu computador local (em qualquer pasta).
 
-2. Na janela **Abrir**, vá para a pasta **D:\fabric\Allfiles\Labs\16\Assets**.
+   ![](https://github.com/MicrosoftLearning/mslearn-fabric/assets/34583336/58254cce-753e-4322-9060-536e12554aa7)
 
-3. Selecione **Monthly Profit Growth.dax**.
-
-4. Selecione **Abrir**.
+3. Alterne para a janela do Dax Studio e, no menu **Arquivo**, selecione **Navegar** para navegar até o arquivo **Crescimento de Lucro Mensal.dax** e **Abrir** o arquivo.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image33.png)
 
-5. Leia os comentários na parte superior do arquivo e revise a consulta a seguir.
+6. Leia os comentários na parte superior do arquivo e revise a consulta a seguir.
 
     *Não é importante entender toda a consulta.*
 
     *A consulta define duas medidas que determinam o crescimento do lucro mensal. Atualmente, a consulta usa apenas a primeira medida (na linha 72). Quando uma medida não é usada, ela não afeta a execução da consulta.*
 
-6. Para executar um rastreamento de servidor para registrar informações detalhadas do tempo que leva para criar o perfil de desempenho, na guia **Página Inicial** da faixa de opções, dentro do grupo **Rastreamentos**, selecione **Tempos de Servidor**.
+7. Para executar um rastreamento de servidor para registrar informações detalhadas do tempo que leva para criar o perfil de desempenho, na guia **Página Inicial** da faixa de opções, dentro do grupo **Rastreamentos**, selecione **Tempos de Servidor**.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image34.png)
 
-7. Para executar o script, na guia **Página Inicial** da faixa de opções, dentro do grupo **Consulta**, selecione o ícone **Executar**.
+8. Para executar o script, na guia **Página Inicial** da faixa de opções, dentro do grupo **Consulta**, selecione o ícone **Executar**.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image35.png)
 
-8. No painel inferior, revise os resultados da consulta.
+9. No painel inferior, revise os resultados da consulta.
 
     *A última coluna exibe os resultados da medida.*
 
-9. No painel inferior, selecione a guia **Tempos do Servidor**.
+10. No painel inferior, selecione a guia **Tempos do Servidor**.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image36.png)
 
-10. Revise as estatísticas disponíveis no lado esquerdo.
+11. Revise as estatísticas disponíveis no lado esquerdo.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image37.png)
 
     *Da parte superior esquerda para a parte inferior direita, as estatísticas informam quantos milissegundos foram necessários para executar a consulta e a duração da CPU do mecanismo de armazenamento (SE). Neste caso (seus resultados serão diferentes), o mecanismo de fórmula (FE) levou 73,5% do tempo, enquanto que o SE levou os 26,5% restantes. Foram 34 consultas individuais do SE e 21 ocorrências no cache.*
 
-11. Execute a consulta novamente e observe que todas as consultas do SE vêm do cache do SE.
+12. Execute a consulta novamente e observe que todas as consultas do SE vêm do cache do SE.
 
     *Isso porque os resultados foram armazenados em cache para reutilização. Às vezes, em seus testes, convém limpar o cache. Nesse caso, na guia **Página Inicial** da faixa de opções, selecione a seta para baixo no comando **Executar**.*
 
@@ -363,15 +360,15 @@ Nesta tarefa, você otimizará uma consulta usando uma fórmula de medida aprimo
 
     *A definição da segunda medida fornece um resultado mais eficiente. Agora, você atualizará a consulta para usar a segunda medida.*
 
-12. Na linha 72, substitua a palavra **Ruim** por **Melhor**.
+13. Na linha 72, substitua a palavra **Ruim** por **Melhor**.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image39.png)
 
-13. Execute a consulta e, em seguida, revise as estatísticas de tempo do servidor.
+14. Execute a consulta e, em seguida, revise as estatísticas de tempo do servidor.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image40.png)
 
-14. Execute-a uma segunda vez para obter ocorrências completas no cache.
+15. Execute-a uma segunda vez para obter ocorrências completas no cache.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image41.png)
 

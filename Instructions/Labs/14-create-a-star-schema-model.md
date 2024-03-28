@@ -6,17 +6,17 @@ lab:
 
 # Criar e explorar um modelo semântico
 
-## Visão geral
-
-**O tempo estimado para concluir o laboratório é de 30 minutos**
-
-Neste laboratório, você usará a interface do Fabric para desenvolver um modelo de dados sobre os dados de amostra do NY Taxi em um data warehouse do Fabric.
+Neste exercício, você usará o Microsoft Fabric para desenvolver um modelo de dados para os dados de exemplo de táxi de NYC em um data warehouse.
 
 Você praticará:
 
 - Criação de um modelo semântico personalizado a partir de um data warehouse do Fabric.
 - Criar relacionamentos e organizar o diagrama do modelo.
 - Explore os dados em seu modelo semântico diretamente no Fabric.
+
+Este laboratório leva cerca de **30** minutos para ser concluído.
+
+> **Observação**: Você precisa de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
 
 ## Criar um workspace
 
