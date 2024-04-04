@@ -8,15 +8,13 @@ lab:
 
 Um Conjunto de Consultas KQL é uma ferramenta que permite executar consultas, além de modificar e exibir resultados de consultas de um banco de dados KQL. Você pode vincular cada guia no Conjunto de Consultas KQL a um banco de dados KQL diferente, além de salvar suas consultas para uso futuro ou compartilhá-las com outras pessoas para fins de análise de dados. Você também pode alternar o banco de dados KQL para qualquer guia, de modo a poder comparar os resultados de consultas de diferentes fontes de dados.
 
+Neste exercício, você executará a função de um analista encarregado de consultar um conjunto de dados de exemplo de corridas de táxi de NYC de métricas brutas em que você efetua pull de estatísticas resumidas (criação de perfil) dos dados do ambiente do Fabric. Você usa KQL para consultar esses dados, coletar informações e obter insights informativos sobre os dados.
+
 Para criar consultas, o Conjunto de Consultas KQL usa a Linguagem de Consulta Kusto, que é compatível com diversas funções SQL. Para obter mais informações sobre a [Linguagem de Consulta Kusto (KQL) ](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext).
 
 Este laboratório leva cerca de **25** minutos para ser concluído.
 
-## Cenário
-
-Neste cenário, você é um analista encarregado de consultar um conjunto de dados de exemplo de corridas de táxi de NYC de métricas brutas no qual você efetua pull de estatísticas resumidas (criação de perfil) dos dados do ambiente do Fabric. Você usa KQL para consultar esses dados, coletar informações e obter insights informativos sobre os dados.
-
-> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: Você precisa de uma [avaliação gratuita do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
 
 ## Criar um workspace
 
@@ -41,7 +39,7 @@ Nesse laboratório, você usa a Análise de Dados em Tempo Real (RTA) do Fabric 
 
    ![Imagem do nome do Banco de Dados KQL](./Images/name-kqldatabase.png)
 
-1. Dê ao banco de dados KQL um nome do qual você se lembrará, como **MyStockData**, e pressione **Criar**.
+1. Dê ao banco de dados KQL um nome que você se lembra, como **TaxiData**, pressione **Criar**.
 
 1. No painel **Detalhes do banco de dados**, selecione o ícone de lápis para ativar a disponibilidade no OneLake.
 
