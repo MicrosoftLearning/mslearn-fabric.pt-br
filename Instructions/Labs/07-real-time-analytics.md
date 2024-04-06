@@ -10,7 +10,7 @@ O Microsoft Fabric fornece um runtime que você pode usar para armazenar e consu
 
 Este laboratório leva cerca de **30** minutos para ser concluído.
 
-> **Observação**: Você precisará uma [avaliação gratuita do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir este exercício.
+> **Observação**: Você precisa de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
 
 ## Criar um workspace
 
