@@ -6,21 +6,18 @@ lab:
 
 # Impor a segurança de modelo
 
-## Visão geral
+Nesse exercício, você atualizará um modelo de dados pré-desenvolvido para impor a segurança. Especificamente, os vendedores da empresa Adventure Works só devem poder ver os dados de vendas relacionados à região de vendas atribuída.
 
-**O tempo estimado para concluir o laboratório é de 45 minutos**
-
-Neste laboratório, você atualizará um modelo de dados pré-desenvolvido para reforçar a segurança. Especificamente, os vendedores da empresa Adventure Works só devem poder ver os dados de vendas relacionados à região de vendas atribuída.
-
-Neste laboratório, você aprenderá a:
+Neste exercício, você aprenderá a:
 
 - Criar funções estáticas.
-
 - Criar funções dinâmicas.
-
 - Validar funções.
-
 - Mapear entidades de segurança para funções de modelo semântico.
+
+Esse laboratório leva cerca de **45** minutos para ser concluído.
+
+> **Observação**: Você precisará uma [avaliação gratuita do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
 
 ## Introdução
 
@@ -28,7 +25,7 @@ Neste exercício, você preparará seu ambiente.
 
 ### Faça o download do arquivo inicial do Power BI
 
-1. Abra o [arquivo inicial de Análise de Vendas](https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/17/Starter/Sales%20Analysis%20-%20Enforce%20model%20security.pbix) e salve-o em um local que você se lembrará.
+1. Baixe o [arquivo inicial da Análise de Vendas](https://aka.ms/fabric-security-starter) de `https://aka.ms/fabric-security-starter` e salve-o no computador local (em qualquer pasta).
 
 1. Navegue até o arquivo baixado e abra-o no Power BI Desktop.
 
@@ -38,7 +35,7 @@ Neste exercício, você preparará seu ambiente.
 
 Nesta tarefa, você entrará no serviço do Power BI, iniciará uma licença de avaliação e criará um workspace.
 
-1. Em um navegador da Web, acesse [app.powerbi.com](https://app.powerbi.com/).
+1. Em um navegador da Web, vá para `https://app.powerbi.com/`.
 
 2. Conclua o processo de entrada com a mesma conta usada no Power BI Desktop.
 
@@ -50,17 +47,13 @@ Nesta tarefa, você entrará no serviço do Power BI, iniciará uma licença de 
 
 Nesta tarefa, você criará um workspace.
 
-1. No serviço do Power BI, para criar um workspace, no painel **Navegação** (localizado à esquerda), selecione **Workspaces** e, em seguida, selecione **Criar workspaces**.
+1. No serviço do Power BI, para criar um workspace, no painel de **navegação** (localizado à esquerda), selecione **Workspaces** e selecione **+ Novo workspace**.
 
-    ![](Images/enforce-model-security-image5.png)
-
-2. No painel **Criar um workspace** (localizado à direita), na caixa **Nome do workspace**, digite um nome para o workspace.
+2. No painel **Criar um workspace** (localizado à direita), na caixa **Nome**, insira um nome para o workspace.
 
     *O nome do workspace precisa ser exclusivo dentro do locatário.*
 
-    ![](Images/enforce-model-security-image6.png)
-
-3. Selecione **Salvar**.
+3. Escolha **Aplicar**.
 
     *Depois de criado, o workspace é aberto. Em um exercício posterior, você publicará um modelo semântico neste workspace.*
 
@@ -172,7 +165,7 @@ Nesta tarefa, você validará funções estáticas.
 
 Nesta tarefa, você publicará o relatório.
 
-1. Salve o arquivo do Power BI Desktop.
+1. Salve o arquivo do Power BI Desktop. Ao ser solicitado para aplicar as alterações pendentes, selecione **Aplicar mais tarde**.
 
     ![](Images/enforce-model-security-image27.png)
 
@@ -283,6 +276,16 @@ Nesta tarefa, você adicionará uma tabela **Vendedor** ao modelo.
 2. Na guia **Página Inicial** da faixa de opções, dentro do grupo **Dados**, selecione o ícone **Transformar dados**.
 
     ![](Images/enforce-model-security-image44.png)
+
+    *Se você for solicitado a especificar como se conectar, **Edite as credenciais** e especifique como entrar.*
+
+    ![](Images/work-with-model-relationships-image52.png)
+
+    *Selecione **Conectar***
+
+     ![](Images/work-with-model-relationships-image53.png)
+
+    *Na página **Suporte à Criptografia**, selecione **OK**.*
 
 3. Na janela do **Editor do Power Query**, no painel **Consultas** (localizado à esquerda), clique com o botão direito do mouse na consulta **Cliente** e selecione **Duplicar**.
 
@@ -400,7 +403,7 @@ Nesta tarefa, você criará uma função dinâmica, que impõe permissões com b
 
     ![](Images/enforce-model-security-image65.png)
 
-6. Na caixa **Expressão DAX do filtro de tabela**, substitua **“Value”** por **USERPRINCIPALNAME()**.
+6. Na caixa **Expressão DAX do filtro de tabela**, substitua **"Valor"** por `USERPRINCIPALNAME()`.
 
     ![](Images/enforce-model-security-image66.png)
 

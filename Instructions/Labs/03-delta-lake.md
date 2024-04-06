@@ -10,7 +10,7 @@ As tabelas de um lakehouse do Microsoft Fabric são baseadas no formato *Delta L
 
 Este exercício levará aproximadamente **40** minutos para ser concluído
 
-> **Observação**: você precisa de uma conta Microsoft de *estudante* ou *corporativa* para concluir este exercício. Caso não tenha uma, [inscreva-se em uma avaliação do Microsoft Office 365 E3 ou superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Observação**: Você precisará de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
 
 ## Criar um workspace
 
