@@ -10,7 +10,7 @@ No Microsoft Fabric, um data warehouse fornece um banco de dados relacional para
 
 Este laboratório levará aproximadamente **30** minutos para ser concluído.
 
-> **Observação**: Você precisa de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
+> **Observação**: Você precisará uma [avaliação gratuita do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
 
 ## Criar um workspace
 
@@ -97,8 +97,8 @@ Um data warehouse relacional normalmente consiste em tabelas de *fatos* e de *di
     - **Pressupor integridade referencial**: Desmarcado
 
 4. Repita o processo para criar relações muitos para um entre as seguintes tabelas:
-    - **FactOrderSales.CustomerKey** &#8594; **DimCustomer.CustomerKey**
-    - **FactOrderSales.SalesOrderDateKey** &#8594; **DimDate.DateKey**
+    - **FactSalesOrder.CustomerKey** &#8594; **DimCustomer.CustomerKey**
+    - **FactSalesOrder.SalesOrderDateKey** &#8594; **DimDate.DateKey**
 
     Quando todas as relações forem definidas, o modelo terá esta aparência:
 
