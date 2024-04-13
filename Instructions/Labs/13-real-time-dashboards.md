@@ -12,7 +12,7 @@ Os painéis em tempo real permitem obter insights de dentro do Microsoft Fabric 
 
 Este laboratório leva cerca de **25** minutos para ser concluído.
 
-> **Observação**: Você precisa de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
+> **Observação**: Você precisa de uma [avaliação gratuita do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
 
 ## Criar um workspace
 

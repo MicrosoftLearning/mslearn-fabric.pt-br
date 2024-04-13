@@ -237,7 +237,7 @@ Vamos executar algumas consultas analíticas para validar os dados no warehouse.
     ORDER BY TotalSales DESC;
     ```
 
-    > **Observação:** Os resultados dessa consulta mostram o principal cliente para cada uma das categorias: Bicicleta, Capacete e Luvas, com base no total de vendas. Por exemplo, **Carson Butler** é o principal cliente da categoria **Bicicleta**.
+    > **Observação:** Os resultados dessa consulta mostram o principal cliente para cada uma das categorias: Bicicleta, Capacete e Luvas, com base no total de vendas. Por exemplo, **Joan Coleman** é a melhor cliente da categoria **Luvas**.
     >
     > As informações sobre as categorias foram extraídas da coluna `ItemName` usando manipulação de cadeia de caracteres, pois não há nenhuma coluna de categoria separada na tabela de dimensões. Essa abordagem pressupõe que os nomes dos itens seguem uma convenção de nomenclatura consistente. Se os nomes dos itens não seguirem uma convenção de nomenclatura consistente, os resultados poderão não refletir com precisão a verdadeira categoria de cada item.
 

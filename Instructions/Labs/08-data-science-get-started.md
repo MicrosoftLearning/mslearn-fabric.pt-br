@@ -12,7 +12,7 @@ Ao concluir este laboratório, você ganhará experiência prática em machine l
 
 Este laboratório levará aproximadamente **20** minutos para ser concluído.
 
-> **Observação**: Você precisará de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
+> **Observação**: Você precisará uma [avaliação gratuita do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir este exercício.
 
 ## Criar um workspace
 

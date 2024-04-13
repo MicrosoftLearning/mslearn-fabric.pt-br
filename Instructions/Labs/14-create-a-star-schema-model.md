@@ -39,7 +39,7 @@ Agora que você tem um espaço de trabalho, é hora de criar um data warehouse. 
 
 1. No centro da interface do usuário do data warehouse, você verá algumas maneiras diferentes de carregar dados no seu warehouse. Selecione **Dados de amostra** para carregar os dados do NYC Taxi em seu data warehouse. Isso levará alguns minutos.
 
-1. Depois que os dados de amostra forem carregados, use o painel **Explorer** à direita para ver quais tabelas e exibições já existem no data warehouse de amostra.
+1. Depois que os dados de amostra forem carregados, use o painel **Explorer** à esquerda para ver quais tabelas e exibições já existem no data warehouse de amostra.
 
 1. Selecione a guia **Relatórios** da faixa de opções e escolha **Novo modelo semântico**. Isso permite que você crie um novo modelo semântico utilizando apenas tabelas e exibições específicas do seu data warehouse, para uso das equipes de dados e da empresa na criação de relatórios.
 
@@ -65,7 +65,7 @@ Agora você criará relacionamentos entre as tabelas para analisar e visualizar 
 
     *Analisando o conceito de esquemas em estrela, organizaremos as tabelas em nosso modelo em uma Tabela de Fatos e Tabela de Dimensões. Nesse modelo, a tabela **Viagem** é nossa tabela de fatos, e nossas dimensões são **Data**, **Geografia** e **Clima**.*
 
-1. Crie uma relação entre a tabela **Data** e a tabela **Viagem** utilizando a coluna **DateID**. **Selecione a coluna DateID** na tabela **Data** e **arraste e solte-a sobre a coluna DateID na tabela Viagem**. Como alternativa, você pode selecionar **Gerenciar relacionamentos** na faixa de opções, seguido de **Novo relacionamento**.
+1. Crie uma relação entre a tabela **Data** e a tabela **Viagem** utilizando a coluna **DateID**. **Selecione a coluna DateID** na tabela **Data** e **arraste e solte-a acima da coluna DateID na tabela Viagem**. Como alternativa, você pode selecionar **Gerenciar relacionamentos** na faixa de opções, seguido de **Novo relacionamento**.
 
 1. Certifique-se de que o relacionamento seja um relacionamento **Um para muitos** da tabela **Data** para a tabela **Viagem**.
 
