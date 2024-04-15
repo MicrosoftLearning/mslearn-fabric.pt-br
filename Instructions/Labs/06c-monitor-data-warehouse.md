@@ -129,5 +129,5 @@ Neste exercício, você usou exibições de gerenciamento dinâmico e insights d
 Se você tiver terminado de explorar seu data warehouse, exclua o workspace criado para este exercício.
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
-2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Outros**, selecione **Remover este workspace**.
+2. Na página do espaço de trabalho, selecione **Configurações do espaço de trabalho**.
+3. Na parte inferior da seção **Geral**, selecione **Remover esta área de trabalho**.
