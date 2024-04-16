@@ -183,5 +183,5 @@ Neste exercício, você usou consultas para obter insights dos dados em um data 
 Se você tiver terminado de explorar seu data warehouse, exclua o workspace criado para este exercício.
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
-2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Outros**, selecione **Remover este workspace**.
+2. Na página do workspace, selecione **Configurações do workspace**.
+3. Na parte inferior da seção **Geral**, selecione **Remover este workspace**.
