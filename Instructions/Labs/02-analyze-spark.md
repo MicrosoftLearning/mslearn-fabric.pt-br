@@ -149,9 +149,9 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
 1. O dataframe só inclui os dados do arquivo **2019.csv**. Modifique o código para que o caminho do arquivo use um curinga \* para ler os dados do pedido de vendas de todos os arquivos da pasta **orders**:
 
     ```python
-    from pyspark.sql.types import *
+   from pyspark.sql.types import *
 
-    orderSchema = StructType([
+   orderSchema = StructType([
        StructField("SalesOrderNumber", StringType()),
        StructField("SalesOrderLineNumber", IntegerType()),
        StructField("OrderDate", DateType()),
@@ -163,8 +163,8 @@ Agora você está pronto para executar o código que carrega os dados em um *dat
        StructField("Tax", FloatType())
        ])
 
-    df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
-    display(df)
+   df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
+   display(df)
     ```
 
 1. Execute a célula de código modificada e analise a saída, que agora incluirá as vendas de 2019, 2020 e 2021.

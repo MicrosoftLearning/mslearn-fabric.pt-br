@@ -198,6 +198,7 @@ Agora que você tem alguns dados na camada bronze do lakehouse, pode usar um not
       ) \
       .execute()
     ```
+13. Execute a célula para executar o código usando o botão ****&#9655;** (*Executar célula*).
 
     Essa operação é importante porque permite que você atualize os registros existentes na tabela com base nos valores de colunas específicas e insira novos registros quando nenhuma correspondência for encontrada. Esse é um requisito comum quando você está carregando dados de um sistema de origem que pode conter atualizações para registros existentes e novos registros.
 
