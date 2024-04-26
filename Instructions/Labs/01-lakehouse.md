@@ -43,7 +43,7 @@ Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse p
 
 ## Fazer upload de um arquivo
 
-O Fabric fornece várias maneiras de carregar dados no lakehouse, incluindo suporte interno para pipelines que copiam fontes externas de dados e fluxos de dados (Gen2) que você pode definir por meio de ferramentas visuais baseadas no Power Query. No entanto, uma das maneiras mais simples de ingerir pequenos volumes de dados é carregar arquivos ou pastas do computador local (ou da VM de laboratório, se aplicável).
+O Fabric fornece várias maneiras de carregar dados no lakehouse, incluindo suporte interno para pipelines que copiam dados de fontes externas e fluxos de dados (Gen2) que você pode definir por meio de ferramentas visuais baseadas no Power Query. No entanto, uma das maneiras mais simples de ingerir pequenos volumes de dados é carregar arquivos ou pastas do computador local (ou da VM de laboratório, se aplicável).
 
 1. Baixe o arquivo [sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv) de `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`, salvando-o como **sales.csv** no computador local (ou na VM do laboratório, se aplicável).
 
@@ -169,4 +169,4 @@ Se você tiver terminado de explorar seu lakehouse, exclua o workspace criado pa
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
 2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Outros**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este workspace**.
