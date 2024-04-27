@@ -305,4 +305,4 @@ O Banco de Dados KQL não dá suporte ao T-SQL nativamente, mas fornece um ponto
 Neste exercício, você criou um banco de dados KQL e configurou um conjunto de dados de exemplo para consulta. Depois disso, você consultou os dados usando o KQL e o SQL. Depois de explorar o banco de dados KQL, exclua o workspace criado para este exercício.
 1. Na barra à esquerda, selecione o **ícone** do seu workspace.
 2. No ... menu da barra de ferramentas, selecione **Configurações do Espaço de Trabalho**.
-3. Na seção **Outros**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este workspace**.
