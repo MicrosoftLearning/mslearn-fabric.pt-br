@@ -39,7 +39,7 @@ Comece criando um novo lakehouse e uma pasta de destino no lakehouse.
 
 1. Em **Arquivos**, selecione o **[...]** para criar **Uma subpasta** chamada **RawData**.
 
-1. No Lakehouse Explorer, dentro d lakehouse, selecione **Arquivos > ... > Propriedades**.
+1. No Lakehouse Explorer, dentro do lakehouse, selecione **RawData > ... > Propriedades**.
 
 1. Copie o caminho **ABFS** na pasta **RawData** em um bloco de notas vazio para uso posterior, que deve ser semelhante a:  `abfss://{workspace_name}@onelake.dfs.fabric.microsoft.com/{lakehouse_name}.Lakehouse/Files/{folder_name}/{file_name}`
 
@@ -229,4 +229,4 @@ Quando concluir a exploração, você poderá excluir o espaço de trabalho que 
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
 2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
