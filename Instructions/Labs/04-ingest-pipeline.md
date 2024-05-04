@@ -181,6 +181,8 @@ Agora que você implementou um notebook para transformar dados e carregá-los em
 
     ![Captura de tela de um pipeline com uma atividade Fluxo de Dados.](./Images/pipeline-run.png)
 
+> Observação: Caso você receba a mensagem de erro *As consultas Spark SQL só são possíveis no contexto de uma lakehouse. Anexe uma casa do lago para prosseguir*: Abra seu notebook, selecione a casa do lago que você criou no painel esquerdo, selecione **Remover todas as casas do lago** e adicione-a novamente. Volte para o designer de pipeline e selecione **&#9655; Execute**.
+
 8. Na barra de menus do hub na borda esquerda do portal, selecione o lakehouse.
 9. No painel do **Explorer**, expanda **Tabelas** e selecione a tabela **new_sales** para ver uma visualização dos dados que ela contém. Essa tabela foi criada pelo notebook quando foi executada pelo pipeline.
 
