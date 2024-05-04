@@ -98,6 +98,7 @@ Quando você cria um lakehouse e define tabelas nele, um ponto de extremidade SQ
    GROUP BY Item
    ORDER BY Revenue DESC;
     ```
+> **Observação**: Se você estiver em uma VM de laboratório e tiver problemas ao inserir a consulta SQL, poderá baixar o arquivo [01-Snippets.txt](https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/01/Assets/01-Snippets.txt) de `https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/01/Assets/01-Snippets.txt`, salvando-o na VM. Em seguida, você pode copiar a consulta do arquivo de texto.
 
 3. Use o botão **&#9655; Executar** para executar a consulta e ver os resultados, que mostrarão a receita total de cada produto.
 
@@ -134,9 +135,11 @@ As tabelas em seu lakehouse são adicionadas automaticamente a um modelo semânt
 
 1. Na parte inferior da página ponto de extremidade do SQL, selecione a guia **Modelo**. O esquema de modelo de dados para o modelo semântico é mostrado.
 
-    ![Captura de tela de um modelo semântico.](./Images/data-model.png)
+    ![Captura de tela 2024-04-29 155248](https://github.com/afelix-95/mslearn-fabric/assets/148110824/ba9bd67d-8968-4c46-ac7a-f96a9f697f4c)
 
-    > **Observação**: Neste exercício, o modelo semântico consiste em uma só tabela. Em um cenário do mundo real, provavelmente, você criará várias tabelas no lakehouse, cada uma das quais será incluída no modelo. Em seguida, você poderá definir relações entre essas tabelas no modelo.
+    > **Observação 1**: Neste exercício, o modelo semântico consiste em uma só tabela. Em um cenário do mundo real, provavelmente, você criará várias tabelas no lakehouse, cada uma das quais será incluída no modelo. Em seguida, você poderá definir relações entre essas tabelas no modelo.
+    
+    > **Observação 2**: As exibições, `frequently_run_queries`, `long_running_queries`, `exec_sessions_history` e `exec_requests_history` fazem parte do esquema `queryinsights` criado automaticamente pelo Fabric. É um recurso que fornece uma visão holística da atividade de consulta histórica no ponto de extremidade de análise do SQL. Como esse recurso está fora do escopo deste exercício, essas exibições devem ser ignoradas por enquanto.
 
 2. Na faixa de opções do menu, selecione a guia **Relatório**. Em seguida, selecione **Novo relatório**. Uma nova guia do navegador será aberta, na qual você poderá criar seu relatório.
 
@@ -169,4 +172,4 @@ Se você tiver terminado de explorar seu lakehouse, exclua o workspace criado pa
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
 2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
