@@ -94,7 +94,7 @@ Agora você está pronto para executar o código para obter dados e treinar um m
     A saída mostra as linhas e colunas do conjunto de dados do diabetes.
 
 1. Há duas guias na parte superior da tabela renderizada: **Tabela** e **Gráfico**. Selecione **Gráfico**.
-1. Selecione as **Opções de exibição** na parte superior direita do gráfico para alterar a visualização.
+1. Selecione **Personalizar Gráfico** na parte superior direita do gráfico para alterar a visualização.
 1. Altere o gráfico para as seguintes configurações:
     * **Tipo de Gráfico**: `Box plot`
     * **Chave**: *Deixar em branco*
@@ -112,8 +112,7 @@ Agora que você já ingeriu e explorou os dados, pode transformá-los. Você pod
    df.head()
     ```
 
-1. Selecione **Dados** na faixa de opções do notebook e, em seguida, selecione o menu suspenso **Transformar DataFrame no Data Wrangler**.
-1. Selecione o conjunto de dados `df`. Quando o Data Wrangler é iniciado, ele gera uma visão geral descritiva do dataframe no painel **Resumo**.
+1. Selecione **Data Wrangler** na faixa de opções do notebook e, em seguida, selecione o conjunto de dados `df`. Quando o Data Wrangler é iniciado, ele gera uma visão geral descritiva do dataframe no painel **Resumo**.
 
     Atualmente, a coluna de rótulo é `Y`, que é uma variável contínua. Para treinar um modelo de machine learning que preveja Y, você precisa treinar um modelo de regressão. Os valores (previstos) de Y podem ser difíceis de interpretar. No entanto, podemos explorar o treinamento de um modelo de classificação que preveja se alguém tem um alto ou baixo risco de desenvolver diabetes. Para poder treinar um modelo de classificação, você precisa criar uma coluna de rótulo binário com base nos valores de `Y`.
 
@@ -248,4 +247,4 @@ Se você tiver terminado de explorar o modelo e os experimentos, exclua o worksp
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
 2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
