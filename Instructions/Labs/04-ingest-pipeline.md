@@ -49,6 +49,7 @@ Uma forma simples de ingerir dados é usar uma atividade **Copiar Dados** em um 
     - **URL**: `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Conexão**: crie uma conexão
     - **Nome da conexão**: *especifique um nome exclusivo*
+    - **Gateway de dados**: (nenhum)
     - **Tipo de autenticação**: Básica (*deixe o nome de usuário e a senha em branco*)
 5. Selecione **Avançar**. Em seguida, verifique se as seguintes configurações estão selecionadas:
     - **URL Relativa**: *Deixar em branco*
@@ -64,7 +65,7 @@ Uma forma simples de ingerir dados é usar uma atividade **Copiar Dados** em um 
     - **Primeira linha como cabeçalho**: Selecionada
     - **Tipo de compactação**: Nenhum
 7. Selecione **Visualizar dados** para ver um exemplo dos dados que serão ingeridos. Em seguida, feche a visualização de dados e selecione **Avançar**.
-8. Na página **Escolher destino de dados**, selecione o lakehouse existente. Em seguida, selecione **Avançar**.
+8. Na página **Conectar-se ao destino de dados**, selecione o lakehouse existente. Em seguida, selecione **Avançar**.
 9. Defina as seguintes opções de destino de dados e selecione **Avançar**:
     - **Pasta raiz**: Arquivos
     - **Nome do caminho da pasta**: new_data
