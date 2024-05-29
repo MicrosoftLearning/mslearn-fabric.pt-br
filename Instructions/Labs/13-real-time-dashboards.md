@@ -136,7 +136,7 @@ A criação de um parâmetro começa com facilidade:
 | **Adicionar valor "Selecionar tudo"** | Aplicável aos tipos de parâmetro de seleção única e múltipla, essa opção recupera dados de todos os valores de parâmetro e precisa ser integrada à consulta para permitir a funcionalidade. |
 | **Valor padrão** | O valor padrão do filtro, que é definido na renderização inicial do painel. |
 
-6. Lembre-se de adicionar o parâmetro a cada uma das consultas dentro dos blocos e, em seguida, selecione **Aplicar alterações**.
+6. Certifique-se de adicionar o parâmetro a cada uma das consultas dentro dos blocos e, em seguida, selecione **Aplicar alterações**.
 
 **Antes da consulta KQL**
 ```kusto
