@@ -1,43 +1,43 @@
 ---
 lab:
-    title: 'Secure data in a data warehouse'
-    module: 'Get started with data warehouses in Microsoft Fabric'
+  title: Proteger os dados em um data warehouse
+  module: Get started with data warehouses in Microsoft Fabric
 ---
 
-# Secure data in a data warehouse
+# Proteger os dados em um data warehouse
 
-Microsoft Fabric permissions and granular SQL permissions work together to govern Warehouse access and user permissions. In this exercise, you will secure data using granular permissions, column-level security, row-level security and dynamic data masking.
+As permissões do Microsoft Fabric e as permissões granulares do SQL trabalham em conjunto para controlar o acesso ao Warehouse e as permissões de usuário. Neste exercício, você protegerá os dados usando permissões granulares, segurança em nível de coluna, segurança em nível de linha e máscara dinâmica de dados.
 
-This lab will take approximately **45** minutes to complete.
+Este laboratório levará aproximadamente **45** minutos para ser concluído.
 
-> **Note**: You need a [Microsoft Fabric trial](https://learn.microsoft.com/fabric/get-started/fabric-trial) to complete this exercise.
+> **Observação**: Você precisará uma [avaliação gratuita do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir este exercício.
 
-## Create a workspace
+## Criar um workspace
 
-Before working with data in Fabric, create a workspace with the Fabric trial enabled.
+Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. On the [Microsoft Fabric home page](https://app.fabric.microsoft.com), select **Synapse Data Warehouse**.
-1. In the menu bar on the left, select **Workspaces** (the icon looks similar to &#128455;).
-1. Create a new workspace with a name of your choice, selecting a licensing mode that includes Fabric capacity (*Trial*, *Premium*, or *Fabric*).
-1. When your new workspace opens, it should be empty.
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Data Warehouse do Synapse**.
+1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
+1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
+1. Quando o novo workspace for aberto, ele estará vazio.
 
-    ![Screenshot of an empty workspace in Fabric.](./Images/new-empty-workspace.png)
+    ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-empty-workspace.png)
 
-## Create a data warehouse
+## Criar um data warehouse
 
-Next, create a data warehouse in the workspace you just created. The Synapse Data Warehouse home page includes a shortcut to create a new warehouse:
+Em seguida, crie um data warehouse no espaço de trabalho que você acabou de criar. A página inicial do Data Warehouse do Synapse inclui um atalho para criar um novo warehouse:
 
-1. On the **Synapse Data Warehouse** home page, create a new **Warehouse** with a name of your choice.
+1. Na página inicial do **Synapse Data Warehouse**, crie um novo **Warehouse** com um nome de sua escolha.
 
-    After a minute or so, a new warehouse will be created:
+    Após alguns minutos, um warehouse será criado:
 
-    ![Screenshot of a new warehouse.](./Images/new-empty-data-warehouse.png)
+    ![Captura de tela de um novo warehouse.](./Images/new-empty-data-warehouse.png)
 
-## Apply dynamic data masking to columns in a table
+## Aplicar Máscara Dinâmica de Dados a colunas em uma tabela
 
-Dynamic data masking rules are applied on individual columns at the table level so all queries are affected by the masking. Users who do no have explicit permissions to view confidential data will see masked values in query results while users with explict permission to view the data will see it unobscured. There are four types of masks: default, email, random and custom string. In this exercise, you will apply a default mask, an email mask, and a custom string mask.
+As regras de máscara dinâmica de dados são aplicadas em colunas individuais no nível da tabela, de modo que todas as consultas são afetadas pela máscara. Os usuários que não tiverem permissões explícitas para exibir dados confidenciais verão os valores mascarados nos resultados da consulta, enquanto os usuários com permissão explícita para exibir os dados os verão sem máscara. Há quatro tipos de máscaras: padrão, email, aleatória e cadeia de caracteres personalizada. Neste exercício, você aplicará uma máscara padrão, uma máscara de email e uma máscara de cadeia de caracteres personalizada.
 
-1. In your warehouse, select the **T-SQL** tile, and replace the default SQL code with the following T-SQL statements to create a table and to insert and view data.  The masks applied in the `CREATE TABLE` statement do the following:
+1. Em seu warehouse, selecione o bloco **T-SQL** e substitua o código SQL padrão pelas seguintes instruções T-SQL para criar uma tabela e para inserir e exibir os dados.  As máscaras aplicadas na instrução `CREATE TABLE` fazem o seguinte:
 
     ```sql
     CREATE TABLE dbo.Customer
@@ -64,42 +64,42 @@ Dynamic data masking rules are applied on individual columns at the table level 
     GO
     ```
 
-2. Use the **&#9655; Run** button to run the SQL script, which creates a new table named **Customer** in the **dbo** schema of the data warehouse.
+2. Use o botão **&#9655; Executar** para executar o script SQL, que cria uma nova tabela chamada **Cliente** no esquema **dbo** do data warehouse.
 
-3. Then, in the **Explorer** pane, expand **Schemas** > **dbo** > **Tables** and verify that the **Customer** table has been created. The SELECT statement returns unmasked data because you are connected as workspace admin which can see unmasked data.
+3. Em seguida, no painel **Explorador**, expanda **Esquemas** > **dbo** > **Tabelas** e verifique se a tabela **Cliente** foi criada. A instrução SELECT retorna dados sem máscara porque você está conectado como administrador do espaço de trabalho, que pode ver dados sem máscara.
 
-4. Connect as a test user that's a member of the **viewer** workspace role and run the following T-SQL statement.
+4. Conecte-se como um usuário de teste que seja membro da função de espaço de trabalho **visualizador** e execute a seguinte instrução T-SQL.
 
     ```sql
     SELECT * FROM dbo.Customer;
     GO
     ```
 
-    This user has not been granted UNMASK permission so data returned for the FirstName, Phone and Email columns is masked because those columns were defined with a mask in the `CREATE TABLE` statement.
+    Esse usuário não recebeu a permissão UNMASK, portanto, os dados retornados para as colunas FirstName, Telefone e Email estão mascarados porque essas colunas foram definidas com uma máscara na instrução `CREATE TABLE`.
 
-5. Reconnect as workspace admin and run the following T-SQL to unmask data for the test user.
+5. Reconecte-se como administrador do espaço de trabalho e execute o seguinte T-SQL para desmascarar os dados para o usuário de teste.
 
     ```sql
     GRANT UNMASK ON dbo.Customer TO [testUser@testdomain.com];
     GO
     ```
 
-6. Connect as the test user again and run the following T-SQL statement.
+6. Conecte-se novamente como usuário de teste e execute a seguinte instrução T-SQL.
 
     ```sql
     SELECT * FROM dbo.Customer;
     GO
     ```
 
-    The data is returned unmasked because the test user has been granted the `UNMASK` permission.
+    Os dados são retornados sem mascaramento porque o usuário de teste recebeu a permissão `UNMASK`.
 
-## Apply row-level security
+## Aplicar segurança em nível de linha
 
-Row-level security (RLS) can be used to limit access to rows based on the identity, or role of the user executing a query.  In this exercise, you will restrict access to rows by creating a security policy and a security predicate defined as an inline table-valued function.
+A segurança em nível de linha (RLS) pode ser usada para limitar o acesso às linhas com base na identidade ou função do usuário que executa uma consulta.  Neste exercício, você restringirá o acesso às linhas criando uma política de segurança e um predicado de segurança definido como uma função com valor de tabela embutida.
 
-1. In the warehouse you created in the last exercise, select the **New SQL Query** dropdown.  Under the dropdown under the header **Blank**, select **New SQL Query**.
+1. No depósito que você criou no último exercício, selecione a lista suspensa **Nova Consulta SQL**.  No menu suspenso sob o cabeçalho **em Branco**, selecione **Nova Consulta SQL**.
 
-2. Create a table and insert data into it. So that you can test row-level security in a later step, replace 'testuser1@mydomain.com' with a user name from your environment and replace 'testuser2@mydomain.com' with your user name.
+2. Crie uma tabela e insira dados nela. Para que possa testar a segurança em nível de linha em uma etapa posterior, substitua "testuser1@mydomain.com" por um nome de usuário do seu ambiente e substitua "testuser2@mydomain.com" pelo seu nome de usuário.
     ```sql
     CREATE TABLE dbo.Sales  
     (  
@@ -124,10 +124,10 @@ Row-level security (RLS) can be used to limit access to rows based on the identi
     GO
     ```
 
-3. Use the **&#9655; Run** button to run the SQL script, which creates a new table named **Sales** in the **dbo** schema of the data warehouse.
+3. Use o botão **&#9655; Executar** para executar o script SQL, que cria uma nova tabela chamada **Vendas** no esquema **dbo** do data warehouse.
 
-4. Then, in the **Explorer** pane, expand **Schemas** > **dbo** > **Tables** and verify that the **Sales** table has been created.
-5. Create a new schema, a security predicate defined as a function, and a security policy.  
+4. Em seguida, no painel **Explorador**, expanda **Esquemas** > **dbo** > **Tabela** e verifique se a tabela **Vendas** foi criada.
+5. Crie um esquema, um predicado de segurança definido como uma função e uma política de segurança.  
 
     ```sql
     --Create a separate schema to hold the row-level security objects (the predicate function and the security policy)
@@ -191,15 +191,15 @@ Column-level security allows you to designate which users can access specific co
     GO
  ```
 
-3. Deny permission to view a column in the table. The Transact SQL below will prevent '<testuser@mydomain.com>' from seeing the CreditCard column in the Orders table. In the `DENY` statement below, replace testuser@mydomain.com with a user name in your system who has Viewer permissions on the workspace.
+3. Negue a permissão para exibir uma coluna na tabela. O Transact SQL abaixo impedirá que '<testuser@mydomain.com>' veja a coluna CreditCard na tabela Pedidos. Na instrução `DENY` abaixo, substitua testuser@mydomain.com por um nome de usuário em seu sistema que tenha permissões de Visualizador no espaço de trabalho.
 
  ```sql
 DENY SELECT ON dbo.Orders (CreditCard) TO [testuser@mydomain.com];
  ```
 
-4. Test column-level security by logging in to Fabric as the user you denied select permissions to.
+4. Teste a segurança no nível da coluna fazendo logon no Fabric como o usuário ao qual você negou as permissões de seleção.
 
-5. Query the Orders table to confirm that column-level security works as expected. The following query will return only the OrderID and CustomerID columns, not the CrediteCard column.  
+5. Consulte a tabela Pedidos para confirmar que a segurança em nível de coluna funciona como esperado. A consulta a seguir retornará apenas as colunas OrderID e CustomerID, não a coluna CrediteCard.  
 
     ```sql
     SELECT * FROM dbo.Orders;
@@ -210,13 +210,13 @@ DENY SELECT ON dbo.Orders (CreditCard) TO [testuser@mydomain.com];
     SELECT OrderID, CustomerID from dbo.Orders
     ```
 
-## Configure SQL granular permissions using T-SQL
+## Configurar permissões granulares de SQL usando T-SQL
 
-Fabric warehouse has a permissions model that allows you to control access to data at the workspace level, and at the item level. When you need more granular control of what users can do with securables in a Fabric warehouse, you can use the standard SQL data control language (DCL) commands `GRANT`,`DENY` and `REVOKE`. In this exercise, you will create objects, secure them using `GRANT`, and `DENY`, and then run queries to view the effect of applying granular permissions.
+O Fabric warehouse tem um modelo de permissões que permite controlar o acesso aos dados no nível do espaço de trabalho e no nível do item. Quando você precisar de um controle mais granular do que os usuários podem fazer com os objetos seguros em um warehouse do Fabric, poderá usar os comandos padrão da linguagem de controle de dados SQL (DCL) `GRANT`,`DENY` e `REVOKE`. Neste exercício, você criará objetos, os protegerá usando `GRANT` e `DENY` e, em seguida, executará consultas para exibir o efeito da aplicação de permissões granulares.
 
-1. In the warehouse you created in the earlier exercise, select the **New SQL Query** dropdown.  Under the header **Blank**, select **New SQL Query**.  
+1. No depósito que você criou no exercício anterior, selecione o menu suspenso **Nova Consulta SQL**.  Sob o cabeçalho **em Branco**, selecione **Nova Consulta SQL**.  
 
-2. Create a stored procedure and a table.
+2. Crie um procedimento armazenado e uma tabela.
 
  ```
     CREATE PROCEDURE dbo.sp_PrintMessage
@@ -244,7 +244,7 @@ Fabric warehouse has a permissions model that allows you to control access to da
     GO
   ```
 
-3. Next `DENY SELECT` permissions on the table to a user with who is a member of the Worksapce Viewer role and `GRANT EXECUTE` on the procedure to the same user.
+3. Em seguida, dê `DENY SELECT` permissões na tabela a um usuário que seja membro da função Visualizador do Espaço de Trabalho e `GRANT EXECUTE` no procedimento para o mesmo usuário.
 
  ```sql
     DENY SELECT on dbo.Parts to [testuser@mydomain.com];
@@ -255,7 +255,7 @@ Fabric warehouse has a permissions model that allows you to control access to da
 
  ```
 
-4. Log in to Fabric as the user you specified in the DENY and GRANT statements above in place of [testuser@mydomain.com]. Then test the granular permissions you just applied by executing the stored procedure and querying the table.  
+4. Faça logon no Fabric como o usuário que você especificou nas instruções NEGAR e CONCEDER acima no lugar de [testuser@mydomain.com]. Em seguida, teste as permissões granulares que você acabou de aplicar executando o procedimento armazenado e consultando a tabela.  
 
  ```sql
     EXEC dbo.sp_PrintMessage;
@@ -264,10 +264,10 @@ Fabric warehouse has a permissions model that allows you to control access to da
     SELECT * FROM dbo.Parts
  ```
 
-## Clean up resources
+## Limpar os recursos
 
-In this exercise, you have applied dynamic data masking to columns in a table, applied row-level security, implemented column-level security and configured SQL granular permissions using T-SQL.
+Neste exercício, você aplicou o máscara dinâmica de dados às colunas de uma tabela, aplicou a segurança em nível de linha, implementou a segurança em nível de coluna e configurou as permissões granulares do SQL usando o T-SQL.
 
-1. In the bar on the left, select the icon for your workspace to view all of the items it contains.
-2. In the **...** menu on the toolbar, select **Workspace settings**.
-3. In the **General** section, select **Remove this workspace**.
+1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
+2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
+3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
