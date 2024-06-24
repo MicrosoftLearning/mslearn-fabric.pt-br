@@ -50,7 +50,7 @@ Uma forma simples de ingerir dados é usar uma atividade **Copiar Dados** em um 
     - **Conexão**: crie uma conexão
     - **Nome da conexão**: *especifique um nome exclusivo*
     - **Gateway de dados**: (nenhum)
-    - **Tipo de autenticação**: Básica (*deixe o nome de usuário e a senha em branco*)
+    - **Tipo de autenticação**: Anônimo
 5. Selecione **Avançar**. Em seguida, verifique se as seguintes configurações estão selecionadas:
     - **URL Relativa**: *Deixar em branco*
     - **Método de solicitação**: GET
@@ -149,8 +149,7 @@ Agora que você implementou um notebook para transformar dados e carregá-los em
     - **Geral**:
         - **Nome**: Excluir arquivos antigos
     - **Origem**
-        - **Tipo de armazenamento de dados**: Workspace
-        - **Armazenamento de dados do workspace**: *seu lakehouse*
+        - **Conexão**: *Seu lakehouse*
         - **Tipo de caminho de arquivo**: caminho do arquivo curinga
         - **Caminho da pasta**: Arquivos/**new_data**
         - **Nome do arquivo curinga**: *.csv        
