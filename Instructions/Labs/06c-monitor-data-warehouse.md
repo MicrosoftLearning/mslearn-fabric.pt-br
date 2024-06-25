@@ -130,4 +130,4 @@ Se você tiver terminado de explorar seu data warehouse, exclua o workspace cria
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
 2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Outros**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este workspace**.

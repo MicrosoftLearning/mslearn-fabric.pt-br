@@ -20,18 +20,18 @@ Este laboratório leva cerca de **25** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Análise em Tempo Real**.
+1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Inteligência em Tempo Real**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
 
     ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
 
-Nesse laboratório, você usa a Análise de Dados em Tempo Real (RTA) do Fabric para criar um banco de dados KQL a partir de uma amostra de fluxo de eventos. A Análise em Tempo Real fornece convenientemente um conjunto de dados de amostra que você pode utilizar para explorar as funcionalidades do RTA. Use esses dados de exemplo para criar consultas KQL/SQL e conjuntos de consultas que analisam dados em tempo real e permitem outros usos em processos downstream.
+Nesse laboratório, você usa a Inteligência em Tempo Real (RTA) do Fabric para criar um banco de dados KQL a partir de uma amostra de fluxo de eventos. A Inteligência em Tempo Real fornece um exemplo de conjunto de dados para sua conveniência, que você pode usar para explorar as funcionalidades da Inteligência em Tempo Real. Use esses dados de exemplo para criar consultas KQL/SQL e conjuntos de consultas que analisam dados em tempo real e permitem outros usos em processos downstream.
 
 ## Criar um banco de dados KQL
 
-1. Na **Análise em Tempo Real**, selecione a caixa **Banco de Dados KQL**.
+1. Na **Inteligência em Tempo Real**, selecione a caixa **Banco de Dados KQL**.
 
    ![Imagem de escolher Banco de Dados KQL](./Images/select-kqldatabase.png)
 
@@ -305,4 +305,4 @@ O Banco de Dados KQL não dá suporte ao T-SQL nativamente, mas fornece um ponto
 Neste exercício, você criou um banco de dados KQL e configurou um conjunto de dados de exemplo para consulta. Depois disso, você consultou os dados usando o KQL e o SQL. Depois de explorar o banco de dados KQL, exclua o workspace criado para este exercício.
 1. Na barra à esquerda, selecione o **ícone** do seu workspace.
 2. No ... menu da barra de ferramentas, selecione **Configurações do Espaço de Trabalho**.
-3. Na seção **Geral**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.

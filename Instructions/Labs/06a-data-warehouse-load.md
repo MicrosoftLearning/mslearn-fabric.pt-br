@@ -29,7 +29,7 @@ Em nosso cenário, como não temos dados disponíveis, devemos ingerir dados a s
 
 1. Na home page da **Engenharia de Dados do Synapse**, crie um **Lakehouse** com um nome de sua escolha.
 
-    Após alguns minutos, um lakehouse vazio será criado. Você precisa ingerir alguns dados no data lakehouse para análise. Há várias maneiras de fazer isso, mas neste exercício, você baixará um arquivo CVS no computador local (ou na VM de laboratório, se aplicável) e o carregará no lakehouse.
+    Após alguns minutos, um lakehouse vazio será criado. Você precisa ingerir alguns dados no data lakehouse para análise. Há várias maneiras de fazer isso, mas, neste exercício, você fará o download de um arquivo CSV para o seu computador local (ou VM de laboratório, se for o caso) e, em seguida, fará o upload para seu lakehouse.
 
 1. Baixe o arquivo para este exercício em `https://github.com/MicrosoftLearning/dp-data/raw/main/sales.csv`.
 
@@ -249,4 +249,4 @@ Se você tiver terminado de explorar seu data warehouse, exclua o workspace cria
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
 2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Outros**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.

@@ -270,11 +270,11 @@ Uma tarefa comum para engenheiros de dados é ingerir os dados em uma estrutura 
 
     > **Observação**: normalmente, o formato *Parquet* é preferencial para os arquivos de dados que você usará para análise ou ingestão posterior em um repositório analítico. O Parquet é um formato muito eficiente que é compatível com a maioria dos sistemas de análise de dados em grande escala. Na verdade, às vezes, seu requisito de transformação de dados pode ser apenas converter dados de outro formato (como CSV) em Parquet.
 
-2. Execute a célula e aguarde a mensagem indicando que os dados foram salvos. Em seguida, no painel **Lakehouses** do lado esquerdo, no menu **…** do nó **Arquivos**, selecione **Atualizar** e selecione a pasta **Pedidos transformados** para verificar se contém uma nova pasta chamada **pedidos**, que, por sua vez, contém um ou mais arquivos Parquet.
+2. Execute a célula e aguarde a mensagem indicando que os dados foram salvos. Em seguida, no painel **Lakehouses** do lado esquerdo, no menu **…** do nó **Arquivos**, selecione **Atualizar** e selecione a pasta **transformed_data** para verificar se contém uma nova pasta chamada **pedidos**, que, por sua vez, contém um ou mais arquivos Parquet.
 
     ![Captura de tela de uma pasta que contém os arquivos Parquet.](./Images/saved-parquet.png)
 
-3. Adicione uma nova célula com o seguinte código para carregar um novo dataframe dos arquivos Parquet na pasta **transformed_orders/orders**:
+3. Adicione uma nova célula com o seguinte código para carregar um novo dataframe dos arquivos Parquet na pasta **transformed_data/orders**:
 
     ```Python
    orders_df = spark.read.format("parquet").load("Files/transformed_data/orders")
@@ -358,7 +358,7 @@ Embora seja útil a inserção de instruções SQL em uma célula que contém um
    GROUP BY YEAR(OrderDate)
    ORDER BY OrderYear;
     ```
-
+ 
 2. Execute a célula e analise os resultados. Observe que:
     - A linha `%%sql` no início da célula (chamada *magic*) indica que o runtime da linguagem Spark SQL deve ser usado para executar o código nessa célula em vez do PySpark.
     - O código SQL referencia a tabela **salesorders** que você já criou.
@@ -587,4 +587,4 @@ Se você tiver terminado de explorar seu lakehouse, exclua o workspace criado pa
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
 2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.

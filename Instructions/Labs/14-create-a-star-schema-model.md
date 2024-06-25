@@ -60,16 +60,23 @@ Agora você criará relacionamentos entre as tabelas para analisar e visualizar 
      *Observação: Um modelo semântico padrão é criado automaticamente quando você cria um ponto de extremidade de análise do Warehouse ou do SQL no Microsoft Fabric, e ele herda a logica de negócios do Lakehouse ou do Warehouse pai. Um modelo semântico criado por você mesmo, como fizemos aqui, é um modelo personalizado que você pode projetar e modificar de acordo com suas necessidades e preferências específicas. Você pode criar um modelo semântico personalizado utilizando o Power BI Desktop, o serviço do Power BI ou outras ferramentas que se conectam ao Microsoft Fabric.*
 
 1. Selecione **Abrir modelo de dados na faixa de opções**.
-   
+
     Agora, você criará relacionamentos entre as tabelas. Se você estiver familiarizado com a criação de relacionamentos no Power BI Desktop, isso lhe parecerá familiar!
 
     *Analisando o conceito de esquemas em estrela, organizaremos as tabelas em nosso modelo em uma Tabela de Fatos e Tabela de Dimensões. Nesse modelo, a tabela **Viagem** é nossa tabela de fatos, e nossas dimensões são **Data**, **Geografia** e **Clima**.*
 
-1. Crie uma relação entre a tabela **Data** e a tabela **Viagem** utilizando a coluna **DateID**. **Selecione a coluna DateID** na tabela **Data** e **arraste e solte-a acima da coluna DateID na tabela Viagem**. Como alternativa, você pode selecionar **Gerenciar relacionamentos** na faixa de opções, seguido de **Novo relacionamento**.
+1. Crie uma relação entre a tabela **Data** e a tabela **Viagem** utilizando a coluna **DateID**.
 
-1. Certifique-se de que o relacionamento seja um relacionamento **Um para muitos** da tabela **Data** para a tabela **Viagem**.
+    **Selecione a coluna DateID** na tabela **Data** e *arraste e solte-a acima da coluna DateID na tabela Viagem*.
 
-1. Crie relacionamentos com a tabela de fatos **Trip** a partir das dimensões **Geografia** e **Clima**, repetindo a etapa acima. Certifique-se também de que esses relacionamentos sejam **Um para muitos**, com uma ocorrência da chave na tabela de dimensões e muitas na tabela de fatos. 
+    Certifique-se de que o relacionamento seja um relacionamento **Um para muitos** da tabela **Data** para a tabela **Viagem**.
+
+1. Crie mais dois relacionamentos com a tabela de fatos **Trip** da seguinte forma:
+
+   - **Geography [GeographyID]** para **Trip [DropoffGeographyID]** (1:Muitos)
+   - **Weather [GeographyID]** para **Trip [DropoffGeographyID]** (1:Muitos)
+
+    > **Observação**: você precisa alterar a cardinalidade padrão do relacionamento para **1:Muitos** para ambos os relacionamentos.
 
 1. Arraste as tabelas para a posição de modo que a tabela de fatos **Viagem** fique na parte inferior do diagrama e as tabelas restantes, que são tabelas de dimensões, fiquem ao redor da tabela de fatos.
 
@@ -104,4 +111,3 @@ Agora você tem um modelo semântico criado a partir do seu warehouse que tem re
 1. Depois de salvar a exploração, navegue de volta ao espaço de trabalho para ver o data warehouse, o modelo semântico padrão, o modelo semântico que você criou e a exploração.
 
     ![Captura de tela de um espaço de trabalho no Fabric exibindo um data warehouse, um modelo semântico padrão, um modelo semântico e uma exploração de dados.](./Images/semantic-model-workspace.png)
-

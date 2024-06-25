@@ -39,7 +39,7 @@ Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse n
 
 Uma forma simples de ingerir dados é usar uma atividade **Copiar Dados** em um pipeline para extrair os dados de uma fonte e copiá-los para um arquivo no lakehouse.
 
-1. Na **home page** do lakehouse, selecione **Novo pipeline de dados** e crie um pipeline de dados chamado **Ingerir Dados de Vendas**.
+1. Na página **Início** de sua casa no lago, selecione **Obter dados** e, em seguida, selecione **Novo pipeline de dados** e crie um novo pipeline de dados chamado **Ingerir dados de vendas**.
 2. Se o assistente **Copiar Dados** não for aberto automaticamente, selecione **Copiar Dados** na página do editor de pipeline.
 3. No assistente **Copiar Dados**, na página **Escolher uma fonte de dados**, na seção **fontes de dados**, selecione a guia **Protocolo genérico** e selecione **HTTP**.
 
@@ -49,7 +49,8 @@ Uma forma simples de ingerir dados é usar uma atividade **Copiar Dados** em um 
     - **URL**: `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Conexão**: crie uma conexão
     - **Nome da conexão**: *especifique um nome exclusivo*
-    - **Tipo de autenticação**: Básica (*deixe o nome de usuário e a senha em branco*)
+    - **Gateway de dados**: (nenhum)
+    - **Tipo de autenticação**: Anônimo
 5. Selecione **Avançar**. Em seguida, verifique se as seguintes configurações estão selecionadas:
     - **URL Relativa**: *Deixar em branco*
     - **Método de solicitação**: GET
@@ -64,7 +65,7 @@ Uma forma simples de ingerir dados é usar uma atividade **Copiar Dados** em um 
     - **Primeira linha como cabeçalho**: Selecionada
     - **Tipo de compactação**: Nenhum
 7. Selecione **Visualizar dados** para ver um exemplo dos dados que serão ingeridos. Em seguida, feche a visualização de dados e selecione **Avançar**.
-8. Na página **Escolher destino de dados**, selecione o lakehouse existente. Em seguida, selecione **Avançar**.
+8. Na página **Conectar-se ao destino de dados**, selecione o lakehouse existente. Em seguida, selecione **Avançar**.
 9. Defina as seguintes opções de destino de dados e selecione **Avançar**:
     - **Pasta raiz**: Arquivos
     - **Nome do caminho da pasta**: new_data
@@ -148,8 +149,7 @@ Agora que você implementou um notebook para transformar dados e carregá-los em
     - **Geral**:
         - **Nome**: Excluir arquivos antigos
     - **Origem**
-        - **Tipo de armazenamento de dados**: Workspace
-        - **Armazenamento de dados do workspace**: *seu lakehouse*
+        - **Conexão**: *Seu lakehouse*
         - **Tipo de caminho de arquivo**: caminho do arquivo curinga
         - **Caminho da pasta**: Arquivos/**new_data**
         - **Nome do arquivo curinga**: *.csv        
@@ -181,6 +181,8 @@ Agora que você implementou um notebook para transformar dados e carregá-los em
 
     ![Captura de tela de um pipeline com uma atividade Fluxo de Dados.](./Images/pipeline-run.png)
 
+> Observação: Caso você receba a mensagem de erro *As consultas Spark SQL só são possíveis no contexto de uma lakehouse. Anexe uma casa do lago para prosseguir*: Abra seu notebook, selecione a casa do lago que você criou no painel esquerdo, selecione **Remover todas as casas do lago** e adicione-a novamente. Volte para o designer de pipeline e selecione **&#9655; Execute**.
+
 8. Na barra de menus do hub na borda esquerda do portal, selecione o lakehouse.
 9. No painel do **Explorer**, expanda **Tabelas** e selecione a tabela **new_sales** para ver uma visualização dos dados que ela contém. Essa tabela foi criada pelo notebook quando foi executada pelo pipeline.
 
@@ -194,4 +196,4 @@ Se você tiver terminado de explorar seu lakehouse, exclua o workspace criado pa
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
 2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
