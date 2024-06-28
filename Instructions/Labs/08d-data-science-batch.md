@@ -167,7 +167,7 @@ Para usar o modelo, você precisará de um conjunto de dados de detalhes de paci
 
    # Save the data in a delta table
    table_name = "diabetes_test"
-   df.write.format("delta").mode("overwrite").save(f"Tables/{table_name}")
+   df.write.format("delta").mode("overwrite").saveAsTable(table_name)
    print(f"Spark dataframe saved to delta table: {table_name}")
     ```
 
@@ -196,7 +196,7 @@ Agora você pode usar o modelo treinado anteriormente para gerar previsões de p
    df_test = model.transform(df)
 
    # Save the results (the original features PLUS the prediction)
-   df_test.write.format('delta').mode("overwrite").option("mergeSchema", "true").save(f"Tables/{table_name}")
+   df_test.write.format('delta').mode("overwrite").option("mergeSchema", "true").saveAsTable(table_name)
     ```
 
 1. Após a conclusão do código, selecione **...** ao lado da tabela **diabetes_test** no painel **Explorador do Lakehouse** e selecione **Atualizar**. Um novo campo **previsões** foi adicionado.
@@ -210,4 +210,4 @@ Caso tenha terminado de explorar o notebook, exclua o workspace que você criou 
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
 2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
