@@ -34,11 +34,16 @@ Agora que você tem um espaço de trabalho, é hora de fazer o download do arqui
 
 O KQL (Linguagem de Consulta Kusto) é usada para consultar dados estáticos ou de streaming em uma tabela definida em um banco de dados KQL. Para analisar os dados de vendas, você precisa criar uma tabela em um banco de dados KQL e ingerir os dados do arquivo.
 
-1. No portal da experiência do **Microsoft Fabric**, escolha a imagem da experiência **Inteligência em Tempo Real**, conforme mostrado aqui:
+1. No canto inferior esquerdo do portal, alterne para a experiência de Inteligência em Tempo Real.
 
-    ![Captura de tela da home page da Experiência do Fabric com a Inteligência em Tempo Real selecionadas](./Images/fabric-experience-home.png)
+    ![Captura de tela do menu do alternador de experiência.](./Images/fabric-real-time.png)
 
-2. Na **home page** da experiência de **Inteligência em Tempo Real**, selecione **Banco de dados KQL** e crie um banco de dados com um nome de sua escolha.
+2. Na página inicial da Inteligência em Tempo Real, crie um novo **Eventhouse** com um nome de sua escolha.
+
+   ![Captura de tela do Editor RTI com o Eventhouse em destaque.](./Images/create-kql-db.png)
+
+   O Eventhouse é usado para agrupar e gerenciar seus bancos de dados entre projetos. Um banco de dados KQL vazio é automaticamente criado com o nome do eventhouse.
+   
 3. Quando o banco de dados for criado, selecione a opção para obter dados de um **Arquivo Local**. Em seguida, use o assistente para importar os dados para uma nova tabela selecionando as seguintes opções:
     - **Destino**:
         - **Banco de dados**: *o banco de dados que você criou já está selecionado*
