@@ -105,7 +105,7 @@ Agora você está pronto para executar o código para obter dados e treinar um m
 
 Agora que você já ingeriu e explorou os dados, pode transformá-los. Você pode executar código em um notebook ou usar o Estruturador de Dados para gerar código para você.
 
-1. Os dados são carregados como um DataFrame do Spark. Para iniciar o Estruturador de Dados, você precisa converter os dados em um dataframe do Pandas. Execute o código a seguir no notebook:
+1. Os dados são carregados como um DataFrame do Spark. Embora o Data Wrangler aceite dataframes Spark ou Pandas, ele atualmente é otimizado para trabalhar com Pandas. Portanto, você converterá os dados em um dataframe do Pandas. Execute o código a seguir no notebook:
 
     ```python
    df = df.toPandas()

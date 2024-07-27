@@ -123,7 +123,7 @@ Agora você deverá ver sua nova pasta **RawData** com um "arquivo" **yellow_tax
     filtered_df = filtered_df.filter(raw_df["storeAndFwdFlag"].isNotNull())
     
     # Load the filtered data into a Delta table
-    table_name = "yellow_taxi"  # Replace with your desired table name
+    table_name = "yellow_taxi"
     filtered_df.write.format("delta").mode("append").saveAsTable(table_name)
     
     # Display results
@@ -164,26 +164,11 @@ Este laboratório se concentra na ingestão de dados, o que realmente explica o 
     display(table_df.limit(10))
     ```
 
-1. Crie outra célula de código e insira esse código também:
+1. Selecione **&#9655; Executar Célula** ao lado da célula do código.
 
-    ```python
-    # Load table into df
-    delta_table_name = "yellow_taxi_opt"
-    opttable_df = spark.read.format("delta").table(delta_table_name)
-    
-    # Create temp SQL table
-    opttable_df.createOrReplaceTempView("yellow_taxi_opt")
-    
-    # SQL Query to confirm
-    opttable_df = spark.sql('SELECT * FROM yellow_taxi_opt')
-    
-    # Display results
-    display(opttable_df.limit(10))
-    ```
+     Muitos analistas de dados se sentem à vontade em trabalhar com a sintaxe SQL. O Spark SQL é uma API de linguagem SQL no Spark que você pode usar para executar instruções SQL ou até mesmo persistir dados em tabelas relacionais.
 
-1. Agora, selecione a seta &#9660; ao lado do botão **Executar célula** para a primeira dessas duas consultas e, na lista suspensa, selecione **Executar esta célula e abaixo**.
-
-    Isso executará as duas últimas células de código. Observe a diferença de tempo de execução entre consultar a tabela com dados não otimizados e uma tabela com dados otimizados.
+   O código que você acabou de executar cria uma *exibição* relacional dos dados em um dataframe e, em seguida, usa a biblioteca **spark.sql** para inserir a sintaxe do Spark SQL em seu código Python, consultando a exibição e retornando os resultados como um dataframe.
 
 ## Limpar os recursos
 
