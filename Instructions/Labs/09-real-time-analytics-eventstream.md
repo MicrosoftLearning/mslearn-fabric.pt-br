@@ -53,8 +53,7 @@ Neste tutorial, você aprenderá como:
 1. Você terá a opção de nomear seu banco de dados e selecionar um **Novo banco de dados (padrão)** ou criar um **Novo banco de dados de atalho (seguidor)**.
 1. Selecione **Criar**.
 
-     >[!Note]
-     > O recurso de banco de dados seguidor permite anexar um banco de dados localizado em outro cluster ao cluster do Azure Data Explorer. O banco de dados seguidor é anexado no modo somente leitura, possibilitando exibir os dados e executar consultas sobre os dados que foram ingeridos no banco de dados líder. O banco de dados seguidor sincroniza as alterações nos bancos de dados líderes. Devido à sincronização, há um atraso de dados de alguns segundos a alguns minutos na disponibilidade dos dados. O tamanho do atraso depende do tamanho geral dos metadados do banco de dados líder. Os bancos de dados líder e seguidor usam a mesma conta de armazenamento para buscar os dados. O armazenamento pertence ao banco de dados líder. O banco de dados seguidor visualiza os dados sem precisar ingeri-los. Como o banco de dados anexado é um banco de dados somente leitura, os dados, as tabelas e as políticas do banco de dados não podem ser modificados, exceto a política de cache, as entidades de segurança e as permissões.
+     >**Observação:** o recurso de banco de dados seguidor permite anexar um banco de dados localizado em outro cluster ao cluster do Azure Data Explorer. O banco de dados seguidor é anexado no modo somente leitura, possibilitando exibir os dados e executar consultas sobre os dados que foram ingeridos no banco de dados líder. O banco de dados seguidor sincroniza as alterações nos bancos de dados líderes. Devido à sincronização, há um atraso de dados de alguns segundos a alguns minutos na disponibilidade dos dados. O tamanho do atraso depende do tamanho geral dos metadados do banco de dados líder. Os bancos de dados líder e seguidor usam a mesma conta de armazenamento para buscar os dados. O armazenamento pertence ao banco de dados líder. O banco de dados seguidor visualiza os dados sem precisar ingeri-los. Como o banco de dados anexado é um banco de dados somente leitura, os dados, as tabelas e as políticas do banco de dados não podem ser modificados, exceto a política de cache, as entidades de segurança e as permissões.
 
    ![Imagem de escolher kqldatabase](./Images/create-kql-database-eventhouse.png)
 
@@ -75,17 +74,15 @@ Neste tutorial, você aprenderá como:
 ## Criar um fluxo de eventos
 
 1. Na barra de menus, selecione **Inteligência em Tempo Real** (o ícone é semelhante ao ![logotipo de inteligência em tempo real](./Images/rta_logo.png))
-2. Em **Novo**, selecione **Fluxo de Eventos (Versão Prévia)**
+2. Em **Novo**, selecione **EventStream**.
 
    ![Imagem de escolher fluxo de eventos](./Images/select-eventstream.png)
 
-3. Será solicitado a você **Nomear** o fluxo de eventos. Dê ao EventStream um nome de que você se lembrará, como **MyStockES**, e pressione o botão **Criar**.
+3. Será solicitado a você **Nomear** o fluxo de eventos. Dê ao EventStream um nome que você se lembre, como **MyStockES**, selecione a opção **Recursos Avançados (versão prévia)** e escolha **Criar** .
 
    ![Imagem do nome eventstream](./Images/name-eventstream.png)
 
-4. **Nomeie** o **Novo Eventstream**, selecione a opção **Recursos Avançados (versão prévia)** e selecione o botão **Criar**.
-
-     >[!Observação:] A criação do novo fluxo de eventos no workspace será concluída em apenas alguns instantes. Depois de estabelecido, você será redirecionado automaticamente para o editor primário, pronto para começar a integrar fontes ao fluxo de eventos.
+     >**Observação:** a criação do novo fluxo de eventos no workspace será concluída em apenas alguns instantes. Depois de estabelecido, você será redirecionado automaticamente para o editor primário, pronto para começar a integrar fontes ao fluxo de eventos.
 
 ## Estabelecer uma origem para um eventstream
 
@@ -93,18 +90,16 @@ Neste tutorial, você aprenderá como:
 
     [ ![imagem do uso de dados do Sampel](./Images/eventstream-select-sample-data.png)](./Images/eventstream-select-sample-data-large.png#lightbox)
 
-2.  Em **Adicionar origem**, dê um nome à sua origem e selecione **Reflexo de Bicicletas compatível)
-1.  Selecione o botão **Adicionar**.
+2.  Em **Adicionar fonte**, dê um nome à sua fonte e selecione **Bicicletas (compatível com Reflex)**
+3.  Selecione o botão **Adicionar**.
 
     ![Selecionar e nomear o fluxo de eventos de dados de exemplo](./Images/eventstream-sample-data.png)
 
-1. Depois de selecionar o botão **Adicionar**, o fluxo será mapeado e você será redirecionado automaticamente para a tela **fluxo de eventos**.
+4. Depois de selecionar o botão **Adicionar**, o fluxo será mapeado e você será redirecionado automaticamente para a tela **fluxo de eventos**.
 
    [ ![Examinar a tela da barra de eventos](./Images/real-time-intelligence-eventstream-sourced.png) ](./Images/real-time-intelligence-eventstream-sourced-large.png#lightbox)
-
-3. Insira os valores dos Dados de Amostra conforme mostrado na tabela a seguir e, em seguida, selecione **Adicionar**.
  
- > [!OBSERVAÇÃO:] Depois de criar a fonte de dados de exemplo, ela será adicionada ao fluxo de eventos na tela no modo de edição. Para implementar essa amostra de dados recém-adicionada, selecione **Publicar**.
+ > **Observação:** depois de criar a fonte de dados de exemplo, ela será adicionada ao Eventstream na tela do modo de edição. Para implementar essa amostra de dados recém-adicionada, selecione **Publicar**.
 
 ## Adicionar eventos de transformação ou adicionar atividade de destino
 
@@ -121,10 +116,9 @@ Neste tutorial, você aprenderá como:
         - ***Ingestão direta***: ingerir dados diretamente em uma tabela KQL sem nenhuma transformação.
         - ***Processamento de eventos antes da ingestão***: transforme os dados com o Processador de Eventos antes de enviar para uma tabela KQL.      
         
-        > [!WARNING]
         > **Aviso**: Você **NÃO PODE** editar o modo de ingestão depois que o destino do banco de dados KQL é adicionado ao fluxo de eventos.     
 
-   - **Nome do destino**: insira um nome para esse novo destino, como "kql-dest".
+   - **Nome do destino**: insira um nome para esse destino do Eventstream, como "kql-dest".
    - **Workspace**: o workspace onde o banco de dados KQL está localizado.
    - **Banco de Dados KQL**: nome do Banco de Dados KQL.
    - **Tabela de destino**: nome da tabela KQL. Você também pode inserir um nome para criar uma nova tabela, por exemplo, "contagem de bicicletas".
@@ -138,25 +132,32 @@ Neste tutorial, você aprenderá como:
 
 1. Na tela **fluxo de eventos**, selecione **Transformar eventos**.
 
+    ![Adicionar agrupar por ao evento de transformação. ](./Images/eventstream-add-aggregates.png)
+
     R. Selecione **Agrupar por**.
 
     B. Selecione **Editar** ilustrado pelo ícone de ***lápis***.
 
-    C. Preencha as propriedades da seção de configurações **Agrupar por**
+    C. Depois de criar o evento de transformação **Agrupar por**, você precisará conectá-lo do **Fluxo de eventos** a **Agrupar por**. Você pode fazer isso sem o uso do código clicando no ponto no lado direito de **fluxo de eventos** e arrastando-o para o ponto no lado esquerdo da nova caixa **Agrupar por**. 
 
-    [ ![Adicionar grupo ao evento de transformação.](./Images/eventstream-add-aggregates.png) ](./Images/eventstream-add-aggregates-large.png)
+    ![Adicionar link entre Eventstream e agrupar por. ](./Images/group-by-drag-connectors.png)    
 
-2. Depois de criar o evento de transformação **Agrupar por**, você precisará conectá-lo do **Fluxo de eventos** a **Agrupar por**. Você pode fazer isso sem o uso do código clicando no ponto no lado direito de **fluxo de eventos** e arrastando-o para o ponto no lado esquerdo da nova caixa **Agrupar por**.
+2. Preencha as propriedades da seção de configurações **Agrupar por**:
+    - **Nome da operação:** insira um nome para esse evento de transformação
+    - **Tipo de agregação:** soma
+    - **Campo:** No_Bikes
+    - **Nome:** SUM_No_Bikes
+    - **Agrupar agregações por**: rua
+      
+3. Selecione **Adicionar** e, em seguida, **Salvar**.
 
-   [ ![Adicionar link entre fluxo de eventos e agrupar por.](./Images/group-by-drag-connectors.png) ](./Images/group-by-drag-connectors-large.png)
-
-3. Da mesma maneira, você pode passar o mouse sobre a seta entre o **fluxo de eventos** e ***kql_dest*** e selecionar a ***lixeira***
+4. Da mesma maneira, você pode passar o mouse sobre a seta entre o **fluxo de eventos** e o ***kql_dest*** e selecionar a ***lixeira** Em seguida, você pode conectar o evento **Agrupar por** ao **kql-dest**.
 
    [ ![Remover um link entre dois eventos](./Images/delete-flow-arrows.png) ](./Images/delete-flow-arrows-large.png)
 
-    > [!OBSERVAÇÃO:] Sempre que você adicionar ou remover conectores, precisará configurar novamente os objetos de destino.
+    > **Observação:** sempre que você adicionar ou remover conectores, precisará configurar novamente os objetos de destino.
 
-
+5. Selecione o lápis em **kql-dest** e crie uma nova tabela de destino chamada **Bike_sum** que receberá a saída do evento **Agrupar por**.
 
 ## Consultas KQL
 
@@ -166,7 +167,7 @@ O KQL (Linguagem de Consulta Kusto) é uma solicitação somente leitura para pr
 
 1. Navegue até o banco de dados KQL recém-criado e hidratado:
 
-    R.  Selecione o **kql_dest** 
+    R.  Selecione **kql-dest** 
 
     B. Selecione o hiperlink **Abrir item** localizado na linha **Item relacionado**
 
@@ -176,11 +177,11 @@ O KQL (Linguagem de Consulta Kusto) é uma solicitação somente leitura para pr
 
    [ ![Remover um link entre dois eventos](./Images/kql-query-sample.png) ](./Images/kql-query-sample-large.png)
 
-3. A consulta de exemplo será aberta no painel **Explorar seus dados** com o contexto de tabela já preenchido. Essa primeira consulta usa o operador take para retornar um exemplo de número de registros e é útil para dar uma primeira olhada na estrutura de dados e nos valores possíveis. Os exemplos de consultas preenchidas automaticamente são executados automaticamente. Você poderá ver os resultados da consulta no painel de resultados.
+3. A consulta de exemplo será aberta no painel **Explorar seus dados** com o contexto de tabela já preenchido. Essa primeira consulta utiliza o operador `take` para retornar um número de registros de exemplo e é útil para dar uma primeira olhada na estrutura de dados e nos valores possíveis. Os exemplos de consultas preenchidas automaticamente são executados automaticamente. Você poderá ver os resultados da consulta no painel de resultados.
 
    ![Imagem dos resultados da consulta KQL](./Images/kql-query-results.png)
 
-4. Retorne à árvore de dados para selecionar a próxima consulta, que usa o operador de resumo para contar o número de registros ingeridos em intervalos de 15 minutos.
+4. Retorne à árvore de dados para selecionar a próxima consulta **Resumir ingestão por hora**, que usa o operador `summarize` para contar o número de registros ingeridos em um intervalo determinado.
 
    ![Imagem dos resultados da consulta KQL](./Images/kql-query-results-15min-intervals.png)
 
