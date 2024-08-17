@@ -44,7 +44,7 @@ O KQL (Linguagem de Consulta Kusto) é usada para consultar dados estáticos ou 
 
    O Eventhouse é usado para agrupar e gerenciar seus bancos de dados entre projetos. Um banco de dados KQL vazio é automaticamente criado com o nome do eventhouse.
    
-3. Quando o banco de dados for criado, selecione a opção para obter dados de um **Arquivo Local**. Em seguida, use o assistente para importar os dados para uma nova tabela selecionando as seguintes opções:
+3. Depois que o novo banco de dados for criado, selecione-o na lista à esquerda em Bancos de dados KQL. Em seguida, selecione a opção para obter dados do **Arquivo local**. Use o assistente para importar os dados para uma nova tabela selecionando as seguintes opções:
     - **Destino**:
         - **Banco de dados**: *o banco de dados que você criou já está selecionado*
         - **Table**: *Crie uma nova tabela chamada* **vendas** clicando no sinal + à esquerda de ***Nova tabela***
@@ -59,7 +59,7 @@ O KQL (Linguagem de Consulta Kusto) é usada para consultar dados estáticos ou 
 
         ![Etapa três do Assistente de nova tabela](./Images/import-wizard-local-file-3.png?raw=true)
 
-        - Nesta tela, você verá que os cabeçalhos de coluna estão na primeira linha; embora o sistema os tenha detectado, ainda precisamos mover o controle deslizante acima dessas linhas **A primeira linha é o cabeçalho da coluna** para evitar a obtenção de erros.
+        - Nesta tela, você verá que os cabeçalhos de coluna estão na primeira linha; embora o sistema os tenha detectado, ainda precisamos mover o controle deslizante acima dessas linhas **A primeira linha é o cabeçalho da coluna** para evitar que erros surjam.
         
         ![Etapa quatro do Assistente de nova tabela](./Images/import-wizard-local-file-4.png?raw=true)
 

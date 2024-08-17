@@ -40,12 +40,13 @@ Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse n
 Uma forma simples de ingerir dados é usar uma atividade **Copiar Dados** em um pipeline para extrair os dados de uma fonte e copiá-los para um arquivo no lakehouse.
 
 1. Na página **Início** de sua casa no lago, selecione **Obter dados** e, em seguida, selecione **Novo pipeline de dados** e crie um novo pipeline de dados chamado **Ingerir dados de vendas**.
-2. Se o assistente **Copiar Dados** não for aberto automaticamente, selecione **Copiar Dados** na página do editor de pipeline.
-3. No assistente **Copiar Dados**, na página **Escolher uma fonte de dados**, na seção **fontes de dados**, selecione a guia **Protocolo genérico** e selecione **HTTP**.
+2. Se o assistente **Copiar Dados** não abrir automaticamente, selecione **Copiar Dados > Usar assistente de cópia** na página do editor de pipeline.
+3. No assistente**Copiar Dados**, na página **Escolher uma fonte de dados**, digite HTTP na barra de pesquisa e selecione **HTTP** na seção **Novas fontes**.
+
 
     ![Captura de tela da página Escolher fonte de dados.](./Images/choose-data-source.png)
 
-4. Escolha **Avançar**, selecione **Criar conexão** e insira as seguintes configurações para a conexão com a fonte de dados:
+4. No painel **Conectar-se à fonte de dados**, insira as seguintes configurações para a conexão com sua fonte de dados:
     - **URL**: `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Conexão**: crie uma conexão
     - **Nome da conexão**: *especifique um nome exclusivo*
@@ -65,7 +66,7 @@ Uma forma simples de ingerir dados é usar uma atividade **Copiar Dados** em um 
     - **Primeira linha como cabeçalho**: Selecionada
     - **Tipo de compactação**: Nenhum
 7. Selecione **Visualizar dados** para ver um exemplo dos dados que serão ingeridos. Em seguida, feche a visualização de dados e selecione **Avançar**.
-8. Na página **Conectar-se ao destino de dados**, selecione o lakehouse existente. Em seguida, selecione **Avançar**.
+8. Na página **Escolher destino de dados**, selecione o **hub de dados OneLake** e, em seguida, selecione o lakehouse existente.
 9. Defina as seguintes opções de destino de dados e selecione **Avançar**:
     - **Pasta raiz**: Arquivos
     - **Nome do caminho da pasta**: new_data
