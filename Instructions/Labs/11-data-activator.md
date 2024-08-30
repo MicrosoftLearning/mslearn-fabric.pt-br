@@ -16,7 +16,7 @@ Este laboratório leva cerca de **30** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Data Activator**.
+1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Data Activator**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -180,4 +180,4 @@ Se tiver concluído a exploração do reflex do Data Activator, você poderá ex
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
 2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.

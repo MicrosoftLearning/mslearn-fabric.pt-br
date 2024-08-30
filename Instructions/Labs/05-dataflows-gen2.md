@@ -16,7 +16,7 @@ Este laboratório foi projetado para introduzir os diferentes elementos dos Flux
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com), selecione **Engenheiros de Dados do Synapse**.
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) no `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados do Synapse**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -93,7 +93,7 @@ Agora que você tem um lakehouse, você precisa ingerir alguns dados nele. Uma f
 
 6. Selecione **Publicar** para publicar o fluxo de dados. Em seguida, aguarde até que o fluxo de dados **Fluxo de dados 1** seja criado no seu workspace.
 
-7. Após a publicação, selecione as reticências **(...)** ao lado do fluxo de dados do espaço de trabalho, selecione**Propriedades** e renomeie o fluxo de dados.
+7. Após a publicação, selecione as reticências **(...)** ao lado do fluxo de dados do espaço de trabalho, selecione **Propriedades** e renomeie o fluxo de dados.
 
 ## Adicionar um fluxo de dados a um pipeline
 
