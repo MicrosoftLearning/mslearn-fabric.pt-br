@@ -16,7 +16,7 @@ Este laboratório leva cerca de **30** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Navegue até a página inicial do Microsoft Fabric em `https://app.fabric.microsoft.com` em um navegador e, se necessário, entre com suas credenciais do Fabric.
+1. Navegue até a [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric` em um navegador e, se necessário, entre com suas credenciais do Fabric.
 1. Na página inicial do Fabric, selecione **Ciência de Dados do Synapse**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
@@ -296,4 +296,4 @@ Se você tiver terminado de explorar o modelo e os experimentos, exclua o worksp
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
 2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.

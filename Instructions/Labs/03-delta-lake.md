@@ -16,7 +16,7 @@ Este exercício levará aproximadamente **40** minutos para ser concluído
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com) no `https://app.fabric.microsoft.com`, selecione **Engenharia de Dados do Synapse**.
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) no `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados do Synapse**.
 2. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 3. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 4. Quando o novo workspace for aberto, ele estará vazio.
@@ -47,7 +47,7 @@ Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse p
     Após alguns segundos, um novo notebook que contém uma só *célula* será aberto. Os notebooks são compostos por uma ou mais células que podem conter um *código* ou um *markdown* (texto formatado).
 
 2. Selecione a célula existente no notebook, que contém um código simples e use o ícone **&#128465;** (*Excluir*) dele no canto superior direito para removê-lo. Você não precisará desse código.
-3. No painel do **Lakehouse Explorer** à esquerda, expanda **Arquivos** e selecione **products** para revelar um novo painel mostrando o arquivo **products.csv** que você já carregou:
+3. No painel do **Explorer**, expanda **Lakehouses** e, em seguida, expanda a lista de **Arquivos** do seu lakehouse e selecione a pasta **produtos** para revelar um novo painel mostrando o arquivo **products.csv** que você já carregou:
 
     ![Captura de tela de um notebook com um painel Arquivos.](./Images/notebook-products.png)
 
@@ -324,4 +324,4 @@ Se você tiver terminado de explorar seu lakehouse, exclua o workspace criado pa
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
 2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
