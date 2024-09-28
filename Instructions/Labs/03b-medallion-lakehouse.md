@@ -436,7 +436,7 @@ Observe que você poderia ter feito tudo isso em um único notebook, mas para os
 12. **Adicionar outro bloco de código** para criar o dataframe **product_silver**.
   
     ```python
-    from pyspark.sql.functions import col, split, lit
+    from pyspark.sql.functions import col, split, lit, when
     
     # Create product_silver dataframe
     
