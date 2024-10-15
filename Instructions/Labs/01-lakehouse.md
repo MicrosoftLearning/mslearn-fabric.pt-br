@@ -4,7 +4,7 @@ lab:
   module: Get started with lakehouses in Microsoft Fabric
 ---
 
-# Criar um Lakehouse
+# Criar um lakehouse do Microsoft Fabric
 
 As soluções de análise de dados em grande escala têm sido tradicionalmente criadas em torno de um *data warehouse*, no qual os dados são armazenados em tabelas relacionais e consultados por meio do SQL. O crescimento do "Big Data" (caracterizado por grandes *volumes*, *variedade* e *velocidade* de novos ativos de dados) acompanhado da disponibilidade de armazenamento de baixo custo e tecnologias de computação distribuída em escala de nuvem levou a uma abordagem alternativa para o armazenamento de dados analíticos: o *data lake*. Em um data lake, os dados são armazenados como arquivos sem impor um esquema fixo para o armazenamento. Cada vez mais, os analistas e os engenheiros de dados buscam se beneficiar dos melhores recursos dessas duas abordagens combinando-as em um *data lakehouse*, nos quais os dados são armazenados em arquivos em um data lake e um esquema relacional é aplicado a eles como uma camada de metadados para que possam ser consultados por meio da semântica do SQL tradicional.
 
@@ -50,7 +50,7 @@ O Fabric fornece várias maneiras de carregar dados no lakehouse, incluindo supo
    > **Observação**: para baixar o arquivo, abra uma nova guia no navegador e cole a URL. Clique com o botão direito do mouse em qualquer lugar da página que contém os dados e selecione **Salvar como** para salvar a página como um arquivo CSV.
 
 2. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Lakehouse Explorer**, selecione **Nova subpasta** e crie uma subpasta chamada **data**.
-3. No menu **…** da nova pasta **data**, selecione **Carregar** e **Carregar arquivo** e carregue o arquivo **sales.csv** do computador local (ou da VM de laboratório, se aplicável).
+3. No menu **…** da nova pasta **dados**, clique em **Carregar** e **Carregar arquivos** e faça o upload do arquivo **sales.csv** do computador local (ou da VM do laboratório, se aplicável).
 4. Depois que o arquivo for carregado, selecione a pasta **Arquivos/dados** e verifique se o arquivo **sales.csv** foi carregado, conforme mostrado aqui:
 
     ![Captura de tela do arquivo sales.csv carregado em um lakehouse.](./Images/uploaded-sales-file.png)
@@ -139,9 +139,9 @@ As tabelas em seu lakehouse são adicionadas automaticamente a um modelo semânt
 
     > **Observação 1**: Neste exercício, o modelo semântico consiste em uma só tabela. Em um cenário do mundo real, provavelmente, você criará várias tabelas no lakehouse, cada uma das quais será incluída no modelo. Em seguida, você poderá definir relações entre essas tabelas no modelo.
     
-    > **Observação 2**: As exibições, `frequently_run_queries`, `long_running_queries`, `exec_sessions_history` e `exec_requests_history` fazem parte do esquema `queryinsights` criado automaticamente pelo Fabric. É um recurso que fornece uma visão holística da atividade de consulta histórica no ponto de extremidade de análise do SQL. Como esse recurso está fora do escopo deste exercício, essas exibições devem ser ignoradas por enquanto.
+    > **Observação 2**: as exibições **frequently_run_queries**, **long_running_queries**, **exec_sessions_history** e **exec_requests_history** fazem parte do esquema **queryinsights** criado automaticamente pelo Fabric. É um recurso que fornece uma visão holística da atividade de consulta histórica no ponto de extremidade de análise do SQL. Como esse recurso está fora do escopo deste exercício, essas exibições devem ser ignoradas por enquanto.
 
-2. Na faixa de opções do menu, selecione a guia **Relatório**. Em seguida, selecione **Novo relatório**. Uma nova guia do navegador será aberta, na qual você poderá criar seu relatório.
+2. Na faixa de opções do menu, selecione a guia **Relatório**. Em seguida, selecione **Novo relatório**. Sua página atual será alterada para um modo de exibição do designer de relatórios.
 
     ![Captura de tela do designer de relatório.](./Images/report-designer.png)
 
@@ -157,8 +157,8 @@ As tabelas em seu lakehouse são adicionadas automaticamente a um modelo semânt
 
     ![Captura de tela de um relatório que contém um gráfico de barras clusterizado.](./Images/clustered-bar-chart.png)
 
-5. No menu **Arquivo**, selecione **Salvar**. Em seguida, salve o relatório como **Relatório de Vendas de Itens** no workspace já criado.
-6. Feche a guia do navegador que contém o relatório para voltar ao ponto de extremidade SQL do lakehouse. Em seguida, na barra de menus do hub à esquerda, selecione seu workspace para verificar se ele contém os seguintes itens:
+5. No menu **Arquivo**, selecione **Salvar**. Em seguida, salve o relatório como `Item Sales Report` no workspace criado anteriormente.
+6. Em seguida, na barra de menus do hub à esquerda, selecione seu workspace para verificar se ele contém os seguintes itens:
     - Seu lakehouse.
     - O ponto de extremidade de análise do SQL para o lakehouse.
     - Um modelo semântico padrão para as tabelas em seu lakehouse.

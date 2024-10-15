@@ -4,7 +4,7 @@ lab:
   module: Ingest Data with Dataflows Gen2 in Microsoft Fabric
 ---
 
-# Criar um Fluxo de Dados (Gen2) no Microsoft Fabric
+# Criar e usar Fluxos de Dados (Gen2) no Microsoft Fabric
 
 No Microsoft Fabric, os Fluxos de Dados (Gen2) se conectam a várias fontes de dados e executam transformações no Power Query Online. Em seguida, eles podem ser usados em pipelines de dados para ingerir dados em um lakehouse ou em outro repositório analítico ou para definir um conjunto de dados para um relatório do Power BI.
 
@@ -82,7 +82,7 @@ Agora que você tem um lakehouse, você precisa ingerir alguns dados nele. Uma f
 
    ![Página de configuração de destino de dados.](./Images/data-destination-target.png)
 
-4. Na página **Escolher configurações de destino**, selecione **Acrescentar** e **Salve configurações**.
+4. Selecione **Avançar** e, na página **Escolher configurações de destino**, desabilite a opção **Usar configurações automáticas**, clique em **Anexar** e, em seguida, **Salvar configurações**.
     > **Observação:** sugerimos usar o editor do *Power Query* para atualizar tipos de dados, mas você também pode fazer isso nesta página, se preferir.
 
     ![Página de configurações de destino de dados.](./Images/destination-settings.png)
@@ -92,8 +92,6 @@ Agora que você tem um lakehouse, você precisa ingerir alguns dados nele. Uma f
    ![Consulta com um destino de lakehouse.](./Images/lakehouse-destination.png)
 
 6. Selecione **Publicar** para publicar o fluxo de dados. Em seguida, aguarde até que o fluxo de dados **Fluxo de dados 1** seja criado no seu workspace.
-
-7. Após a publicação, selecione as reticências **(...)** ao lado do fluxo de dados do espaço de trabalho, selecione **Propriedades** e renomeie o fluxo de dados.
 
 ## Adicionar um fluxo de dados a um pipeline
 
@@ -123,7 +121,7 @@ Você pode incluir um fluxo de dados como uma atividade em um pipeline. Os pipel
 
    ![Tabela carregada por um fluxo de dados.](./Images/loaded-table.png)
 
-> **Dica**: use o *conector de Fluxos de dados* do Power BI Desktop para se conectar diretamente às transformações de dados feitas com o fluxo de dados.
+> **Dica**: no Power BI Desktop, use o conector de *fluxos de dados do Power BI (Herdado)* para se conectar diretamente às transformações de dados feitas com o fluxo de dados.
 >
 > Você também pode fazer transformações adicionais, publicá-las como um novo conjunto de dados e distribuí-las com o público-alvo pretendido para conjuntos de dados especializados.
 >

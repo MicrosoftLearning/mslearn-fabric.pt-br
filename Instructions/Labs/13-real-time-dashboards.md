@@ -1,7 +1,7 @@
 ---
 lab:
-  title: Painéis em tempo real no Microsoft Fabric
-  module: Get Started with Real-Time Dashboards in Microsoft Fabric
+  title: Introdução aos Painéis em tempo real no Microsoft Fabric
+  module: Get started with Real-Time Dashboards in Microsoft Fabric
 ---
 
 # Introdução aos painéis em tempo real no Microsoft Fabric
