@@ -4,7 +4,7 @@ lab:
   module: Load data into a warehouse in Microsoft Fabric
 ---
 
-# Carregar dados em um warehouse
+# Carregar dados em um warehouse usando T-SQL
 
 No Microsoft Fabric, um data warehouse fornece um banco de dados relacional para análise em larga escala. Ao contrário do ponto de extremidade SQL somente leitura padrão para tabelas definido em um lakehouse, um data warehouse fornece a semântica completa do SQL, incluindo a capacidade de inserir, atualizar e excluir dados nas tabelas.
 

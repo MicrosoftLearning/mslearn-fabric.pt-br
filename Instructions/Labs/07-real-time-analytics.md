@@ -138,4 +138,4 @@ Se você tiver terminado de explorar seu banco de dados KQL, exclua o workspace 
 
 1. Na barra à esquerda, selecione o ícone do workspace.
 2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este workspace**.
+3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
