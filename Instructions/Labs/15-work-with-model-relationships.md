@@ -88,7 +88,7 @@ Nesta tarefa, você visualizará os dados de vendas por data e alternará o stat
 
     *Para esclarecer qual ano fiscal, é uma boa ideia renomear o campo visual (ou adicionar um título ao visual).*
 
-7. No painel **Visualizações** do visual da tabela, de dentro de **Colunas**, clique na seta para baixo e depois em **Renomear para este visual**.
+7. No painel **Visualizações** para o visual da tabela, de dentro da caixa **Valores**, selecione a seta para baixo e **Renomeie para este visual**.
 
     ![](Images/work-with-model-relationships-image11.png)
 
@@ -190,7 +190,7 @@ Nesta tarefa, você usará a função USERELATIONSHIP para ativar uma relação 
 
     *Outra abordagem é criar uma tabela modelo diferente para cada dimensão do role-playing. Você fará isso no próximo exercício.*
 
-6. Para remover a medida do visual da tabela, no painel **Visualizações**, de dentro da caixa **Colunas**, para o campo **Vendas Enviadas**, pressione **X**.
+6. Para remover a medida do visual da tabela, no painel **Visualizações**, de dentro da caixa**Valores**, para o campo **Vendas Enviadas**, pressione **X**.
 
     ![](Images/work-with-model-relationships-image25.png)
 
@@ -304,13 +304,13 @@ Nesta tarefa, você visualizará os dados da data de remessa em um novo visual d
 
 5. Mova o novo visual da tabela para a direita do visual da tabela existente.
 
-6. Selecione o novo visual da tabela e, no painel **Visualizações**, remova o campo **Ano do Pedido** de dentro da caixa **Colunas**.
+6. Selecione o novo visual da tabela e, no painel **Visualizações**, de dentro da caixa **Valores**, remova o campo **Ano do Pedido**.
 
     ![](Images/work-with-model-relationships-image42.png)
 
 7. No painel **Dados**, abra e expanda a tabela **Data de Remessa**.
 
-8. Para adicionar um novo campo ao novo visual de tabela, na tabela **Data de Remessa**, arraste o campo **Ano da Remessa** para as **Colunas**, acima do campo **Valor de Vendas**.
+8. Para adicionar um novo campo ao novo visual de tabela, na tabela **Data de Remessa**, arraste o campo **Ano da Remessa** para a caixa **Valores**, acima do campo **Valor de Vendas**.
 
     ![](Images/work-with-model-relationships-image43.png)
 
