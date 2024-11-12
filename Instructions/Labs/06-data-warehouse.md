@@ -125,7 +125,7 @@ A maioria das consultas de um data warehouse relacional envolve a agregação e 
    ORDER BY CalendarYear, MonthOfYear;
     ```
 
-    Observe que os atributos na dimensão temporal permitem agregar as medidas na tabela de fatos em vários níveis hierárquicos, nesse caso, ano e mês. Esse é um padrão comum em data warehouses.
+    Perceba que os atributos na dimensão de data permitem agregar as medidas na tabela de fatos em vários níveis hierárquicos, nesse caso, ano e mês. Esse é um padrão comum em data warehouses.
 
 2. Modifique a consulta, conforme mostrado a seguir, para adicionar uma segunda dimensão à agregação.
 
@@ -217,7 +217,7 @@ Você pode visualizar com facilidade os dados em uma só consulta ou no data war
       - **ProductKey**
       - **ProductAltKey** 
 
-1. Agora você está pronto para criar um relatório e disponibilizar esse conjunto de dados para outras pessoas. No menu Página Inicial, selecione **Novo relatório**. Isso abrirá uma nova janela, na qual você poderá criar um relatório do Power BI.
+1. Agora você está pronto para criar um relatório e disponibilizar esse conjunto de dados para outras pessoas. No menu Relatório, clique em **Novo relatório**. Isso abrirá uma nova janela, na qual você poderá criar um relatório do Power BI.
 
 1. No painel **Dados**, expanda **FactSalesOrder**. Observe que as colunas que você escondeu não estão mais visíveis. 
 
