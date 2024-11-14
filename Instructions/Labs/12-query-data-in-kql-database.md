@@ -1,6 +1,6 @@
 ---
 lab:
-  title: Introdução à consulta de um banco de dados Kusto no Microsoft Fabric
+  title: Consultar dados no Banco de Dados KQL
   module: Query data from a Kusto Query database in Microsoft Fabric
 ---
 
