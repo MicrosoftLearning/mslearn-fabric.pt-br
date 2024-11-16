@@ -8,8 +8,6 @@ lab:
 
 O Microsoft Fabric tem um modelo de segurança de várias camadas para gerenciar o acesso a dados. A segurança pode ser definida para um espaço de trabalho inteiro, para itens individuais ou por meio de permissões granulares em cada mecanismo do Fabric. Neste exercício, você protegerá dados usando controles de acesso de workspace e item e funções de acesso a dados do OneLake.
 
-> **Observação**: para concluir os exercícios neste laboratório, você precisará de dois usuários: um usuário receberá a função de Administrador do Workspace e o outro receberá permissões ao longo do laboratório. Para atribuir funções a workspaces, confira [ Conceder acesso ao seu workspace ](https://learn.microsoft.com/fabric/get-started/give-access-workspaces).
-
 Esse laboratório leva cerca de **45** minutos para ser concluído.
 
 ## Criar um workspace

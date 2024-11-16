@@ -4,7 +4,7 @@ lab:
   module: Get started with lakehouses in Microsoft Fabric
 ---
 
-# Criar um lakehouse do Microsoft Fabric
+# Criar um Lakehouse
 
 As soluções de análise de dados em grande escala têm sido tradicionalmente criadas em torno de um *data warehouse*, no qual os dados são armazenados em tabelas relacionais e consultados por meio do SQL. O crescimento do "Big Data" (caracterizado por grandes *volumes*, *variedade* e *velocidade* de novos ativos de dados) acompanhado da disponibilidade de armazenamento de baixo custo e tecnologias de computação distribuída em escala de nuvem levou a uma abordagem alternativa para o armazenamento de dados analíticos: o *data lake*. Em um data lake, os dados são armazenados como arquivos sem impor um esquema fixo para o armazenamento. Cada vez mais, os analistas e os engenheiros de dados buscam se beneficiar dos melhores recursos dessas duas abordagens combinando-as em um *data lakehouse*, nos quais os dados são armazenados em arquivos em um data lake e um esquema relacional é aplicado a eles como uma camada de metadados para que possam ser consultados por meio da semântica do SQL tradicional.
 
@@ -50,7 +50,7 @@ O Fabric fornece várias maneiras de carregar dados no lakehouse, incluindo supo
    > **Observação**: para baixar o arquivo, abra uma nova guia no navegador e cole a URL. Clique com o botão direito do mouse em qualquer lugar da página que contém os dados e selecione **Salvar como** para salvar a página como um arquivo CSV.
 
 2. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Lakehouse Explorer**, selecione **Nova subpasta** e crie uma subpasta chamada **data**.
-3. No menu **…** da nova pasta **dados**, clique em **Carregar** e **Carregar arquivos** e faça o upload do arquivo **sales.csv** do computador local (ou da VM do laboratório, se aplicável).
+3. No menu **…** da nova pasta **dados**, selecione **Carregar** e **Fazer upload de arquivos** e faça o upload do arquivo **sales.csv** do computador local (ou da VM de laboratório, se aplicável).
 4. Depois que o arquivo for carregado, selecione a pasta **Arquivos/dados** e verifique se o arquivo **sales.csv** foi carregado, conforme mostrado aqui:
 
     ![Captura de tela do arquivo sales.csv carregado em um lakehouse.](./Images/uploaded-sales-file.png)
