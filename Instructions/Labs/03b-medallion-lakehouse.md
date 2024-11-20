@@ -16,7 +16,7 @@ Este exercício deve levar aproximadamente **45** minutos para ser concluído
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) no `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados do Synapse**.
+1. Entre na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric` e selecione **Power BI**.
 2. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 3. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 4. Quando o novo workspace for aberto, ele estará vazio.
@@ -33,9 +33,9 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse para os dados que serão analisados.
 
-1. Na página inicial **Engenharia de Dados do Synapse**, crie um novo **Lakehouse** chamado **Vendas**.
+1. No espaço de trabalho que você acabou de criar, crie um novo **Lakehouse** chamado **Vendas** clicando no botão **Novo item**.
 
-    Após alguns minutos, um lakehouse vazio será criado. Você precisa ingerir alguns dados no data lakehouse para análise. Há várias maneiras de fazer isso, mas neste exercício, você apenas baixará um arquivo de texto no computador local (ou na VM de laboratório, se aplicável) e o carregará no lakehouse.
+    Após alguns minutos, um lakehouse vazio será criado. Em seguida, você precisará ingerir alguns dados no data lakehouse para análise. Há várias maneiras de fazer isso, mas neste exercício, você apenas baixará um arquivo de texto no computador local (ou na VM de laboratório, se aplicável) e o carregará no lakehouse.
 
 1. Baixe o arquivo de dados para este exercício em `https://github.com/MicrosoftLearning/dp-data/blob/main/orders.zip`. Extraia os arquivos e salve-os com seus nomes originais em seu computador local (ou VM de laboratório, se aplicável). Deve haver três arquivos contendo dados de vendas por três anos: 2019.csv, 2020.csv e 2021.csv.
 
@@ -206,15 +206,15 @@ Agora você tem dados em sua tabela delta silver que estão prontos para transfo
 
 ## Explorar dados na camada silver usando o ponto de extremidade SQL
 
-Agora que você tem dados em sua camada prata, você pode usar o ponto de extremidade do SQL para explorar os dados e executar algumas análises básicas. Essa é uma boa opção para você se você estiver familiarizado com o SQL e quiser fazer alguma exploração básica de seus dados. Nesse exercício, estamos usando a exibição de ponto de extremidade SQL no Fabric, mas observe que você também pode usar outras ferramentas, como o SQL Server Management Studio (SSMS) e o Azure Data Explorer.
+Agora que você tem dados em sua camada prata, você pode usar o ponto de extremidade de análise de SQL para explorar os dados e executar algumas análises básicas. Isso é útil se você estiver familiarizado com o SQL e quiser fazer alguma exploração básica de seus dados. Nesse exercício, estamos usando a exibição de ponto de extremidade SQL no Fabric, mas você também pode usar outras ferramentas, como o SSMS (SQL Server Management Studio) e o Azure Data Explorer.
 
-1. Navegue de volta para o workspace e observe que agora você tem alguns ativos listados. Selecione **Ponto de extremidade SQL** para abrir o lakehouse na exibição do ponto de extremidade SQL.
+1. Navegue de volta para o espaço de trabalho e observe que agora você tem vários itens listados. Selecione o **Ponto de extremidade de análise de SQL de vendas** para abrir o lakehouse na exibição do ponto de extremidade da análise de SQL.
 
     ![Captura de tela do ponto de extremidade do SQL em um lakehouse.](./Images/sql-endpoint-item.png)
 
 2. Selecione **Nova consulta SQL** na faixa de opções, que abrirá um editor de consultas SQL. Observe que você pode renomear sua consulta usando o item de menu **...** ao lado do nome de consulta existente no painel do lakehouse explorer.
 
-   Vamos executar duas consultas SQL para explorar nossos dados.
+   Em seguida, você executará duas consultas sql para explorar os dados.
 
 3. Cole o snippet a seguir no editor de consultas e clique em **Executar**:
 
@@ -230,7 +230,7 @@ Agora que você tem dados em sua camada prata, você pode usar o ponto de extrem
 
     ![Captura de tela dos resultados de uma consulta SQL em um lakehouse.](./Images/total-sales-sql.png)
 
-4. Agora vamos dar uma olhada em quais clientes estão comprando mais (em termos de quantidade). Cole o snippet a seguir no editor de consultas e clique em **Executar**:
+4. Agora, você analisará quais clientes estão comprando mais (em termos de quantidade). Cole o snippet a seguir no editor de consultas e clique em **Executar**:
 
     ```sql
     SELECT TOP 10 CustomerName, SUM(Quantity) AS TotalQuantity
@@ -247,13 +247,13 @@ A exploração de dados na camada silver é útil para análise básica, mas voc
 
 Você extraiu com êxito os dados da camada bronze, transformou-os e carregou-os em uma tabela Delta silver. Agora você usará um novo notebook para transformar ainda mais os dados, modelá-los em um esquema em estrela e carregá-los em tabelas Delta gold.
 
-Observe que você poderia ter feito tudo isso em um único notebook, mas para os fins deste exercício você está usando notebooks separados para demonstrar o processo de transformação de dados de bronze para silver e, em seguida, de silver para ouro. Isso pode ajudar na depuração, solução de problemas e reutilização.
+Você poderia ter feito tudo isso em um único notebook, mas para este exercício você está usando notebooks separados para demonstrar o processo de transformação de dados de bronze para prata e, em seguida, de prata para ouro. Isso pode ajudar na depuração, solução de problemas e reutilização.
 
-1. Retorne à página inicial da **Engenharia de Dados** e crie um novo notebook chamado **Transformar dados para Ouro**.
+1. Retorne à página inicial do espaço de trabalho e crie um novo notebook chamado **Transformar dados para Ouro.**.
 
-2. No painel do Lakehouse Explorer, adicione seu lakehouse de **vendas** selecionando **Adicionar** e, em seguida, selecionando o lakehouse de **vendas** que você criou anteriormente. Você deverá ver a tabela **sales_silver** listada na seção **Tabelas** do painel explorer.
+2. No painel do Lakehouse Explorer, adicione seu lakehouse de **vendas** selecionando **Adicionar** e, em seguida, selecionando o lakehouse de **vendas** que você criou anteriormente. Na janela **Adicionar Lakehouse**, selecione **Lakehouse existente sem esquema**. Você deverá ver a tabela **sales_silver** listada na seção **Tabelas** do painel explorer.
 
-3. No bloco de código existente, remova o texto padrão e **adicione o seguinte código** para carregar dados em seu dataframe e começar a criar seu esquema estrela e, em seguida, execute-o:
+3. No bloco de códigos existente, remova o texto comentado e **adicione o seguinte código** para carregar dados em seu dataframe e começar a criar seu esquema em estrela e, em seguida, execute-o:
 
    ```python
     # Load data to the dataframe as a starting point to create the gold layer
@@ -326,13 +326,13 @@ Observe que você poderia ter feito tudo isso em um único notebook, mas para os
           "Month": "updates.Month",
           "Year": "updates.Year",
           "mmmyyyy": "updates.mmmyyyy",
-          "yyyymm": "yyyymm"
+          "yyyymm": "updates.yyyymm"
         }
       ) \
       .execute()
     ```
 
-    Parabéns! Sua dimensão de dados está configurada. Agora você criará sua dimensão de cliente.
+    A dimensão de data agora está configurada. Agora você criará sua dimensão de cliente.
 7. Para criar a tabela de dimensões do cliente, **adicione um novo bloco de código**, cole e execute o código a seguir:
 
     ```python
@@ -598,7 +598,7 @@ Observe que não é possível usar o **modelo semântico padrão** que é criado
    - dimproduct_gold
    - factsales_gold
 
-    Isso abrirá o modelo semântico no Fabric, no qual você poderá criar relacionamentos e medidas, conforme mostrado aqui:
+    Isso abrirá o modelo semântico no Fabric, no qual você poderá criar relacionamentos e medidas.
 
     ![Captura de tela de um modelo semântico no Fabric.](./Images/dataset-relationships.png)
 
