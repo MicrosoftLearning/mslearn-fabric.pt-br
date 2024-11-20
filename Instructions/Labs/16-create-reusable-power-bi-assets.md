@@ -1,11 +1,12 @@
 ---
 lab:
   title: Criar ativos reutilizáveis do Power BI
+  module: Create reusable Power BI assets
 ---
 
 # Criar ativos reutilizáveis do Power BI
 
-Neste exercício, você criará ativos reutilizáveis para dar suporte ao modelo semântico e ao desenvolvimento de relatórios. Esses ativos incluem arquivos de projeto e modelo do Power BI e modelos semânticos compartilhados. Ao final, você explorará a exibição de linhagem para saber como esses itens se relacionam entre si no serviço do Power BI.
+Neste exercício, você criará ativos reutilizáveis para dar suporte ao modelo semântico e ao desenvolvimento de relatórios. Esses ativos incluem arquivos de projeto e modelo do Power BI e modelos semânticos compartilhados. No final, você explorará a exibição de linhagem de como esses itens se relacionam entre si no serviço do Power BI.
 
    > Observação: este exercício não requer uma licença do Fabric e pode ser concluído em um ambiente do Power BI ou do Microsoft Fabric.
 
@@ -13,7 +14,7 @@ Este exercício deve levar aproximadamente **30** minutos para ser concluído.
 
 ## Antes de começar
 
-Antes de iniciar este exercício, primeiro abra um navegador da Web e insira a seguinte URL para baixar a pasta zip:
+Antes de começar este exercício, primeiro abra um navegador da Web e insira a seguinte URL para baixar a pasta zip:
 
 `https://github.com/MicrosoftLearning/mslearn-fabric/raw/Main/Allfiles/Labs/16b/16-reusable-assets.zip`
 
@@ -21,24 +22,24 @@ Extraia a pasta para a pasta **C:\Users\Student\Downloads\16-reusable-assets**.
 
 ## Publicar um relatório no serviço do Power BI
 
-Nesta tarefa, você usará um relatório existente na criação de um modelo semântico compartilhado para reutilização no desenvolvimento de outros relatórios.
+Nesta tarefa, você usa um relatório existente para criar um modelo semântico compartilhado para reutilização para desenvolver outros relatórios.
 
-1. Em um navegador da Web, navegue e entre no serviço do Fabric: [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com)
+1. Em um navegador da Web, navegue e entre no serviço Fabric: [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com)
 1. Navegue até a experiência do Power BI e crie um novo workspace com um nome exclusivo de sua escolha.
 
-    ![Captura de tela do painel Workspace realçando o botão + Novo workspace.](./Images/power-bi-new-workspace.png)
+    ![Captura de tela do painel Workspace, realçando o botão + Novo workspace.](./Images/power-bi-new-workspace.png)
 
 1. Na faixa de opções superior do novo workspace, selecione **Carregar > Procurar**.
-1. Na nova caixa de diálogo Explorador de Arquivos, navegue e até o arquivo *.pbix* inicial e selecione **Abrir** para fazer upload.
-1. Observe agora como você tem dois itens diferentes no workspace com o mesmo nome:
+1. Na nova caixa de diálogo Explorador de Arquivos, navegue até o arquivo *.pbix* inicial e selecione **Abrir** para fazer o upload.
+1. Observe como agora você tem dois itens diferentes no workspace com o mesmo nome:
 
     - Report
     - Modelo semântico
 
-1. Abra o relatório e observe o tema de cores usado. *Você o alterará posteriormente em outra tarefa.*
-1. Agora você pode fechar o seu navegador da Web.
+1. Abra o relatório e observe o tema de cores usado. *Você alterará isso em uma tarefa posteriormente.*
+1. Agora, você pode fechar seu navegador.
 
-> Os arquivos *.pbix* do Power BI contêm o modelo semântico e os visuais do relatório. Quando você publica relatórios no serviço, esses itens são separados. Você verá essa separação novamente mais tarde.
+> Os arquivos *.pbix* do Power BI contêm o modelo semântico e os visuais de relatório. Quando você publica relatórios no serviço, esses itens são separados. Você verá essa separação novamente mais tarde.
 
 ## Criar um novo projeto do Power BI
 
@@ -46,7 +47,7 @@ Nesta tarefa, você criará um relatório conectando-se ao modelo semântico pub
 
 1. Na área de trabalho, abra o aplicativo Power BI Desktop e crie um relatório em branco.
 
-    > Quando solicitado, entre com a mesma conta usada no serviço do Fabric.
+    > Quando solicitado, entre com a mesma conta usada no serviço Fabric.
 
 1. Selecione **Arquivo** > **Opções e configurações** > **Opções** > **Versão prévia dos recursos** e escolha a opção **Armazenar modelo semântico usando o formato TMDL**, depois clique em **OK.**.
 
@@ -106,7 +107,7 @@ Nesta tarefa, você adicionará uma nova tabela porque o modelo semântico não 
 1. Selecione **Fechar e Aplicar** para carregar os dados transformados no modelo semântico.
 1. Selecione **OK** se for apresentada uma caixa de diálogo para *Risco de segurança potencial*.
 1. **Salve** seu arquivo.
-1. Se solicitado, **Não atualize** para o formato de Relatório aprimorado do Power BI.
+1. Se solicitado, **não atualize** para o formato de Relatório aprimorado do Power BI.
 
 ### Revisar detalhes do arquivo de projeto do Power BI
 
@@ -126,7 +127,7 @@ Nesta tarefa, faremos alterações no relatório no Power BI Desktop e veremos a
     ![Captura de tela de uma nova caixa de diálogo de relacionamento configurada conforme descrito anteriormente.](./Images/power-bi-new-relationship-us-population.png)
 
 1. **Salve** seu arquivo.
-1. Verifique novamente no arquivo**relacionamentos.tmdl** e observe que uma nova relação foi adicionada.
+1. Verifique novamente no arquivo **relacionamentos.tmdl** e observe que uma nova relação foi adicionada.
 
 > Essas alterações em arquivos simples são rastreáveis em sistemas de controle do código-fonte, ao contrário dos arquivos *.pbix*, que são binários.
 
