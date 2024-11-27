@@ -4,592 +4,587 @@ lab:
   module: Use Apache Spark to work with files in a lakehouse
 ---
 
-# Analisar dados com Apache Spark no Fabric
+# Analisar dados com Apache Spark
 
-Neste laboratório, você ingerirá dados no lakehouse do Fabric e usará o PySpark para ler e analisar os dados.
+O Apache Spark é um mecanismo de código aberto para processamento de dados distribuído e é amplamente usado para explorar, processar e analisar grandes volumes de dados no data lake storage. O Spark está disponível como uma opção de processamento em vários produtos de plataforma de dados, incluindo o Azure HDInsight, o Azure Databricks, o Azure Synapse Analytics e o Microsoft Fabric. Um dos benefícios do Spark é o suporte a uma ampla variedade de linguagens de programação, incluindo Java, Scala, Python e SQL, tornando o Spark uma solução muito flexível para cargas de trabalho de processamento de dados, incluindo limpeza e processamento de dados, análise estatística e machine learning, análise e visualização de dados.
 
-Este laboratório levará aproximadamente 45 minutos para ser concluído.
+Este laboratório levará aproximadamente **45** minutos para ser concluído.
 
-## Pré-requisitos
-
-* Uma [avaliação do Microsoft Fabric](https://www.microsoft.com/microsoft-fabric/getting-started).
+> **Observação**: Você precisará uma [avaliação gratuita do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir este exercício.
 
 ## Criar um workspace
 
-Antes de trabalhar com dados no Fabric, você precisa criar um espaço de trabalho.
+Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na home page do [Microsoft Fabric](https://app.fabric.microsoft.com) em https://app.fabric.microsoft.com, escolha a experiência **Engenharia de Dados**.
-1. Na barra de navegação à esquerda, selecione **Espaços de trabalho** (🗇) e **Novo espaço de trabalho**.
-1. Dê um nome ao novo espaço de trabalho e, na seção **Avançado**, escolha o Modo de licenciamento apropriado. Se você tiver iniciado uma avaliação do Microsoft Fabric, escolha Avaliação.
-1. Clique em **Aplicar** para criar um espaço de trabalho vazio.
- 
-    ![Imagem da tela dos arquivos CSV carregados em um novo espaço de trabalho do Fabric.](Images/uploaded-files.jpg)
+1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) no `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados do Synapse**.
+1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
+1. Crie um workspace com um nome de sua escolha, selecionando um modo de licenciamento na seção **Avançado** que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
+1. Quando o novo workspace for aberto, ele estará vazio.
+
+    ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
 
 ## Criar um lakehouse e carregar arquivos
 
-Agora que tem um espaço de trabalho, você pode criar um lakehouse para seus arquivos de dados. No novo workspace, clique em **Novo** e **Lakehouse**. Dê um nome ao lakehouse e clique em **Criar**. Após um pequeno atraso, um novo lakehouse será criado.
+Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse para os arquivos de dados que serão analisados.
 
-Você já pode ingerir dados no lakehouse. Há várias maneiras de fazer isso, mas por ora, você baixará uma pasta de arquivos de texto no computador local (ou na VM de laboratório, se aplicável) e fará seu upload no lakehouse.
+1. Na home page da **Engenharia de Dados do Synapse**, crie um **Lakehouse** com um nome de sua escolha.
 
-1. Baixe os arquivos de dados em https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip.
-1. Extraia o arquivo compactado e verifique se você tem uma pasta chamada *orders* com três arquivos CSV: 2019.csv, 2020.csv e 2021.csv.
-1. Volte para o novo lakehouse. No painel do **Explorer**, clique no menu de reticências (**...**) ao lado da pasta **Arquivos** e clique em **Carregar** e **Carregar pasta**. Navegue até a pasta de pedidos em seu computador local (ou VM de laboratório, se aplicável) e clique em **Carregar**.
-1. Depois que os arquivos forem carregados, expanda **Arquivos** e clique na pasta **orders**. Verifique se os arquivo CSV foram carregados, conforme mostrado aqui:
+    Após alguns minutos, um lakehouse vazio será criado. Você precisa ingerir alguns dados no data lakehouse para análise. Há várias maneiras de fazer isso, mas neste exercício, você apenas baixará e extrairá uma pasta de arquivos de texto no computador local (ou na VM de laboratório, se aplicável) e os carregará no lakehouse.
 
-    ![Imagem de tela de um novo espaço de trabalho do Fabric.](Images/new-workspace.jpg)
+1. Baixe e extraia os [arquivos de dados](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip) deste exercício em `https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip`.
+
+1. Depois de extrair o arquivo compactado, verifique se você tem uma pasta chamada **orders** que contém arquivos CSV chamados **2019.csv**, **2020.csv** e **2021.csv**.
+1. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Explorer**, selecione **Carregar** e **Carregar pasta** e carregue a pasta **orders** do computador local (ou da VM de laboratório, se aplicável) para o lakehouse.
+1. Depois que os arquivos forem carregados, expanda **Arquivos**, selecione a pasta **orders** e verifique se os arquivos CSV foram carregados, conforme mostrado aqui:
+
+    ![Captura de tela dos arquivos carregados em um lakehouse.](./Images/uploaded-files.png)
 
 ## Criar um notebook
 
-Agora você pode criar um notebook do Fabric para trabalhar com seus dados. Os notebooks fornecem um ambiente interativo no qual você pode escrever e executar código.
+Para trabalhar com os dados no Apache Spark, você pode criar um *notebook*. Os notebooks fornecem um ambiente interativo no qual você pode escrever e executar o código (em várias linguagens) e adicionar anotações para documentá-lo.
 
-1. Escolha o seu espaço de trabalho e clique em **Novo** e **Notebook**. Após alguns segundos, um novo notebook que contém uma só célula será aberto. Os notebooks são compostos por uma ou mais células que podem conter um código ou um markdown (texto formatado).
-1. O Fabric atribui um nome a cada notebook criado, como Bloco de Notebook 1, Notebook 2, etc. Clique no painel de nome acima da guia **Página Inicial** no menu para alterar o nome para algo mais descritivo.
-1. Selecione a primeira célula (que atualmente é uma célula de código) e, na barra de ferramentas no canto superior direito, use o botão **M↓** para convertê-la em uma célula Markdown. O texto contido na célula será então exibido como texto formatado.
-1. Use o botão 🖉 (Editar) para alternar a célula para o modo de edição e modifique o Markdown como mostrado abaixo.
+1. Na **Home page**, ao exibir o conteúdo da pasta **orders** no data lake, no menu **Abrir notebook**, selecione **Novo notebook**.
 
-    ```markdown
+    Após alguns segundos, um novo notebook que contém uma só *célula* será aberto. Os notebooks são compostos por uma ou mais células que podem conter um *código* ou um *markdown* (texto formatado).
+
+2. Selecione a primeira célula (que atualmente é uma célula de *código*) e na barra de ferramentas dinâmica no canto superior direito, use o botão **M&#8595;** para converter a célula em uma célula *markdown*.
+
+    Quando a célula for alterada para uma célula markdown, o texto que ela contém será renderizado.
+
+3. Use o botão **&#128393;** (Editar) para alternar a célula para o modo de edição e modifique o markdown da seguinte maneira:
+
+    ```
    # Sales order data exploration
-   Use this notebook to explore sales order data
+
+   Use the code in this notebook to explore sales order data.
     ```
 
-    ![Imagem de tela de um notebook Fabric com uma célula Markdown.](Images/name-notebook-markdown.jpg)
+4. Clique em qualquer lugar no notebook fora da célula para parar de editá-lo e ver o markdown renderizado.
 
-Quando terminar, clique em qualquer lugar no notebook fora da célula para parar de editá-lo e ver o Markdown renderizado.
+## Carregar dados em um dataframe
 
-## Criar um DataFrame
+Agora você está pronto para executar o código que carrega os dados em um *dataframe*. Os dataframes no Spark são semelhantes aos dataframes do Pandas no Python e fornecem uma estrutura comum para trabalhar com os dados em linhas e colunas.
 
-Agora que você criou um espaço de trabalho, um lakehouse e um notebook, você pode trabalhar com seus dados. Você usará o PySpark, que é a linguagem padrão para notebooks do Fabric, e a versão do Python otimizada para o Spark.
+> **Observação**: o Spark dá suporte a várias linguagens de codificação, incluindo Scala, Java e outras. Neste exercício, usaremos o *PySpark*, que é uma variante otimizada para Spark do Python. O PySpark é uma das linguagens mais usadas no Spark e é a linguagem padrão nos notebooks do Fabric.
 
->[!NOTE]
-> Os notebooks do Fabric aceitam várias linguagens de programação, incluindo Scala, R e Spark SQL.
+1. Com o notebook visível, no painel do **Explorer** expanda **Lakehouses** e, a seguir, expanda a lista **Arquivos** para o seu lakehouse e selecione a pasta **Pedidos** para que os arquivos CSV sejam listados ao lado do editor do notebook, assim:
 
-1. Selecione seu novo espaço de trabalho na barra à esquerda. Você verá uma lista de itens contidos no espaço de trabalho, incluindo seu lakehouse e notebook.
-2. Selecione o lakehouse para exibir o painel Explorer, incluindo a pasta **orders**.
-3. No menu superior, clique em **Abrir notebook**, **Notebook existente** e, em seguida, abra o notebook criado anteriormente. O notebook abrirá ao lado do painel Explorer. Expanda Lakehouses, expanda a lista Arquivos e selecione a pasta "orders". Os arquivos CSV que você carregou são listados ao lado do editor de notebook, desta maneira:
+    ![Captura de tela de um notebook com um painel Arquivos.](./Images/notebook-files.png)
 
-    ![Imagem da tela de arquivos csv na exibição do Explorer.](Images/explorer-notebook-view.jpg)
-
-4. No menu ... de 2019.csv, selecione **Carregar dados** > **Spark**. O código é gerado automaticamente em uma nova célula de código:
+1. No menu **…** de **2019.csv**, selecione **Carregar dados** > **Spark**. Uma nova célula de código que contém o seguinte código deve ser adicionada ao notebook:
 
     ```python
-    df = spark.read.format("csv").option("header","true").load("Files/orders/2019.csv")
-    # df now is a Spark DataFrame containing CSV data from "Files/orders/2019.csv".
-    display(df)
+   df = spark.read.format("csv").option("header","true").load("Files/orders/2019.csv")
+   # df now is a Spark DataFrame containing CSV data from "Files/orders/2019.csv".
+   display(df)
     ```
 
->[!TIP]
-> Você pode ocultar os painéis Explorer do lakehouse à esquerda usando os ícones «. Isso dá mais espaço para o notebook.
+    > **Dica**: oculte os painéis do Lakehouse Explorer à esquerda usando os ícones **<<** . Isso ajudará você a se concentrar no notebook.
 
-5. Clique em ▷ **Executar célula** à esquerda da célula para executar o código.
+1. Use o botão **&#9655; Executar célula** à esquerda da célula para executá-la.
 
->[!NOTE]
-> A primeira vez que você executar o código Spark, uma sessão do Spark será iniciada. Isso pode levar alguns segundos ou mais. As execuções subsequentes na mesma sessão serão mais rápidas.
+    > **Observação**: como esta é a primeira vez que você executa qualquer código Spark, uma sessão do Spark precisa ser iniciada. Isso significa que a primeira execução na sessão pode levar um minuto para ser concluída. As execuções seguintes serão mais rápidas.
 
-6. Quando o código da célula for concluído, analise a saída abaixo da célula, que deve ser semelhante a:
- 
-    ![Imagem da tela mostrando código e dados gerados automaticamente.](Images/auto-generated-load.jpg)
+1. Quando o comando de célula for concluído, analise a saída abaixo da célula, que deve ser semelhante a essa:
 
-7. A saída mostra os dados do arquivo 2019.csv exibidos em linhas e as colunas.  Perceba que os cabeçalhos das colunas contêm a primeira linha dos dados. Para corrigir isso, você precisa modificar a primeira linha do código da seguinte maneira:
+    | Índice | SO43701 | 11 | 2019-07-01 | Christy Zhu | christy12@adventure-works.com | Mountain-100 Silver, 44 | 16 | 3399.99 | 271.9992 |
+    | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+    | 1 | SO43704 | 1 | 2019-07-01 | Julio Ruiz | julio1@adventure-works.com | Mountain-100 Black, 48 | 1 | 3374.99 | 269.9992 |
+    | 2 | SO43705 | 1 | 2019-07-01 | Curtis Lu | curtis9@adventure-works.com | Mountain-100 Silver, 38 | 1 | 3399.99 | 271.9992 |
+    | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+
+    A saída mostra as linhas e as colunas de dados do arquivo 2019.csv. No entanto, observe que os cabeçalhos de coluna não parecem corretos. O código padrão usado para carregar os dados em um dataframe pressupõe que o arquivo CSV inclua os nomes de coluna na primeira linha, mas nesse caso o arquivo CSV inclui apenas os dados sem informações de cabeçalho.
+
+1. Modifique o código para definir a opção **cabeçalho** como **false** da seguinte maneira:
 
     ```python
-    df = spark.read.format("csv").option("header","false").load("Files/orders/2019.csv")
+   df = spark.read.format("csv").option("header","false").load("Files/orders/2019.csv")
+   # df now is a Spark DataFrame containing CSV data from "Files/orders/2019.csv".
+   display(df)
     ```
 
-8. Execute o código novamente, para que o DataFrame identifique corretamente a primeira linha como dados. Perceba que os nomes das colunas agora mudaram para _c0, _c1, etc.
+1. Execute a célula novamente e analise a saída, que deve ser semelhante à esta:
 
-9. Nomes de coluna descritivos ajudam você a entender os dados. Para criar nomes de coluna significativos, você precisa definir o esquema e os tipos de dados. Você também precisa importar um conjunto padrão de tipos SQL do Spark para definir os tipos de dados. Substitua o código existente pelo seguinte:
+   | Índice | _c0 | _c1 | _c2 | _c3 | _c4 | _c5 | _c6 | _c7 | _c8 |
+    | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+    | 1 | SO43701 | 11 | 2019-07-01 | Christy Zhu | christy12@adventure-works.com | Mountain-100 Silver, 44 | 16 | 3399.99 | 271.9992 |
+    | 2 | SO43704 | 1 | 2019-07-01 | Julio Ruiz | julio1@adventure-works.com | Mountain-100 Black, 48 | 1 | 3374.99 | 269.9992 |
+    | 3 | SO43705 | 1 | 2019-07-01 | Curtis Lu | curtis9@adventure-works.com | Mountain-100 Silver, 38 | 1 | 3399.99 | 271.9992 |
+    | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+
+    Agora, o dataframe inclui corretamente a primeira linha como valores de dados, mas os nomes de colunas são gerados automaticamente e não são muito úteis. Para entender os dados, você precisa definir explicitamente o esquema e o tipo de dados corretos para os valores de dados no arquivo.
+
+1. Modifique o código da seguinte maneira para definir um esquema e aplicá-lo ao carregar os dados:
 
     ```python
-    from pyspark.sql.types import *
+   from pyspark.sql.types import *
 
-    orderSchema = StructType([
-        StructField("SalesOrderNumber", StringType()),
-        StructField("SalesOrderLineNumber", IntegerType()),
-        StructField("OrderDate", DateType()),
-        StructField("CustomerName", StringType()),
-        StructField("Email", StringType()),
-        StructField("Item", StringType()),
-        StructField("Quantity", IntegerType()),
-        StructField("UnitPrice", FloatType()),
-        StructField("Tax", FloatType())
-    ])
+   orderSchema = StructType([
+       StructField("SalesOrderNumber", StringType()),
+       StructField("SalesOrderLineNumber", IntegerType()),
+       StructField("OrderDate", DateType()),
+       StructField("CustomerName", StringType()),
+       StructField("Email", StringType()),
+       StructField("Item", StringType()),
+       StructField("Quantity", IntegerType()),
+       StructField("UnitPrice", FloatType()),
+       StructField("Tax", FloatType())
+       ])
 
-    df = spark.read.format("csv").schema(orderSchema).load("Files/orders/2019.csv")
-
-    display(df)
+   df = spark.read.format("csv").schema(orderSchema).load("Files/orders/2019.csv")
+   display(df)
     ```
-    
-10. Execute a célula e analise a saída:
 
-    ![Imagem da tela do código com esquema definido e dados.](Images/define-schema.jpg)
+1. Execute a célula modificada e analise a saída, que deve ser semelhante à esta:
 
-11. Esse DataFrame só inclui os dados do arquivo 2019.csv. Modifique o código para que o caminho do arquivo use um curinga * para ler todos os dados na pasta orders:
+   | Índice | SalesOrderNumber | SalesOrderLineNumber | OrderDate | CustomerName | Email | Item | Quantidade | UnitPrice | Imposto |
+    | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+    | 1 | SO43701 | 11 | 2019-07-01 | Christy Zhu | christy12@adventure-works.com | Mountain-100 Silver, 44 | 16 | 3399.99 | 271.9992 |
+    | 2 | SO43704 | 1 | 2019-07-01 | Julio Ruiz | julio1@adventure-works.com | Mountain-100 Black, 48 | 1 | 3374.99 | 269.9992 |
+    | 3 | SO43705 | 1 | 2019-07-01 | Curtis Lu | curtis9@adventure-works.com | Mountain-100 Silver, 38 | 1 | 3399.99 | 271.9992 |
+    | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+
+    Agora, o dataframe inclui os nomes de colunas corretos (além do **Índice**, que é uma coluna interna em todos os dataframes com base na posição ordinal de cada linha). Os tipos de dados das colunas são especificados por meio de um conjunto padrão de tipos definidos na biblioteca do Spark SQL, que foram importados no início da célula.
+
+1. O dataframe só inclui os dados do arquivo **2019.csv**. Modifique o código para que o caminho do arquivo use um curinga \* para ler os dados do pedido de vendas de todos os arquivos da pasta **orders**:
 
     ```python
-    from pyspark.sql.types import *
+   from pyspark.sql.types import *
 
-    orderSchema = StructType([
-        StructField("SalesOrderNumber", StringType()),
-        StructField("SalesOrderLineNumber", IntegerType()),
-        StructField("OrderDate", DateType()),
-        StructField("CustomerName", StringType()),
-        StructField("Email", StringType()),
-        StructField("Item", StringType()),
-        StructField("Quantity", IntegerType()),
-        StructField("UnitPrice", FloatType()),
-        StructField("Tax", FloatType())
-        ])
+   orderSchema = StructType([
+       StructField("SalesOrderNumber", StringType()),
+       StructField("SalesOrderLineNumber", IntegerType()),
+       StructField("OrderDate", DateType()),
+       StructField("CustomerName", StringType()),
+       StructField("Email", StringType()),
+       StructField("Item", StringType()),
+       StructField("Quantity", IntegerType()),
+       StructField("UnitPrice", FloatType()),
+       StructField("Tax", FloatType())
+       ])
 
-    df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
-
-    display(df)
+   df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
+   display(df)
     ```
 
-12. Ao executar o código modificado, você verá as vendas de 2019, 2020 e 2021. Apenas um subconjunto das linhas é exibido, portanto, talvez você não veja as linhas de todos os anos.
+1. Execute a célula de código modificada e analise a saída, que agora incluirá as vendas de 2019, 2020 e 2021.
 
->[!NOTE]
-> Você pode ocultar ou exibir a saída de uma célula selecionando **…** ao lado do resultado. Isso facilita o trabalho em um notebook.
+    **Observação**: somente um subconjunto das linhas é exibido, ou seja, talvez você não consiga ver exemplos de todos os anos.
 
-## Explorar dados em um DataFrame
+## Explorar os dados em um dataframe
 
-O objeto DataFrame fornece funcionalidades adicionais, como a capacidade de filtrar, agrupar e manipular dados.
+O objeto de dataframe inclui uma ampla variedade de funções que você pode usar para filtrar, agrupar e processar os dados que ele contém.
 
-### Filtrar um DataFrame
+### Filtrar um dataframe
 
-1. Adicione uma célula de código clicando em **+ Código**, que aparece quando você passa o mouse acima ou abaixo da célula atual ou da respectiva saída. Como alternativa, no menu da faixa de opções, selecione **Editar** e **+ Adicionar** célula de código.
+1. Adicione uma nova célula de código usando o link **+ Código** que aparece ao mover o cursos sob o lado esquerdo da saída da célula atual (ou na barra de menu, na guia **Editar**, selecione **+ Adicionar célula de código**). A seguir insira nele o seguinte código:
 
-2.  O código a seguir filtrará os dados para que apenas duas colunas sejam retornadas. Ele também usa *count* e *distinct* para resumir o número de registros:
-
-    ```python
-    customers = df['CustomerName', 'Email']
-
-    print(customers.count())
-    print(customers.distinct().count())
-
-    display(customers.distinct())
+    ```Python
+   customers = df['CustomerName', 'Email']
+   print(customers.count())
+   print(customers.distinct().count())
+   display(customers.distinct())
     ```
 
-3. Execute o código e analise a saída:
+2. Execute a nova célula de código e analise os resultados. Observe os seguintes detalhes:
+    - Quando você executa uma operação em um dataframe, o resultado é um novo dataframe (nesse caso, um dataframe **customers** é criado pela seleção de um subconjunto específico de colunas do dataframe **df**)
+    - Os dataframes fornecem funções como **count** e **distinct** que podem ser usadas para resumir e filtrar os dados que eles contêm.
+    - A sintaxe `dataframe['Field1', 'Field2', ...]` é uma forma abreviada de definir um subconjunto de colunas. Você também pode usar o método **select**, para que a primeira linha do código acima possa ser escrita como `customers = df.select("CustomerName", "Email")`
 
-    * O código cria um novo DataFrame chamado **customers**, que contém um subconjunto de colunas do DataFrame **df** original. Ao executar uma transformação DataFrame, você não modifica o DataFrame original, mas retorna um novo.
-    * Outra maneira de obter o mesmo resultado é usar o método select:
+3. Modifique o código da seguinte maneira:
 
-    ```
-    customers = df.select("CustomerName", "Email")
-    ```
-
-    * As funções *count* e *distinct* do DataFrame são usadas para fornecer totais do número de clientes e de clientes exclusivos.
-
-4. Modifique a primeira linha do código usando *select* com uma função *where* da seguinte maneira:
-
-    ```python
-    customers = df.select("CustomerName", "Email").where(df['Item']=='Road-250 Red, 52')
-    print(customers.count())
-    print(customers.distinct().count())
-
-    display(customers.distinct())
+    ```Python
+   customers = df.select("CustomerName", "Email").where(df['Item']=='Road-250 Red, 52')
+   print(customers.count())
+   print(customers.distinct().count())
+   display(customers.distinct())
     ```
 
-5. Execute o código modificado para selecionar apenas os clientes que compraram o produto Road-250 Red, 52. Você pode "encadear" várias funções para que a saída de uma função se torne a entrada da próxima. Nesse caso, o DataFrame criado pelo método *select* é o DataFrame de origem do método **where** usado para aplicar critérios de filtragem.
+4. Execute o código modificado para visualizar os clientes que compraram o produto *Road-250 Red, 52*. Observe que você pode "encadear" várias funções para que a saída de uma função se torne a entrada da próxima. Nesse caso, o dataframe criado pelo método **select** é o dataframe de origem do método **where** usado para aplicar os critérios de filtragem.
 
-### Agregar e agrupar dados em um DataFrame
+### Agregar e agrupar dados em um dataframe
 
-1. Adicione uma célula de código e insira o seguinte código:
+1. Adicione uma nova célula de código ao notebook e insira o seguinte código nela:
 
-    ```python
-    productSales = df.select("Item", "Quantity").groupBy("Item").sum()
-
-    display(productSales)
+    ```Python
+   productSales = df.select("Item", "Quantity").groupBy("Item").sum()
+   display(productSales)
     ```
 
-2. Execute o código. Observe que os resultados mostram a soma das quantidades de pedido agrupadas por produto. O método *groupBy* agrupa as linhas por Item, e a função de agregação *sum* subsequente é aplicada às colunas numéricas restantes, nesse caso, *Quantidade*.
+2. Execute a célula de código que você adicionou e observe que os resultados mostram a soma das quantidades de pedidos agrupadas por produto. O método **groupBy** agrupa as linhas por *Item*, e a função de agregação de **soma** seguinte é aplicada a todas as colunas numéricas restantes (nesse caso, *Quantidade*)
 
-3. Adicione outra célula de código ao notebook e insira o seguinte código nela:
+3. Adicione outra nova célula de código ao notebook e insira o seguinte código nela:
 
-    ```python
-    from pyspark.sql.functions import *
+    ```Python
+   from pyspark.sql.functions import *
 
-    yearlySales = df.select(year(col("OrderDate")).alias("Year")).groupBy("Year").count().orderBy("Year")
-
-    display(yearlySales)
+   yearlySales = df.select(year("OrderDate").alias("Year")).groupBy("Year").count().orderBy("Year")
+   display(yearlySales)
     ```
 
-4. Execute a célula. Examine a saída. Os resultados mostram o número de pedidos de vendas por ano:
-
-    * A instrução *import* permite que você use a biblioteca SQL do Spark.
-    * O método *select* é usado com uma função year do SQL para extrair o componente de ano do campo *OrderDate*.
-    * O método *alias* para atribuir um nome de coluna ao valor de ano extraído.
-    * O método *groupBy* agrupa os dados pela coluna Year derivada.
-    * A contagem de linhas em cada grupo é calculada antes de o método *orderBy* ser usado para classificar o DataFrame resultante.
-
-    ![Imagem de tela mostrando os resultados da agregação e agrupamento de dados em um DataFrame.](Images/spark-sql-dataframe.jpg)
+4. Execute a célula de código que você adicionou e observe que os resultados mostram o número de pedidos de vendas por ano. Observe que o método **select** inclui uma função SQL **year** para extrair o componente de ano do campo *OrderDate* (razão pela qual o código inclui uma instrução **import** para importar funções da biblioteca do Spark SQL). Em seguida, ele usa um método de **alias** para atribuir um nome de coluna ao valor de ano extraído. Em seguida, os dados são agrupados pela coluna *Year* derivada, e a contagem de linhas em cada grupo é calculada antes de finalmente o método **orderBy** ser usado para classificar o dataframe resultante.
 
 ## Usar o Spark para transformar arquivos de dados
 
-Uma tarefa comum para engenheiros e cientistas de dados é transformar os dados para processamento ou análise downstream adicionais.
+Uma tarefa comum para engenheiros de dados é ingerir os dados em uma estrutura ou em um formato específico e transformá-los para processamento ou análise downstream adicionais.
 
-### Usar métodos e funções de DataFrame para transformar dados
+### Usar métodos e funções de dataframe para transformar dados
 
-1. Adicione uma célula de código ao notebook e insira o seguinte:
+1. Adicione outra nova célula de código ao notebook e insira o seguinte código nela:
 
-    ```python
-    from pyspark.sql.functions import *
+    ```Python
+   from pyspark.sql.functions import *
 
-    # Create Year and Month columns
-    transformed_df = df.withColumn("Year", year(col("OrderDate"))).withColumn("Month", month(col("OrderDate")))
+   ## Create Year and Month columns
+   transformed_df = df.withColumn("Year", year(col("OrderDate"))).withColumn("Month", month(col("OrderDate")))
 
-    # Create the new FirstName and LastName fields
-    transformed_df = transformed_df.withColumn("FirstName", split(col("CustomerName"), " ").getItem(0)).withColumn("LastName", split(col("CustomerName"), " ").getItem(1))
+   # Create the new FirstName and LastName fields
+   transformed_df = transformed_df.withColumn("FirstName", split(col("CustomerName"), " ").getItem(0)).withColumn("LastName", split(col("CustomerName"), " ").getItem(1))
 
-    # Filter and reorder columns
-    transformed_df = transformed_df["SalesOrderNumber", "SalesOrderLineNumber", "OrderDate", "Year", "Month", "FirstName", "LastName", "Email", "Item", "Quantity", "UnitPrice", "Tax"]
+   # Filter and reorder columns
+   transformed_df = transformed_df["SalesOrderNumber", "SalesOrderLineNumber", "OrderDate", "Year", "Month", "FirstName", "LastName", "Email", "Item", "Quantity", "UnitPrice", "Tax"]
 
-    # Display the first five orders
-    display(transformed_df.limit(5))
+   # Display the first five orders
+   display(transformed_df.limit(5))
     ```
 
-2. Execute a célula. Um novo DataFrame com base nos dados do pedido original com as seguintes transformações:
-
-    - Colunas Year e Month adicionadas com base na coluna OrderDate.
-    - Colunas FirstName e LastName adicionadas com base na coluna CustomerName.
-    - As colunas são filtradas e reordenadas, e a coluna CustomerName é removida.
+2. Execute o código para criar um dataframe com base nos dados do pedido original com as seguintes transformações:
+    - Adicione as colunas **Year** e **Month** com base na coluna **OrderDate**.
+    - Adicione as colunas **FirstName** e **LastName** com base na coluna **CustomerName**.
+    - Filtre e reordene as colunas, removendo a coluna **CustomerName**.
 
 3. Analise a saída e verifique se as transformações foram feitas nos dados.
 
-Você pode usar a biblioteca do Spark SQL para transformar os dados filtrando linhas, derivando, removendo, renomeando colunas e aplicando outras modificações de dados.
+    Use todo o potencial da biblioteca do Spark SQL para transformar os dados filtrando linhas, derivando, removendo, renomeando colunas e aplicando outras modificações de dados necessárias.
 
->[!TIP]
-> Confira a documentação do [dataframe do Apache Spark](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/dataframe.html) para saber mais sobre o objeto Dataframe.
+    > **Dica**: confira a [documentação do dataframe do Spark](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/dataframe.html) para saber mais sobre os métodos do objeto Dataframe.
 
 ### Salvar os dados transformados
 
-A esta altura, talvez você queira salvar os dados transformados para usá-los para análise posterior.
+1. Adicione uma nova célula com o seguinte código para salvar o dataframe transformado no formato Parquet (substituindo os dados se eles já existirem):
 
-O *Parquet* é um formato popular de armazenamento de dados porque armazena dados com eficiência e é compatível com a maioria dos sistemas de análise de dados em grande escala. Na verdade, às vezes, o requisito de transformação de dados é converter dados de um formato, como CSV, em Parquet.
-
-1. Para salvar o DataFrame transformado no formato Parquet, adicione uma célula de código e adicione o seguinte código:  
-
-    ```python
-    transformed_df.write.mode("overwrite").parquet('Files/transformed_data/orders')
-
-    print ("Transformed data saved!")
+    ```Python
+   transformed_df.write.mode("overwrite").parquet('Files/transformed_data/orders')
+   print ("Transformed data saved!")
     ```
 
-2. Execute a célula e aguarde a mensagem indicando que os dados foram salvos. Em seguida, no painel do Lakehouses à esquerda, no menu ... do nó Arquivos, clique em **Atualizar**. Escolha a pasta transformed_data para verificar se ela contém uma nova pasta chamada orders, que por sua vez contém um ou mais arquivos Parquet.
+    > **Observação**: normalmente, o formato *Parquet* é preferencial para os arquivos de dados que você usará para análise ou ingestão posterior em um repositório analítico. O Parquet é um formato muito eficiente que é compatível com a maioria dos sistemas de análise de dados em grande escala. Na verdade, às vezes, seu requisito de transformação de dados pode ser apenas converter dados de outro formato (como CSV) em Parquet.
 
-3. Adicione uma célula com o seguinte código:
+2. Execute a célula e aguarde a mensagem indicando que os dados foram salvos. Em seguida, no painel **Lakehouses** do lado esquerdo, no menu **…** do nó **Arquivos**, selecione **Atualizar** e selecione a pasta **transformed_data** para verificar se contém uma nova pasta chamada **pedidos**, que, por sua vez, contém um ou mais arquivos Parquet.
 
-    ```python
-    orders_df = spark.read.format("parquet").load("Files/transformed_data/orders")
-    display(orders_df)
+    ![Captura de tela de uma pasta que contém os arquivos Parquet.](./Images/saved-parquet.png)
+
+3. Adicione uma nova célula com o seguinte código para carregar um novo dataframe dos arquivos Parquet na pasta **transformed_data/orders**:
+
+    ```Python
+   orders_df = spark.read.format("parquet").load("Files/transformed_data/orders")
+   display(orders_df)
     ```
 
-4. Execute a célula.  Um novo DataFrame é criado a partir dos arquivos parquet na pasta *transformed_data/orders*. Verifique se os resultados mostram os dados do pedido que foram carregados a partir dos arquivos Parquet.
-
-    ![Imagem da tela mostrando arquivos Parquet.](Images/parquet-files.jpg)
+4. Execute a célula e verifique se os resultados mostram os dados do pedido que foram carregados dos arquivos Parquet.
 
 ### Salvar os dados em arquivos particionados
 
-Ao lidar com grandes volumes de dados, o particionamento pode melhorar significativamente o desempenho e facilitar a filtragem de dados.
+1. Adicione uma nova célula com o código a seguir, que salva o dataframe, particionando os dados por **Year** e **Month**:
 
-1. Adicione uma célula com o código para salvar o dataframe, particionando os dados por Year e Month:
-
-    ```python
-    orders_df.write.partitionBy("Year","Month").mode("overwrite").parquet("Files/partitioned_data")
-
-    print ("Transformed data saved!")
+    ```Python
+   orders_df.write.partitionBy("Year","Month").mode("overwrite").parquet("Files/partitioned_data")
+   print ("Transformed data saved!")
     ```
 
-2.  Execute a célula e aguarde a mensagem indicando que os dados foram salvos. Em seguida, no painel do Lakehouses à esquerda, no menu ... do nó Arquivos, clique em **Atualizar** e expanda a pasta partitioned_orders para verificar que ela contém uma hierarquia de pastas chamada *Year=xxxx*, cada uma contendo pastas chamadas *Month=xxxx*. Cada pasta mensal contém um arquivo Parquet com os pedidos desse mês.
+2. Execute a célula e aguarde a mensagem indicando que os dados foram salvos. Em seguida, no painel **Lakehouses** do lado esquerdo, no menu **…** do nó **Arquivos**, selecione **Atualizar**e expanda a pasta **Pedidos particionados** para verificar se contém uma hierarquia de pastas chamada **Ano=* xxxx***, cada uma contendo pastas chamadas **Mês=* xxxx***. Cada pasta mensal contém um arquivo Parquet com os pedidos desse mês.
 
-    ![Imagem da tela mostrando dados particionados por Year e Month.](Images/partitioned-data.jpg)
+    ![Captura de tela de uma hierarquia de arquivos de dados particionados.](./Images/partitioned-files.png)
 
-3. Adicione uma nova célula com o seguinte código para carregar um novo DataFrame a partir do arquivo orders.parquet:
+    Particionar arquivos de dados é uma forma comum de otimizar o desempenho ao lidar com grandes volumes de dados. Essa técnica pode aprimorar consideravelmente o desempenho e facilitar a filtragem de dados.
 
-    ```python
-    orders_2021_df = spark.read.format("parquet").load("Files/partitioned_data/Year=2021/Month=*")
+3. Adicione uma nova célula com o seguinte código para carregar um novo dataframe por meio do arquivo **orders.parquet**:
 
-    display(orders_2021_df)
+    ```Python
+   orders_2021_df = spark.read.format("parquet").load("Files/partitioned_data/Year=2021/Month=*")
+   display(orders_2021_df)
     ```
 
-4. Execute a célula e verifique se os resultados mostram os dados do pedido de vendas em 2021. Perceba que as colunas de particionamento especificadas no caminho (Year e Month) não estão incluídas no DataFrame.
+4. Execute a célula e verifique se os resultados mostram os dados do pedido de vendas em 2021. Observe que as colunas de particionamento especificadas no caminho (**Year** e **Month**) não estão incluídas no dataframe.
 
 ## Trabalhar com tabelas e o SQL
 
-Como você viu, os métodos nativos do objeto DataFrame permitem que você consulte e analise os dados a partir de um arquivo. No entanto, você pode se sentir mais confortável trabalhando com tabelas usando a sintaxe SQL. O Spark fornece um metastore no qual você pode definir tabelas relacionais. 
-
-A biblioteca do Spark SQL permite o uso de instruções SQL para consultar tabelas no metastore. Isso dá a flexibilidade de um data lake com o esquema de dados estruturado e as consultas baseadas em SQL de um data warehouse relacional, daí o termo "data lakehouse".
+Como você viu, os métodos nativos do objeto de dataframe permitem que você consulte e analise os dados de um arquivo com bastante eficiência. No entanto, muitos analistas de dados se sentem mais à vontade em trabalhar com tabelas que eles podem consultar usando a sintaxe SQL. O Spark fornece um *metastore* no qual você pode definir tabelas relacionais. A biblioteca do Spark SQL que fornece o objeto de dataframe também dá suporte ao uso de instruções SQL para consultar as tabelas no metastore. Usando essas funcionalidades do Spark, você pode combinar a flexibilidade de um data lake com o esquema de dados estruturado e as consultas baseadas em SQL de um data warehouse relacional, daí o termo "data lakehouse".
 
 ### Criar uma tabela
 
-As tabelas em um metastore do Spark são abstrações relacionais em arquivos no data lake. As tabelas podem ser *gerenciadas* pelo metastore ou *externas* e gerenciadas de forma independente do metastore.
+As tabelas em um metastore do Spark são abstrações relacionais em arquivos no data lake. As tabelas podem ser *gerenciadas* (nesse caso, os arquivos são gerenciados pelo metastore) ou *externas* (nesse caso, a tabela referencia um local de arquivo no data lake que você gerencia independentemente do metastore).
 
-1.  Adicione uma célula de código ao notebook e insira o seguinte código, que salva o DataFrame dos dados do pedido de vendas como uma tabela chamada *salesorders*:
+1. Adicione uma nova célula de código ao notebook e insira o seguinte código, que salva o dataframe dos dados do pedido de vendas como uma tabela chamada **salesorders**:
 
-    ```python
-    # Create a new table
-    df.write.format("delta").saveAsTable("salesorders")
+    ```Python
+   # Create a new table
+   df.write.format("delta").saveAsTable("salesorders")
 
-    # Get the table description
-    spark.sql("DESCRIBE EXTENDED salesorders").show(truncate=False)
+   # Get the table description
+   spark.sql("DESCRIBE EXTENDED salesorders").show(truncate=False)
     ```
 
->[!NOTE]
-> Neste exemplo, nenhum caminho explícito é fornecido; portanto, os arquivos da tabela serão gerenciados pelo metastore. Além disso, a tabela é salva no formato delta, que adiciona recursos de banco de dados relacional às tabelas. Isso inclui suporte para transações, controle de versão de linha e outros recursos úteis. A criação de tabelas no formato delta é preferencial para data lakehouses no Fabric.
+    > **Observação**: vale a pena observar algumas coisas sobre este exemplo. Em primeiro lugar, nenhum caminho explícito é fornecido, ou seja, os arquivos da tabela serão gerenciados pelo metastore. Em segundo lugar, a tabela é salva no formato **delta**. Você pode criar tabelas com base em vários formatos de arquivo (incluindo CSV, Parquet, Avro e outros), mas o *Delta Lake* é uma tecnologia do Spark que adiciona funcionalidades de banco de dados relacional a tabelas; incluindo suporte para transações, controle de versão de linha e outros recursos úteis. A criação de tabelas no formato delta é preferencial para data lakehouses no Fabric.
 
 2. Execute a célula de código e analise a saída, que descreve a definição da nova tabela.
 
-3. No painel **Lakehouses**, no menu ... da pasta Tabelas, clique em **Atualizar**. Em seguida, expanda o nó **Tabelas** e verifique se a tabela **salesorders** foi criada.
+3. No painel **Lakehouses**, no menu **…** da pasta **Tabelas**, selecione **Atualizar**. Em seguida, expanda o nó **Tabelas** e verifique se a tabela **salesorders** foi criada.
 
-    ![Imagem da tela mostrando que a tabela salesorders foi criada.](Images/salesorders-table.jpg)
+    ![Captura de tela da tabela salesorder no Explorer.](./Images/table-view.png)
 
-4. No menu … da tabela salesorders, clique em **Carregar dados** > **Spark**. Uma nova célula de código que contém um código semelhante ao seguinte exemplo é adicionada:
+5. No menu **…** da tabela **salesorders**, selecione **Carregar dados** > **Spark**.
 
-    ```pyspark
-    df = spark.sql("SELECT * FROM [your_lakehouse].salesorders LIMIT 1000")
+    Uma nova célula de código que contém um código semelhante ao seguinte exemplo é adicionada ao notebook:
 
-    display(df)
+    ```Python
+   df = spark.sql("SELECT * FROM [your_lakehouse].salesorders LIMIT 1000")
+   display(df)
     ```
 
-5. Execute o novo código, que usa a biblioteca do Spark SQL para inserir uma consulta SQL na tabela *salesorder* no código PySpark e carregar os resultados da consulta em um DataFrame.
+6. Execute o novo código, que usa a biblioteca do Spark SQL para inserir uma consulta SQL na tabela **salesorder** no código PySpark e carregar os resultados da consulta em um dataframe.
 
 ### Executar um código SQL em uma célula
 
-Embora seja útil a inserção de instruções SQL em uma célula que contém código PySpark, os analistas de dados muitas vezes preferem trabalhar diretamente com SQL.
+Embora seja útil a inserção de instruções SQL em uma célula que contém um código PySpark, os analistas de dados costumam desejar apenas trabalhar diretamente no SQL.
 
-1. Adicione uma nova célula de código ao notebook e insira o seguinte código:
+1. Adicione uma nova célula de código ao notebook e insira o seguinte código nela:
 
-    ```SparkSQL
-    %%sql
-    SELECT YEAR(OrderDate) AS OrderYear,
-           SUM((UnitPrice * Quantity) + Tax) AS GrossRevenue
-    FROM salesorders
-    GROUP BY YEAR(OrderDate)
-    ORDER BY OrderYear;
+    ```sql
+   %%sql
+   SELECT YEAR(OrderDate) AS OrderYear,
+          SUM((UnitPrice * Quantity) + Tax) AS GrossRevenue
+   FROM salesorders
+   GROUP BY YEAR(OrderDate)
+   ORDER BY OrderYear;
     ```
+ 
+2. Execute a célula e analise os resultados. Observe que:
+    - A linha `%%sql` no início da célula (chamada *magic*) indica que o runtime da linguagem Spark SQL deve ser usado para executar o código nessa célula em vez do PySpark.
+    - O código SQL referencia a tabela **salesorders** que você já criou.
+    - A saída da consulta SQL é exibida automaticamente como o resultado abaixo da célula.
 
-7. Execute a célula e analise os resultados. Observe que:
-
-    * O comando **%%sql** no início da célula (chamado de magic) altera a linguagem para Spark SQL em vez de PySpark.
-    * O código SQL referencia a tabela *salesorders* que você já criou.
-    * A saída da consulta SQL é exibida automaticamente como o resultado abaixo da célula.
-
->[!NOTE]
-> Para mais informações sobre o Spark SQL e os dataframes, confira a documentação do [Apache Spark SQL](https://spark.apache.org/sql/).
+> **Observação**: para obter mais informações sobre o Spark SQL e os dataframes, confira a [documentação do Spark SQL](https://spark.apache.org/docs/2.2.0/sql-programming-guide.html).
 
 ## Visualizar os dados com o Spark
 
-Os gráficos ajudam você a ver padrões e tendências com mais rapidez do que seria possível verificando milhares de linhas de dados. Os notebooks do Fabric incluem uma exibição de gráfico integrada, mas não foram projetados para gráficos complexos. Para obter mais controle sobre como os gráficos são criados a partir de dados em DataFrames, use bibliotecas gráficas em Python como *matplotlib* ou *seaborn*.
+Como o provérbio diz, uma imagem vale mil palavras, e um gráfico geralmente é melhor do que mil linhas de dados. Embora os notebooks do Fabric incluam uma exibição de gráfico interna para dados exibidos em um dataframe ou em uma consulta Spark SQL, ele não foi projetado para gráficos abrangentes. No entanto, você pode usar bibliotecas de elementos gráficos do Python, como a **matplotlib** e a **seaborn**, para criar gráficos com base em dados em dataframes.
 
 ### Exibir os resultados como um gráfico
 
-1. Adicione uma nova célula de código e insira o seguinte código:
+1. Adicione uma nova célula de código ao notebook e insira o seguinte código nela:
 
-    ```python
-    %%sql
-    SELECT * FROM salesorders
+    ```sql
+   %%sql
+   SELECT * FROM salesorders
     ```
 
-2. Execute o código para exibir dados da exibição salesorders que você criou anteriormente. Na seção de resultados abaixo da célula, altere a opção **Exibir** de **Tabela** para **Gráfico**.
+2. Execute o código e observe que ele retorna os dados da exibição **salesorders** que você já criou.
+3. Na seção de resultados abaixo da célula, altere a opção **Exibir** de **Tabela** para **Gráfico**.
+4. Use o botão **Personalizar gráfico** no canto superior direito do gráfico para exibir o painel de opções do gráfico. Em seguida, defina as opções da seguinte maneira e selecione **Aplicar**:
+    - **Tipo de gráfico**: Gráfico de barras
+    - **Chave**: Item
+    - **Valores**: Quantidade
+    - **Grupo de Séries**: *deixe em branco*
+    - **Agregação**: Soma
+    - **Empilhado**: *Não selecionado*
 
-3.  Use o botão **Personalizar gráfico** no canto superior direito do gráfico para definir as seguintes opções:
+5. Verifique se o gráfico é parecido com este:
 
-    * Tipo de gráfico: Gráfico de barras
-    * Chave: Item
-    * Valores: Quantidade
-    * Grupo de Séries: deixe em branco
-    * Agregação: Soma
-    * Empilhado: Não selecionado
+    ![Captura de tela de um gráfico de barras de produtos pela quantidade total de pedidos](./Images/notebook-chart.png)
 
-Ao terminar, clique em **Aplicar**.
+### Introdução à **matplotlib**
 
-4. Seu gráfico será semelhante a este:
+1. Adicione uma nova célula de código ao notebook e insira o seguinte código nela:
 
-    ![Imagem da tela da visualização do gráfico do notebook do Fabric.](Images/built-in-chart.jpg) 
-
-### Introdução à matplotlib
-
-1. Adicione uma nova célula de código e insira o seguinte código:
-
-    ```python
-    sqlQuery = "SELECT CAST(YEAR(OrderDate) AS CHAR(4)) AS OrderYear, \
-                    SUM((UnitPrice * Quantity) + Tax) AS GrossRevenue \
-                FROM salesorders \
-                GROUP BY CAST(YEAR(OrderDate) AS CHAR(4)) \
-                ORDER BY OrderYear"
-    df_spark = spark.sql(sqlQuery)
-    df_spark.show()
+    ```Python
+   sqlQuery = "SELECT CAST(YEAR(OrderDate) AS CHAR(4)) AS OrderYear, \
+                   SUM((UnitPrice * Quantity) + Tax) AS GrossRevenue \
+               FROM salesorders \
+               GROUP BY CAST(YEAR(OrderDate) AS CHAR(4)) \
+               ORDER BY OrderYear"
+   df_spark = spark.sql(sqlQuery)
+   df_spark.show()
     ```
 
-2. Execute o código. Retornará um DataFrame do Spark contendo a receita anual. Para visualizar os dados como um gráfico, começaremos usando a biblioteca matplotlib em Python. Essa biblioteca é a biblioteca de plotagem principal na qual muitas outras se baseiam e fornece muita flexibilidade na criação de gráficos.
+2. Execute o código e observe se ele retorna um dataframe do Spark que contém a receita anual.
 
-3. Adicione uma nova célula de código e o seguinte código:
+    Para visualizar os dados como um gráfico, começaremos usando a biblioteca **matplotlib** do Python. Essa biblioteca é a biblioteca de plotagem principal na qual muitas outras se baseiam e fornece muita flexibilidade na criação de gráficos.
 
-    ```python
-    from matplotlib import pyplot as plt
+3. Adicione uma nova célula de código ao notebook e adicione o seguinte código a ele:
 
-    # matplotlib requires a Pandas dataframe, not a Spark one
-    df_sales = df_spark.toPandas()
+    ```Python
+   from matplotlib import pyplot as plt
 
-    # Create a bar plot of revenue by year
-    plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'])
+   # matplotlib requires a Pandas dataframe, not a Spark one
+   df_sales = df_spark.toPandas()
 
-    # Display the plot
-    plt.show()
+   # Create a bar plot of revenue by year
+   plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'])
+
+   # Display the plot
+   plt.show()
     ```
 
-4. Execute a célula e analise os resultados, que consistem em um gráfico de colunas com a receita bruta total de cada ano. Examine o código e observe o seguinte:
+4. Execute a célula e analise os resultados, que consistem em um gráfico de colunas com a receita bruta total de cada ano. Observe os seguintes recursos do código usado para produzir este gráfico:
+    - A biblioteca **matplotlib** exige um dataframe do *Pandas*, ou seja, você precisa converter o dataframe do *Spark* retornado pela consulta Spark SQL nesse formato.
+    - No núcleo da biblioteca **matplotlib** está o objeto **pyplot**. Essa é a base para a maioria das funcionalidades de plotagem.
+    - As configurações padrão resultam em um gráfico utilizável, mas há um escopo considerável para personalizá-lo
 
-    * A biblioteca matplotlib requer um DataFrame do Pandas; portanto, você precisa converter o DataFrame do Spark retornado pela consulta Spark SQL.
-    * No núcleo da biblioteca matplotlib está o objeto *pyplot*. Essa é a base para a maioria das funcionalidades de plotagem.
-    * As configurações padrão resultam em um gráfico utilizável, mas há muitas possibilidades de personalização.
+5. Modifique o código para plotar o gráfico da seguinte maneira:
 
-5.  Modifique o código para plotar o gráfico da seguinte maneira:
+    ```Python
+   from matplotlib import pyplot as plt
 
-    ```python
-    from matplotlib import pyplot as plt
+   # Clear the plot area
+   plt.clf()
 
-    # Clear the plot area
-    plt.clf()
+   # Create a bar plot of revenue by year
+   plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'], color='orange')
 
-    # Create a bar plot of revenue by year
-    plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'], color='orange')
+   # Customize the chart
+   plt.title('Revenue by Year')
+   plt.xlabel('Year')
+   plt.ylabel('Revenue')
+   plt.grid(color='#95a5a6', linestyle='--', linewidth=2, axis='y', alpha=0.7)
+   plt.xticks(rotation=45)
 
-    # Customize the chart
-    plt.title('Revenue by Year')
-    plt.xlabel('Year')
-    plt.ylabel('Revenue')
-    plt.grid(color='#95a5a6', linestyle='--', linewidth=2, axis='y', alpha=0.7)
-    plt.xticks(rotation=45)
-
-    # Show the figure
-    plt.show()
+   # Show the figure
+   plt.show()
     ```
 
-6. Execute novamente a célula de código e veja os resultados. Agora está mais fácil de entender o gráfico.
-7. Um gráfico está contido com uma Figura. Nos exemplos anteriores, a figura foi criada implicitamente, mas pode ser criada explicitamente. Modifique o código para plotar o gráfico da seguinte maneira:
+6. Execute novamente a célula de código e veja os resultados. O gráfico agora inclui um pouco mais de informações.
 
-    ```python
-    from matplotlib import pyplot as plt
+    Tecnicamente, um gráfico está contido com uma **Figura**. Nos exemplos anteriores, a figura foi criada implicitamente, mas você pode criá-la de modo explícito.
 
-    # Clear the plot area
-    plt.clf()
+7. Modifique o código para plotar o gráfico da seguinte maneira:
 
-    # Create a Figure
-    fig = plt.figure(figsize=(8,3))
+    ```Python
+   from matplotlib import pyplot as plt
 
-    # Create a bar plot of revenue by year
-    plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'], color='orange')
+   # Clear the plot area
+   plt.clf()
 
-    # Customize the chart
-    plt.title('Revenue by Year')
-    plt.xlabel('Year')
-    plt.ylabel('Revenue')
-    plt.grid(color='#95a5a6', linestyle='--', linewidth=2, axis='y', alpha=0.7)
-    plt.xticks(rotation=45)
+   # Create a Figure
+   fig = plt.figure(figsize=(8,3))
 
-    # Show the figure
-    plt.show()
+   # Create a bar plot of revenue by year
+   plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'], color='orange')
+
+   # Customize the chart
+   plt.title('Revenue by Year')
+   plt.xlabel('Year')
+   plt.ylabel('Revenue')
+   plt.grid(color='#95a5a6', linestyle='--', linewidth=2, axis='y', alpha=0.7)
+   plt.xticks(rotation=45)
+
+   # Show the figure
+   plt.show()
     ```
 
 8. Execute novamente a célula de código e veja os resultados. A figura determina a forma e o tamanho do gráfico.
-9. Uma figura pode conter vários subgráficos, cada um em um eixo próprio. Modifique o código para plotar o gráfico da seguinte maneira:
 
-    ```python
-    from matplotlib import pyplot as plt
+    Uma figura pode conter vários subgráficos, cada um em um *eixo* próprio.
 
-    # Clear the plot area
-    plt.clf()
+9. Modifique o código para plotar o gráfico da seguinte maneira:
 
-    # Create a figure for 2 subplots (1 row, 2 columns)
-    fig, ax = plt.subplots(1, 2, figsize = (10,4))
+    ```Python
+   from matplotlib import pyplot as plt
 
-    # Create a bar plot of revenue by year on the first axis
-    ax[0].bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'], color='orange')
-    ax[0].set_title('Revenue by Year')
+   # Clear the plot area
+   plt.clf()
 
-    # Create a pie chart of yearly order counts on the second axis
-    yearly_counts = df_sales['OrderYear'].value_counts()
-    ax[1].pie(yearly_counts)
-    ax[1].set_title('Orders per Year')
-    ax[1].legend(yearly_counts.keys().tolist())
+   # Create a figure for 2 subplots (1 row, 2 columns)
+   fig, ax = plt.subplots(1, 2, figsize = (10,4))
 
-    # Add a title to the Figure
-    fig.suptitle('Sales Data')
+   # Create a bar plot of revenue by year on the first axis
+   ax[0].bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'], color='orange')
+   ax[0].set_title('Revenue by Year')
 
-    # Show the figure
-    plt.show()
+   # Create a pie chart of yearly order counts on the second axis
+   yearly_counts = df_sales['OrderYear'].value_counts()
+   ax[1].pie(yearly_counts)
+   ax[1].set_title('Orders per Year')
+   ax[1].legend(yearly_counts.keys().tolist())
+
+   # Add a title to the Figure
+   fig.suptitle('Sales Data')
+
+   # Show the figure
+   plt.show()
     ```
 
-10. Execute novamente a célula de código e veja os resultados. 
+10. Execute novamente a célula de código e veja os resultados. A figura contém os subgráficos especificados no código.
 
->[!NOTE] 
-> Para saber mais sobre plotagem com a matplotlib, confira a documentação da [matplotlib](https://matplotlib.org/).
+> **Observação**: para saber mais sobre a plotagem com a matplotlib, confira a [documentação da matplotlib](https://matplotlib.org/).
 
-### Usar a biblioteca seaborn
+### Usar a biblioteca **seaborn**
 
-Embora a *matplotlib* permita que você crie diferentes tipos de gráfico, a biblioteca pode precisar de código complexo para obter os melhores resultados. Por esse motivo, novas bibliotecas foram criadas com base na matplotlib para abstrair a complexidade e aprimorar as funcionalidades. Uma dessas bibliotecas é a seaborn.
+Embora a **matplotlib** permita que você crie gráficos complexos de vários tipos, ele pode exigir um código complexo para obter os melhores resultados. Por esse motivo, ao longo dos anos, muitas bibliotecas foram criadas na base na matplotlib para abstrair a complexidade e aprimorar as funcionalidades. Uma dessas bibliotecas é a **seaborn**.
 
-1. Adicione uma nova célula de código ao notebook e insira o seguinte código: 
+1. Adicione uma nova célula de código ao notebook e insira o seguinte código nela:
 
-    ```python
-    import seaborn as sns
+    ```Python
+   import seaborn as sns
 
-    # Clear the plot area
-    plt.clf()
+   # Clear the plot area
+   plt.clf()
 
-    # Create a bar chart
-    ax = sns.barplot(x="OrderYear", y="GrossRevenue", data=df_sales)
-
-    plt.show()
+   # Create a bar chart
+   ax = sns.barplot(x="OrderYear", y="GrossRevenue", data=df_sales)
+   plt.show()
     ```
 
-2. Execute o código para exibir um gráfico de barras usando a biblioteca seaborn.
+2. Execute o código e observe que ele exibe um gráfico de barras usando a biblioteca seaborn.
 3. Modifique o código da seguinte maneira:
 
-    ```python
-    import seaborn as sns
+    ```Python
+   import seaborn as sns
 
-    # Clear the plot area
-    plt.clf()
+   # Clear the plot area
+   plt.clf()
 
-    # Set the visual theme for seaborn
-    sns.set_theme(style="whitegrid")
+   # Set the visual theme for seaborn
+   sns.set_theme(style="whitegrid")
 
-    # Create a bar chart
-    ax = sns.barplot(x="OrderYear", y="GrossRevenue", data=df_sales)
-
-    plt.show()
+   # Create a bar chart
+   ax = sns.barplot(x="OrderYear", y="GrossRevenue", data=df_sales)
+   plt.show()
     ```
 
-4.  Execute o código modificado e observe que a seaborn permite que você defina um tema de cor para os gráficos.
-5.  Modifique o código novamente da seguinte maneira:
+4. Execute o código modificado e observe que a seaborn permite que você defina um tema de cor consistente para seus gráficos.
 
-    ```python
-    import seaborn as sns
+5. Modifique o código novamente da seguinte maneira:
 
-    # Clear the plot area
-    plt.clf()
+    ```Python
+   import seaborn as sns
 
-    # Create a line chart
-    ax = sns.lineplot(x="OrderYear", y="GrossRevenue", data=df_sales)
+   # Clear the plot area
+   plt.clf()
 
-    plt.show()
+   # Create a line chart
+   ax = sns.lineplot(x="OrderYear", y="GrossRevenue", data=df_sales)
+   plt.show()
     ```
 
-6.  Execute o código modificado para ver a receita anual como um gráfico de linhas.
+6. Execute o código modificado para ver a receita anual como um gráfico de linhas.
 
->[!NOTE]
-> Para saber mais sobre plotagem com a seaborn, confira a documentação da [seaborn](https://seaborn.pydata.org/index.html).
+> **Observação**: para saber mais sobre como fazer uma plotagem com a seaborn, confira a [documentação da seaborn](https://seaborn.pydata.org/index.html).
+
+## Salvar o notebook e encerrar a sessão do Spark
+
+Agora que terminou de trabalhar com os dados, salve o notebook com um nome significativo e encerre a sessão do Spark.
+
+1. Na barra de menus do notebook, use o ícone ⚙️ de **Configurações** para ver as configurações do notebook.
+2. Defina o **Nome** do notebook como **Explorar Pedidos de Vendas** e feche o painel de configurações.
+3. No menu do notebook, selecione **Parar sessão** para encerrar a sessão do Spark.
 
 ## Limpar os recursos
 
-Neste exercício, você aprendeu a usar o Spark para trabalhar com dados no Microsoft Fabric.
+Neste exercício, você aprendeu a usar o Spark para trabalhar com os dados no Microsoft Fabric.
 
-Se você tiver terminado de explorar seus dados, encerre a sessão do Spark e exclua o espaço de trabalho criado para este exercício.
+Se você tiver terminado de explorar seu lakehouse, exclua o workspace criado para este exercício.
 
-1.  No menu do notebook, selecione **Parar sessão** para encerrar a sessão do Spark.
-1.  Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
-1.  Clique em **Configurações do espaço de trabalho** e, na seção **Geral**, role para baixo e selecione **Remover este espaço de trabalho**.
-1.  Clique em **Excluir** para excluir o espaço de trabalho.
-
+1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
+2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
+3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
