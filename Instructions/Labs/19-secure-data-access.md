@@ -14,7 +14,7 @@ Esse laboratório leva cerca de **45** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Data Warehouse do Synapse**.
+1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Data Warehouse**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -27,7 +27,7 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Em seguida, crie um data warehouse no workspace que você criou:
 
-1. Na home page do Synapse Data Warehouse do Synapse, clique no atalho **Warehouse de amostra** para criar um novo Warehouse com um nome de sua escolha.  
+1. Na home page do Data Warehouse do, clique no atalho **Warehouse de amostra** para criar um novo warehouse com um nome de sua escolha.  
 
     Após alguns minutos, um warehouse será criado:
 
@@ -38,7 +38,7 @@ Em seguida, crie um lakehouse no workspace criado.
 
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a 🗇).
 2. Selecione o workspace que você criou.
-3. No espaço de trabalho, clique no botão **+ Novo** e escolha **Lakehouse**. Crie um novo lakehouse com um nome de sua escolha.
+3. No espaço de trabalho, clique no botão **+ Novo item** e escolha **Lakehouse**. Crie um novo lakehouse com um nome de sua escolha.
 
    Após alguns minutos, um lakehouse será criado:
 
@@ -102,7 +102,7 @@ As permissões de item controlam o acesso a itens individuais do Fabric em um wo
 
 10. Retorne à janela do navegador em que você entrou como o segundo usuário. Atualize a exibição do navegador.  
 
-11. O segundo usuário não tem mais acesso ao workspace, mas tem acesso apenas ao warehouse. Você não pode mais procurar workspaces no painel de navegação à esquerda para localizar o warehouse. Clique em **Hub de dados do OneLake** no menu de navegação à esquerda para localizar o warehouse. 
+11. O segundo usuário não tem mais acesso ao workspace, mas tem acesso apenas ao warehouse. Você não pode mais procurar workspaces no painel de navegação à esquerda para localizar o warehouse. Clique em **OneLake** no menu de navegação à esquerda para localizar o warehouse. 
 
 12. Clique no warehouse. Na tela exibida, clique em **Abrir** na barra de menus superior.
 
@@ -115,7 +115,7 @@ As funções de acesso a dados do OneLake permitem que você crie funções pers
 Neste exercício, você atribuirá uma permissão de item e criará uma função de acesso a dados do OneLake e testará como eles funcionam juntos para restringir o acesso aos dados em um lakehouse.  
 
 1. Permaneça no navegador em que você entrou como o segundo usuário.  
-2. Clique em **Hub de dados do OneLake** na barra de navegação à esquerda. O segundo usuário não vê o lakehouse.  
+2. Clique em **OneLake** na barra de navegação à esquerda. O segundo usuário não vê o lakehouse.  
 3. Retorne ao navegador em que você entrou como administrador do workspace.
 4. No menu à esquerda, em APIs, clique em **Workspaces** e escolha seu workspace. Passe o mouse sobre o nome do lakehouse.  
 5. Clique na reticência (**...**) à direita da reticência e clique em **Gerenciar permissões**
@@ -129,7 +129,7 @@ Neste exercício, você atribuirá uma permissão de item e criará uma função
 
 8. Selecionar **Conceder**. O segundo usuário agora tem permissões de leitura no lakehouse. A permissão Leitura permite que o usuário veja apenas os metadados do lakehouse, mas não os dados subjacentes. Validaremos isso na sequência.
 9. Retorne ao navegador em que você entrou como o segundo usuário. Atualize o navegador.
-10. No painel de navegação à esquerda, escolha **Hub de dados do OneLake**.  
+10. No painel de navegação à esquerda, escolha **OneLake**.  
 11. Clique no lakehouse e abra-o. 
 12. Clique em **Abrir** na barra de menu superior. Não é possível expandir as tabelas ou arquivos, mesmo que a permissão de leitura tenha sido concedida. Em seguida, você concederá ao segundo usuário acesso a uma pasta específica usando permissões de acesso a dados do OneLake.
 13. Retorne ao navegador em que você entrou como administrador do workspace.

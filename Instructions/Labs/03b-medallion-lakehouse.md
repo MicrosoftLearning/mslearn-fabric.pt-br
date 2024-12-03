@@ -21,8 +21,6 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 3. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 4. Quando o novo workspace for aberto, ele estará vazio.
 
-   ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace-medallion.png)
-
 5. Navegue até as configurações do workspace e habilite o recurso de versão prévia do recurso de **edição do modelo de dados**. Isso permitirá que você crie relacionamentos entre tabelas em seu lakehouse usando um modelo semântico do Power BI.
 
     ![Captura de tela da página de configurações do workspace no Fabric.](./Images/workspace-settings.png)
@@ -153,8 +151,6 @@ Agora que você tem alguns dados na camada bronze do lakehouse, pode usar um not
 10. Execute a célula para executar o código usando o botão ****&#9655;** (*Executar célula*).
 
 11. Selecione **...** na seção Tabelas do painel do lakehouse explorer e selecione **Atualizar**. Agora você deve ver a nova tabela **sales_silver** listada. O **&#9650;** (ícone de triângulo) indica que se trata de uma tabela Delta.
-
-    ![Captura de tela da tabela sales_silver em um lakehouse.](./Images/sales-silver-table.png)
 
     > **Observação**: se não vir a nova tabela, aguarde alguns segundos e selecione **Atualizar** novamente ou atualize toda a guia do navegador.
 
@@ -598,7 +594,7 @@ Observe que não é possível usar o **modelo semântico padrão** que é criado
    - dimproduct_gold
    - factsales_gold
 
-    Isso abrirá o modelo semântico no Fabric, no qual você poderá criar relacionamentos e medidas.
+    Isso abrirá o modelo semântico no Fabric, no qual você poderá criar relacionamentos e medidas, conforme mostrado aqui:
 
     ![Captura de tela de um modelo semântico no Fabric.](./Images/dataset-relationships.png)
 
