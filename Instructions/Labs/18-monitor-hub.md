@@ -118,7 +118,7 @@ Neste exercício, você executou apenas algumas atividades, portanto, deve ser b
     - Tipo de item
     - Hora de início
     - Envio feito por
-    - Localidade
+    - Location
     - Hora de término
     - Duration
     - Tipo de atualização

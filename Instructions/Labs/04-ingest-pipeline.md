@@ -18,7 +18,7 @@ Este laboratório levará aproximadamente **60** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) no `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados do Synapse**.
+1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -29,11 +29,11 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse no qual os dados serão ingeridos.
 
-1. Na home page da **Engenharia de Dados do Synapse**, crie um **Lakehouse** com um nome de sua escolha.
+1. Na home page **Engenharia de Dados**, crie um **Lakehouse** com um nome de sua escolha.
 
     Após alguns minutos, um lakehouse sem **Tabelas** nem **Arquivos** será criado.
 
-1. Na guia **Exibição do Lake** no painel à esquerda, no menu **…** do nó **Arquivos**, selecione **Nova subpasta** e crie uma subpasta chamada **new_data**.
+1. No painel **Explorador** à esquerda, no menu **…** do nó **Arquivos**, clique em **Nova subpasta** e crie uma subpasta chamada **new_data**.
 
 ## Criar um pipeline
 
@@ -41,7 +41,7 @@ Uma forma simples de ingerir dados é usar uma atividade **Copiar Dados** em um 
 
 1. Na página **Início** de sua casa no lago, selecione **Obter dados** e, em seguida, selecione **Novo pipeline de dados** e crie um novo pipeline de dados chamado **Ingerir dados de vendas**.
 2. Se o assistente **Copiar Dados** não abrir automaticamente, selecione **Copiar Dados > Usar assistente de cópia** na página do editor de pipeline.
-3. No assistente**Copiar Dados**, na página **Escolher uma fonte de dados**, digite HTTP na barra de pesquisa e selecione **HTTP** na seção **Novas fontes**.
+3. No assistente**Copiar Dados**, na página **Escolher fonte de dados**, digite HTTP na barra de pesquisa e selecione **HTTP** na seção **Novas fontes**.
 
 
     ![Captura de tela da página Escolher fonte de dados.](./Images/choose-data-source.png)
@@ -66,8 +66,7 @@ Uma forma simples de ingerir dados é usar uma atividade **Copiar Dados** em um 
     - **Primeira linha como cabeçalho**: Selecionada
     - **Tipo de compactação**: Nenhum
 7. Selecione **Visualizar dados** para ver um exemplo dos dados que serão ingeridos. Em seguida, feche a visualização de dados e selecione **Avançar**.
-8. Na página **Escolher destino de dados**, selecione o **hub de dados OneLake** e, em seguida, selecione o lakehouse existente.
-9. Defina as seguintes opções de destino de dados e selecione **Avançar**:
+8. Na página **Conectar-se ao destino de dados**, defina as seguintes opções de destino de dados e clique em **Avançar**:
     - **Pasta raiz**: Arquivos
     - **Nome do caminho da pasta**: new_data
     - **Nome do arquivo**: sales.csv
@@ -142,7 +141,7 @@ Uma forma simples de ingerir dados é usar uma atividade **Copiar Dados** em um 
 Agora que você implementou um notebook para transformar dados e carregá-los em uma tabela, incorpore o notebook em um pipeline para criar um processo de ETL reutilizável.
 
 1. Na barra de menus do hub à esquerda, selecione o pipeline **Ingerir Dados de Vendas** criado anteriormente.
-2. Na guia **Atividades**, na lista **Mais atividades**, selecione **Excluir dados**. Em seguida, posicione a nova atividade **Excluir dados**  à esquerda da atividade **Copiar dados** e conecte a saída **Ao concluir** à atividade **Copiar dados**, conforme mostrado aqui:
+2. Na guia **Atividades**, na lista **Todas as atividades**, clique em **Excluir dados**. Em seguida, posicione a nova atividade **Excluir dados**  à esquerda da atividade **Copiar dados** e conecte a saída **Ao concluir** à atividade **Copiar dados**, conforme mostrado aqui:
 
     ![Captura de tela de um pipeline com as atividades Excluir dados e Copiar dados.](./Images/delete-data-activity.png)
 
@@ -196,5 +195,5 @@ Neste exercício, você aprendeu a implementar um pipeline no Microsoft Fabric.
 Se você tiver terminado de explorar seu lakehouse, exclua o workspace criado para este exercício.
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
-2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
+1. Clique em **Configurações do espaço de trabalho** e, na seção **Geral**, role para baixo e selecione **Remover este espaço de trabalho**.
+1. Clique em **Excluir** para excluir o espaço de trabalho.

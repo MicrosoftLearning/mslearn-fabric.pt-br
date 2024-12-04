@@ -23,26 +23,26 @@ Antes de trabalhar com dados no Fabric, você precisa criar um espaço de trabal
 1. Dê um nome ao novo espaço de trabalho e, na seção **Avançado**, escolha o Modo de licenciamento apropriado. Se você tiver iniciado uma avaliação do Microsoft Fabric, escolha Avaliação.
 1. Clique em **Aplicar** para criar um espaço de trabalho vazio.
  
-    ![Imagem da tela dos arquivos CSV carregados em um novo espaço de trabalho do Fabric.](Images/uploaded-files.jpg)
+    ![Imagem de tela de um novo espaço de trabalho do Fabric.](Images/new-workspace.jpg)
 
 ## Criar um lakehouse e carregar arquivos
 
-Agora que tem um espaço de trabalho, você pode criar um lakehouse para seus arquivos de dados. No novo workspace, clique em **Novo** e **Lakehouse**. Dê um nome ao lakehouse e clique em **Criar**. Após um pequeno atraso, um novo lakehouse será criado.
+Agora que tem um espaço de trabalho, você pode criar um lakehouse para seus arquivos de dados. No novo workspace, clique em **+ Novo item** e **Lakehouse**. Dê um nome ao lakehouse e clique em **Criar**. Após um pequeno atraso, um novo lakehouse será criado.
 
 Você já pode ingerir dados no lakehouse. Há várias maneiras de fazer isso, mas por ora, você baixará uma pasta de arquivos de texto no computador local (ou na VM de laboratório, se aplicável) e fará seu upload no lakehouse.
 
-1. Baixe os arquivos de dados em https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip.
+1. Baixe os arquivos de dados em `https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip`.
 1. Extraia o arquivo compactado e verifique se você tem uma pasta chamada *orders* com três arquivos CSV: 2019.csv, 2020.csv e 2021.csv.
 1. Volte para o novo lakehouse. No painel do **Explorer**, clique no menu de reticências (**...**) ao lado da pasta **Arquivos** e clique em **Carregar** e **Carregar pasta**. Navegue até a pasta de pedidos em seu computador local (ou VM de laboratório, se aplicável) e clique em **Carregar**.
 1. Depois que os arquivos forem carregados, expanda **Arquivos** e clique na pasta **orders**. Verifique se os arquivo CSV foram carregados, conforme mostrado aqui:
 
-    ![Imagem de tela de um novo espaço de trabalho do Fabric.](Images/new-workspace.jpg)
+    ![Imagem da tela dos arquivos CSV carregados em um novo espaço de trabalho do Fabric.](Images/uploaded-files.jpg)
 
 ## Criar um notebook
 
 Agora você pode criar um notebook do Fabric para trabalhar com seus dados. Os notebooks fornecem um ambiente interativo no qual você pode escrever e executar código.
 
-1. Escolha o seu espaço de trabalho e clique em **Novo** e **Notebook**. Após alguns segundos, um novo notebook que contém uma só célula será aberto. Os notebooks são compostos por uma ou mais células que podem conter um código ou um markdown (texto formatado).
+1. Escolha o seu workspace e clique em **+ Novo item** e **Notebook**. Após alguns segundos, um novo notebook que contém uma só célula será aberto. Os notebooks são compostos por uma ou mais células que podem conter um código ou um markdown (texto formatado).
 1. O Fabric atribui um nome a cada notebook criado, como Bloco de Notebook 1, Notebook 2, etc. Clique no painel de nome acima da guia **Página Inicial** no menu para alterar o nome para algo mais descritivo.
 1. Selecione a primeira célula (que atualmente é uma célula de código) e, na barra de ferramentas no canto superior direito, use o botão **M↓** para convertê-la em uma célula Markdown. O texto contido na célula será então exibido como texto formatado.
 1. Use o botão 🖉 (Editar) para alternar a célula para o modo de edição e modifique o Markdown como mostrado abaixo.
@@ -156,7 +156,7 @@ O objeto DataFrame fornece funcionalidades adicionais, como a capacidade de filt
 
 ### Filtrar um DataFrame
 
-1. Adicione uma célula de código clicando em **+ Código**, que aparece quando você passa o mouse acima ou abaixo da célula atual ou da respectiva saída. Como alternativa, no menu da faixa de opções, selecione **Editar** e **+ Adicionar** célula de código.
+1. Adicione uma célula de código clicando em **+ Código**, que aparece quando você passa o mouse acima ou abaixo da célula atual ou da respectiva saída. Como alternativa, no menu da faixa de opções, clique em **Editar** e **+ Adicionar célula de código abaixo**.
 
 2.  O código a seguir filtrará os dados para que apenas duas colunas sejam retornadas. Ele também usa *count* e *distinct* para resumir o número de registros:
 
@@ -300,7 +300,7 @@ Ao lidar com grandes volumes de dados, o particionamento pode melhorar significa
     print ("Transformed data saved!")
     ```
 
-2.  Execute a célula e aguarde a mensagem indicando que os dados foram salvos. Em seguida, no painel do Lakehouses à esquerda, no menu ... do nó Arquivos, clique em **Atualizar** e expanda a pasta partitioned_orders para verificar que ela contém uma hierarquia de pastas chamada *Year=xxxx*, cada uma contendo pastas chamadas *Month=xxxx*. Cada pasta mensal contém um arquivo Parquet com os pedidos desse mês.
+2.  Execute a célula e aguarde a mensagem indicando que os dados foram salvos. Em seguida, no painel do Lakehouses à esquerda, no menu ... do nó Arquivos, clique em **Atualizar** e expanda a pasta partitioned_data para verificar se ela contém uma hierarquia de pastas chamada *Year=xxxx*, cada uma contendo pastas chamadas *Month=xxxx*. Cada pasta mensal contém um arquivo Parquet com os pedidos desse mês.
 
     ![Imagem da tela mostrando dados particionados por Year e Month.](Images/partitioned-data.jpg)
 

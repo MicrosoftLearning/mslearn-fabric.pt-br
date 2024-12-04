@@ -4,7 +4,7 @@ lab:
   module: Ingest Data with Dataflows Gen2 in Microsoft Fabric
 ---
 
-# Criar um Fluxo de Dados (Gen2) no Microsoft Fabric
+# Criar e usar Fluxos de Dados (Gen2) no Microsoft Fabric
 
 No Microsoft Fabric, os Fluxos de Dados (Gen2) se conectam a várias fontes de dados e executam transformações no Power Query Online. Em seguida, eles podem ser usados em pipelines de dados para ingerir dados em um lakehouse ou em outro repositório analítico ou para definir um conjunto de dados para um relatório do Power BI.
 
@@ -16,7 +16,7 @@ Este laboratório foi projetado para introduzir os diferentes elementos dos Flux
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) no `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados do Synapse**.
+1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -27,7 +27,7 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse no qual você ingerirá os dados.
 
-1. Na home page da **Engenharia de Dados do Synapse**, crie um **Lakehouse** com um nome de sua escolha.
+1. Na home page **Engenharia de Dados**, crie um **Lakehouse** com um nome de sua escolha.
 
     Após alguns minutos, um lakehouse vazio será criado.
 
@@ -37,7 +37,7 @@ Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse n
 
 Agora que você tem um lakehouse, você precisa ingerir alguns dados nele. Uma forma de fazer isso é definir um fluxo de dados que encapsula um processo de ETL (*extração, transformação e carregamento*).
 
-1. Na home page do workspace, selecione **Novo Fluxo de Dados Gen2**. Após alguns segundos, o editor do Power Query do novo fluxo de dados será aberto, conforme mostrado aqui.
+1. Na home page do seu workspace, selecione **Obter dados** > **Novo Fluxo de Dados Gen2**. Após alguns segundos, o editor do Power Query do novo fluxo de dados será aberto, conforme mostrado aqui.
 
  ![Novo fluxo de dados.](./Images/new-dataflow.png)
 
@@ -82,7 +82,7 @@ Agora que você tem um lakehouse, você precisa ingerir alguns dados nele. Uma f
 
    ![Página de configuração de destino de dados.](./Images/data-destination-target.png)
 
-4. Na página **Escolher configurações de destino**, selecione **Acrescentar** e **Salve configurações**.
+4. Selecione **Avançar** e, na página **Escolher configurações de destino**, desabilite a opção **Usar configurações automáticas**, clique em **Anexar** e, em seguida, **Salvar configurações**.
     > **Observação:** sugerimos usar o editor do *Power Query* para atualizar tipos de dados, mas você também pode fazer isso nesta página, se preferir.
 
     ![Página de configurações de destino de dados.](./Images/destination-settings.png)
@@ -93,13 +93,11 @@ Agora que você tem um lakehouse, você precisa ingerir alguns dados nele. Uma f
 
 6. Selecione **Publicar** para publicar o fluxo de dados. Em seguida, aguarde até que o fluxo de dados **Fluxo de dados 1** seja criado no seu workspace.
 
-7. Após a publicação, selecione as reticências **(...)** ao lado do fluxo de dados do espaço de trabalho, selecione **Propriedades** e renomeie o fluxo de dados.
-
 ## Adicionar um fluxo de dados a um pipeline
 
 Você pode incluir um fluxo de dados como uma atividade em um pipeline. Os pipelines são usados para orquestrar as atividades de ingestão e processamento de dados, permitindo que você combine fluxos de dados com outros tipos de operação em um processo agendado unificado. Os pipelines podem ser criados em algumas experiências diferentes, incluindo a experiência do Data Factory.
 
-1. No workspace habilitado para o Fabric, verifique se você ainda está na experiência de **Engenharia de Dados**. Selecione **Novo**, **Pipeline de dados** e, quando solicitado, crie um pipeline chamado **Carregar dados**.
+1. No workspace habilitado para o Fabric, verifique se você ainda está na experiência de **Engenharia de Dados**. Clique em **+ Novo item** > **Pipeline de dados** e, quando solicitado, crie um pipeline chamado **Carregar dados**.
 
    O editor de pipeline será aberto.
 
@@ -123,7 +121,7 @@ Você pode incluir um fluxo de dados como uma atividade em um pipeline. Os pipel
 
    ![Tabela carregada por um fluxo de dados.](./Images/loaded-table.png)
 
-> **Dica**: use o *conector de Fluxos de dados* do Power BI Desktop para se conectar diretamente às transformações de dados feitas com o fluxo de dados.
+> **Dica**: no Power BI Desktop, use o conector de *fluxos de dados do Power BI (Herdado)* para se conectar diretamente às transformações de dados feitas com o fluxo de dados.
 >
 > Você também pode fazer transformações adicionais, publicá-las como um novo conjunto de dados e distribuí-las com o público-alvo pretendido para conjuntos de dados especializados.
 >
@@ -135,5 +133,5 @@ Se você terminou de explorar os fluxos de dados no Microsoft Fabric, exclua o w
 
 1. Navegue até o Microsoft Fabric no navegador.
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
-1. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-1. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
+1. Clique em **Configurações do espaço de trabalho** e, na seção **Geral**, role para baixo e selecione **Remover este espaço de trabalho**.
+1. Clique em **Excluir** para excluir o espaço de trabalho.

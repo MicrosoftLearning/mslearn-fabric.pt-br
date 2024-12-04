@@ -16,7 +16,7 @@ Este laboratório levará aproximadamente **30** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Data Warehouse do Synapse**.
+1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Data Warehouse**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -27,7 +27,7 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Agora que você tem um espaço de trabalho, é hora de criar um data warehouse. A página inicial do Data Warehouse do Synapse inclui um atalho para criar um novo warehouse:
 
-1. Na página inicial do **Data Warehouse do Synapse**, crie um novo **Warehouse** com um nome de sua escolha.
+1. Na home page do **Data Warehouse**, crie um **Warehouse** com um nome de sua escolha.
 
     Após alguns minutos, um warehouse será criado:
 
@@ -37,7 +37,7 @@ Agora que você tem um espaço de trabalho, é hora de criar um data warehouse. 
 
 Um warehouse é um banco de dados relacional no qual você pode definir tabelas e outros objetos.
 
-1. No novo warehouse, selecione o bloco **Criar tabelas com T-SQL** e substitua o código SQL padrão pela seguinte instrução CREATE TABLE:
+1. Em seu novo warehouse, clique no bloco **T-SQL** e use a seguinte instrução CREATE TABLE:
 
     ```sql
    CREATE TABLE dbo.DimProduct
@@ -65,9 +65,8 @@ Um warehouse é um banco de dados relacional no qual você pode definir tabelas 
     ```
 
 5. Execute a nova consulta para inserir três linhas na tabela **DimProduct**.
-6. Quando a consulta for concluída, selecione a guia **Dados** na parte inferior da página no data warehouse. No painel do **Explorer**, selecione a tabela **DimProduct** e verifique se as três linhas foram adicionadas a ela.
+6. Quando a consulta for concluída, no painel do **Explorer**, selecione a tabela **DimProduct** e verifique se as três linhas foram adicionadas a ela.
 7. Na guia do menu **Página Inicial**, use o botão **Nova Consulta SQL** para criar uma consulta. Em seguida, copie e cole o código Transact-SQL de `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt` no novo painel de consulta.
-<!-- I had to remove the GO command in this query as well -->
 8. Execute a consulta, que criará um esquema de data warehouse simples e carregará alguns dados. O script levará cerca de 30 segundos para ser executado.
 9. Use o botão **Atualizar** da barra de ferramentas para atualizar a exibição. Em seguida, no painel do **Explorer**, verifique se o esquema **dbo** no data warehouse já contém as quatro seguintes tabelas:
     - **DimCustomer**
@@ -81,15 +80,17 @@ Um warehouse é um banco de dados relacional no qual você pode definir tabelas 
 
 Um data warehouse relacional normalmente consiste em tabelas de *fatos* e de *dimensões*. As tabelas de fatos contêm medidas numéricas que você pode agregar para analisar o desempenho dos negócios (por exemplo, receita de vendas), e as tabelas de dimensões contêm atributos das entidades pelas quais você pode agregar os dados (por exemplo, produto, cliente ou hora). Em um data warehouse do Microsoft Fabric, você pode usar essas chaves para definir um modelo de dados que encapsula as relações entre as tabelas.
 
-1. Na parte inferior da página no data warehouse, selecione a guia **Modelo**.
+1. Clique no botão **Layouts do modelo** na barra de ferramentas.
 2. No painel de modelo, reorganize as tabelas no data warehouse para que a tabela **FactSalesOrder** fique no meio, desta forma:
 
     ![Captura de tela da página de modelo do data warehouse.](./Images/model-dw.png)
 
+> **Observação**: as exibições **frequently_run_queries**, **long_running_queries**, **exec_sessions_history** e **exec_requests_history** fazem parte do esquema **queryinsights** criado automaticamente pelo Fabric. É um recurso que fornece uma visão holística da atividade de consulta histórica no ponto de extremidade de análise do SQL. Como esse recurso está fora do escopo deste exercício, essas exibições devem ser ignoradas por enquanto.
+
 3. Arraste o campo **ProductKey** da tabela **FactSalesOrder** e solte-o no campo **ProductKey** da tabela **DimProduct**. Em seguida, confirme os seguintes detalhes da relação:
-    - **Tabela 1**: FactSalesOrder
+    - **Da tabela**: FactSalesOrder
     - **Coluna**: ProductKey
-    - **Tabela 2**: DimProduct
+    - **Para a tabela **: DimProduct
     - **Coluna**: ProductKey
     - **Cardinalidade**: Muitos para um (*:1)
     - **Direção do filtro cruzado**: Única
@@ -125,7 +126,7 @@ A maioria das consultas de um data warehouse relacional envolve a agregação e 
    ORDER BY CalendarYear, MonthOfYear;
     ```
 
-    Observe que os atributos na dimensão temporal permitem agregar as medidas na tabela de fatos em vários níveis hierárquicos, nesse caso, ano e mês. Esse é um padrão comum em data warehouses.
+    Perceba que os atributos na dimensão de data permitem agregar as medidas na tabela de fatos em vários níveis hierárquicos, nesse caso, ano e mês. Esse é um padrão comum em data warehouses.
 
 2. Modifique a consulta, conforme mostrado a seguir, para adicionar uma segunda dimensão à agregação.
 
@@ -177,7 +178,7 @@ Um data warehouse no Microsoft Fabric tem várias das mesmas funcionalidades que
 
 Em vez de escrever um código SQL, você pode usar o designer de consultas gráficas para consultar as tabelas no data warehouse. Essa experiência é semelhante ao Power Query Online, em que você pode criar etapas de transformação de dados sem código. Para tarefas mais complexas, use a linguagem M (Mashup) do Power Query.
 
-1. No menu **Página Inicial**, selecione **Nova consulta visual**.
+1. No menu **Início**, expanda as opções em **Nova consulta SQL** e clique em **Nova consulta visual**.
 
 1. Arraste **FactSalesOrder** para a **tela**. Observe que uma visualização da tabela é exibida no painel **Visualização** abaixo.
 
@@ -200,7 +201,7 @@ Em vez de escrever um código SQL, você pode usar o designer de consultas gráf
 
 Você pode visualizar com facilidade os dados em uma só consulta ou no data warehouse. Antes de visualizá-los, oculte as colunas e/ou as tabelas que não são amigáveis aos designers de relatório.
 
-1. No painel do **Explorer**, selecione a exibição **Modelo**. 
+1. Clique no **Layouts de modelo**. 
 
 1. Oculte as colunas a seguir nas tabelas de Fatos e de Dimensão que não são necessárias para criar um relatório. Observe que isso não remove as colunas do modelo, simplesmente as oculta da exibição na tela do relatório.
    1. FactSalesOrder
@@ -217,7 +218,7 @@ Você pode visualizar com facilidade os dados em uma só consulta ou no data war
       - **ProductKey**
       - **ProductAltKey** 
 
-1. Agora você está pronto para criar um relatório e disponibilizar esse conjunto de dados para outras pessoas. No menu Página Inicial, selecione **Novo relatório**. Isso abrirá uma nova janela, na qual você poderá criar um relatório do Power BI.
+1. Agora você está pronto para criar um relatório e disponibilizar esse conjunto de dados para outras pessoas. No menu Relatório, clique em **Novo relatório**. Isso abrirá uma nova janela, na qual você poderá criar um relatório do Power BI.
 
 1. No painel **Dados**, expanda **FactSalesOrder**. Observe que as colunas que você escondeu não estão mais visíveis. 
 
