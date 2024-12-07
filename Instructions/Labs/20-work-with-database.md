@@ -17,7 +17,7 @@ Este laboratório levará aproximadamente **30** minutos para ser concluído.
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
 1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric`.
-1. Na barra de menus à esquerda, selecione **Novo espaço de trabalho**.
+1. Na barra de menus à esquerda, selecione **Novo workspace**.
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
 
@@ -28,7 +28,7 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 Agora que você tem um workspace, é hora de criar um banco de dados SQL.
 
 1. No portal do Fabric, selecione **+ Novo item** no painel esquerdo.
-1. Navegue até a seção **Banco de dados** e selecione **Bancos de dados SQL**.
+1. Navegue até a seção **Armazenar dados** e clique em **Bancos de dados SQL**.
 1. Insira **AdventureWorksLT** como o nome do banco de dados e clique em **Criar**.
 1. Depois de criar o banco de dados, você poderá carregar os dados de amostra no banco de dados com o cartão **Dados de amostra**.
 
@@ -102,15 +102,14 @@ Você integrará dados externos sobre feriados com ordem de venda. Em seguida, v
 
     ```sql
     INSERT INTO SalesLT.PublicHolidays (CountryOrRegion, HolidayName, Date, IsPaidTimeOff)
-    SELECT CountryOrRegion, HolidayName, Date, IsPaidTimeOff
-    FROM OPENROWSET 
-    (BULK 'abs://holidaydatacontainer@azureopendatastorage.blob.core.windows.net/Processed/*.parquet'
-    , FORMAT = 'PARQUET') AS [PublicHolidays]
-    WHERE countryorRegion in ('Canada', 'United Kingdom', 'United States')
-        AND YEAR([date]) = 2024
+    VALUES
+        ('Canada', 'Victoria Day', '2024-02-19', 1),
+        ('United Kingdom', 'Christmas Day', '2024-12-25', 1),
+        ('United Kingdom', 'Spring Bank Holiday', '2024-05-27', 1),
+        ('United States', 'Thanksgiving Day', '2024-11-28', 1);
     ```
     
-    Essa consulta lerá dados de feriados de arquivos Parquet no Armazenamento de Blobs do Azure, irá filtra-los para incluir apenas feriados no Canadá, no Reino Unido e nos Estados Unidos em 2024 e, em seguida, inserirá esses dados filtrados na tabela `SalesLT.PublicHolidays`.    
+    Neste exemplo, essa consulta insere feriados para o Canadá, o Reino Unido e os Estados Unidos para o ano de 2024 na tabela `SalesLT.PublicHolidays`.    
 
 1. Em um editor de consultas novo ou já existente, insira e execute o código T-SQL a seguir.
 
@@ -190,7 +189,7 @@ Vamos criar uma exibição com base na consulta que usamos anteriormente e adici
 
 > **Mais informações**: Consulte [O que é o Microsoft Fabric?](https://learn.microsoft.com/fabric/get-started/microsoft-fabric-overview) na documentação do Microsoft Fabric para saber mais sobre outros componentes disponíveis na plataforma.
 
-Neste exercício, você criou, importou dados externos, consultou e protegeu dados em um banco de dados SQL no Microsoft Fabric.
+Neste exercício, você criou, consultou e protegeu dados em um banco de dados SQL no Microsoft Fabric.
 
 ## Limpar os recursos
 

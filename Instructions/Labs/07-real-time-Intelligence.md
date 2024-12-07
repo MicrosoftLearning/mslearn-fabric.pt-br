@@ -115,14 +115,13 @@ Agora que você tem uma tabela de dados no seu banco de dados, use o código KQL
     ```
 
 8. Execute a consulta e analise os resultados, que conterão a receita líquida total de cada produto entre 1º de janeiro e 31 de dezembro de 2020 em ordem ascendente de nome do produto.
-9. Selecione **Salvar como um conjunto de consultas KQL** e salve a consulta como **Receita por Produto**.
 
 ## Criar um relatório do Power BI com base em um conjunto de consultas KQL
 
 Use o conjunto de consultas KQL como base para um relatório do Power BI.
 
 1. No editor do workbench de consulta do conjunto de consultas, execute a consulta e aguarde os resultados.
-2. Selecione **Criar relatório do Power BI** e aguarde até que o editor de relatório seja aberto.
+2. Clique em **Power BI** e aguarde até que o editor de relatório seja aberto.
 3. No editor de relatório, no painel **Dados**, expanda **Resultado da Consulta Kusto** e selecione os campos **Item** e **TotalRevenue**.
 4. Na tela de design do relatório, selecione a visualização de tabela que foi adicionada e, no painel **Visualizações**, selecione **Gráfico de barras clusterizado**.
 

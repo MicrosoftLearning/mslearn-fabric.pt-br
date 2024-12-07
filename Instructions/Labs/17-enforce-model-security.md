@@ -4,7 +4,7 @@ lab:
   module: Design and build tabular models
 ---
 
-# Impor a segurança de modelo
+# Impor a segurança do modelo semântico
 
 Nesse exercício, você atualizará um modelo de dados pré-desenvolvido para impor a segurança. Especificamente, os vendedores da empresa Adventure Works só devem poder ver os dados de vendas relacionados à região de vendas atribuída.
 

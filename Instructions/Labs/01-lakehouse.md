@@ -4,7 +4,7 @@ lab:
   module: Get started with lakehouses in Microsoft Fabric
 ---
 
-# Criar um Lakehouse
+# Criar um lakehouse do Microsoft Fabric
 
 As soluções de análise de dados em grande escala têm sido tradicionalmente criadas em torno de um *data warehouse*, no qual os dados são armazenados em tabelas relacionais e consultados por meio do SQL. O crescimento do "Big Data" (caracterizado por grandes *volumes*, *variedade* e *velocidade* de novos ativos de dados) acompanhado da disponibilidade de armazenamento de baixo custo e tecnologias de computação distribuída em escala de nuvem levou a uma abordagem alternativa para o armazenamento de dados analíticos: o *data lake*. Em um data lake, os dados são armazenados como arquivos sem impor um esquema fixo para o armazenamento. Cada vez mais, os analistas e os engenheiros de dados buscam se beneficiar dos melhores recursos dessas duas abordagens combinando-as em um *data lakehouse*, nos quais os dados são armazenados em arquivos em um data lake e um esquema relacional é aplicado a eles como uma camada de metadados para que possam ser consultados por meio da semântica do SQL tradicional.
 
@@ -18,7 +18,7 @@ Este laboratório leva cerca de **30** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) no `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados do Synapse**.
+1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha, selecionando um modo de licenciamento na seção **Avançado** que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -29,7 +29,7 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse para seus arquivos de dados.
 
-1. Na home page da **Engenharia de Dados do Synapse**, crie um **Lakehouse** com um nome de sua escolha.
+1. Na home page **Engenharia de Dados**, crie um **Lakehouse** com um nome de sua escolha.
 
     Após alguns minutos, um lakehouse será criado:
 
@@ -50,7 +50,7 @@ O Fabric fornece várias maneiras de carregar dados no lakehouse, incluindo supo
    > **Observação**: para baixar o arquivo, abra uma nova guia no navegador e cole a URL. Clique com o botão direito do mouse em qualquer lugar da página que contém os dados e selecione **Salvar como** para salvar a página como um arquivo CSV.
 
 2. Volte à guia do navegador da Web que contém o lakehouse e, no menu **…** da pasta **Arquivos** no painel do **Lakehouse Explorer**, selecione **Nova subpasta** e crie uma subpasta chamada **data**.
-3. No menu **…** da nova pasta **dados**, selecione **Carregar** e **Fazer upload de arquivos** e faça o upload do arquivo **sales.csv** do computador local (ou da VM de laboratório, se aplicável).
+3. No menu **…** da nova pasta **dados**, clique em **Carregar** e **Carregar arquivos** e faça o upload do arquivo **sales.csv** do computador local (ou da VM do laboratório, se aplicável).
 4. Depois que o arquivo for carregado, selecione a pasta **Arquivos/dados** e verifique se o arquivo **sales.csv** foi carregado, conforme mostrado aqui:
 
     ![Captura de tela do arquivo sales.csv carregado em um lakehouse.](./Images/uploaded-sales-file.png)
@@ -69,7 +69,7 @@ Em muitos cenários, os dados com os quais você precisa trabalhar no lakehouse 
 Os dados de vendas carregados estão em um arquivo, com o qual os analistas e os engenheiros de dados podem trabalhar diretamente usando o código do Apache Spark. No entanto, em muitos cenários, o ideal é carregar os dados do arquivo em uma tabela para que você possa consultá-los usando o SQL.
 
 1. Na **home page**, selecione a pasta **Arquivos/Dados** para que você possa ver o arquivo **sales.csv** que ela contém.
-2. No menu **…** do arquivo **sales.csv**, selecione **Carregar em Tabelas**.
+2. No menu **...** do arquivo **sales.csv**, clique em **Carregar em tabelas** > **Nova tabela**.
 3. Na caixa de diálogo **Carregar na tabela**, defina o nome da tabela como **sales** e confirme a operação de carregamento. Em seguida, aguarde até que a tabela seja criada e carregada.
 
     > **Dica**: se a tabela **sales** não for exibida automaticamente, no menu **…** da pasta **Tabelas**, selecione **Atualizar**.
@@ -108,7 +108,7 @@ Quando você cria um lakehouse e define tabelas nele, um ponto de extremidade SQ
 
 Embora muitos profissionais de dados estejam familiarizados com o SQL, os analistas de dados com a experiência do Power BI podem aplicar as habilidades do Power Query para criar consultas visuais.
 
-1. Na barra de ferramentas, selecione **Nova consulta visual**.
+1. Na barra de ferramentas, expanda a opção **Nova consulta SQL** e clique em **Nova consulta visual**.
 2. Arraste a tabela **sales** para o novo painel do editor de consultas visuais que será aberto para criar uma Power Query, conforme mostrado aqui: 
 
     ![Captura de tela de uma consulta visual.](./Images/visual-query.png)
@@ -133,9 +133,9 @@ Embora muitos profissionais de dados estejam familiarizados com o SQL, os analis
 As tabelas em seu lakehouse são adicionadas automaticamente a um modelo semântico padrão para relatórios com o Power BI.
 
 
-1. Na parte inferior da página ponto de extremidade do SQL, selecione a guia **Modelo**. O esquema de modelo de dados para o modelo semântico é mostrado.
+1. Na barra de ferramentas, selecione **Layouts de modelo**. O esquema do modelo de dados do modelo semântico é mostrado.
 
-    ![Captura de tela 2024-04-29 155248](https://github.com/afelix-95/mslearn-fabric/assets/148110824/ba9bd67d-8968-4c46-ac7a-f96a9f697f4c)
+    ![Captura de tela dos layouts do modelo](./Images/lakehouse-model-layouts.png)
 
     > **Observação 1**: Neste exercício, o modelo semântico consiste em uma só tabela. Em um cenário do mundo real, provavelmente, você criará várias tabelas no lakehouse, cada uma das quais será incluída no modelo. Em seguida, você poderá definir relações entre essas tabelas no modelo.
     
@@ -171,5 +171,5 @@ Neste exercício, você criou um lakehouse e importou dados para ele. Você viu 
 Se você tiver terminado de explorar seu lakehouse, exclua o workspace criado para este exercício.
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
-2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
+2. Na barra de ferramentas, clique em **Configurações do workspace**.
 3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.

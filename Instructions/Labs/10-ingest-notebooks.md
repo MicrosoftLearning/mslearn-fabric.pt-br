@@ -20,7 +20,7 @@ Como você também está trabalhando com um conjunto de dados de exemplo, a otim
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) no `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados do Synapse**.
+1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -31,7 +31,7 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Comece criando um novo lakehouse e uma pasta de destino no lakehouse.
 
-1. No seu espaço de trabalho, selecione **+ Novo > Lakehouse**, forneça um nome e **Criar**.
+1. No seu workspace, clique em **+ Novo item > Lakehouse**, forneça um nome e clique em **Criar**.
 
     > **Observação:** pode levar alguns minutos para criar um novo lakehouse sem **tabelas** ou **arquivos**.
 
@@ -85,15 +85,15 @@ Crie um novo notebook do Fabric e conecte-se à fonte de dados externa com o PyS
 1. Insira o seguinte código em uma **nova célula de código**:
 
     ```python
-        # Declare file name    
-        file_name = "yellow_taxi"
+    # Declare file name    
+    file_name = "yellow_taxi"
     
-        # Construct destination path
-        output_parquet_path = f"**InsertABFSPathHere**/{file_name}"
-        print(output_parquet_path)
+    # Construct destination path
+    output_parquet_path = f"**InsertABFSPathHere**/{file_name}"
+    print(output_parquet_path)
         
-        # Load the first 1000 rows as a Parquet file
-        blob_df.limit(1000).write.mode("overwrite").parquet(output_parquet_path)
+    # Load the first 1000 rows as a Parquet file
+    blob_df.limit(1000).write.mode("overwrite").parquet(output_parquet_path)
     ```
 
 1. Adicione seu caminho ABFS **RawData** e selecione **&#9655; Executar Célula** para gravar 1000 linhas em um arquivo yellow_taxi.parquet.
@@ -120,7 +120,7 @@ Agora você deverá ver sua nova pasta **RawData** com um "arquivo" **yellow_tax
     filtered_df = raw_df.withColumn("dataload_datetime", current_timestamp())
     
     # Filter columns to exclude any NULL values in storeAndFwdFlag
-    filtered_df = filtered_df.filter(raw_df["storeAndFwdFlag"].isNotNull())
+    filtered_df = filtered_df.filter(col("storeAndFwdFlag").isNotNull())
     
     # Load the filtered data into a Delta table
     table_name = "yellow_taxi"
@@ -177,5 +177,5 @@ Neste exercício, você usou notebooks com o PySpark no Fabric para carregar dad
 Quando concluir a exploração, você poderá excluir o espaço de trabalho que criou nesse exercício.
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
-2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
+1. Clique em **Configurações do espaço de trabalho** e, na seção **Geral**, role para baixo e selecione **Remover este espaço de trabalho**.
+1. Clique em **Excluir** para excluir o espaço de trabalho.

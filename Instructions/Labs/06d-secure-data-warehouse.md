@@ -4,7 +4,7 @@ lab:
   module: Secure a Microsoft Fabric data warehouse
 ---
 
-# Proteger os dados em um data warehouse
+# Proteger um data warehouse do Microsoft Fabric
 
 As permissões do Microsoft Fabric e as permissões granulares do SQL trabalham em conjunto para controlar o acesso ao Warehouse e as permissões de usuário. Neste exercício, você protegerá os dados usando permissões granulares, segurança em nível de coluna, segurança em nível de linha e máscara dinâmica de dados.
 

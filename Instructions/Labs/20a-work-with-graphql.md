@@ -17,7 +17,7 @@ Este laboratório levará aproximadamente **30** minutos para ser concluído.
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
 1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric`.
-1. Na barra de menus à esquerda, selecione **Novo espaço de trabalho**.
+1. Na barra de menus à esquerda, selecione **Novo workspace**.
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
 
@@ -28,7 +28,7 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 Agora que você tem um workspace, é hora de criar um banco de dados SQL.
 
 1. No portal do Fabric, selecione **+ Novo item** no painel esquerdo.
-1. Navegue até a seção **Banco de dados** e selecione **Bancos de dados SQL**.
+1. Navegue até a seção **Armazenar dados** e clique em **Bancos de dados SQL**.
 1. Insira **AdventureWorksLT** como o nome do banco de dados e clique em **Criar**.
 1. Depois de criar o banco de dados, você poderá carregar os dados de amostra no banco de dados com o cartão **Dados de amostra**.
 
@@ -86,7 +86,7 @@ Isso impedirá modificações ou atualizações nos dados por meio da API. Isso 
 
 ## Consultar dados usando o GraphQL
 
-Agora, vamos consultar os dados usando o GraphQL para encontrar todos os produtos cujos nomes começam com *"HL Road Frame."*
+Agora, vamos consultar os dados usando o GraphQL para encontrar todos os produtos cujos nomes começam com *"HL Road Frame".*
 
 1. No editor de consultas GraphQL, insira a consulta a seguir.
 
