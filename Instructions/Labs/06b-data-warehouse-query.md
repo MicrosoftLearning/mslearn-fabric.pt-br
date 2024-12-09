@@ -16,7 +16,7 @@ Este laboratório levará aproximadamente **30** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Data Warehouse do Synapse**.
+1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Data Warehouse**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -183,5 +183,5 @@ Neste exercício, você usou consultas para obter insights dos dados em um data 
 Se você tiver terminado de explorar seu data warehouse, exclua o workspace criado para este exercício.
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
-2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
+1. Clique em **Configurações do espaço de trabalho** e, na seção **Geral**, role para baixo e selecione **Remover este espaço de trabalho**.
+1. Clique em **Excluir** para excluir o espaço de trabalho.

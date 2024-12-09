@@ -16,7 +16,7 @@ Esse laboratório leva cerca de **45** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Data Warehouse do Synapse**.
+1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Data Warehouse**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -29,7 +29,7 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Em seguida, crie um data warehouse no workspace que você acabou de criar. A página inicial do Data Warehouse do Synapse inclui um atalho para criar um novo warehouse:
 
-1. Na página inicial do **Synapse Data Warehouse**, crie um novo **Warehouse** com um nome de sua escolha.
+1. Na home page do **Data Warehouse**, crie um **Depósito** com um nome de sua escolha.
 
     Após alguns minutos, um warehouse será criado:
 
@@ -39,7 +39,7 @@ Em seguida, crie um data warehouse no workspace que você acabou de criar. A pá
 
 As regras de máscara dinâmica de dados são aplicadas em colunas individuais no nível da tabela, de modo que todas as consultas são afetadas pela máscara. Os usuários que não tiverem permissões explícitas para exibir dados confidenciais verão os valores mascarados nos resultados da consulta, enquanto os usuários com permissão explícita para exibir os dados os verão sem máscara. Há quatro tipos de máscaras: padrão, email, aleatória e cadeia de caracteres personalizada. Neste exercício, você aplicará uma máscara padrão, uma máscara de email e uma máscara de cadeia de caracteres personalizada.
 
-1. Em seu warehouse, selecione o bloco **T-SQL** e substitua o código SQL padrão pelas seguintes instruções T-SQL para criar uma tabela e para inserir e exibir os dados.  
+1. No depósito, selecione o bloco **T-SQL** e use as seguintes instruções T-SQL para criar uma tabela e para inserir e exibir os dados.  
 
     ```T-SQL
    CREATE TABLE dbo.Customers
@@ -91,7 +91,7 @@ As regras de máscara dinâmica de dados são aplicadas em colunas individuais n
 
 A segurança em nível de linha (RLS) pode ser usada para limitar o acesso às linhas com base na identidade ou função do usuário que executa uma consulta. Neste exercício, você restringirá o acesso às linhas criando uma política de segurança e um predicado de segurança definido como uma função com valor de tabela embutida.
 
-1. No depósito que você criou no último exercício, selecione a lista suspensa **Nova Consulta SQL**.  Sob o cabeçalho **em Branco**, selecione **Nova Consulta SQL**.
+1. No depósito que você criou no último exercício, selecione a lista suspensa **Nova consulta SQL** e selecione **Nova consulta SQL**.
 
 2. Crie uma tabela e insira dados nela. Para que possa testar a segurança em nível de linha em uma etapa posterior, substitua `username1@your_domain.com` por um nome de usuário do seu ambiente e substitua `username2@your_domain.com` pelo seu nome de usuário.
 
@@ -166,7 +166,7 @@ A segurança em nível de linha (RLS) pode ser usada para limitar o acesso às l
 
 A segurança em nível de coluna permite designar quais usuários podem acessar colunas específicas em uma tabela. Ela é implementada emitindo uma instrução `GRANT` ou `DENY` em uma tabela especificando uma lista de colunas e o usuário ou função que pode (ou não) lê-las. Para simplificar o gerenciamento de acesso, atribua permissões a funções em vez de usuários individuais. Neste exercício, você criará uma tabela, concederá acesso a um subconjunto de colunas na tabela e testará se as colunas restritas não podem ser exibidas por um usuário diferente de você mesmo.
 
-1. No depósito que você criou no exercício anterior, selecione o menu suspenso **Nova Consulta SQL**. Sob o cabeçalho **em Branco**, selecione **Nova Consulta SQL**.  
+1. No depósito que você criou no exercício anterior, selecione a lista suspensa **Nova consulta SQL** e, em seguida, selecione **Nova consulta SQL**.  
 
 2. Crie uma tabela e insira dados nela.
 

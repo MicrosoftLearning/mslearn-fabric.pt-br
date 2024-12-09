@@ -101,37 +101,30 @@ Nesta tarefa, você criará duas funções estáticas.
 
     ![](Images/enforce-model-security-image13.png)
 
-4. Na janela **Gerenciar Funções**, selecione **Criar**.
+4. Na janela **Gerenciar funções**, selecione **+ Novo**.
 
-    ![](Images/enforce-model-security-image14.png)
+5. Para nomear a função, substitua o texto selecionado *Sem título* por **Austrália** e pressione **Enter**.
 
-5. Para nomear a função, substitua o texto selecionado por **Austrália** e pressione **Enter**.
-
-    ![](Images/enforce-model-security-image15.png)
-
-6. Na lista **Tabelas**, para a tabela **Território de Vendas**, selecione as reticências e, em seguida, selecione **Adicionar filtro** > **[Região]**.
+6. Na lista **Selecionar tabelas**, selecione **Região de Vendas** e, em seguida, na seção **Filtrar dados**, selecione **+ Novo**.
+  
+7. Na nova linha de regra, defina as seguintes configurações:
+    * **Coluna**: Região
+    * **Condição**: Igual a
+    * **Valor**: Austrália
 
     ![](Images/enforce-model-security-image16.png)
 
-7. Na caixa **Expressão DAX do filtro de tabela**, substitua **Valor** por **Austrália**.
+    *Essa regra filtra a coluna **Região** pelo valor **Austrália**.*
 
-    ![](Images/enforce-model-security-image17.png)
+10. Para criar outra função, pressione **+ Novo** na seção **Funções**.
 
-    *Essa expressão filtra a coluna **Região** pelo valor **Austrália**.*
-
-8. Para criar outra função, pressione **Criar**.
-
-    ![](Images/enforce-model-security-image18.png)
-
-9. Repita as etapas nesta tarefa para criar uma função chamada **Canadá** que filtra a coluna **Região** por **Canadá**.
+11. Repita as etapas nesta tarefa para criar uma função chamada **Canadá** que filtra a coluna **Região** por **Canadá**.
 
     ![](Images/enforce-model-security-image19.png)
 
     *Neste laboratório, você criará apenas as duas funções. Considere, no entanto, que, em uma solução real, uma função deve ser criada para cada uma das 11 regiões da Adventure Works.*
 
-10. Selecione **Salvar**.
-
-    ![](Images/enforce-model-security-image20.png)
+12. Selecione **Salvar**.
 
 ### Validar as funções estáticas
 
@@ -247,19 +240,13 @@ Nesta tarefa, você limpará a solução removendo o modelo semântico e as fun�
 
     ![](Images/enforce-model-security-image39.png)
 
-5. Na janela **Gerenciar funções**, para remover a primeira função, selecione **Excluir**.
+5. Na janela **Gerenciar funções**, para remover a primeira função, selecione as reticências ao lado dela e, em seguida, selecione **Excluir**.
 
     ![](Images/enforce-model-security-image40.png)
 
-6. Quando precisar confirmar a exclusão, pressione **Sim, excluir**.
+6. Remova também a segunda função.
 
-    ![](Images/enforce-model-security-image41.png)
-
-7. Remova também a segunda função.
-
-8. Selecione **Salvar**.
-
-    ![](Images/enforce-model-security-image42.png)
+7. Selecione **Salvar**.
 
 ## Criar função dinâmica
 
