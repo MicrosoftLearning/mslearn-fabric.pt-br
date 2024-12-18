@@ -16,7 +16,7 @@ Este laboratório leva cerca de **30** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um espaço de trabalho em um locatário com a capacidade do Fabric habilitada.
 
-1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) no `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados do Synapse**.
+1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha, selecionando um modo de licenciamento na seção **Avançado** que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -27,7 +27,7 @@ Antes de trabalhar com os dados no Fabric, crie um espaço de trabalho em um loc
 
 Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse para seus dados.
 
-1. Na home page da **Engenharia de Dados do Synapse**, crie um **Lakehouse** com um nome de sua escolha.
+1. Na home page **Engenharia de Dados**, crie um **Lakehouse** com um nome de sua escolha.
 
     Após alguns minutos, um lakehouse será criado:
 
@@ -72,7 +72,7 @@ No Microsoft Fabric, você pode usar notebooks para executar o código do Spark.
 
     ![Captura de tela de um novo notebook.](./Images/new-notebook.png)
 
-1. No canto superior esquerdo do notebook, selecione **Notebook 1** para exibir os detalhes e altere o nome para **Query Pproducts**.
+1. No canto superior esquerdo do notebook, selecione **Notebook 1** para exibir os detalhes e altere o nome para **Query Products**.
 1. No editor do notebook, no painel **Explorer** , selecione **Lakehouses** e adicione o lakehouse que você criou anteriormente.
 1. No menu **…** da tabela **Produtos**, selecione **Carregar dados** > **Spark**. Isso adiciona uma nova célula de código ao notebook, conforme mostrado aqui:
 
@@ -113,12 +113,12 @@ Neste exercício, você executou apenas algumas atividades, portanto, deve ser b
     ![Captura de tela do hub de monitoramento com um filtro aplicado.](./Images/monitor-filter.png)
 
 1. Use o botão **Opções de coluna** para incluir as seguintes colunas na exibição (use o botão **Aplicar** para aplicar as alterações):
-    - Hora da atividade
+    - Nome da atividade
     - Status
     - Tipo de item
     - Hora de início
     - Envio feito por
-    - Location
+    - Localidade
     - Hora de término
     - Duration
     - Tipo de atualização

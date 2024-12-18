@@ -1,18 +1,18 @@
 ---
 lab:
-  title: Introdução à consulta de um banco de dados KQL no Microsoft Fabric
-  module: Query data from a KQL database in Microsoft Fabric
+  title: "Trabalhar com dados em\_um eventhouse do Microsoft Fabric"
+  module: Work with data in a Microsoft Fabric eventhouse
 ---
 
-# Introdução à consulta de um banco de dados KQL no Microsoft Fabric
+# Trabalhar com dados em um eventhouse do Microsoft Fabric
 
-Um Conjunto de Consultas KQL é uma ferramenta que permite executar consultas, além de modificar e exibir resultados de consultas de um banco de dados KQL. Você pode vincular cada guia no Conjunto de Consultas KQL a um banco de dados KQL diferente, além de salvar suas consultas para uso futuro ou compartilhá-las com outras pessoas para fins de análise de dados. Você também pode alternar o banco de dados KQL para qualquer guia, de modo a poder comparar os resultados de consultas de diferentes fontes de dados.
+No Microsoft Fabric, um *eventhouse* é usado para armazenar dados em tempo real relacionados a eventos; geralmente capturados de uma fonte de dados de streaming por um *eventstream*.
 
-Neste exercício, você desempenhará a função de um analista encarregado de consultar um conjunto de dados de corridas de táxi em Nova York. Você usa KQL para consultar esses dados, coletar informações e obter insights informativos sobre os dados.
+Em um eventhouse, os dados são armazenados em um ou mais bancos de dados KQL, cada um contendo tabelas e outros objetos que você pode consultar usando a KQL (Linguagem de Consulta Kusto) ou um subconjunto da SQL (Linguagem SQL).
 
-> **Dica**: para criar consultas, o Conjunto de Consultas KQL usa a Linguagem de Consulta Kusto, que é compatível com diversas funções SQL. Para saber mais sobre KQL, consulte [Visão geral do KQL (Linguagem de Consulta Kusto)](https://learn.microsoft.com/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext).
+Neste exercício, você criará e preencherá um eventhouse com alguns dados de exemplo relacionados a corridas de táxi e, em seguida, consultará os dados usando KQL e SQL.
 
-Este laboratório leva cerca de **25** minutos para ser concluído.
+Este exercício levará aproximadamente **25** minutos para ser concluído.
 
 ## Criar um workspace
 
@@ -27,13 +27,20 @@ Antes de trabalhar com os dados no Fabric, crie um espaço de trabalho com a cap
 
 ## Criar um Eventhouse
 
+Agora que você tem um espaço de trabalho com suporte para uma capacidade do Fabric, pode criar um eventhouse nele.
+
 1. Na página inicial da **Inteligência em Tempo Real**, crie um novo **Eventhouse** com um nome de sua escolha. Quando o eventhouse tiver sido criado, feche todos os prompts ou dicas exibidos até ver a página do eventhouse:
 
    ![Captura de tela de um novo eventhouse.](./Images/create-eventhouse.png)
-   
-1. No menu **...** do banco de dados KQL que foi criado no eventhouse, selecione **Obter dados** > **Amostra**. Em seguida, escolha os dados de amostra **Análise de operações automotivas**.
 
-1. Depois que os dados terminarem de carregar, verifique se uma tabela **Automotiva** foi criada.
+1. No painel à esquerda, o eventhouse contém um banco de dados KQL com o mesmo nome do eventhouse.
+1. Selecione o banco de dados KQL para visualizá-lo.
+
+    Atualmente, não há tabelas no banco de dados. No restante deste exercício, você usará um eventstream para carregar dados de uma fonte em tempo real em uma tabela.
+   
+1. Na página do banco de dados KQL, selecione **Obter dados** > **Amostra** Em seguida, escolha os dados de amostra **Análise de operações automotivas**.
+
+1. Depois que os dados terminarem de carregar (o que pode levar algum tempo), verifique se uma tabela **Automotive** foi criada.
 
    ![Captura de tela da tabela Automotiva em um banco de dados do eventhouse.](./Images/choose-automotive-operations-analytics.png)
 
@@ -156,7 +163,7 @@ O Banco de Dados KQL não dá suporte ao Transact-SQL nativamente, mas fornece u
 
 1. Em seu conjunto de consultas, adicione e execute a seguinte consulta Transact-SQL: 
 
-    ```sql  
+    ```sql
     SELECT TOP 100 * from Automotive
     ```
 
