@@ -16,7 +16,7 @@ Este laboratório levará aproximadamente **30** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Data Warehouse do Synapse**.
+1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Data Warehouse**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -27,7 +27,7 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Em nosso cenário, como não temos dados disponíveis, devemos ingerir dados a serem usados para carregar o warehouse. Você criará um data lakehouse para os arquivos de dados que você usará para carregar o armazém.
 
-1. Na home page da **Engenharia de Dados do Synapse**, crie um **Lakehouse** com um nome de sua escolha.
+1. Selecione **+ Novo item** e crie um novo **Lakehouse** com um nome de sua escolha.
 
     Após alguns minutos, um lakehouse vazio será criado. Você precisa ingerir alguns dados no data lakehouse para análise. Há várias maneiras de fazer isso, mas, neste exercício, você fará o download de um arquivo CSV para o seu computador local (ou VM de laboratório, se for o caso) e, em seguida, fará o upload para seu lakehouse.
 
@@ -54,7 +54,7 @@ Em nosso cenário, como não temos dados disponíveis, devemos ingerir dados a s
 
 Agora que você tem um workspace, um lakehouse e a tabela de vendas com os dados necessários, é hora de criar um data warehouse. A página inicial do Data Warehouse do Synapse inclui um atalho para criar um novo warehouse:
 
-1. Na página inicial do **Data Warehouse do Synapse**, crie um novo **Warehouse** com um nome de sua escolha.
+1. Na home page do **Data Warehouse**, crie um **Warehouse** com um nome de sua escolha.
 
     Após alguns minutos, um warehouse será criado:
 
@@ -66,7 +66,7 @@ Vamos criar as tabelas de fatos e as dimensões para os dados de Vendas. Você t
 
 1. No workspace, selecione o armazém que você criou.
 
-1. No warehouse **Explorer**, selecione **Nova consulta SQL** e copie e execute a consulta a seguir.
+1. Na barra de ferramentas do depósito, selecione **Nova consulta SQL** e copie e execute a consulta a seguir.
 
     ```sql
     CREATE SCHEMA [Sales]
@@ -248,5 +248,5 @@ Neste exercício, você criou um lakehouse e um data warehouse com várias tabel
 Se você tiver terminado de explorar seu data warehouse, exclua o workspace criado para este exercício.
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
-2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
+1. Clique em **Configurações do espaço de trabalho** e, na seção **Geral**, role para baixo e selecione **Remover este espaço de trabalho**.
+1. Clique em **Excluir** para excluir o espaço de trabalho.

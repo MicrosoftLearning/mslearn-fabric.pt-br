@@ -6,15 +6,15 @@ lab:
 
 # Introdução à inteligência em tempo real no Microsoft Fabric
 
-O Microsoft Fabric fornece um runtime que você pode usar para armazenar e consultar dados usando o KQL (Linguagem de Consulta Kusto). O Kusto é otimizado para dados que incluem um componente de série temporal, como dados em tempo real de arquivos de log ou de dispositivos IoT.
+O Microsoft Fabric fornece inteligência em tempo real, permitindo criar soluções analíticas para fluxos de dados em tempo real. Neste exercício, você usará os recursos de inteligência em tempo real no Microsoft Fabric para ingerir, analisar e visualizar um fluxo em tempo real de dados do mercado de ações.
 
 Este laboratório leva cerca de **30** minutos para ser concluído.
 
-> **Observação**: Você precisa de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
+> **Observação**: para concluir este exercício, você precisa de um [locatário do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial).
 
 ## Criar um workspace
 
-Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
+Antes de trabalhar com os dados no Fabric, você precisa criar um espaço de trabalho em um locatário com a funcionalidade do Fabric habilitada.
 
 1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Inteligência em Tempo Real**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
@@ -23,123 +23,156 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
     ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
 
-## Baixar arquivo para o banco de dados KQL
+## Criar um eventstream
 
-Agora que você tem um espaço de trabalho, é hora de fazer o download do arquivo de dados que será analisado.
+Agora você está pronto para encontrar e ingerir dados em tempo real de uma fonte de streaming. Para fazer isso, você começará no hub em tempo real do Fabric.
 
-1. Baixe o arquivo de dados deste exercício de [https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv), salvando-o como **sales.csv** no computador local (ou na VM de laboratório, se aplicável)
-1. Retorne à janela do navegador com a Experiência do **Microsoft Fabric**.
+> **Dica**: na primeira vez que você usar o hub em tempo real, algumas dicas de *introdução* podem ser exibidas. Você pode fecha-las.
 
-## Criar um banco de dados KQL
+1. Na barra de menus à esquerda, selecione o hub em **tempo real**.
 
-O KQL (Linguagem de Consulta Kusto) é usada para consultar dados estáticos ou de streaming em uma tabela definida em um banco de dados KQL. Para analisar os dados de vendas, você precisa criar uma tabela em um banco de dados KQL e ingerir os dados do arquivo.
+    O hub em tempo real fornece uma maneira fácil de encontrar e gerenciar fontes de dados de streaming.
 
-1. No canto inferior esquerdo do portal, alterne para a experiência de Inteligência em Tempo Real.
+    ![Captura de tela do hub em tempo real no Fabric.](./Images/real-time-hub.png)
 
-    ![Captura de tela do menu do alternador de experiência.](./Images/fabric-real-time.png)
+1. No hub em tempo real, na seção **Conectar-se a**, selecione **Fontes de dados**.
+1. Encontre a fonte de dados de amostra **Mercado de Ações** e selecione **Conectar**. Em seguida, no assistente **Conexão**, nomeie a fonte como `stock` e edite o nome padrão do eventstream para alterá-lo para `stock-data`. O fluxo padrão associado a esses dados será automaticamente denominado *stock-data-stream*:
 
-2. Na página inicial da Inteligência em Tempo Real, crie um novo **Eventhouse** com um nome de sua escolha.
+    ![Captura de tela de um novo eventstream.](./Images/name-eventstream.png)
 
-   ![Captura de tela do Editor RTI com o Eventhouse em destaque.](./Images/create-kql-db.png)
+1. Selecione **Avançar** e aguarde a criação da fonte e do eventstream e, em seguida, selecione **Abrir eventstream**. O eventstream mostrará a fonte da **ação** e o **stock-data-stream** na tela de design:
 
-   O Eventhouse é usado para agrupar e gerenciar seus bancos de dados entre projetos. Um banco de dados KQL vazio é automaticamente criado com o nome do eventhouse.
-   
-3. Depois que o novo banco de dados for criado, selecione-o na lista à esquerda em Bancos de dados KQL. Em seguida, selecione a opção para obter dados do **Arquivo local**. Use o assistente para importar os dados para uma nova tabela selecionando as seguintes opções:
-    - **Destino**:
-        - **Banco de dados**: *o banco de dados que você criou já está selecionado*
-        - **Table**: *Crie uma nova tabela chamada* **vendas** clicando no sinal + à esquerda de ***Nova tabela***
+   ![Captura de tela da tela do eventstream.](./Images/new-stock-stream.png)
 
-        ![Etapa um do Assistente de nova tabela](./Images/import-wizard-local-file-1.png?raw=true)
+## Criar uma eventhouse
 
-        - Agora você verá o hiperlink **Arrastar arquivos aqui ou Procurar arquivos** aparecer na mesma janela.
+O eventstream ingere os dados de ações em tempo real, mas atualmente não faz nada com eles. Vamos criar um eventhouse onde podemos armazenar os dados capturados em uma tabela.
 
-        ![Etapa dois do Assistente de nova tabela](./Images/import-wizard-local-file-2.png?raw=true)
+1. Na barra de menus à esquerda, selecione **Página Inicial**; em seguida, na página inicial da Inteligência em Tempo Real, crie um **Eventhouse** e dê um nome exclusivo de sua escolha.
 
-        - navegue ou arraste sua tabela **sales.csv** para a tela e aguarde até que a caixa Statustatus mude para uma caixa de seleção verde e, em seguida, selecione **Avançar**
+    Feche todas as dicas ou prompts exibidos até ver o novo eventhouse vazio.
 
-        ![Etapa três do Assistente de nova tabela](./Images/import-wizard-local-file-3.png?raw=true)
+    ![Captura de tela de um novo eventhouse](./Images/create-eventhouse.png)
 
-        - Nesta tela, você verá que os cabeçalhos de coluna estão na primeira linha; embora o sistema os tenha detectado, ainda precisamos mover o controle deslizante acima dessas linhas **A primeira linha é o cabeçalho da coluna** para evitar que erros surjam.
-        
-        ![Etapa quatro do Assistente de nova tabela](./Images/import-wizard-local-file-4.png?raw=true)
+1. No painel à esquerda, o eventhouse contém um banco de dados KQL com o mesmo nome do eventhouse. Você pode criar tabelas para seus dados em tempo real neste banco de dados ou criar bancos de dados adicionais conforme necessário.
+1. Selecione o banco de dados e observe que há um *queryset* associado. Esse arquivo contém algumas consultas KQL de exemplo que você pode usar para começar a consultar as tabelas em seu banco de dados.
 
-        - Depois de selecionar este controle deslizante e constatar que tudo parece estar correto, selecione o botão **Concluir** na parte inferior direita do painel.
+    No entanto, atualmente não há tabelas para consultar. Vamos resolver esse problema obtendo dados do eventstream em uma nova tabela.
 
-        ![Etapa cinco do Assistente de nova tabela](./Images/import-wizard-local-file-5.png?raw=true)
+1. Na página principal do banco de dados KQL, selecione **Obter dados**.
+1. Para a fonte de dados, selecione **Eventstream** > **Eventstream existente**.
+1. No painel **Selecionar ou criar uma tabela de destino**, crie uma nova tabela chamada `stock`. Em seguida, no painel **Configurar a fonte de dados**, selecione seu espaço de trabalho e o eventstream **stock-data** e nomeie a conexão `stock-data`.
 
-        - Aguarde a conclusão das etapas na tela de resumo, que incluem:
-            - Criar tabela (vendas)
-            - criar mapeamento (sales_mapping)
-            - Enfileiramento de dados
-            - Ingestão
-        - Selecione o botão **Fechar**
+   ![Captura de tela da configuração para carregar uma tabela de um eventstream.](./Images/configure-destination.png)
 
-        ![Etapa seis do Assistente de nova tabela](./Images/import-wizard-local-file-6.png?raw=true)
+1. Use o botão **Avançar** para concluir as etapas para inspecionar os dados e, em seguida, concluir a configuração. Em seguida, feche a janela de configuração para ver seu eventhouse com a tabela de ações.
 
-> **Dica**: neste exemplo, você importou um volume muito pequeno de dados estáticos de um arquivo, o que é útil para os propósitos do exercício. Na realidade, você pode usar o Kusto para analisar volumes muito maiores de dados, incluindo dados em tempo real de uma fonte de streaming como os Hubs de Eventos do Azure.
+   ![Captura de tela de um eventhouse com uma tabela.](./Images/eventhouse-with-table.png)
 
-## Usar o KQL para consultar a tabela de vendas
+    A conexão entre o fluxo e a tabela foi criada. Vamos verificar isso no eventstream.
 
-Agora que você tem uma tabela de dados no seu banco de dados, use o código KQL para consultá-la.
+1. Na barra de menus à esquerda, selecione o hub em **tempo real** e exiba a página **Meus fluxos de dados**. A tabela de **ações** e o fluxo **stock-data-stream** devem estar listados.
 
-1. Verifique se a tabela **sales** está realçada. Na barra de menus, selecione a lista suspensa **Consultar tabela** e, nela, selecione **Mostrar quaisquer 100 registros**.
+   ![Captura de tela da página Meus fluxos no hub em tempo real.](./Images/my-data-streams.png)
 
-2. Um novo painel será aberto com a consulta e o resultado. 
+1. No menu **...** do fluxo **stock-data-stream**, selecione **Abrir eventstream**.
 
-3. Modifique a consulta conforme o seguinte exemplo:
+    O eventstream agora mostra um destino para o fluxo:
 
-    ```kusto
-   sales
-   | where Item == 'Road-250 Black, 48'
+   ![Captura de tela de um eventstream com um destino.](./Images/eventstream-destination.png)
+
+    > **Dica**: selecione o destino na tela de design e, se nenhuma visualização de dados for mostrada abaixo dele, selecione **Atualizar**.
+
+    Neste exercício, você criou um eventstream muito simples que captura dados em tempo real e os carrega em uma tabela. Em uma solução real, você normalmente adicionaria transformações para agregar os dados em janelas temporais (por exemplo, para capturar o preço médio de cada ação em períodos de cinco minutos).
+
+    Agora vamos explorar como você pode consultar e analisar os dados capturados.
+
+## Consultar os dados capturados
+
+O eventstream captura dados do mercado de ações em tempo real e os carrega em uma tabela em seu banco de dados KQL. Você pode consultar esta tabela para ver os dados capturados.
+
+1. Na barra de menus à esquerda, selecione o banco de dados da sua casa de eventos.
+1. Selecione o *queryset* do banco de dados.
+1. No painel de consulta, modifique a primeira consulta de exemplo, conforme mostrado aqui:
+
+    ```kql
+    stock
+    | take 100
     ```
 
-4. Executa a consulta. Em seguida, analise os resultados, que devem conter apenas as linhas dos pedidos de vendas para o produto *Road-250 Black, 48*.
+1. Selecione o código de consulta e execute-o para ver 100 linhas de dados na tabela.
 
-5. Modifique a consulta conforme o seguinte exemplo:
+    ![Captura de tela de uma consulta KQL.](./Images/kql-stock-query.png)
 
-    ```kusto
-   sales
-   | where Item == 'Road-250 Black, 48'
-   | where datetime_part('year', OrderDate) > 2020
+1. Revise os resultados e modifique a consulta para recuperar o preço médio de cada símbolo de ação nos últimos cinco minutos:
+
+    ```kql
+    stock
+    | where ["time"] > ago(5m)
+    | summarize avgPrice = avg(todecimal(bidPrice)) by symbol
+    | project symbol, avgPrice
     ```
 
-6. Execute a consulta e analise os resultados, que conterão apenas os pedidos de vendas de *Road-250 Black, 48* feitos após 2020.
+1. Realce a consulta modificada e execute-a para ver os resultados.
+1. Aguarde alguns segundos e execute-a novamente, observando que a média de preços muda à medida que novos dados são adicionados à tabela a partir do fluxo em tempo real.
 
-7. Modifique a consulta conforme o seguinte exemplo:
+## Criar um painel em tempo real
 
-    ```kusto
-   sales
-   | where OrderDate between (datetime(2020-01-01 00:00:00) .. datetime(2020-12-31 23:59:59))
-   | summarize TotalNetRevenue = sum(UnitPrice) by Item
-   | sort by Item asc
-    ```
+Agora que você tem uma tabela que está sendo preenchida por fluxo de dados, pode usar um painel em tempo real para visualizar os dados.
 
-8. Execute a consulta e analise os resultados, que conterão a receita líquida total de cada produto entre 1º de janeiro e 31 de dezembro de 2020 em ordem ascendente de nome do produto.
+1. No editor de consultas, selecione a consulta KQL usada para recuperar os preços médios das ações nos últimos cinco minutos.
+1. Selecione **Fixar no painel** na barra de ferramentas. Em seguida, fixe a consulta **em um novo painel** com as seguintes configurações:
+    - **Nome do painel**: `Stock Dashboard`
+    - **Nome do bloco**: `Average Prices`
+1. Crie o painel e abra-o. O resultado deve ser assim:
 
-## Criar um relatório do Power BI com base em um conjunto de consultas KQL
+    ![Captura de tela de um novo painel.](./Images/stock-dashboard-table.png)
 
-Use o conjunto de consultas KQL como base para um relatório do Power BI.
+1. Na parte superior do painel, alterne do modo de **Visualização** para o modo de **Edição**.
+1. Clique no ícone **Editar** (*lápis*) do bloco **Preços médios**.
+1. No painel **Formatação visual**, altere **Visual** de *Tabela* para *Coluna*:
 
-1. No editor do workbench de consulta do conjunto de consultas, execute a consulta e aguarde os resultados.
-2. Clique em **Power BI** e aguarde até que o editor de relatório seja aberto.
-3. No editor de relatório, no painel **Dados**, expanda **Resultado da Consulta Kusto** e selecione os campos **Item** e **TotalRevenue**.
-4. Na tela de design do relatório, selecione a visualização de tabela que foi adicionada e, no painel **Visualizações**, selecione **Gráfico de barras clusterizado**.
+    ![Captura de tela de um bloco de painel sendo editado.](./Images/edit-dashboard-tile.png)
 
-    ![Captura de tela de um relatório de uma consulta KQL.](./Images/kql-report.png)
+1. Na parte superior do painel, selecione **Aplicar alterações** e exiba o painel modificado:
 
-5. Na janela do **Power BI**, no menu **Arquivo**, selecione **Salvar**. Em seguida, salve o relatório como **Receita por Item.pbix** no workspace em que o lakehouse e o banco de dados KQL estão definidos usando um rótulo de confidencialidade **Não comercial**.
-6. Feche a janela do **Power BI** e, na barra à esquerda, selecione o ícone do workspace.
+    ![Captura de tela de um painel com um bloco de gráfico.](./Images/stock-dashboard-chart.png)
 
-    Atualize a página Workspace, se necessário, para ver todos os itens que ela contém.
+    Agora você tem uma visualização ao vivo de seus dados de ações em tempo real.
 
-7. Na lista de itens do workspace, observe que o relatório **Receita por Item** está listado.
+## Criar um alerta
+
+A Inteligência em tempo real no Microsoft Fabric inclui uma tecnologia chamada *Ativador*, que pode disparar ações com base em eventos em tempo real. Vamos usá-la para alertar você quando o preço médio das ações aumentar em um valor específico.
+
+1. Na janela do painel que contém a visualização do preço das ações, na barra de ferramentas, selecione **Definir alerta**.
+1. No painel **Definir alerta**, crie um alerta com as seguintes configurações:
+    - **Executar consulta a cada**: cinco minutos.
+    - **Verificar**: em cada evento agrupado por
+    - **Campo de agrupamento**: símbolo
+    - **Quando**: avgPrice
+    - **Condição**: Aumenta em
+    - **Valor**: 100
+    - **Ação**: enviar um email para mim
+    - **Salvar localização**
+        - **Workspace**: *seu workspace*
+        - **Item**: criar item
+        - **Nome de novo item**: *um nome exclusivo de sua preferência*
+
+    ![Captura de tela das configurações do alerta.](./Images/configure-activator.png)
+
+1. Crie o alerta e aguarde até que ele seja salvo. Em seguida, feche o painel confirmando que ele foi criado.
+1. Na barra de menus à esquerda, selecione a página do workspace (salvando as alterações não salvas no painel, se solicitado).
+1. Na página do workspace, exiba os itens que você criou neste exercício, incluindo o ativador do alerta.
+1. Abra o ativador e, em sua página, no nó **avgPrice** , selecione o identificador exclusivo para o alerta. Em seguida, exiba aguia **Histórico** .
+
+    Seu alerta pode não ter sido disparado, caso em que o histórico não conterá dados. Se o preço médio das ações mudar em mais de 100, o ativador enviará um e-mail e o alerta será registrado no histórico.
 
 ## Limpar os recursos
 
-Neste exercício, você criou um lakehouse, um banco de dados KQL para analisar os dados carregados no lakehouse. Você usou o KQL para consultar os dados e criar um conjunto de consultas, que foi usado para criar um relatório do Power BI.
+Neste exercício, você criou um eventhouse, ingeriu dados em tempo real usando um eventstream, consultou os dados ingeridos em uma tabela de banco de dados KQL, criou um painel em tempo real para visualizar os dados em tempo real e configurou um alerta usando o Ativador.
 
-Se você tiver terminado de explorar seu banco de dados KQL, exclua o workspace criado para este exercício.
+Se você terminou de explorar a Inteligêmcia em tempo real no Fabric, exclua o workspace criado para este exercício.
 
-1. Na barra à esquerda, selecione o ícone do workspace.
-2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
+1. Na barra à esquerda, selecione o ícone do seu workspace.
+2. Na barra de ferramentas, selecione **Configurações do espaço de trabalho**.
 3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.

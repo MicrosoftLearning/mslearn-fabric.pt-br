@@ -16,7 +16,7 @@ Este laboratório levará aproximadamente **30** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Data Warehouse do Synapse**.
+1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Data Warehouse**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -86,7 +86,7 @@ Os data warehouses do Microsoft Fabric incluem exibições de gerenciamento din�
 
 1. Deixe a consulta em execução e retorne à guia que contém o código para consultar as DMVs e execute-a novamente. Dessa vez, os resultados devem incluir a segunda consulta que está sendo executada na outra guia. Observe o tempo decorrido para essa consulta.
 1. Aguarde alguns segundos e execute novamente o código para consultar as DMVs novamente. O tempo decorrido para a consulta na outra guia deveria ter aumentado.
-1. Retorne à segunda guia de consulta, na qual a consulta ainda está em execução, e selecione **X Cancelar** para cancelá-la.
+1. Retorne à segunda guia de consulta, na qual a consulta ainda está em execução, e selecione **Cancelar** para cancelá-la.
 1. De volta à guia com o código para consultar as DMVs, execute novamente a consulta para confirmar que a segunda consulta não está mais em execução.
 1. Fechar todas as guias de consulta.
 
@@ -129,5 +129,5 @@ Neste exercício, você usou exibições de gerenciamento dinâmico e insights d
 Se você tiver terminado de explorar seu data warehouse, exclua o workspace criado para este exercício.
 
 1. Na barra à esquerda, selecione o ícone do workspace para ver todos os itens que ele contém.
-2. No menu **…** da barra de ferramentas, selecione **Configurações do workspace**.
-3. Na seção **Geral**, selecione **Remover este espaço de trabalho**.
+1. Clique em **Configurações do espaço de trabalho** e, na seção **Geral**, role para baixo e selecione **Remover este espaço de trabalho**.
+1. Clique em **Excluir** para excluir o espaço de trabalho.
