@@ -31,7 +31,7 @@ Agora que você tem um espaço de trabalho, é hora de criar um data warehouse. 
 
     Após alguns minutos, um warehouse será criado:
 
-    ![Captura de tela de um novo warehouse.](./Images/new-data-warehouse.png)
+    ![Captura de tela de um novo warehouse.](./Images/new-data-warehouse2.png)
 
 ## Criar tabelas e inserir dados
 
@@ -195,7 +195,7 @@ Em vez de escrever um código SQL, você pode usar o designer de consultas gráf
 
 1. Caso tenha interesse em analisar os dados de um só produto, de acordo com a solicitação da gerência, você já pode usar a coluna **ProductName** para filtrar os dados na consulta. Filtre a coluna **ProductName** para analisar somente os dados do **Cabo Cadeado**.
 
-1. Nela, você pode analisar os resultados dessa única consulta selecionando **Visualizar resultados** ou **Abrir no Excel**. Agora você pode ver exatamente o que a gerência estava solicitando, ou seja, não precisamos analisar mais os resultados.
+1. Nela, você pode analisar os resultados dessa única consulta selecionando **Visualizar resultados** ou **Baixar arquivo Excel**. Agora você pode ver exatamente o que a gerência estava solicitando, ou seja, não precisamos analisar mais os resultados.
 
 ### Visualize seus dados
 
@@ -232,7 +232,7 @@ Você pode visualizar com facilidade os dados em uma só consulta ou no data war
 
 1. No menu **Arquivo**, selecione **Salvar**. Em seguida, salve o relatório como **Relatório de Vendas** no workspace já criado.
 
-1. No hub de menus à esquerda, navegue de volta para o workspace. Observe que agora você tem três itens salvos no seu workspace: o data warehouse, o conjunto de dados padrão e o relatório que você criou.
+1. No hub de menus à esquerda, navegue de volta para o workspace. Agora você tem três itens salvos no seu workspace: o data warehouse, o modelo semântico padrão e o relatório que você criou.
 
     ![Captura de tela do workspace com os três itens listados.](./Images/workspace-items.png)
 

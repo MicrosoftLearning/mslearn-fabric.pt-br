@@ -16,7 +16,7 @@ Este exercício deve levar aproximadamente **30** minutos para ser concluído.
 
 Antes de começar este exercício, primeiro abra um navegador da Web e insira a seguinte URL para baixar a pasta zip:
 
-`https://github.com/MicrosoftLearning/mslearn-fabric/raw/Main/Allfiles/Labs/16b/16-reusable-assets.zip`
+`https://github.com/MicrosoftLearning/mslearn-fabric/raw/refs/heads/main/Allfiles/Labs/16b/16-reusable-assets.zip`
 
 Extraia a pasta para a pasta **C:\Users\Student\Downloads\16-reusable-assets**.
 
@@ -33,7 +33,7 @@ Nesta tarefa, você usa um relatório existente para criar um modelo semântico 
 1. Na nova caixa de diálogo Explorador de Arquivos, navegue até o arquivo *.pbix* inicial e selecione **Abrir** para fazer o upload.
 1. Observe como agora você tem dois itens diferentes no workspace com o mesmo nome:
 
-    - Report
+    - Relatório
     - Modelo semântico
 
 1. Abra o relatório e observe o tema de cores usado. *Você alterará isso em uma tarefa posteriormente.*
