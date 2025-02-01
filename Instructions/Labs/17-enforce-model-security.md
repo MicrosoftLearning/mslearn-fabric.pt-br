@@ -190,7 +190,7 @@ Essa tarefa depende da existência de um grupo de segurança **Salespeople_Austr
 
     ![](Images/enforce-model-security-image32.png)
 
-    *A opção **Segurança** dá suporte ao mapeamento de entidades de segurança do Microsoft Azure Active Directory (Azure AD), que inclui grupos de segurança e usuários.*
+    *A opção **Segurança** é compatível com o mapeamento de entidades de segurança do Microsoft Entra, que inclui grupos de segurança e usuários.*
 
 4. À esquerda, observe a lista de funções e que **Austrália** está selecionada.
 

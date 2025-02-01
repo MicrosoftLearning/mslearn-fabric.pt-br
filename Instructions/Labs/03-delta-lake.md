@@ -17,7 +17,7 @@ Este exercício deve levar aproximadamente **45** minutos para ser concluído
 
 Primeiro, crie um espaço de trabalho com a *avaliação do Fabric* habilitada.
 
-1. Na home page do Microsoft Fabric em https://app.fabric.microsoft.com, escolha a experiência **Engenharia de Dados do Synapse**.
+1. Na home page do Microsoft Fabric em `https://app.fabric.microsoft.com`, escolha a experiência **Engenharia de Dados**.
 1. Na barra de menus à esquerda, selecione **Espaços de Trabalho** (🗇).
 1. Crie um **novo espaço de trabalho** com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (Avaliação, Premium ou Fabric).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -28,8 +28,8 @@ Primeiro, crie um espaço de trabalho com a *avaliação do Fabric* habilitada.
 
 Agora que você tem um espaço de trabalho, é hora de criar um lakehouse e carregar alguns dados.
 
-1. Na home page da **Engenharia de Dados do Synapse**, crie um **Lakehouse** com um nome de sua escolha. 
-1. Há várias maneiras de ingerir dados, mas neste exercício, você baixará um arquivo de texto no computador local (ou na VM de laboratório, se aplicável) e fará seu upload no lakehouse. Baixe o [arquivo de dados](https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv) em https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv, salvando-o como *products.csv*.
+1. Na home page **Engenharia de Dados**, crie um **Lakehouse** com um nome de sua escolha. 
+1. Há várias maneiras de ingerir dados, mas neste exercício, você baixará um arquivo de texto no computador local (ou na VM de laboratório, se aplicável) e fará seu upload no lakehouse. Baixe o [arquivo de dados](https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv) em `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv`, salvando-o como *products.csv*.
 1.  Retorne à guia do navegador da Web que contém seu lakehouse e, no painel do Explorer, ao lado da pasta **Arquivos**, clique no menu.  Crie uma **Nova subpasta** chamada *products*.
 1.  No menu ... da pasta products, **carregue** o arquivo *products.csv* do computador local (ou da VM do laboratório, se aplicável).
 1.  Depois que o arquivo for carregado, selecione a pasta **products** e verifique se o arquivo foi carregado, conforme mostrado aqui:
@@ -307,7 +307,7 @@ O Delta Lake permite streaming de dados. As tabelas delta podem ser um coletor o
     print("Source stream created...")
     ```
 
-Verifique que o texto *Fluxo de origem criado…* será exibido. O código que você acabou de executar criou uma fonte de dados de streaming com base em uma pasta na qual alguns dados foram salvos, representando leituras de dispositivos IoT hipotéticos.
+Verifique que o texto *Fluxo de origem criado…* será exibida. O código que você acabou de executar criou uma fonte de dados de streaming com base em uma pasta na qual alguns dados foram salvos, representando leituras de dispositivos IoT hipotéticos.
 
 2. Em uma nova célula de código, adicione e execute o seguinte código:
 
