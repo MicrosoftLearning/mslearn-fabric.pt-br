@@ -16,7 +16,6 @@ Este laboratório leva cerca de **30** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, você precisa criar um espaço de trabalho em um locatário com a funcionalidade do Fabric habilitada.
 
-1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Inteligência em Tempo Real**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
