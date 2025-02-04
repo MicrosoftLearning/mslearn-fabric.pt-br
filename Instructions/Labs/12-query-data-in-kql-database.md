@@ -18,7 +18,6 @@ Este exercício levará aproximadamente **25** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um espaço de trabalho com a capacidade do Fabric habilitada.
 
-1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Inteligência em Tempo Real**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -29,20 +28,13 @@ Antes de trabalhar com os dados no Fabric, crie um espaço de trabalho com a cap
 
 Agora que você tem um espaço de trabalho com suporte para uma capacidade do Fabric, pode criar um eventhouse nele.
 
-1. Na página inicial da **Inteligência em Tempo Real**, crie um novo **Eventhouse** com um nome de sua escolha. Quando o eventhouse tiver sido criado, feche todos os prompts ou dicas exibidos até ver a página do eventhouse:
+1. Na barra de menus à esquerda, selecione **Cargas de trabalho**. Em seguida, selecione o bloco **Inteligência em tempo real**.
+1. Na home page **Inteligência em tempo real**, no bloco *Explorar Exemplo de Inteligência em tempo real*, selecione **Abrir**. Um eventhouse chamado **RTISample** será criado automaticamente:
 
-   ![Captura de tela de um novo eventhouse.](./Images/create-eventhouse.png)
+   ![Captura de tela de um novo eventhouse com dados de amostra.](./Images/create-eventhouse-sample.png)
 
 1. No painel à esquerda, o eventhouse contém um banco de dados KQL com o mesmo nome do eventhouse.
-1. Selecione o banco de dados KQL para visualizá-lo.
-
-    Atualmente, não há tabelas no banco de dados. No restante deste exercício, você usará um eventstream para carregar dados de uma fonte em tempo real em uma tabela.
-   
-1. Na página do banco de dados KQL, selecione **Obter dados** > **Amostra** Em seguida, escolha os dados de amostra **Análise de operações automotivas**.
-
-1. Depois que os dados terminarem de carregar (o que pode levar algum tempo), verifique se uma tabela **Automotive** foi criada.
-
-   ![Captura de tela da tabela Automotiva em um banco de dados do eventhouse.](./Images/choose-automotive-operations-analytics.png)
+1. Verifique se uma tabela **Bikestream** também foi criada.
 
 ## Consultar dados usando o KQL
 
@@ -54,7 +46,7 @@ O KQL (Linguagem de Consulta Kusto) é uma linguagem intuitiva e abrangente que 
 1. Modifique a primeira consulta de exemplo da seguinte maneira.
 
     ```kql
-    Automotive
+    Bikestream
     | take 100
     ```
 
@@ -70,8 +62,8 @@ O KQL (Linguagem de Consulta Kusto) é uma linguagem intuitiva e abrangente que 
 
     ```kql
     // Use 'project' and 'take' to view a sample number of records in the table and check the data.
-    Automotive 
-    | project vendor_id, trip_distance
+    Bikestream
+    | project Street, No_Bikes
     | take 10
     ```
 
@@ -82,8 +74,8 @@ O KQL (Linguagem de Consulta Kusto) é uma linguagem intuitiva e abrangente que 
 1. Experimente a seguinte consulta:
 
     ```kql
-    Automotive 
-    | project vendor_id, ["Trip Distance"] = trip_distance
+    Bikestream 
+    | project Street, ["Number of Empty Docks"] = No_Empty_Docks
     | take 10
     ```
 
@@ -91,33 +83,35 @@ O KQL (Linguagem de Consulta Kusto) é uma linguagem intuitiva e abrangente que 
 
 Você pode usar a palavra-chave *resumir* com uma função para agregar e manipular dados.
 
-1. Tente a seguinte consulta, que usa a função de **soma** para resumir os dados da viagem a fim de ver quantas milhas foram percorridas no total:
+1. Tente a seguinte consulta, que usa a função de **soma** para resumir os dados do aluguel a fim de ver quantas bicicletas estão disponíveis no total:
 
     ```kql
 
-    Automotive
-    | summarize ["Total Trip Distance"] = sum(trip_distance)
+    Bikestream
+    | summarize ["Total Number of Bikes"] = sum(No_Bikes)
     ```
 
     Você pode agrupar os dados resumidos por uma coluna ou expressão especificada.
 
-1. Faça a consulta a seguir para agrupar as distâncias de viagem por bairro dentro do sistema de táxi de NY para determinar a distância total percorrida de cada bairro.
+1. Execute a seguinte consulta para agrupar o número de bicicletas por bairro para determinar a quantidade de bicicletas disponíveis em cada bairro:
 
     ```kql
-    Automotive
-    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-    | project Borough = pickup_boroname, ["Total Trip Distance"]
+    Bikestream
+    | summarize ["Total Number of Bikes"] = sum(No_Bikes) by Neighbourhood
+    | project Neighbourhood, ["Total Number of Bikes"]
     ```
 
-    Os resultados incluem um valor em branco, o que nunca é bom para análise.
+    Se qualquer um dos pontos de bicicleta tiver uma entrada nula ou vazia para vizinhança, os resultados do resumo incluirão um valor em branco, o que nunca é bom para análise.
 
-1. Modifique a consulta conforme mostrado aqui para usar a função *case* junto com as funções *isempty* e *isnull* para agrupar todas as viagens para as quais o bairro é desconhecido em uma categoria ***Não identificada*** para acompanhamento.
+1. Modifique a consulta conforme mostrado aqui para usar a função *case* junto com as funções *isempty* e *isnull* para agrupar todas as viagens para as quais o bairro é desconhecido em uma categoria ***Não identificado*** para acompanhamento.
 
     ```kql
-    Automotive
-    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-    | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
+    Bikestream
+    | summarize ["Total Number of Bikes"] = sum(No_Bikes) by Neighbourhood
+    | project Neighbourhood = case(isempty(Neighbourhood) or isnull(Neighbourhood), "Unidentified", Neighbourhood), ["Total Number of Bikes"]
     ```
+
+    >**Observação**: como esse conjunto de dados de amostra é bem mantido, talvez você não tenha um campo Não identificado no resultado da consulta.
 
 ### Classificar dados usando KQL
 
@@ -126,33 +120,33 @@ Para dar mais sentido aos nossos dados, normalmente os ordenamos por uma coluna,
 1. Experimente a seguinte consulta:
 
     ```kql
-    Automotive
-    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-    | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
-    | sort by Borough asc
+    Bikestream
+    | summarize ["Total Number of Bikes"] = sum(No_Bikes) by Neighbourhood
+    | project Neighbourhood = case(isempty(Neighbourhood) or isnull(Neighbourhood), "Unidentified", Neighbourhood), ["Total Number of Bikes"]
+    | sort by Neighbourhood asc
     ```
 
 1. Modifique a consulta da seguinte maneira e execute-a novamente, e observe que o operador *ordenar por* funciona da mesma forma que *classificar por*:
 
     ```kql
-    Automotive
-    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-    | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
-    | order by Borough asc 
+    Bikestream
+    | summarize ["Total Number of Bikes"] = sum(No_Bikes) by Neighbourhood
+    | project Neighbourhood = case(isempty(Neighbourhood) or isnull(Neighbourhood), "Unidentified", Neighbourhood), ["Total Number of Bikes"]
+    | order by Neighbourhood asc
     ```
 
 ### Filtrar dados usando KQL
 
 No KQL, a cláusula *where* é usada para filtrar dados. Você pode combinar condições em uma cláusula *where* usando operadores lógicos *and* e *or*.
 
-1. Execute a seguinte consulta para filtrar os dados de viagem para incluir apenas viagens originadas em Manhatten:
+1. Execute a seguinte consulta para filtrar os dados da bicicleta para incluir apenas pontos de bicicleta no bairro de Chelsea:
 
     ```kql
-    Automotive
-    | where pickup_boroname == "Manhattan"
-    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-    | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
-    | sort by Borough asc
+    Bikestream
+    | where Neighbourhood == "Chelsea"
+    | summarize ["Total Number of Bikes"] = sum(No_Bikes) by Neighbourhood
+    | project Neighbourhood = case(isempty(Neighbourhood) or isnull(Neighbourhood), "Unidentified", Neighbourhood), ["Total Number of Bikes"]
+    | sort by Neighbourhood asc
     ```
 
 ## Consultar dados usando Transact-SQL
@@ -164,90 +158,90 @@ O Banco de Dados KQL não dá suporte ao Transact-SQL nativamente, mas fornece u
 1. Em seu conjunto de consultas, adicione e execute a seguinte consulta Transact-SQL: 
 
     ```sql
-    SELECT TOP 100 * from Automotive
+    SELECT TOP 100 * from Bikestream
     ```
 
 1. Modifique a consulta da seguinte maneira para recuperar colunas específicas
 
     ```sql
-    SELECT TOP 10 vendor_id, trip_distance
-    FROM Automotive
+    SELECT TOP 10 Street, No_Bikes
+    FROM Bikestream
     ```
 
-1. Modifique a consulta para atribuir um alias que renomeie **trip_distance** para um nome mais amigável.
+1. Modifique a consulta para atribuir um alias que renomeie **No_Empty_Docks** para um nome mais simples.
 
     ```sql
-    SELECT TOP 10 vendor_id, trip_distance as [Trip Distance]
-    from Automotive
+    SELECT TOP 10 Street, No_Empty_Docks as [Number of Empty Docks]
+    from Bikestream
     ```
 
 ### Resumir dados usando o Transact-SQL
 
-1. Execute a seguinte consulta para encontrar a distância total percorrida:
+1. Execute a seguinte consulta para encontrar o número total de bicicletas disponíveis:
 
     ```sql
-    SELECT sum(trip_distance) AS [Total Trip Distance]
-    FROM Automotive
+    SELECT sum(No_Bikes) AS [Total Number of Bikes]
+    FROM Bikestream
     ```
 
-1. Modifique a consulta para agrupar a distância total por bairro de coleta:
+1. Modifique a consulta para agrupar o número total de bicicletas por bairro:
 
     ```sql
-    SELECT pickup_boroname AS Borough, Sum(trip_distance) AS [Total Trip Distance]
-    FROM Automotive
-    GROUP BY pickup_boroname
+    SELECT Neighbourhood, Sum(No_Bikes) AS [Total Number of Bikes]
+    FROM Bikestream
+    GROUP BY Neighbourhood
     ```
 
-1. Modifique ainda mais a consulta para usar uma instrução *CASE* para agrupar viagens com origem desconhecida em uma categoria ***Não Identificada*** para acompanhamento. 
+1. Modifique ainda mais a consulta para usar uma instrução *CASE* para agrupar pontos de bicicleta com origem desconhecida em uma categoria ***Não Identificada*** para acompanhamento. 
 
     ```sql
     SELECT CASE
-             WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
-             ELSE pickup_boroname
-           END AS Borough,
-           SUM(trip_distance) AS [Total Trip Distance]
-    FROM Automotive
+             WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
+             ELSE Neighbourhood
+           END AS Neighbourhood,
+           SUM(No_Bikes) AS [Total Number of Bikes]
+    FROM Bikestream
     GROUP BY CASE
-               WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
-               ELSE pickup_boroname
+               WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
+               ELSE Neighbourhood
              END;
     ```
 
 ### Classificar dados usando o Transact-SQL
 
-1. Execute a consulta a seguir para ordenar os resultados agrupados por bairro
+1. Execute a consulta a seguir para ordenar os resultados agrupados por bairro:
  
     ```sql
     SELECT CASE
-             WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
-             ELSE pickup_boroname
-           END AS Borough,
-           SUM(trip_distance) AS [Total Trip Distance]
-    FROM Automotive
+             WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
+             ELSE Neighbourhood
+           END AS Neighbourhood,
+           SUM(No_Bikes) AS [Total Number of Bikes]
+    FROM Bikestream
     GROUP BY CASE
-               WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
-               ELSE pickup_boroname
-             END
-    ORDER BY Borough ASC;
+               WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
+               ELSE Neighbourhood
+             END;
+    ORDER BY Neighbourhood ASC;
     ```
 
 ### Filtrar dados usando Transact-SQL
     
-1. Execute a consulta a seguir para filtrar os dados agrupados para que apenas as linhas com um bairro de "Manhattan" sejam incluídas nos resultados
+1. Execute a consulta a seguir para filtrar os dados agrupados para que apenas as linhas com um bairro de "Chelsea" sejam incluídas nos resultados
 
     ```sql
     SELECT CASE
-             WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
-             ELSE pickup_boroname
-           END AS Borough,
-           SUM(trip_distance) AS [Total Trip Distance]
-    FROM Automotive
+             WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
+             ELSE Neighbourhood
+           END AS Neighbourhood,
+           SUM(No_Bikes) AS [Total Number of Bikes]
+    FROM Bikestream
     GROUP BY CASE
-               WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
-               ELSE pickup_boroname
-             END
-    HAVING Borough = 'Manhattan'
-    ORDER BY Borough ASC;
+               WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
+               ELSE Neighbourhood
+             END;
+    HAVING Neighbourhood = 'Chelsea'
+    ORDER BY Neibourhood ASC;
     ```
 
 ## Limpar os recursos
