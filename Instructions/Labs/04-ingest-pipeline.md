@@ -10,15 +10,15 @@ Um data lakehouse é um armazenamento de dados analíticos comum para soluções
 
 O Fabric também dá suporte ao Apache Spark, permitindo que você escreva e execute um código para processar dados em escala. Combinando as funcionalidades de pipeline e do Spark no Fabric, você pode implementar uma lógica de ingestão de dados complexa que copia dados de fontes externas para o armazenamento OneLake no qual o lakehouse se baseia e usa o código Spark para executar transformações de dados personalizadas antes de carregá-los em tabelas para análise.
 
-Este laboratório levará aproximadamente **60** minutos para ser concluído.
+Este laboratório levará aproximadamente **45** minutos para ser concluído.
 
-> **Observação**: Você precisa de uma [avaliação do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
+> **Observação**: Você precisará uma [avaliação gratuita do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir este exercício.
 
 ## Criar um workspace
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Engenharia de Dados**.
+1. Navegue até a [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric` em um navegador e entre com suas credenciais do Fabric.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -29,7 +29,9 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse no qual os dados serão ingeridos.
 
-1. Na home page **Engenharia de Dados**, crie um **Lakehouse** com um nome de sua escolha.
+1. Na barra de menus à esquerda, selecione **Criar**. Na página *Novo*, na seção *Engenharia de Dados*, selecione **Lakehouse**. Dê um nome exclusivo de sua preferência.
+
+    >**Observação**: se a opção **Criar** não estiver fixada na barra lateral, você precisará selecionar a opção de reticências (**...**) primeiro.
 
     Após alguns minutos, um lakehouse sem **Tabelas** nem **Arquivos** será criado.
 
