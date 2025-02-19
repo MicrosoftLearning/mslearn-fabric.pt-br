@@ -18,6 +18,7 @@ Este exercício levará aproximadamente **25** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um espaço de trabalho com a capacidade do Fabric habilitada.
 
+1. Navegue até a [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric` em um navegador e entre com suas credenciais do Fabric.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -29,7 +30,7 @@ Antes de trabalhar com os dados no Fabric, crie um espaço de trabalho com a cap
 Agora que você tem um espaço de trabalho com suporte para uma capacidade do Fabric, pode criar um eventhouse nele.
 
 1. Na barra de menus à esquerda, selecione **Cargas de trabalho**. Em seguida, selecione o bloco **Inteligência em tempo real**.
-1. Na home page **Inteligência em tempo real**, no bloco *Explorar Exemplo de Inteligência em tempo real*, selecione **Abrir**. Um eventhouse chamado **RTISample** será criado automaticamente:
+1. Na home page de **Inteligência em Tempo Real**, selecione o bloco **Explorar amostra de inteligência em tempo real**. Um eventhouse chamado **RTISample** será criado automaticamente:
 
    ![Captura de tela de um novo eventhouse com dados de amostra.](./Images/create-eventhouse-sample.png)
 
@@ -221,7 +222,7 @@ O Banco de Dados KQL não dá suporte ao Transact-SQL nativamente, mas fornece u
     GROUP BY CASE
                WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
                ELSE Neighbourhood
-             END;
+             END
     ORDER BY Neighbourhood ASC;
     ```
 
@@ -239,7 +240,7 @@ O Banco de Dados KQL não dá suporte ao Transact-SQL nativamente, mas fornece u
     GROUP BY CASE
                WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
                ELSE Neighbourhood
-             END;
+             END
     HAVING Neighbourhood = 'Chelsea'
     ORDER BY Neibourhood ASC;
     ```

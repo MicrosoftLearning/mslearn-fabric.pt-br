@@ -16,13 +16,14 @@ Este laboratório leva cerca de **30** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, você precisa criar um espaço de trabalho em um locatário com a funcionalidade do Fabric habilitada.
 
+1. Navegue até a [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric` em um navegador e entre com suas credenciais do Fabric.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
 
     ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-workspace.png)
 
-## Criar um eventstream
+## Criar um fluxo de eventos
 
 Agora você está pronto para encontrar e ingerir dados em tempo real de uma fonte de streaming. Para fazer isso, você começará no hub em tempo real do Fabric.
 
@@ -47,7 +48,9 @@ Agora você está pronto para encontrar e ingerir dados em tempo real de uma fon
 
 O eventstream ingere os dados de ações em tempo real, mas atualmente não faz nada com eles. Vamos criar um eventhouse onde podemos armazenar os dados capturados em uma tabela.
 
-1. Na barra de menus à esquerda, selecione **Página Inicial**; em seguida, na página inicial da Inteligência em Tempo Real, crie um **Eventhouse** e dê um nome exclusivo de sua escolha.
+1. Na barra de menus à esquerda, selecione **Criar**. Na página *Novo*, na seção *Inteligência em tempo real*, selecione **Eventhouse**. Dê um nome exclusivo de sua preferência.
+
+    >**Observação**: se a opção **Criar** não estiver fixada na barra lateral, você precisará selecionar a opção de reticências (**...**) primeiro.
 
     Feche todas as dicas ou prompts exibidos até ver o novo eventhouse vazio.
 
@@ -60,7 +63,7 @@ O eventstream ingere os dados de ações em tempo real, mas atualmente não faz 
 
 1. Na página principal do banco de dados KQL, selecione **Obter dados**.
 1. Para a fonte de dados, selecione **Eventstream** > **Eventstream existente**.
-1. No painel **Selecionar ou criar uma tabela de destino**, crie uma nova tabela chamada `stock`. Em seguida, no painel **Configurar a fonte de dados**, selecione seu espaço de trabalho e o eventstream **stock-data** e nomeie a conexão `stock-data`.
+1. No painel **Selecionar ou criar uma tabela de destino**, crie uma nova tabela chamada `stock`. Em seguida, no painel **Configurar a fonte de dados**, selecione seu espaço de trabalho e o eventstream **stock-data** e nomeie a conexão `stock-table`.
 
    ![Captura de tela da configuração para carregar uma tabela de um eventstream.](./Images/configure-destination.png)
 
@@ -70,11 +73,7 @@ O eventstream ingere os dados de ações em tempo real, mas atualmente não faz 
 
     A conexão entre o fluxo e a tabela foi criada. Vamos verificar isso no eventstream.
 
-1. Na barra de menus à esquerda, selecione o hub em **tempo real** e exiba a página **Meus fluxos de dados**. A tabela de **ações** e o fluxo **stock-data-stream** devem estar listados.
-
-   ![Captura de tela da página Meus fluxos no hub em tempo real.](./Images/my-data-streams.png)
-
-1. No menu **...** do fluxo **stock-data-stream**, selecione **Abrir eventstream**.
+1. Na barra de menus à esquerda, selecione o hub em **tempo real** e exiba a página **Meus fluxos de dados**. No menu **...** do fluxo **stock-data-stream**, selecione **Abrir eventstream**.
 
     O eventstream agora mostra um destino para o fluxo:
 

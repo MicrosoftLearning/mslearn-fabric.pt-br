@@ -18,8 +18,7 @@ Este laboratório levará aproximadamente **20** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação do Fabric habilitada.
 
-1. Navegue até a [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric` em um navegador.
-1. Selecione **Ciência de Dados do Synapse**.
+1. Navegue até a [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric` em um navegador e entre com suas credenciais do Fabric.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -30,7 +29,9 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
 Para executar o código, você pode criar um *notebook*. Os notebooks fornecem um ambiente interativo no qual você pode escrever e executar código (em várias linguagens).
 
-1. Na **página inicial de Ciência de Dados do Synapse**, crie um **Notebook**.
+1. Na barra de menus à esquerda, selecione **Criar**. Na página *Novo*, na seção *Ciência de Dados*, selecione **Notebook**. Dê um nome exclusivo de sua preferência.
+
+    >**Observação**: se a opção **Criar** não estiver fixada na barra lateral, você precisará selecionar a opção de reticências (**...**) primeiro.
 
     Após alguns segundos, um novo notebook que contém uma só *célula* será aberto. Os notebooks são compostos por uma ou mais células que podem conter um *código* ou um *markdown* (texto formatado).
 
@@ -93,13 +94,12 @@ Agora você está pronto para executar o código para obter dados e treinar um m
 
     A saída mostra as linhas e colunas do conjunto de dados do diabetes.
 
-1. Há duas guias na parte superior da tabela renderizada: **Tabela** e **Gráfico**. Selecione **Gráfico**.
-1. Selecione **Personalizar Gráfico** na parte superior direita do gráfico para alterar a visualização.
-1. Altere o gráfico para as seguintes configurações:
+1. Há duas guias na parte superior da tabela renderizada: **Tabela** e **+ Novo gráfico**. Selecione **+ Novo gráfico**.
+1. Selecione a opção **Criar a minha** à direita do gráfico para criar uma nova visualização.
+1. Selecione as seguintes configurações de gráfico:
     * **Tipo de Gráfico**: `Box plot`
-    * **Chave**: *Deixar em branco*
-    * **Valores**: `Y`
-1. Selecione **Aplicar** para renderizar a nova visualização e explorar o resultado.
+    * **Eixo Y**: `Y`
+1. Revise a saída que mostra a distribuição da coluna de rótulo`Y`.
 
 ## Preparar os dados
 
@@ -121,8 +121,8 @@ Agora que você já ingeriu e explorou os dados, pode transformá-los. Você pod
 1. Crie uma nova coluna com as seguintes configurações:
     * **Nome da coluna**: `Risk`
     * **Fórmula da coluna**: `(df['Y'] > 211.5).astype(int)`
-1. Analise a nova coluna `Risk` que foi adicionada à pré-visualização. Verifique se o número de linhas com valor `1` é de aproximadamente 25% de todas as linhas (já que é o 75º percentil de `Y`).
 1. Escolha **Aplicar**.
+1. Analise a nova coluna `Risk` que foi adicionada à pré-visualização. Verifique se o número de linhas com valor `1` é de aproximadamente 25% de todas as linhas (já que é o 75º percentil de `Y`).
 1. Selecione **Adicionar código ao notebook**.
 1. Execute a célula com o código gerado pelo Estruturador de Dados.
 1. Execute código a seguir em uma nova célula para verificar se a coluna `Risk` está no formato esperado:
