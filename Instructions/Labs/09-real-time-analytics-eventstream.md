@@ -17,7 +17,6 @@ Este laboratório leva cerca de **30** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, você precisa criar um espaço de trabalho em um locatário com a funcionalidade do Fabric habilitada.
 
-1. Na [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Inteligência em Tempo Real**.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -28,7 +27,7 @@ Antes de trabalhar com os dados no Fabric, você precisa criar um espaço de tra
 
 Agora que você tem um espaço de trabalho, pode começar a criar os itens do Fabric necessários para sua solução de inteligência em tempo real. Começaremos criando um eventhouse.
 
-1. Na barra de menus à esquerda, selecione **Página Inicial**; em seguida, na página inicial da Inteligência em Tempo Real, crie um **Eventhouse** e dê um nome exclusivo de sua escolha.
+1. No espaço de trabalho que você acabou de criar, selecione **+ Novo item**. No painel *Novo item*, selecione **Eventhouse** e dê um nome exclusivo de sua escolha.
 1. Feche todas as dicas ou prompts exibidos até ver o novo eventhouse vazio.
 
     ![Captura de tela de um novo eventhouse](./Images/create-eventhouse.png)
