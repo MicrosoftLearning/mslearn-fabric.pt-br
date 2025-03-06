@@ -242,7 +242,7 @@ O Banco de Dados KQL não dá suporte ao Transact-SQL nativamente, mas fornece u
                ELSE Neighbourhood
              END
     HAVING Neighbourhood = 'Chelsea'
-    ORDER BY Neibourhood ASC;
+    ORDER BY Neighbourhood ASC;
     ```
 
 ## Limpar os recursos
