@@ -18,7 +18,7 @@ Este laboratório levará aproximadamente 45 minutos para ser concluído.
 
 Antes de trabalhar com dados no Fabric, você precisa criar um espaço de trabalho.
 
-1. Na home page do [Microsoft Fabric](https://app.fabric.microsoft.com) em https://app.fabric.microsoft.com, escolha a experiência **Engenharia de Dados**.
+1. Navegue até a [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric` em um navegador e entre com suas credenciais do Fabric.
 1. Na barra de navegação à esquerda, selecione **Espaços de trabalho** (🗇) e **Novo espaço de trabalho**.
 1. Dê um nome ao novo espaço de trabalho e, na seção **Avançado**, escolha o Modo de licenciamento apropriado. Se você tiver iniciado uma avaliação do Microsoft Fabric, escolha Avaliação.
 1. Clique em **Aplicar** para criar um espaço de trabalho vazio.
@@ -214,7 +214,7 @@ O objeto DataFrame fornece funcionalidades adicionais, como a capacidade de filt
     display(yearlySales)
     ```
 
-4. Execute a célula. Examine a saída. Os resultados mostram o número de pedidos de vendas por ano:
+4. Execute a célula. Examine o resultado. Os resultados mostram o número de pedidos de vendas por ano:
 
     * A instrução *import* permite que você use a biblioteca SQL do Spark.
     * O método *select* é usado com uma função year do SQL para extrair o componente de ano do campo *OrderDate*.

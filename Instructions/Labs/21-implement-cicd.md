@@ -16,7 +16,7 @@ Esse laboratório leva cerca de **20** minutos para ser concluído.
 
 Criar três workspaces com a avaliação do Fabric habilitada.
 
-1. Na [página inicial do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), em `https://app.fabric.microsoft.com/home?experience=fabric`, selecione **Microsoft Fabric** e **Engenharia de Dados** na barra de menus inferior esquerda.
+1. Navegue até a [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric` em um navegador e entre com suas credenciais do Fabric.
 2. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 3. Crie um novo workspace chamado Desenvolvimento, selecionando um modo de licenciamento que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Fabric*).
 4. Repita as etapas 1 e 2, criando mais dois workspaces chamados Teste e Produção. Os workspaces são: Desenvolvimento, Teste e Produção.
