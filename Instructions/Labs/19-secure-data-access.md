@@ -46,7 +46,7 @@ Em seguida, crie um lakehouse no workspace criado.
 
     ![Captura de tela de um novo lakehouse no Fabric.](./Images/new-sample-lakehouse.png)
 
-4. Clique no bloco **Iniciar com dados de exemplo**. Depois de mais ou menos um minuto, o lakehouse será preenchido com dados.
+4. Selecione o bloco **Start with sample data** e selecione a amostra **Public holidays**. Depois de mais ou menos um minuto, o lakehouse será preenchido com dados.
 
 ## Aplicar controles de acesso do workspace
 
