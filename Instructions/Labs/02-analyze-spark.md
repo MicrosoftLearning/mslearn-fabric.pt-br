@@ -413,7 +413,8 @@ Ao terminar, clique em **Aplicar**.
 
     ```python
     sqlQuery = "SELECT CAST(YEAR(OrderDate) AS CHAR(4)) AS OrderYear, \
-                    SUM((UnitPrice * Quantity) + Tax) AS GrossRevenue \
+                    SUM((UnitPrice * Quantity) + Tax) AS GrossRevenue, \
+                    COUNT(DISTINCT SalesOrderNumber) AS YearlyCounts \
                 FROM salesorders \
                 GROUP BY CAST(YEAR(OrderDate) AS CHAR(4)) \
                 ORDER BY OrderYear"
@@ -421,7 +422,7 @@ Ao terminar, clique em **Aplicar**.
     df_spark.show()
     ```
 
-2. Execute o código. Retornará um DataFrame do Spark contendo a receita anual. Para visualizar os dados como um gráfico, começaremos usando a biblioteca matplotlib em Python. Essa biblioteca é a biblioteca de plotagem principal na qual muitas outras se baseiam e fornece muita flexibilidade na criação de gráficos.
+2. Execute o código. Ele retornará um DataFrame do Spark contendo a receita anual e o número de pedidos. Para visualizar os dados como um gráfico, começaremos usando a biblioteca matplotlib em Python. Essa biblioteca é a biblioteca de plotagem principal na qual muitas outras se baseiam e fornece muita flexibilidade na criação de gráficos.
 
 3. Adicione uma nova célula de código e o seguinte código:
 
@@ -509,10 +510,9 @@ Ao terminar, clique em **Aplicar**.
     ax[0].set_title('Revenue by Year')
 
     # Create a pie chart of yearly order counts on the second axis
-    yearly_counts = df_sales['OrderYear'].value_counts()
-    ax[1].pie(yearly_counts)
+    ax[1].pie(df_sales['YearlyCounts'])
     ax[1].set_title('Orders per Year')
-    ax[1].legend(yearly_counts.keys().tolist())
+    ax[1].legend(df_sales['OrderYear'])
 
     # Add a title to the Figure
     fig.suptitle('Sales Data')
