@@ -30,20 +30,16 @@ Em seguida, crie um pipeline de implantação.
 
 1. Na barra de menus à esquerda, selecione **Espaços de Trabalho**.
 2. Selecione **Pipelines de Implantação** e **Novo pipeline**.
-3. Na janela **Adicionar um novo pipeline de implantação**, dê um nome exclusivo ao pipeline.
-4. Aceite os padrões na janela **Personalizar seus estágios**.  
-
-   ![Captura de tela dos estágios do pipeline.](./Images/customize-stages.png)
-
-5. Selecione **Criar**.
+3. Na janela **Adicionar um novo pipeline de implantação**, dê um nome exclusivo ao pipeline e clique em **Avançar**.
+4. Na nova janela do pipeline, selecione **Criar e continuar**.
 
 ## Atribuir workspaces a estágios de um pipeline de implantação
 
 Atribua workspaces a estágios do pipeline de implantação.
 
 1. Na barra de menus à esquerda, selecione o pipeline que você criou. 
-2. Na janela exibida, escolha a palavra **Selecionar** em cada estágio de implantação e selecione o nome do workspace que corresponde ao nome do estágio.
-3. Selecione **Atribuir um workspace** para cada estágio de implantação.
+2. Na janela exibida, escolha as opções em **Atribuir um workspace** em cada estágio de implantação e selecione o nome do workspace que corresponde ao nome do estágio.
+3. Selecione a marca de seleção **Atribuir** para cada estágio de implantação.
 
   ![Captura de tela do pipeline de implantação.](./Images/deployment-pipeline.png)
 
@@ -53,16 +49,17 @@ Os itens do Fabric ainda não foram criados nos workspaces. Em seguida, crie um 
 
 1. Na barra de menus à esquerda, selecione **Espaços de Trabalho**.
 2. Selecione o workspace **Desenvolvimento**.
-3. Selecione **Novo Item**
+3. Selecione **Novo Item**.
 4. Na janela exibida, selecione **Lakehouse** e, na **janela Novo lakehouse**, nomeie o lakehouse: **"LabLakehouse"**.
 5. Selecione **Criar**.
 6. Na janela Lakehouse Explorer, selecione **Iniciar com dados de exemplo** para preencher o novo lakehouse com dados.
 
   ![Captura de tela do Lakehouse Explorer.](./Images/lakehouse-explorer.png)
 
+7. Selecione a amostra **NYCTaxi**.
 8. Na barra de menus à esquerda, selecione o pipeline criado.
-9. No estágio de **Desenvolvimento**, selecione **>** até ver **Lakehouses**. O lakehouse aparece como novo conteúdo no estágio de Desenvolvimento. Entre os estágios de **Desenvolvimento** e **Teste**, há um **X** laranja dentro de um círculo. O ** X** laranja indica que os estágios de Desenvolvimento e Teste não estão sincronizados.
-10. Selecione a seta para baixo abaixo do **X** laranja para comparar o conteúdo nos ambientes de Desenvolvimento e Teste. Selecione **Comparar**. O LabLakehouse só existe no estágio de Desenvolvimento.  
+9. Selecione o estágio **Desenvolvimento** e, na tela do pipeline de implantação, você poderá ver o lakehouse criado como um item de estágio. Na borda esquerda do estágio **Teste**, há um **X** dentro de um círculo. O **X** indica que os estágios de Desenvolvimento e Teste não estão sincronizados.
+10. Selecione o estágio de **Teste** e, na tela do pipeline de implantação, você poderá ver que o lakehouse criado é apenas um item de estágio na fonte, que, nesse caso, se refere ao estágio de **Desenvolvimento**.  
 
   ![Faça uma captura de tela do pipeline de implantação mostrando incompatibilidades de conteúdo entre os estágios.](./Images/lab-pipeline-compare.png)
 
