@@ -60,7 +60,7 @@ Agora que você tem um workspace, um lakehouse e a tabela de vendas com os dados
 
     Após alguns minutos, um warehouse será criado:
 
-    ![Captura de tela de um novo warehouse.](./Images/new-data-warehouse.png)
+    ![Captura de tela de um novo warehouse.](./Images/new-empty-data-warehouse.png)
 
 ## Criar tabela de fatos, dimensões e exibição
 
@@ -109,6 +109,8 @@ Vamos criar as tabelas de fatos e as dimensões para os dados de Vendas. Você t
     > **Importante:** Em um data warehouse, restrições de chave de referência nem sempre são necessárias no nível da tabela. Embora restrições de chave de referência possam ajudar a garantir a integridade dos dados, elas também podem adicionar sobrecarga ao processo ETL (extração, transformação e carregamento) e reduzir o carregamento de dados. A decisão de usar restrições de chave de referência em um data warehouse deve ser baseada em uma consideração cuidadosa das compensações entre a integridade e o desempenho dos dados.
 
 1. No **Explorer**, navegue até **Esquemas >> Vendas >> Tabelas**. Observe as tabelas *Fact_Sales*, *Dim_Customer* e *Dim_Item* que você acabou de criar.
+
+    > **Observação**: se você não conseguir ver os novos esquemas, abra o menu **...** em **Tabelas** no painel **Explorer** e selecione **Atualizar**.
 
 1. Abra um novo editor de **Nova consulta SQL** e copie e execute a consulta a seguir. Atualize *<your lakehouse name>* com o lakehouse que você criou.
 
