@@ -21,17 +21,15 @@ Antes de trabalhar com os dados no Fabric, crie um workspace com a avaliação d
 
     ![Captura de tela de um espaço de trabalho vazio no Fabric.](./Images/new-empty-workspace.png)
 
-> **Observação**: Ao criar um workspace, você se torna automaticamente um membro da função de Administrador do Workspace. 
+> **Observação**: Ao criar um workspace, você se torna automaticamente um membro da função de Administrador do Workspace.
 
 ## Criar um data warehouse
 
 Em seguida, crie um data warehouse no workspace que você criou:
 
-1. Na barra de menus à esquerda, selecione **Criar**. Na página *Novo*, na seção *Data Warehouse*, clique em **Warehouse de amostra** e crie um novo data warehouse com um nome de sua escolha.
+1. Clique em **+ Novo Item**. Na página *Novo item*, na seção *Armazenar dados*, selecione **Depósito de amostras** e crie um novo data warehouse com um nome de sua escolha.
 
-    >**Observação**: se a opção **Criar** não estiver fixada na barra lateral, você precisará selecionar a opção de reticências (**...**) primeiro.
-
-    Após alguns minutos, um warehouse será criado:
+     Após alguns minutos, um warehouse será criado:
 
     ![Captura de tela de um novo warehouse.](./Images/new-sample-warehouse.png)
 
@@ -69,7 +67,7 @@ Neste exercício, você adicionará um usuário a uma função do workspace, apl
 7. Em seguida, você atribuirá a função **Visualizador do workspace** ao segundo usuário e verá que a função concede acesso de leitura ao warehouse no workspace.  
 8. Retorne à janela do navegador em que você entrou como administrador do workspace. Verifique se você ainda está na página que mostra o workspace que você criou. Os novos itens do workspace, bem como o warehouse e lakehouse de amostra, estarão listados na parte inferior da página.
 9. Selecione **Gerenciar acesso** na parte superior direita da tela.
-10. Selecione **Adicionar pessoas ou grupos**. Digite o email do segundo usuário com o qual você está testando. Selecione **Adicionar** para atribuir o usuário à função **Visualizador do workspace**. 
+10. Selecione **Adicionar pessoas ou grupos**. Digite o email do segundo usuário com o qual você está testando. Selecione **Adicionar** para atribuir o usuário à função **Visualizador do workspace**.
 11. Retorne à janela do navegador InPrivate em que você entrou como o segundo usuário e clique no botão Atualizar no navegador para atualizar as permissões de sessão atribuídas ao segundo usuário.
 12. Clique no ícone **Workspaces** na barra de menu à esquerda (o ícone é semelhante a &#128455;) e selecione o nome do workspace que você criou como o usuário Administrador do workspace. O segundo usuário agora pode ver todos os itens no workspace porque recebeu a função **Visualizador do workspace**.
 
@@ -102,7 +100,7 @@ As permissões de item controlam o acesso a itens individuais do Fabric em um wo
 
 9. Clique em **Conceder**.
 
-10. Retorne à janela do navegador em que você entrou como o segundo usuário. Atualize a exibição do navegador.  
+10. Retorne à janela do navegador em que você entrou como o segundo usuário. Atualize a exibição do navegador.
 
 11. O segundo usuário não tem mais acesso ao workspace, mas tem acesso apenas ao warehouse. Você não pode mais procurar workspaces no painel de navegação à esquerda para localizar o warehouse. Clique em **OneLake** no menu de navegação à esquerda para localizar o warehouse. 
 
@@ -129,7 +127,7 @@ Neste exercício, você atribuirá uma permissão de item e criará uma função
 
       ![Captura de tela da janela do lakehouse de concessão de acesso no Fabric.](./Images/grant-people-access-window.png)
 
-8. Selecione **Conceder**. O segundo usuário agora tem permissões de leitura no lakehouse. A permissão Leitura permite que o usuário veja apenas os metadados do lakehouse, mas não os dados subjacentes. Validaremos isso na sequência.
+8. Selecionar **Conceder**. O segundo usuário agora tem permissões de leitura no lakehouse. A permissão Leitura permite que o usuário veja apenas os metadados do lakehouse, mas não os dados subjacentes. Validaremos isso na sequência.
 9. Retorne ao navegador em que você entrou como o segundo usuário. Atualize o navegador.
 10. No painel de navegação à esquerda, escolha **OneLake**.  
 11. Clique no lakehouse e abra-o. 
@@ -156,8 +154,6 @@ Neste exercício, você atribuirá uma permissão de item e criará uma função
 
 17. Retorne ao navegador em que você entrou como o segundo usuário. Certifique-se de que você ainda está na página em que o lakehouse está aberto. Atualize o navegador.  
 18. Escolha a tabela **publicholidays** e aguarde o carregamento dos dados. Somente os dados na tabela publicholidays podem ser acessados pelo usuário porque o usuário foi atribuído à função personalizada de acesso a dados do OneLake. A função permite que o usuário veja apenas os dados na tabela publicholidays, não os dados em nenhuma das outras tabelas, arquivos ou pastas.
-
-       ![Captura de tela do que a função de acesso a dados do OneLake permite que o usuário veja.](./Images/custom-role-view.png)
 
 ## Limpar os recursos
 
