@@ -58,7 +58,7 @@ Nesta tarefa, você criará um relatório conectando-se ao modelo semântico pub
     ![Captura de tela das opções disponíveis na categoria Versão prévia dos recursos.](./Images/power-bi-enable-tmdl.png)
 
 1. Selecione **Salvar como**, escolha o tipo de arquivo selecionando a seta no menu suspenso ao nomear o arquivo.
-1. Selecione a extensão de arquivo **.*.pbip***, escolha um nome para o relatório e salve em uma pasta que você lembrará.
+1. Selecione a extensão de arquivo **.*.pbip***, escolha um nome para o relatório e salve-o em uma pasta da qual você lembrará.
 
     ![Captura de tela da seleção Salvar como com o menu suspenso expandido.](./Images/power-bi-save-file-types.png)
 
@@ -74,10 +74,10 @@ Nesta tarefa, você criará um relatório conectando-se ao modelo semântico pub
 
 Vejamos como as alterações no Power BI Desktop são refletidas nos arquivos .tmdl.
 
-1. Na área de trabalho, use o Explorador de Arquivos para navegar até a pasta onde você salvou o arquivo *. pbip***.
+1. Na área de trabalho, use o Explorador de Arquivos para navegar até a pasta em que você salvou o arquivo **. pbip****.
 1. Você verá os seguintes itens:
 
-    - O arquivo SeuRelatório.*.pbip*
+    - Arquivo YourReport.pbip
     - A pasta SeuRelatório.Relatório
     - A pasta SeuRelatório.ModeloSemântico
     - O Arquivo de origem Git Ignore .gitignore
@@ -94,7 +94,7 @@ Nesta tarefa, você adicionará uma nova tabela porque o modelo semântico não 
 
 1. A caixa de diálogo Da Web aparecerá quando se conectar. Mantenha o botão de opção Básico selecionado. Insira o seguinte caminho de arquivo como o caminho da URL.
 
-    `"C:\Users\Student\Downloads\16-reusable-assets\us-resident-population-estimates-2020.html"`
+    `C:\Users\Student\Downloads\16-reusable-assets\us-resident-population-estimates-2020.html`
 
 1. Marque a caixa **Tabelas HTML > Tabela 2** e selecione **Transformar Dados** para continuar.
 
