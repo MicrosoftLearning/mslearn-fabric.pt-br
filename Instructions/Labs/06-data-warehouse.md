@@ -176,7 +176,7 @@ Um data warehouse no Microsoft Fabric tem várias das mesmas funcionalidades que
    ORDER BY CalendarYear, MonthOfYear, SalesRegion;
     ```
 
-### Criar uma consulta visual
+## Criar uma consulta visual
 
 Em vez de escrever um código SQL, você pode usar o designer de consultas gráficas para consultar as tabelas no data warehouse. Essa experiência é semelhante ao Power Query Online, em que você pode criar etapas de transformação de dados sem código. Para tarefas mais complexas, use a linguagem M (Mashup) do Power Query.
 
@@ -199,48 +199,9 @@ Em vez de escrever um código SQL, você pode usar o designer de consultas gráf
 
 1. Nela, você pode analisar os resultados dessa única consulta selecionando **Visualizar resultados** ou **Baixar arquivo Excel**. Agora você pode ver exatamente o que a gerência estava solicitando, ou seja, não precisamos analisar mais os resultados.
 
-### Visualize seus dados
-
-Você pode visualizar com facilidade os dados em uma só consulta ou no data warehouse. Antes de visualizá-los, oculte as colunas e/ou as tabelas que não são amigáveis aos designers de relatório.
-
-1. Clique no **Layouts de modelo**. 
-
-1. Oculte as colunas a seguir nas tabelas de Fatos e de Dimensão que não são necessárias para criar um relatório. Observe que isso não remove as colunas do modelo, simplesmente as oculta da exibição na tela do relatório.
-   1. FactSalesOrder
-      - **SalesOrderDateKey**
-      - **CustomerKey**
-      - **ProductKey**
-   1. DimCustomer
-      - **CustomerKey**
-      - **CustomerAltKey**
-   1. DimDate
-      - **DateKey**
-      - **DateAltKey**
-   1. DimProduct
-      - **ProductKey**
-      - **ProductAltKey** 
-
-1. Agora você está pronto para criar um relatório e disponibilizar esse conjunto de dados para outras pessoas. No menu Relatório, clique em **Novo relatório**. Isso abrirá uma nova janela, na qual você poderá criar um relatório do Power BI.
-
-1. No painel **Dados**, expanda **FactSalesOrder**. Observe que as colunas que você escondeu não estão mais visíveis. 
-
-1. Selecione **SalesTotal**. Isso adicionará a coluna à **tela do Relatório**. Como a coluna é um valor numérico, o visual padrão é um **gráfico de colunas**.
-1. Verifique se o gráfico de colunas na tela está ativo (com uma borda cinza e alças) e selecione **Categoria** na tabela **DimProduct** para adicionar uma categoria ao gráfico de colunas.
-1. No painel **Visualizações**, altere o tipo de gráfico de um gráfico de colunas para um **gráfico de barras clusterizado**. Em seguida, redimensione o gráfico conforme necessário para garantir que as categorias sejam legíveis.
-
-    ![Captura de tela do painel Visualizações com o gráfico de barras selecionado.](./Images/visualizations-pane.png)
-
-1. No painel **Visualizações**, selecione a guia **Formatar o visual** e, na subguia **Geral**, na seção **Título**, altere o **Texto** para **Total de Vendas por Categoria**.
-
-1. No menu **Arquivo**, selecione **Salvar**. Em seguida, salve o relatório como **Relatório de Vendas** no workspace já criado.
-
-1. No hub de menus à esquerda, navegue de volta para o workspace. Agora você tem três itens salvos no seu workspace: o data warehouse, o modelo semântico padrão e o relatório que você criou.
-
-    ![Captura de tela do workspace com os três itens listados.](./Images/workspace-items.png)
-
 ## Limpar os recursos
 
-Neste exercício, você criou um data warehouse que contém várias tabelas. Você usou o SQL para inserir dados nas tabelas e consultá-las. e usou a ferramenta de consulta visual. Por fim, você aprimorou o modelo de dados para o conjunto de dados padrão do data warehouse e o usou como a fonte de um relatório.
+Neste exercício, você criou um data warehouse que contém várias tabelas. Você usou o SQL para inserir dados nas tabelas e as consultou usando o T-SQL e a ferramenta de consulta visual. Por fim, você aprimorou o modelo de dados do conjunto de dados padrão do data warehouse para análise e relatório downstream.
 
 Se você tiver terminado de explorar seu data warehouse, exclua o workspace criado para este exercício.
 

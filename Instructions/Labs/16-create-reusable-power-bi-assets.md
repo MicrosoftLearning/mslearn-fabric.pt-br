@@ -6,7 +6,7 @@ lab:
 
 # Criar ativos reutilizáveis do Power BI
 
-Neste exercício, você criará ativos reutilizáveis para dar suporte ao modelo semântico e ao desenvolvimento de relatórios. Esses ativos incluem arquivos de projeto e modelo do Power BI e modelos semânticos compartilhados. No final, você explorará a exibição de linhagem de como esses itens se relacionam entre si no serviço do Power BI.
+Neste exercício, você criará ativos reutilizáveis para dar suporte ao modelo semântico e ao desenvolvimento de relatórios. Esses ativos incluem arquivos de projeto e modelo do Power BI e modelos semânticos compartilhados. No final, a exibição de linhagem mostrará como esses itens se relacionam entre si no serviço do Power BI.
 
    > Observação: este exercício não requer uma licença do Fabric e pode ser concluído em um ambiente do Power BI ou do Microsoft Fabric.
 
@@ -19,27 +19,6 @@ Antes de começar este exercício, primeiro abra um navegador da Web e insira a 
 `https://github.com/MicrosoftLearning/mslearn-fabric/raw/refs/heads/main/Allfiles/Labs/16b/16-reusable-assets.zip`
 
 Extraia a pasta para a pasta **C:\Users\Student\Downloads\16-reusable-assets**.
-
-## Publicar um relatório no serviço do Power BI
-
-Nesta tarefa, você usa um relatório existente para criar um modelo semântico compartilhado para reutilização para desenvolver outros relatórios.
-
-1. Em um navegador da Web, navegue e entre no serviço Fabric: [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com)
-1. Navegue até a experiência do Power BI e crie um novo workspace com um nome exclusivo de sua escolha.
-
-    ![Captura de tela do painel Workspace, realçando o botão + Novo workspace.](./Images/power-bi-new-workspace.png)
-
-1. Na faixa de opções superior do novo workspace, selecione **Carregar > Procurar**.
-1. Na nova caixa de diálogo Explorador de Arquivos, navegue até o arquivo *.pbix* inicial e selecione **Abrir** para fazer o upload.
-1. Observe como agora você tem dois itens diferentes no workspace com o mesmo nome:
-
-    - Relatório
-    - Modelo semântico
-
-1. Abra o relatório e observe o tema de cores usado. *Você alterará isso em uma tarefa posteriormente.*
-1. Agora, você pode fechar seu navegador.
-
-> Os arquivos *.pbix* do Power BI contêm o modelo semântico e os visuais de relatório. Quando você publica relatórios no serviço, esses itens são separados. Você verá essa separação novamente mais tarde.
 
 ## Criar um novo projeto do Power BI
 
@@ -219,26 +198,23 @@ Nesta tarefa, você criará um arquivo de modelo para que possa compartilhar um 
 
 > Agora você tem um modelo com um tema consistente sem nenhum dado pré-carregado.
 
-## Publique e explore seus ativos
+### Revisar o estado final
 
-Nesta tarefa, você publicará o arquivo de projeto do Power BI e examinará os itens relacionados usando a Exibição de linhagem no serviço.
+Na captura de tela a seguir, você criou o arquivo de projeto do Power BI e o publicou em um espaço de trabalho. Em seguida, você navegou até o espaço de trabalho no serviço do Power BI e alternou para a **exibição de linhagem** para ver como seu novo relatório depende de outras fontes de dados.
 
-> Importante: criamos um modelo DirectQuery local quando adicionamos a fonte de dados HTML. Os relatórios publicados exigem um gateway para acessar os dados locais, portanto, você receberá um erro. Isso não afeta o valor dessa tarefa, mas pode ser confuso.
+Da esquerda para a direita, os seguintes itens são visíveis:
 
-1. No arquivo de projeto do Power BI, selecione **Publicar**.
-1. **Salve** o arquivo, se solicitado.
-1. **Não atualize** a versão do *PBIR*, se solicitado.
-1. Selecione o workspace que você criou no início deste exercício.
-1. Selecione **Abrir "SeuRelatório.*. pbip*" no Power BI** quando você receber a mensagem de que o arquivo foi publicado, mas desconectado.
+- Fontes de dados: 2 arquivos de texto/csv e uma conexão com o SQL Server.
+- Modelo semântico de análise de vendas de 16 iniciadores, que está conectado às fontes de dados.
+- Relatório de Análise de Vendas de 16 Iniciadores, que está conectado ao modelo semântico de Análise de Vendas de 16 Iniciadores.
+- Meu novo modelo semântico de relatório, que está conectado ao modelo semântico de Análise de Vendas de 16 Iniciantes.
+- Meu novo relatório de relatório, que está conectado ao modelo semântico do Meu novo relatório.
 
-    ![Captura de tela da mensagem mostrando que o arquivo foi publicado, mas desconectado.](./Images/power-bi-published-disconnected-message.png)
+> Quando modelos semânticos se relacionam com outros modelos semânticos, isso é chamado de **encadeamento**. Neste laboratório, o modelo semântico inicial é encadeado ao modelo semântico recém-criado, permitindo sua reutilização para uma finalidade especializada.
 
-1. Quando estiver no workspace, você poderá ver o modelo semântico e o relatório anteriores, assim como os novos.
-1. No canto direito abaixo das configurações do Workspace, selecione **Exibição de linhagem** para ver como o novo relatório depende de outras fontes de dados.
+![Captura de tela da exibição de linhagem com um banco de dados e dois arquivos de texto conectados a um único modelo semântico do nosso arquivo inicial. Esse mesmo modelo semântico se conecta ao relatório de arquivo inicial e tem um novo modelo semântico conectado ao novo relatório.](./Images/power-bi-lineage-view.png)
 
-    ![Captura de tela da exibição de linhagem com um banco de dados e dois arquivos de texto conectados a um único modelo semântico do nosso arquivo inicial. Esse mesmo modelo semântico se conecta ao relatório de arquivo inicial e tem um novo modelo semântico conectado ao novo relatório.](./Images/power-bi-lineage-view.png)
 
-> Quando modelos semânticos se relacionam com outros modelos semânticos, isso é conhecido como encadeamento. Neste laboratório, o modelo semântico inicial é encadeado ao modelo semântico recém-criado, permitindo sua reutilização para uma finalidade especializada.
 
 ## Limpar
 
