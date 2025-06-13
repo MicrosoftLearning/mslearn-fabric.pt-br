@@ -66,15 +66,17 @@ Os itens do Fabric ainda não foram criados nos workspaces. Em seguida, crie um 
 ## Implantar conteúdo entre estágios
 
 Implante o lakehouse do estágio de **Desenvolvimento** para os estágios de **Teste** e **Produção**.
-1. Selecione o botão **Implantar** no estágio de **Desenvolvimento** do pipeline para copiar o lakehouse em seu estado atual para o estágio de texto. 
-2. Na janela **Implantar no próximo estágio**, selecione **Implantar**.
-3. Há um X laranja entre os estágios de Teste e Produção. Selecione a seta voltada para baixo abaixo do X laranja. O lakehouse existe nos estágios de Desenvolvimento e Teste, mas ainda não no estágio de Produção.
-4. No estágio de **Teste**, selecione **Implantar**.
-5. Na janela **Implantar no próximo estágio**, selecione **Implantar**. A marca de seleção verde entre os estágios indica que todos os estágios estão sincronizados e contêm o mesmo conteúdo.
-6. O uso de pipelines de implantação para implantar entre estágios também atualiza o conteúdo nos workspaces correspondentes ao estágio de implantação. Vamos confirmar.
-7. Na barra de menus à esquerda, selecione **Espaços de Trabalho**.
-8. Selecione o workspace **Teste**. O lakehouse foi copiado lá.
-9. Abra o workspace **Produção** no ícone **Workspaces** do menu à esquerda. O lakehouse também foi copiado para o workspace de Produção.
+1. Selecione o estágio **Teste** na tela do pipeline de implantação.
+1. Na tela do pipeline de implantação, marque a caixa de seleção ao lado do item Lakehouse. Selecione o botão **Implantar** para copiar o lakehouse em seu estado atual para o estágio de **Teste**.
+1. Na janela **Implantar no próximo estágio** que aparece, selecione **Implantar**.
+ Agora, há um X em um círculo no estágio Produção na tela do pipeline de implantação. O lakehouse existe nos estágios de Desenvolvimento e Teste, mas ainda não no estágio de Produção.
+1. Selecione o estágio de **Produção** na tela de implantação.
+1. Na tela do pipeline de implantação, marque a caixa de seleção ao lado do item Lakehouse. Em seguida, selecione o botão **Implantar** para copiar o lakehouse em seu estado atual para o estágio de **Produção**.
+1. Na janela **Implantar no próximo estágio** que aparece, selecione **Implantar**. A marca de seleção verde entre os estágios indica que todos os estágios estão sincronizados e contêm o mesmo conteúdo.
+1. O uso de pipelines de implantação para implantar entre estágios também atualiza o conteúdo nos workspaces correspondentes ao estágio de implantação. Vamos confirmar.
+1. Na barra de menus à esquerda, selecione **Espaços de Trabalho**.
+1. Selecione o workspace **Teste**. O lakehouse foi copiado lá.
+1. Abra o workspace **Produção** no ícone **Workspaces** do menu à esquerda. O lakehouse também foi copiado para o workspace de Produção.
 
 ## Limpar
 
