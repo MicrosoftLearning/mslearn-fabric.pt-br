@@ -16,7 +16,7 @@ Este laboratório leva cerca de **30** minutos para ser concluído.
 
 Antes de trabalhar com os dados no Fabric, crie um espaço de trabalho em um locatário com a capacidade do Fabric habilitada.
 
-1. Navegue até a [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) em `https://app.fabric.microsoft.com/home?experience=fabric` em um navegador e entre com suas credenciais do Fabric.
+1. Navegue até a [home page do Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric-developer) em `https://app.fabric.microsoft.com/home?experience=fabric-developer` em um navegador e entre com suas credenciais do Fabric.
 1. Na barra de menus à esquerda, selecione **Workspaces** (o ícone é semelhante a &#128455;).
 1. Crie um workspace com um nome de sua escolha, selecionando um modo de licenciamento na seção **Avançado** que inclua a capacidade do Fabric (*Avaliação*, *Premium* ou *Malha*).
 1. Quando o novo workspace for aberto, ele estará vazio.
@@ -44,12 +44,10 @@ Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse p
 No Microsoft Fabric, você pode usar um fluxo de dados (Gen2) para ingerir dados de uma ampla variedade de fontes. Neste exercício, você usará um fluxo de dados para obter dados de um arquivo CSV e carregá-los em uma tabela no lakehouse.
 
 1. Na **Página Inicial** do lakehouse, no menu **Obter dados**, selecione **Novo fluxo de dados Gen2**.
-
-   Um novo fluxo de dados chamado **Dataflow 1** é criado e aberto.
+1. Nomeie o fluxo de dados `Get Product Data` e selecione **Criar**.
 
     ![Captura de tela de um novo fluxo de dados.](./Images/new-data-flow.png)
 
-1. No canto superior esquerdo da página de fluxo de dados, selecione **Dataflow 1** para ver os detalhes e renomear o fluxo de dados para **Obter dados do produto**.
 1. No designer do fluxo de dados, selecione **Importar de um arquivo Text/CSV**. Conclua o assistente Obter Dados para criar uma conexão de dados vinculando-se a `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/products.csv` usando autenticação anônima. Quando você concluir o assistente, uma visualização dos dados será mostrada no designer de fluxo de dados da seguinte forma:
 
     ![Captura de tela de uma consulta de fluxo de dados.](./Images/data-flow-query.png)
@@ -68,15 +66,17 @@ No Microsoft Fabric, você pode usar um fluxo de dados (Gen2) para ingerir dados
 
 No Microsoft Fabric, você pode usar notebooks para executar o código do Spark.
 
-1. No hub de navegação, selecione **Página Inicial**. Na página inicial de Engenharia de Dados, crie um novo **Notebook**.
+1. Na barra de menus à esquerda, selecione **Criar**. Na página *Novo*, na seção *Engenharia de Dados*, selecione **Notebook**.
 
     Um novo notebook chamado **Notebook 1** é criado e aberto.
 
     ![Captura de tela de um novo notebook.](./Images/new-notebook.png)
 
-1. No canto superior esquerdo do notebook, selecione **Notebook 1** para exibir os detalhes e altere o nome para **Query Products**.
-1. No editor do notebook, no painel **Explorer** , selecione **Lakehouses** e adicione o lakehouse que você criou anteriormente.
-1. No menu **…** da tabela **Produtos**, selecione **Carregar dados** > **Spark**. Isso adiciona uma nova célula de código ao notebook, conforme mostrado aqui:
+1. No canto superior esquerdo do notebook, selecione **Notebook 1** para exibir os detalhes e altere o nome para `Query Products`.
+1. No editor de notebook, no painel **Explorer** , selecione **Adicionar itens de dados** e, em seguida, selecione **Fontes de dados existentes**.
+1. Adicione o lakehouse que você criou anteriormente.
+1. Expanda o item do lakehouse até chegar à tabela **produtos** .
+1. No menu **…** da tabela **produtos**, selecione **Carregar dados** > **Spark**. Isso adiciona uma nova célula de código ao notebook, conforme mostrado aqui:
 
     ![Captura de tela de um notebook com código para consultar uma tabela.](./Images/load-spark.png)
 

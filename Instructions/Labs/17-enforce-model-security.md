@@ -1,7 +1,7 @@
 ---
 lab:
   title: Impor a segurança do modelo semântico
-  module: Design and build tabular models
+  module: Enforce semantic model security
 ---
 
 # Impor a segurança do modelo semântico
@@ -17,7 +17,7 @@ Neste exercício, você aprenderá a:
 
 Esse laboratório leva cerca de **45** minutos para ser concluído.
 
-> **Observação**: Você precisará uma [avaliação gratuita do Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para concluir esse exercício.
+> **Observação**: é preciso ter acesso a um ambiente do Power BI para concluir este exercício.
 
 ## Introdução
 
@@ -33,7 +33,7 @@ Neste exercício, você preparará seu ambiente.
 
 ### Entrar no serviço do Power BI
 
-Nesta tarefa, você entrará no serviço do Power BI, iniciará uma licença de avaliação e criará um workspace.
+Nesta tarefa, você vai entrar no serviço do Power BI, iniciar uma licença de avaliação e acessar "Meu espaço de trabalho".
 
 1. Em um navegador da Web, vá para `https://app.powerbi.com/`.
 
@@ -43,19 +43,9 @@ Nesta tarefa, você entrará no serviço do Power BI, iniciará uma licença de 
 
     *Dica: a experiência do navegador da Web do Power BI é conhecida como o **Serviço do Power BI**.*
 
-### Criar um workspace
+## Criar funções estáticas
 
-Nesta tarefa, você criará um workspace.
-
-1. No serviço do Power BI, para criar um workspace, no painel de **navegação** (localizado à esquerda), selecione **Workspaces** e selecione **+ Novo workspace**.
-
-2. No painel **Criar um workspace** (localizado à direita), na caixa **Nome**, insira um nome para o workspace.
-
-    *O nome do workspace precisa ser exclusivo dentro do locatário.*
-
-3. Escolha **Aplicar**.
-
-    *Depois de criado, o workspace é aberto. Em um exercício posterior, você publicará um modelo semântico neste workspace.*
+Neste exercício, você criará e validará funções estáticas e verá como mapear as entidades de segurança para as funções de modelo semântico.
 
 ### Examinar o modelo de dados
 
@@ -78,10 +68,6 @@ Nesta tarefa, você revisará o modelo de dados.
 4. Observe que a tabela inclui uma coluna **Região**.
 
     *A coluna **Região** armazena as regiões de vendas da Adventure Works. Nessa organização, os vendedores só podem ver dados relacionados à região de vendas atribuída. Neste laboratório, você implementará duas técnicas de segurança em nível de linha diferentes para impor permissões de dados.*
-
-## Criar funções estáticas
-
-Neste exercício, você criará e validará funções estáticas e verá como mapear as entidades de segurança para as funções de modelo semântico.
 
 ### Criar funções estáticas
 
@@ -166,7 +152,7 @@ Nesta tarefa, você publicará o relatório.
 
     ![](Images/enforce-model-security-image28.png)
 
-3. Na janela **Publicar no Power BI**, selecione seu workspace e clique em **Selecionar**.
+3. Na janela **Publicar no Power BI**, selecione **"Meu espaço de trabalho"** e clique em **Selecionar**.
 
     ![](Images/enforce-model-security-image29.png)
 
@@ -174,11 +160,11 @@ Nesta tarefa, você publicará o relatório.
 
     ![](Images/enforce-model-security-image30.png)
 
-### Configurar segurança em nível de linha (*opcional*)
+#### Configurar segurança em nível de linha (opcional)
 
 Nesta tarefa, você verá como configurar a segurança em nível de linha no serviço do Power BI.
 
-Essa tarefa depende da existência de um grupo de segurança **Salespeople_Australia** no locatário em que você está trabalhando. Esse grupo de segurança NÃO existe automaticamente no locatário. Se você tiver permissões em seu locatário, siga as etapas abaixo. Se você estiver usando um locatário fornecido a você no treinamento, não terá as permissões apropriadas para criar grupos de segurança. Leia as tarefas, mas observe que você não poderá concluí-las se não tiver o grupo de segurança. **Depois de ler, prossiga para a tarefa Limpar.**
+> Observação: essa tarefa depende da existência de um grupo de segurança **Salespeople_Australia** no locatário em que você estiver trabalhando. Esse grupo de segurança NÃO existe automaticamente no locatário. Se você tiver permissões em seu locatário, siga as etapas abaixo. Se você estiver usando um locatário fornecido a você no treinamento, não terá as permissões apropriadas para criar grupos de segurança. Leia as tarefas, mas observe que você não poderá concluí-las se não tiver o grupo de segurança. **Depois de ler, prossiga para a tarefa Limpar.**
 
 1. Alterne para o serviço do Power BI (navegador da Web).
 
@@ -218,7 +204,7 @@ Essa tarefa depende da existência de um grupo de segurança **Salespeople_Austr
 
     *No próximo exercício, você criará uma função dinâmica orientada por dados. Essa abordagem de design pode ajudar a resolver essas desvantagens.*
 
-8. Para retornar à página inicial do workspace, no painel **Navegação**, selecione o workspace.
+8. Para retornar à página inicial do espaço de trabalho, no painel **Navegação**, selecione o seu espaço de trabalho.
 
 ### Limpar a solução
 
@@ -444,7 +430,7 @@ Nesta tarefa, você finalizará o design publicando o relatório e mapeando um g
 
 1. Salve o arquivo do Power BI Desktop.
 
-2. Publique o relatório no workspace criado no início do laboratório.
+2. Publique o relatório em **"Meu espaço de trabalho."**
 
 3. Feche o Power BI Desktop.
 

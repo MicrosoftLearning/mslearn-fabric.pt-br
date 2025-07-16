@@ -130,42 +130,6 @@ Embora muitos profissionais de dados estejam familiarizados com o SQL, os analis
 
     ![Captura de tela de uma consulta visual com os resultados.](./Images/visual-query-results.png)
 
-## Criar um relatório
-
-As tabelas em seu lakehouse são adicionadas automaticamente a um modelo semântico padrão para relatórios com o Power BI.
-
-
-1. Na barra de ferramentas, selecione **Layouts de modelo**. O esquema do modelo de dados do modelo semântico é mostrado.
-
-    ![Captura de tela dos layouts do modelo](./Images/lakehouse-model-layouts.png)
-
-    > **Observação 1**: Neste exercício, o modelo semântico consiste em uma só tabela. Em um cenário do mundo real, provavelmente, você criará várias tabelas no lakehouse, cada uma das quais será incluída no modelo. Em seguida, você poderá definir relações entre essas tabelas no modelo.
-    
-    > **Observação 2**: as exibições **frequently_run_queries**, **long_running_queries**, **exec_sessions_history** e **exec_requests_history** fazem parte do esquema **queryinsights** criado automaticamente pelo Fabric. É um recurso que fornece uma visão holística da atividade de consulta histórica no ponto de extremidade de análise do SQL. Como esse recurso está fora do escopo deste exercício, essas exibições devem ser ignoradas por enquanto.
-
-2. Na faixa de opções do menu, selecione a guia **Relatório**. Em seguida, selecione **Novo relatório**. Sua página atual será alterada para um modo de exibição do designer de relatórios.
-
-    ![Captura de tela do designer de relatório.](./Images/report-designer.png)
-
-3. No painel **Dados** à direita, expanda a tabela **sales**. Depois, selecione os seguintes campos:
-    - **Item**
-    - **Quantidade**
-
-    Uma visualização de tabela será adicionada ao relatório:
-
-    ![Captura de tela de um relatório que contém uma tabela.](./Images/table-visualization.png)
-
-4. Oculte os painéis **Dados** e **Filtros** para criar mais espaço. Em seguida, verifique se a visualização da tabela está selecionada e, no painel **Visualizações**, altere a visualização para um **Gráfico de barras clusterizado** e redimensione-o conforme mostrado aqui.
-
-    ![Captura de tela de um relatório que contém um gráfico de barras clusterizado.](./Images/clustered-bar-chart.png)
-
-5. No menu **Arquivo**, selecione **Salvar**. Em seguida, salve o relatório como `Item Sales Report` no workspace criado anteriormente.
-6. Em seguida, na barra de menus do hub à esquerda, selecione seu workspace para verificar se ele contém os seguintes itens:
-    - Seu lakehouse.
-    - O ponto de extremidade de análise do SQL para o lakehouse.
-    - Um modelo semântico padrão para as tabelas em seu lakehouse.
-    - O relatório **Relatório de Vendas de Itens**.
-
 ## Limpar os recursos
 
 Neste exercício, você criou um lakehouse e importou dados para ele. Você viu como um lakehouse consiste em arquivos e tabelas armazenados em um armazenamento de dados OneLake. As tabelas gerenciadas podem ser consultadas por meio do SQL e incluídas em um modelo semântico padrão para dar suporte a visualizações de dados.
