@@ -22,31 +22,24 @@ Extraia a pasta para a pasta **C:\Users\Student\Downloads\16-reusable-assets**.
 
 ## Criar um novo projeto do Power BI
 
-Nesta tarefa, você criará um relatório conectando-se ao modelo semântico publicado e o salvará como um arquivo de projeto do Power BI (*.pbip*). Os arquivos de projeto do Power BI armazenam os detalhes do relatório e do modelo semântico em arquivos simples que funcionam com o controle do código-fonte. Você pode usar o Visual Studio Code para modificar esses arquivos ou o Git para controlar as alterações.
+Nesta tarefa, você irá salvar um relatório como um arquivo de projeto do Power BI (*.pbip*). Os arquivos de projeto do Power BI armazenam os detalhes do relatório e do modelo semântico em arquivos simples que funcionam com o controle do código-fonte. Você pode usar o Visual Studio Code para modificar esses arquivos ou o Git para controlar as alterações.
 
-1. Na área de trabalho, abra o aplicativo Power BI Desktop e crie um relatório em branco.
-
-    > Quando solicitado, entre com a mesma conta usada no serviço Fabric.
+1. Abra o arquivo **16-Starter-Sales Analysis.pbix** na pasta **16-reusable-assets**.
 
 1. Selecione **Arquivo** > **Opções e configurações** > **Opções** > **Versão prévia dos recursos** e escolha a opção **Armazenar modelo semântico usando o formato TMDL**, depois clique em **OK.**.
 
-    > Isso habilita a opção de salvar o modelo semântico usando TMDL (Tabular Model Definition Language), que atualmente é um recurso em versão prévia.
-
-1. Se receber uma solicitação para reiniciar o Power BI Desktop, faça isso antes de continuar o exercício.
+    > Isso habilita a opção de salvar o modelo semântico usando TMDL (Tabular Model Definition Language), que atualmente é um recurso em versão prévia. Se receber uma solicitação para reiniciar o Power BI Desktop, faça isso antes de continuar o exercício.
 
     ![Captura de tela das opções disponíveis na categoria Versão prévia dos recursos.](./Images/power-bi-enable-tmdl.png)
 
-1. Selecione **Salvar como**, escolha o tipo de arquivo selecionando a seta no menu suspenso ao nomear o arquivo.
+1. Selecione **Salvar como** e escolha o tipo de arquivo selecionando a seta no menu suspenso ao nomear o arquivo.
+
 1. Selecione a extensão de arquivo **.*.pbip***, escolha um nome para o relatório e salve-o em uma pasta da qual você lembrará.
 
     ![Captura de tela da seleção Salvar como com o menu suspenso expandido.](./Images/power-bi-save-file-types.png)
 
 1. Observe na parte superior da janela do Power BI Desktop que o nome do relatório tem **(Projeto do Power BI)** ao lado.
-1. Na faixa de opções Página Inicial, navegue até **Obter dados > modelos semânticos do Power BI** para se conectar ao modelo semântico publicado.
 
-    ![Captura de tela do conector do modelo semântico do Power BI na seção Obter dados.](./Images/power-bi-connect-semantic-models.png)
-
-1. Quando se conectar, você verá nove tabelas no painel Dados.
 1. **Salve** o arquivo novamente.
 
 ### Revisar detalhes do arquivo de projeto do Power BI
@@ -66,12 +59,8 @@ Vejamos como as alterações no Power BI Desktop são refletidas nos arquivos .t
 Nesta tarefa, você adicionará uma nova tabela porque o modelo semântico não tem todos os dados necessários.
 
 1. No Power BI Desktop, navegue até **Obter dados > Web** para adicionar os novos dados.
-1. Observe a mensagem de que uma conexão DirectQuery é necessária. Escolha **Adicionar um modelo local** para continuar.
-1. Uma nova caixa de diálogo mostrará um banco de dados e tabelas para você escolher. Selecione tudo e **Envie**.
 
-    > O modelo semântico está sendo tratado como um banco de dados SQL Server Analysis Server.
-
-1. A caixa de diálogo Da Web aparecerá quando se conectar. Mantenha o botão de opção Básico selecionado. Insira o seguinte caminho de arquivo como o caminho da URL.
+1. A caixa de diálogo Da Web aparecerá quando se conectar. Mantenha o botão de opção **Básico** selecionado. Insira o seguinte caminho de arquivo como o caminho da URL.
 
     `C:\Users\Student\Downloads\16-reusable-assets\us-resident-population-estimates-2020.html`
 
@@ -88,7 +77,7 @@ Nesta tarefa, você adicionará uma nova tabela porque o modelo semântico não 
 1. **Salve** seu arquivo.
 1. Se solicitado, **não atualize** para o formato de Relatório aprimorado do Power BI.
 
-### Revisar detalhes do arquivo de projeto do Power BI
+### Criar um relacionamento
 
 Nesta tarefa, faremos alterações no relatório no Power BI Desktop e veremos as alterações nos arquivos .tmdl simples.
 
@@ -200,7 +189,7 @@ Nesta tarefa, você criará um arquivo de modelo para que possa compartilhar um 
 
 ### Revisar o estado final
 
-Na captura de tela a seguir, você criou o arquivo de projeto do Power BI e o publicou em um espaço de trabalho. Em seguida, você navegou até o espaço de trabalho no serviço do Power BI e alternou para a **exibição de linhagem** para ver como seu novo relatório depende de outras fontes de dados.
+Nesta tarefa, você irá examinar a captura de tela a seguir do resultado final das tarefas executadas neste exercício. Para alcançar esse estado, você criou seu arquivo de projeto do Power BI e o publicou em um workspace. Em seguida, você navegou até o workspace no serviço Power BI e mudou para o **modo de exibição de Linhagem** para ver como seu novo relatório depende de outras fontes de dados.
 
 Da esquerda para a direita, os seguintes itens são visíveis:
 

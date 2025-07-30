@@ -39,7 +39,7 @@ Agora que você tem um espaço de trabalho, é hora de criar um data lakehouse n
 
 Agora que você tem um lakehouse, você precisa ingerir alguns dados nele. Uma forma de fazer isso é definir um fluxo de dados que encapsula um processo de ETL (*extração, transformação e carregamento*).
 
-1. Na home page do seu workspace, selecione **Obter dados** > **Novo Fluxo de Dados Gen2**. Após alguns segundos, o editor do Power Query do novo fluxo de dados será aberto, conforme mostrado aqui.
+1. Na home page do lakehouse, selecione **Obter dados** > **Novo fluxo de dados Gen2**. Após alguns segundos, o editor do Power Query do novo fluxo de dados será aberto, conforme mostrado aqui.
 
  ![Novo fluxo de dados.](./Images/new-dataflow.png)
 
@@ -74,7 +74,7 @@ Agora que você tem um lakehouse, você precisa ingerir alguns dados nele. Uma f
 
 1. Na faixa de opções da barra de ferramentas, selecione a guia **Página Inicial**. Em seguida, no menu suspenso **Adicionar destino de dados**, selecione **Lakehouse**.
 
-   > **Observação:** se essa opção está esmaecida, talvez você já tenha um conjunto de destino de dados. Verifique o destino de dados na parte inferior do painel Configurações de consulta no lado direito do editor do Power Query. Se um destino já estiver definido, você poderá alterá-lo usando a engrenagem.
+   > **Observação:** se essa opção está esmaecida, talvez você já tenha um conjunto de destino de dados. Verifique o destino de dados na parte inferior do painel Configurações de consulta no lado direito do editor do Power Query. Se um destino padrão já estiver definido, você poderá removê-lo e adicionar um novo.
 
 2. Na caixa de diálogo **Conectar-se ao destino de dados**, edite a conexão e conecte-se usando sua conta organizacional do Power BI para definir a identidade usada pelo fluxo de dados para acessar o lakehouse.
 
@@ -93,13 +93,13 @@ Agora que você tem um lakehouse, você precisa ingerir alguns dados nele. Uma f
 
    ![Consulta com um destino de lakehouse.](./Images/lakehouse-destination.png)
 
-6. Selecione **Publicar** para publicar o fluxo de dados. Em seguida, aguarde até que o fluxo de dados **Fluxo de dados 1** seja criado no seu workspace.
+6. Na faixa de opções da barra de ferramentas, selecione a guia **Página Inicial**. Em seguida, selecione **Salvar e executar** e aguarde até que o **Fluxo de Dados 1** seja criado em seu workspace.
 
 ## Adicionar um fluxo de dados a um pipeline
 
 Você pode incluir um fluxo de dados como uma atividade em um pipeline. Os pipelines são usados para orquestrar as atividades de ingestão e processamento de dados, permitindo que você combine fluxos de dados com outros tipos de operação em um processo agendado unificado. Os pipelines podem ser criados em algumas experiências diferentes, incluindo a experiência do Data Factory.
 
-1. No workspace habilitado para o Fabric, verifique se você ainda está na experiência de **Engenharia de Dados**. Clique em **+ Novo item** > **Pipeline de dados** e, quando solicitado, crie um pipeline chamado **Carregar dados**.
+1. No workspace habilitado para Fabric, selecione **+ Novo item** > **Pipeline de dados** e, quando solicitado, crie um novo pipeline com o nome **Carregar dados**.
 
    O editor de pipeline será aberto.
 
@@ -107,7 +107,7 @@ Você pode incluir um fluxo de dados como uma atividade em um pipeline. Os pipel
 
    > **Dica**: se o assistente Copiar Dados for aberto automaticamente, feche-o.
 
-2. Selecione **Adicionar atividade de pipeline** e adicione uma atividade **Fluxo de Dados** ao pipeline.
+2. Selecione **Atividade de pipeline** e adicione uma atividade **Fluxo de dados** ao pipeline.
 
 3. Com a nova atividade **Fluxo de dados1** selecionada, na guia **Configurações**, na lista suspensa **Fluxo de dados**, selecione **Fluxo de dados 1** (o fluxo de dados já criado)
 
