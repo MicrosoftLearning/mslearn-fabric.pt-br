@@ -97,7 +97,7 @@ O eventstream que você criou pega dados da fonte de amostra de dados de bicicle
     | where ingestion_time() between (now(-1d) .. now())
     ```
 
-1. Selecione o código de consulta e execute-o para ver 100 linhas de dados na tabela.
+1. Selecione o código de consulta e execute-o para ver 24 horas de dados na tabela.
 
     ![Captura de tela de uma consulta KQL.](./Images/kql-query.png)
 
