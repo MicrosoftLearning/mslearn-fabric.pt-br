@@ -204,6 +204,8 @@ Agora que você tem alguns dados na camada bronze do lakehouse, pode usar um not
 
     Agora você tem dados em sua tabela delta silver que estão prontos para transformação e modelagem adicionais.
 
+1. Depois de executar a última célula, selecione a guia **Executar** acima da faixa de opções e selecione **Parar sessão** para interromper o recurso de computação que está sendo usado pelo notebook.
+
 ## Explorar dados na camada silver usando o ponto de extremidade SQL
 
 Agora que você tem dados em sua camada prata, você pode usar o ponto de extremidade de análise de SQL para explorar os dados e executar algumas análises básicas. Isso é útil se você estiver familiarizado com o SQL e quiser fazer alguma exploração básica de seus dados. Nesse exercício, estamos usando a exibição de ponto de extremidade SQL no Fabric, mas você também pode usar outras ferramentas, como o SSMS (SQL Server Management Studio) e o Azure Data Explorer.
@@ -260,6 +262,8 @@ Você poderia ter feito tudo isso em um único notebook, mas para este exercíci
    df = spark.read.table("Sales.sales_silver")
     ```
 
+    > **Observação**: Se você se deparar com um erro `[TooManyRequestsForCapacity]` ao executar a primeira célula, verifique se interrompeu a sessão anteriormente em execução no primeiro notebook.
+ 
 1. **Adicione um novo bloco de código** e cole o código a seguir para criar sua tabela de dimensões de data e executá-la:
 
     ```python
