@@ -1,6 +1,11 @@
-# Usar o Data Activator no Fabric
+---
+lab:
+  title: Usar o Ativador no Microsoft Fabric
+  module: Use Activator in Microsoft Fabric
+---
+# Usar o Ativador no Fabric
 
-O Data Activator no Microsoft Fabric executa uma ação com base no que está acontecendo em seus dados. Um Activator permite monitorar seus dados e criar gatilhos para reagir às alterações de dados.
+O ativador no Microsoft Fabric toma medidas com base no que está acontecendo em seus dados. Um Activator permite monitorar seus dados e criar gatilhos para reagir às alterações de dados.
 
 Este laboratório leva cerca de **30** minutos para ser concluído.
 
@@ -35,7 +40,7 @@ Em seguida, crie um Activator no workspace que você criou:
 
     Após um minuto ou mais, um novo Activator será criado:
 
-    ![Captura de tela da tela Inicial do Data Activator.](./Images/activator-home-screen.png)
+    ![Captura de tela da Tela Inicial do Ativador.](./Images/activator-home-screen.png)
 
     Em um ambiente de produção real, você usaria seus próprios dados. No entanto, para este laboratório, você irá usar os dados de exemplo fornecidos pelo Activator. 
 
@@ -45,7 +50,7 @@ Em seguida, crie um Activator no workspace que você criou:
 
 1. Selecione o botão de menu suspenso ao lado do nome do Activator atual no canto superior esquerdo e altere o nome para ***Contoso Shipping Activator*** para o nosso exemplo.
 
-    ![Captura de tela da tela inicial do reflex do Data Activator.](./Images/activator-reflex-home-screen.png)
+    ![Captura de tela da tela inicial do Ativador.](./Images/activator-reflex-home-screen.png)
 
 Nosso projeto do Activator agora está criado e podemos começar a navegar por seus objetos, propriedades e regras.
 
@@ -104,7 +109,7 @@ Vamos examinar o que você quer que sua regra faça: *Você deseja criar uma reg
 1. Selecione **Criar**.
 1. Uma nova regra é criada com o nome padrão de *Alerta de temperatura*. Altere o nome para ***Temperatura do medicamento fora do intervalo*** selecionando o ícone de lápis ao lado do nome da regra no painel central.
 
-    ![Captura de tela da nova regra do Data Activator.](./Images/activator-new-rule.png)
+    ![Captura de tela da nova regra do Ativador.](./Images/activator-new-rule.png)
 
     Até agora, você definiu a propriedade e a condição em que deseja que a regra seja disparada, mas isso ainda não inclui todos os parâmetros de que você precisa. Você ainda precisa ter certeza de que o gatilho só dispara para a *cidade* de **Redmond** e para o tipo *cuidados especiais* de **Medicamentos**. Vamos em frente e vamos adicionar alguns filtros para essas condições.  
 
@@ -124,7 +129,7 @@ Vamos examinar o que você quer que sua regra faça: *Você deseja criar uma reg
     - **Título**: *Temperatura muito alta*
     - **Contexto**: Selecione a propriedade *Temperatura* na lista da caixa de seleção.
 
-    ![Captura de tela da ação de definição do Data Activator.](./Images/activator-define-action.png)
+    ![Captura de tela da ação de definição do Ativador.](./Images/activator-define-action.png)
 
 1. Selecione **Salvar e iniciar**.
 
