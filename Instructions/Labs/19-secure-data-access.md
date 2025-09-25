@@ -67,7 +67,7 @@ Neste exercício, você adicionará um usuário a uma função do workspace, apl
 7. Em seguida, você atribuirá a função **Visualizador do workspace** ao segundo usuário e verá que a função concede acesso de leitura ao warehouse no workspace.  
 8. Retorne à janela do navegador em que você entrou como administrador do workspace. Verifique se você ainda está na página que mostra o workspace que você criou. Os novos itens do workspace, bem como o warehouse e lakehouse de amostra, estarão listados na parte inferior da página.
 9. Selecione **Gerenciar acesso** na parte superior direita da tela.
-10. Selecione **Adicionar pessoas ou grupos**. Digite o email do segundo usuário com o qual você está testando. Selecione **Adicionar** para atribuir o usuário à função **Visualizador do workspace**. 
+10. Selecione **Adicionar pessoas ou grupos**. Digite o email do segundo usuário com o qual você está testando. Selecione **Adicionar** para atribuir o usuário à função **Visualizador do workspace**.
 11. Retorne à janela do navegador InPrivate em que você entrou como o segundo usuário e clique no botão Atualizar no navegador para atualizar as permissões de sessão atribuídas ao segundo usuário.
 12. Clique no ícone **Workspaces** na barra de menu à esquerda (o ícone é semelhante a &#128455;) e selecione o nome do workspace que você criou como o usuário Administrador do workspace. O segundo usuário agora pode ver todos os itens no workspace porque recebeu a função **Visualizador do workspace**.
 
@@ -100,7 +100,7 @@ As permissões de item controlam o acesso a itens individuais do Fabric em um wo
 
 9. Clique em **Conceder**.
 
-10. Retorne à janela do navegador em que você entrou como o segundo usuário. Atualize a exibição do navegador.  
+10. Retorne à janela do navegador em que você entrou como o segundo usuário. Atualize a exibição do navegador.
 
 11. O segundo usuário não tem mais acesso ao workspace, mas tem acesso apenas ao warehouse. Você não pode mais procurar workspaces no painel de navegação à esquerda para localizar o warehouse. Clique em **OneLake** no menu de navegação à esquerda para localizar o warehouse. 
 

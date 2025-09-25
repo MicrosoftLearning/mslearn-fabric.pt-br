@@ -40,7 +40,7 @@ Agora você está pronto para encontrar e ingerir dados em tempo real de uma fon
 
     ![Captura de tela de um novo eventstream.](./Images/name-eventstream.png)
 
-1. Selecione **Avançar** e aguarde a criação da fonte e do eventstream e, em seguida, selecione **Abrir eventstream**. O eventstream mostrará a fonte da **ação** e o **stock-data-stream** na tela de design:
+1. Selecione **Avançar**, em seguida, **Conectar** e aguarde a criação da fonte e do eventstream. Em seguida, selecione **Abrir eventstream**. O eventstream mostrará a fonte da **ação** e o **stock-data-stream** na tela de design:
 
    ![Captura de tela da tela do eventstream.](./Images/new-stock-stream.png)
 
@@ -73,7 +73,7 @@ O eventstream ingere os dados de ações em tempo real, mas atualmente não faz 
 
     A conexão entre o fluxo e a tabela foi criada. Vamos verificar isso no eventstream.
 
-1. Na barra de menus à esquerda, selecione o hub em **tempo real** e exiba a página **Meus fluxos de dados**. No menu **...** do fluxo **stock-data-stream**, selecione **Abrir eventstream**.
+1. Na barra de menus à esquerda, selecione o hub em **tempo real**. No menu **...** do fluxo **stock-data-stream**, selecione **Abrir eventstream**.
 
     O eventstream agora mostra um destino para o fluxo:
 
@@ -119,14 +119,14 @@ O eventstream captura dados do mercado de ações em tempo real e os carrega em 
 Agora que você tem uma tabela que está sendo preenchida por fluxo de dados, pode usar um painel em tempo real para visualizar os dados.
 
 1. No editor de consultas, selecione a consulta KQL usada para recuperar os preços médios das ações nos últimos cinco minutos.
-1. Selecione **Fixar no painel** na barra de ferramentas. Em seguida, fixe a consulta **em um novo painel** com as seguintes configurações:
+1. Na barra de ferramentas, selecione **Salvar no painel**. Em seguida, fixe a consulta **em um novo painel** com as seguintes configurações:
     - **Nome do painel**: `Stock Dashboard`
     - **Nome do bloco**: `Average Prices`
-1. Crie o painel e abra-o. O resultado deve ser assim:
+1. Crie o painel e abra-o. Ele deverá ser parecido com:
 
     ![Captura de tela de um novo painel.](./Images/stock-dashboard-table.png)
 
-1. Na parte superior do painel, alterne do modo de **Visualização** para o modo de **Edição**.
+1. Na parte superior direita do painel, alterne de modo de **Visualização** para modo de **Edição**.
 1. Clique no ícone **Editar** (*lápis*) do bloco **Preços médios**.
 1. No painel **Formatação visual**, altere **Visual** de *Tabela* para *Coluna*:
 

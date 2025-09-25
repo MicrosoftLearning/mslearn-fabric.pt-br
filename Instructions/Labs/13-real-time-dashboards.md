@@ -80,19 +80,22 @@ Atualmente, não há tabelas no banco de dados. Usaremos um eventstream para car
 
 Agora que você tem um fluxo de dados em tempo real sendo carregado em uma tabela na eventhouse, você pode visualizá-lo com um painel em tempo real.
 
-1. Na barra de menu à esquerda, selecione o hub **Home**. Em seguida, na home page, crie um novo **Painel em Tempo Real** chamado `bikes-dashboard`.
+1. Na barra de menus à esquerda, selecione **Criar**. Na página *Novo*, na seção *Inteligência em Tempo Real*, selecione **Painel em Tempo Real** e nomeie-o `bikes-dashboard`.
+
+    >**Observação**: se a opção **Criar** não estiver fixada na barra lateral, você precisará selecionar a opção de reticências (**...**) primeiro. 
 
     Um novo painel vazio é criado.
 
 
     ![Uma captura de tela de um novo painel.](./Images/new-dashboard.png)
 
-1. Na barra de ferramentas, selecione **Nova fonte de dados** e adicione uma nova fonte de dados **One lake data hub**. Em seguida, selecione seu eventhouse e crie uma nova fonte de dados com as seguintes configurações:
+1. Na barra de ferramentas, selecione **Nova fonte de dados** e selecione **Eventhouse/Banco de Dados KQL**. Em seguida, selecione seu eventhouse e crie uma nova fonte de dados com as seguintes configurações:
     - **Nome de exibição**: `Bike Rental Data`
     - **Banco de dados**: *o banco de dados padrão em seu eventhouse*.
     - **Identidade de passagem**: *selecionado*
 
-1. Feche o painel **Fontes de dados** e, em seguida, na tela de design do painel, selecione **Adicionar bloco**.
+1. Selecione **Adicionar**.
+1. Na tela de design do painel, selecione **Adicionar bloco**.
 1. No editor de consultas, certifique-se de que a fonte **Dados de Aluguel de Bicicleta** esteja selecionada e insira o seguinte código KQL:
 
     ```kql
@@ -189,7 +192,7 @@ Seu painel contém dois visuais baseados em consultas semelhantes. Para evitar a
 
 ## Adicionar um parâmetro
 
-Seu painel atualmente mostra os dados mais recentes de bicicleta, doca e localização para todos os bairros. Agora vamos adicionar um parâmetro para que você possa selecionar um bairro específico.
+Seu painel atualmente exibe os dados mais recentes de bicicletas, estações e localizações de todos os bairros. Agora vamos adicionar um parâmetro para que você possa selecionar um bairro específico.
 
 1. Na barra de ferramentas do painel, na guia **Gerenciar**, selecione **Parâmetros**.
 1. Observe todos os parâmetros existentes que foram criados automaticamente (por exemplo, um parâmetro de *intervalo de tempo*). Em seguida, **exclua-os**.
