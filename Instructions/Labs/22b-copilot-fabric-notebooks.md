@@ -140,7 +140,7 @@ Agora, usaremos o Copilot para nos ajudar a baixar dados da API do Eurostat. Em 
     
     > **Como o Copilot funciona**: observe como o Copilot converte sua solicitação de linguagem natural em código Python em funcionamento. Ele entende que você precisa fazer uma solicitação HTTP, manipular o sistema de arquivos e salvar os dados em um local específico em seu lakehouse.
     
-    Este é o código completo para sua falha, caso você tenha exceções durante a execução:
+    Aqui está o código completo para sua conveniência, caso você encontre exceções durante a execução:
     
     ```python
     #### ATTENTION: AI-generated code can include errors or operations you didn't intend. Review the code in this cell carefully before running it.

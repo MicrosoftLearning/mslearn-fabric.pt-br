@@ -8,7 +8,7 @@ lab:
 
 As permissões do Microsoft Fabric e as permissões granulares do SQL trabalham em conjunto para controlar o acesso ao Warehouse e as permissões de usuário. Neste exercício, você protegerá os dados usando permissões granulares, segurança em nível de coluna, segurança em nível de linha e máscara dinâmica de dados.
 
-> **Observação**: para concluir totalmente os exercícios neste laboratório, você precisará de dois usuários: um usuário deve receber a função de Administrador do Workspace e o outro deve ter a função Visualizador do Workspace. Para atribuir funções a workspaces, confira [ Conceder acesso ao seu workspace ](https://learn.microsoft.com/fabric/get-started/give-access-workspaces). Se você não tiver acesso a uma segunda conta na mesma organização, ainda poderá fazer o exercício como Administrador do Workspace e ignorar as etapas realizadas como uma conta do Visualizador de Workspace consultando as capturas de tela do exercício para ver a que uma conta do Visualizador do Workspace tem acesso.
+> **Observação**: Existem etapas opcionais neste exercício, que exigem uma segunda conta de usuário para validação dos resultados: um usuário deve ser atribuído ao papel de Administrador do Workspace e o outro ao papel de Visualizador do Workspace. Para atribuir funções a workspaces, confira [ Conceder acesso ao seu workspace ](https://learn.microsoft.com/fabric/get-started/give-access-workspaces). Se você não tiver acesso a uma segunda conta na mesma organização, ainda poderá fazer o exercício como Administrador do Workspace, consultando as capturas de tela do exercício para ver o que uma conta do Visualizador do Workspace consegue acessar.
 
 Esse laboratório leva cerca de **45** minutos para ser concluído.
 
@@ -79,7 +79,7 @@ A segurança em nível de linha (RLS) pode ser usada para limitar o acesso às l
 
 1. No depósito que você criou no último exercício, selecione a lista suspensa **Nova consulta SQL** e selecione **Nova consulta SQL**.
 
-2. Crie uma tabela e insira dados nela. Para que possa testar a segurança em nível de linha em uma etapa posterior, substitua `username1@your_domain.com` por um nome de usuário do seu ambiente e substitua `username2@your_domain.com` pelo seu nome de usuário.
+2. Crie uma tabela e insira dados nela. Para implementar a segurança em nível de linha em uma etapa posterior, substitua `<username1>@<your_domain>.com` por um nome de usuário fictício ou real do seu ambiente (função de **Visualizador**) e substitua `<username2>@<your_domain>.com` pelo seu nome de usuário (função de **Administrador**).
 
     ```T-SQL
    CREATE TABLE dbo.Sales  
@@ -136,17 +136,8 @@ A segurança em nível de linha (RLS) pode ser usada para limitar o acesso às l
 
 6. Use o botão **&#9655; Executar** para executar o script SQL
 7. No painel **Explorador**, expanda **Esquemas** > **rls** > **Funções** > **Funções com valor de tabela** e verifique se a função foi criada.
-8. Faça logon no Fabric como o usuário que você substituiu `<username1>@<your_domain>.com`, na instrução da tabela Vendas `INSERT`. Confirme se você está conectado como esse usuário executando o T-SQL a seguir.
 
-    ```T-SQL
-   SELECT USER_NAME();
-    ```
-
-9. Consulte a tabela **Vendas** para confirmar que a segurança em nível de linha funciona como esperado. Você só deve ver dados que atendam às condições no predicado de segurança definidos para o usuário como o qual você está conectado:
-
-    ```T-SQL
-   SELECT * FROM dbo.Sales;
-    ```
+    > **Observação**: Se você se conectar como o usuário que substituiu `<username1>@<your_domain>.com` e executar uma instrução `SELECT` na tabela **Vendas**, verá os seguintes resultados da segurança em nível de linha.
 
     ![Captura de tela da tabela Vendas com RLS.](./Images/rls-table.png)
 
@@ -172,27 +163,17 @@ A segurança em nível de coluna permite designar quais usuários podem acessar 
    SELECT * FROM dbo.Orders;
     ```
 
-3. Negue a permissão para exibir uma coluna na tabela. A instrução T-SQL impede `<username1>@<your_domain>.com` de ver a coluna CreditCard na tabela Orders. Na instrução `DENY`, substitua `<username1>@<your_domain>.com` por um nome de usuário em seu sistema que tenha permissões de **Visualizador** no workspace.
+3. Negue a permissão para exibir uma coluna na tabela. A instrução T-SQL impede `<username1>@<your_domain>.com` de ver a coluna CreditCard na tabela Orders. Na instrução `DENY`, substitua `<username1>@<your_domain>.com` pelo nome de usuário de um usuário que tenha permissões de Visualizador no workspace.
 
     ```T-SQL
    DENY SELECT ON dbo.Orders (CreditCard) TO [<username1>@<your_domain>.com];
     ```
 
-4. Teste a segurança no nível da coluna fazendo logon no Fabric como o usuário ao qual você negou as permissões de seleção.
-
-5. Consulte a tabela Pedidos para confirmar que a segurança em nível de coluna funciona como esperado:
-
-    ```T-SQL
-   SELECT * FROM dbo.Orders;
-    ```
+    > **Observação**: Se você se conectar como o usuário que substituiu `<username1>@<your_domain>.com` e executar uma instrução `SELECT` na tabela **Pedidos**, verá os seguintes resultados da segurança em nível de coluna.
 
     ![Captura de tela da consulta da tabela Pedidos com erro.](./Images/cls-table.png)
 
-    Você receberá um erro porque o acesso à coluna CreditCard foi restrito. Tente selecionar apenas os campos OrderID e CustomerID e a consulta terá êxito.
-
-    ```T-SQL
-   SELECT OrderID, CustomerID from dbo.Orders
-    ```
+    O erro mostrado na captura de tela ocorre porque o acesso à coluna `CreditCard` foi restrito. Se você selecionar somente as colunas `OrderID` e `CustomerID`, a consulta será executada com êxito.
 
 ## Configurar permissões granulares de SQL usando T-SQL
 
@@ -226,7 +207,7 @@ O Fabric tem um modelo de permissões que permite controlar o acesso aos dados n
    SELECT * FROM dbo.Parts
     ```
 
-3. Em seguida, dê permissões `DENY SELECT` na tabela a um usuário que seja membro da função **Visualizador do Workspace** e `GRANT EXECUTE` no procedimento para o mesmo usuário. Substitua `<username1>@<your_domain>.com` por um nome de usuário do seu ambiente que seja membro da função **Visualizador do Workspace**.
+3. Em seguida, `DENY SELECT` permissões na tabela a um usuário que seja membro da função **Visualizador do Workspace** e `GRANT EXECUTE` no procedimento para o mesmo usuário. Substitua `<username1>@<your_domain>.com` pelo nome de usuário de um usuário que tenha permissões de **Visualizador** no workspace.
 
     ```T-SQL
    DENY SELECT on dbo.Parts to [<username1>@<your_domain>.com];
@@ -234,14 +215,7 @@ O Fabric tem um modelo de permissões que permite controlar o acesso aos dados n
    GRANT EXECUTE on dbo.sp_PrintMessage to [<username1>@<your_domain>.com];
     ```
 
-4. Entre no Fabric como o usuário especificado nas instruções `DENY` e `GRANT` no lugar de `<username1>@<your_domain>.com`. Teste as permissões granulares que você aplicou executando o procedimento armazenado e consultando a tabela:
-
-    ```T-SQL
-   EXEC dbo.sp_PrintMessage;
-   GO
-   
-   SELECT * FROM dbo.Parts;
-    ```
+    > **Observação**: Se você se conectar como o usuário que substituiu `<username1>@<your_domain>.com`, execute o procedimento armazenado e execute uma instrução `SELECT` na tabela **Peças**, verá os seguintes resultados das permissões granulares.
 
     ![Captura de tela da consulta da tabela Peças com erro.](./Images/grant-deny-table.png)
 
